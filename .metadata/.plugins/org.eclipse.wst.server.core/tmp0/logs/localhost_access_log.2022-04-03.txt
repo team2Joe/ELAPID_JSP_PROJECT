@@ -1,4 +1,0 @@
-127.0.0.1 - - [03/Apr/2022:20:31:16 +0900] "GET / HTTP/1.1" 404 807
-0:0:0:0:0:0:0:1 - - [03/Apr/2022:20:31:17 +0900] "GET /ELAPID_jsp_project/main.jsp HTTP/1.1" 200 2251
-0:0:0:0:0:0:0:1 - - [03/Apr/2022:20:59:11 +0900] "GET /ELAPID_jsp_project/main.jsp HTTP/1.1" 200 2504
-0:0:0:0:0:0:0:1 - - [03/Apr/2022:21:04:05 +0900] "GET /ELAPID_jsp_project/main.jsp HTTP/1.1" 200 2344
