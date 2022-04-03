@@ -1,0 +1,15 @@
+INDEX VERSION 1.131
+/Users/kte/bigAi/ELAPID_jsp_project/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3243300463.index
+/MyHome/src
+/Users/kte/bigAi/ELAPID_jsp_project/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2480664620.index
+/ELAPID_jsp_project/src/main/java
+/Users/kte/bigAi/ELAPID_jsp_project/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2101022393.index
+/MyHome/src
+/Users/kte/bigAi/ELAPID_jsp_project/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/198544945.index
+/ELAPID_jsp_project/src/main/java
+/Users/kte/bigAi/ELAPID_jsp_project/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2405822190.index
+/MyHome/src
+/Users/kte/bigAi/ELAPID_jsp_project/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/717506630.index
+/MyHome/src
+/Users/kte/bigAi/ELAPID_jsp_project/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1612372444.index
+/MyHome/src

@@ -1,0 +1,4 @@
+INDEX VERSION 1.4+/Users/kte/bigAi/ELAPID_jsp_project/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+2600361271.index
+198544945.index
+322793973.index
