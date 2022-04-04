@@ -11,31 +11,35 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.elapid.command.ECommand;
+import com.elapid.command.ELuggageListCommand;
 
-/**
- * Servlet implementation class EController
- */
+
 @WebServlet("*.do")
-public class EController extends HttpServlet {
+public class EController_JJH extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-     
-	
-    public EController() {
+
+    public EController_JJH() {
         super();
     }
+
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		actionDo(request, response);
 		System.out.println("doGet");
-		actiondo(request,response);
 	}
 
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		actionDo(request, response);	
 		System.out.println("doPost");
-		actiondo(request,response);
 	}
-	
-	protected void actiondo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	public void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		request.setCharacterEncoding("utf-8");
+		
 		HttpSession session = request.getSession();
 		
 		ECommand command = null;
@@ -49,24 +53,32 @@ public class EController extends HttpServlet {
 		System.out.println(com);
 		
 		switch(com) {
+		
 		case("/main.do"):
 			viewPage = "index.jsp";
 			break;
 			
 		case("/luggageList.do"):
+			command = new ELuggageListCommand();
+			command.execute(request, response);
 			viewPage = "luggageList.jsp";
 			break;
+			
+
 		case("/backpackList.do"):
 			viewPage = "backpackList.jsp";
 			break;
+			
+			
 		default:
 			break;
+		
 		}
+		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
+		
 	}
 	
-	
-
 }

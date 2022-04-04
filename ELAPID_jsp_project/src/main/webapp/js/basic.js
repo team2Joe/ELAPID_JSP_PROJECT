@@ -6,7 +6,7 @@
 	
 function navbtnlinkluggage() {
 
-	location.href = "luggageList.jsp";
+	location.href = "luggageList.do";
 }
 function navbtnlinkbackpack() {
 
