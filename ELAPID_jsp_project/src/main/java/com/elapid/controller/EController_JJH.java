@@ -75,6 +75,10 @@ public class EController_JJH extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "detailView.jsp";
 			break;
+			
+		case("/photoView.do"):
+			break;
+		
 		case("/search.do"):
 			command = new ESearchCommand();
 			command.execute(request, response);

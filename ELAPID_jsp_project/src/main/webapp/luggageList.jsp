@@ -7,7 +7,7 @@
 				  <div class="col">
 				    <div class="card h-100">
 			    	  <a href="detailView.do?p_id=${dto.p_id }">
-				      <img src="https://www.samsonite.co.kr/dw/image/v2/AAWQ_PRD/on/demandware.static/-/Sites-Samsonite/default/dwd0c31205/images/c-lite-spinner-exp/hi-res/134679_1041_hi-res_FRONT34_1.JPG?sw=200&sh=300" class="card-img-top" alt="...">
+				      <img src="${dto.p_imgpath }" alt="...">
 				      <div class="card-body">
 				        <h5 class="card-title">${dto.p_name }</h5>
 				      </a>
