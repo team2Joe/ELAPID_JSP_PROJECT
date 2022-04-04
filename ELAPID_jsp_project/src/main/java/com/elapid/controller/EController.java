@@ -52,6 +52,8 @@ public class EController extends HttpServlet {
 		case("/main.do"):
 			viewPage = "index.jsp";
 			break;
+		case("/loginForm.do"):
+			viewPage = "loginForm.jsp";
 			
 		case("/luggageList.do"):
 			viewPage = "luggageList.jsp";
