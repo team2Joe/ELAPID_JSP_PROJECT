@@ -3,12 +3,21 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 		
-		상품명 : ${detailView.p_name } <br>
-		가격 : ${detailView.p_discountprice }
+		<div align="center">
+		
+		<h3>${detailView.p_name }</h3> <br>
+		가격 : ${detailView.p_discountprice }<br>
+		<br>
+		<img src="${detailView.p_imgpath }">
+		<br>
+		<c:forEach items="${image }" var="dto">
+			<img src="${dto.img_path }">
+		</c:forEach>
 		
 		
 		원하는 사이즈 선택<br>
 		구매/장바구니<br>
+		</div>
 		
 
 <%@ include file="/layout/footer.jsp"%>	

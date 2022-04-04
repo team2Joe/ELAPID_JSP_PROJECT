@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.elapid.command.ECommand;
 import com.elapid.command.EDetailViewCommand;
+import com.elapid.command.EImageViewCommand;
 import com.elapid.command.ELuggageListCommand;
 import com.elapid.command.ESearchCommand;
 
@@ -76,7 +77,10 @@ public class EController_JJH extends HttpServlet {
 			viewPage = "detailView.jsp";
 			break;
 			
-		case("/photoView.do"):
+		case("/imageView.do"):
+			command = new EImageViewCommand();
+			command.execute(request, response);
+			viewPage = "detailView.jsp";
 			break;
 		
 		case("/search.do"):
