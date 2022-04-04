@@ -2,18 +2,17 @@ package com.elapid.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.elapid.dao.RegisterDao;
-import com.elapid.dao.UserDao;
-
-public class EIdCheckCommand implements ECommand {
+public class ELogoutCommand implements ECommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		RegisterDao dao = new RegisterDao();
-		
 
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
 	}
 
 }

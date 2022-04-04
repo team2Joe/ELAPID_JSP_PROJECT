@@ -4,6 +4,9 @@
  
  function idcheck(){
 	
-	location.href = "idCheck.do";
+	var uid = document.getElementById("userid").value;
+	
+	
+	location.href = "idCheck.do?uid=" + uid;
 	
 }

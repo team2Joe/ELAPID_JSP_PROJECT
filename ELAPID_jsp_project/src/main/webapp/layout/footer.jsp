@@ -5,7 +5,7 @@
 
 
 	<div class="footer">
-		2joe's Work copyright。
+		ELAPID's Work copyright。
 	</div>
 </body>
 </html>

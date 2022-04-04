@@ -11,7 +11,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <div class="container-fluid">
-	    <a class="navbar-brand" href="index.jsp">ELAPID</a>
+	    <a class="navbar-brand" href="main.do">ELAPID</a>
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
@@ -95,6 +95,8 @@
 	    </div>
 	    <div>
 	      <ul class="navbar-nav">
+
+
 	        <li class="nav-item dropdown">
 	          <a class="nav-link" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	            회원

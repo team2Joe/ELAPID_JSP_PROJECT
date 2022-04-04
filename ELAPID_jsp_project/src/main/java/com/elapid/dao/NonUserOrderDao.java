@@ -17,7 +17,7 @@ public class NonUserOrderDao {
 			
 			Context context = new InitialContext();
 			
-			dataSource = (DataSource)context.lookup("java:comp/env/jdbc/elapdid");
+			dataSource = (DataSource)context.lookup("java:comp/env/jdbc/elapid");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

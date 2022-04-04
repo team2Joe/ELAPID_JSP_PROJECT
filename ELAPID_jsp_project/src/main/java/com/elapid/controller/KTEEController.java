@@ -11,17 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.elapid.command.ECommand;
+import com.elapid.command.ELoginCheckCommand;
+import com.elapid.command.ELogoutCommand;
+import com.elapid.command.EMainCommand;
 
 /**
  * Servlet implementation class EController
  */
 @WebServlet("*.do")
-public class EController extends HttpServlet {
+public class KTEEController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
      
 	
-    public EController() {
+    public KTEEController() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,10 +53,30 @@ public class EController extends HttpServlet {
 		
 		switch(com) {
 		case("/main.do"):
+			command = new EMainCommand();
+			command.execute(request, response);
 			viewPage = "index.jsp";
 			break;
 		case("/loginForm.do"):
 			viewPage = "loginForm.jsp";
+			break;
+		case("/loginCheck.do"):
+			command = new ELoginCheckCommand();
+			command.execute(request, response);
+			viewPage = (String)request.getAttribute("loginviewparam");
+			break;
+		
+		case("/logout.do"):
+			command = new ELogoutCommand();
+			command.execute(request, response);
+			viewPage = "loginForm.do";
+			break;
+		
+		case("/registerForm.do"):
+			viewPage = "registerForm.jsp";
+			break;
+		case("idcheck.do"):
+			break;
 			
 		case("/luggageList.do"):
 			viewPage = "luggageList.jsp";
@@ -61,6 +84,7 @@ public class EController extends HttpServlet {
 		case("/backpackList.do"):
 			viewPage = "backpackList.jsp";
 			break;
+			
 		default:
 			break;
 		}
