@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.elapid.command.ECommand;
+import com.elapid.command.EDetailViewCommand;
 import com.elapid.command.ELuggageListCommand;
 
 
@@ -64,12 +65,15 @@ public class EController_JJH extends HttpServlet {
 			viewPage = "luggageList.jsp";
 			break;
 			
-
 		case("/backpackList.do"):
 			viewPage = "backpackList.jsp";
 			break;
 			
-			
+		case("/detailView.do"):
+			command = new EDetailViewCommand();
+			command.execute(request, response);
+			viewPage = "detailView.jsp";
+			break;
 		default:
 			break;
 		
