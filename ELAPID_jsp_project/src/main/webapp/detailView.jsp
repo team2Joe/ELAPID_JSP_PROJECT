@@ -3,8 +3,13 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 		
-		상품명 : ${detailView.p_name } 
-
+		상품명 : ${detailView.p_name } <br>
+		
+		여러 사진들 <br>
+		
+		원하는 사이즈 선택<br>
+		구매/장바구니<br>
+		
 
 <%@ include file="/layout/footer.jsp"%>	
 	

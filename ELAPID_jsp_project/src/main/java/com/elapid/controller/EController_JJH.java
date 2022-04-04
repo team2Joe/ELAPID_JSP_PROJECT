@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.elapid.command.ECommand;
 import com.elapid.command.EDetailViewCommand;
 import com.elapid.command.ELuggageListCommand;
+import com.elapid.command.ESearchCommand;
 
 
 @WebServlet("*.do")
@@ -74,6 +75,10 @@ public class EController_JJH extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "detailView.jsp";
 			break;
+		case("/search.do"):
+			command = new ESearchCommand();
+			command.execute(request, response);
+			viewPage = "list.jsp";
 		default:
 			break;
 		

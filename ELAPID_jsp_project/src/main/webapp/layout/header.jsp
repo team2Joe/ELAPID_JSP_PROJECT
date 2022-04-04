@@ -94,6 +94,7 @@
 	        </li>
 	      </ul>
 	    </div>
+
 	    <div>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
@@ -110,3 +111,9 @@
 	    </div>
 	  </div>
 	</nav>
+    <div>
+    	<form action="search.do">
+    		<input type="text" name="search" size="20">
+    		<input type="submit" value="상품검색">
+    	</form>
+    </div>
