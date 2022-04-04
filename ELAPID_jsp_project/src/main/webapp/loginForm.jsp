@@ -15,8 +15,9 @@
 	  <div class="mb-3 row" style= "text-algin:center;">
 	    <label style="width:40%; height:40px; text-align:right"  for="inputPassword" class="col-sm-2 col-form-label">아이디 : </label>
 	    <div class="col-sm-3">
-	      <input type="text" name="uid" class="form-control" id="inputId">
+	      <input type="text" name="uid" class="form-control" id="inputId" onkeyup="idformcheck()">
 	    </div>
+
 	  </div>
 	  <div class="mb-3 row">
 	    <label style="width:40%; height:40px; text-align:right" for="inputPassword" class="col-sm-2 col-form-label">비밀번호 : </label>

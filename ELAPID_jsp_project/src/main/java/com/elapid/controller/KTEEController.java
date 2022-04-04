@@ -71,6 +71,7 @@ public class KTEEController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "loginForm.do";
 			break;
+			
 		
 		case("/registerForm.do"):
 			viewPage = "registerForm.jsp";

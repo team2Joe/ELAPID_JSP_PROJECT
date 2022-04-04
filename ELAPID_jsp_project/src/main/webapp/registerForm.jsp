@@ -17,11 +17,13 @@
 		  <div class="mb-3 row">
 		    <label for="inputPassword" class="col-sm-2 col-form-label">아이디 : </label>
 		    <div class="col-sm-2">
-		      <input type="text" class="form-control" id="userid" onkeyup="checkidform()">
+		      <input type="text" class="form-control" id="userid" onkeyup="idformcheck()">
 		    </div>
 		    <div class="col-sm-2">
 		      <button id="idcheck" onclick="idcheck()">중복체크</button>
 		    </div>
+		    <div class = "col-sm-5"> 영문시작 총 6~12자 영문/숫자 혼합으로 작성해주세요.
+	        </div>
 		  </div>
 		  <div class="mb-3 row">
 		    <label for="inputPassword" class="col-sm-2 col-form-label">비밀번호 : </label>
