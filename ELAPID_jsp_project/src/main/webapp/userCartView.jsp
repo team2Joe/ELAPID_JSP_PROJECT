@@ -10,7 +10,7 @@
 <title>OrderFom</title>
 </head>
 	<body>
-			<div style = "padding: 30px 200px 20px 200px;">  
+			<div style = "padding: 30px 200px 20px 200px;"> <!-- 중앙! --> 
 				<div class="">
 					<h3> 주문하기 </h3>
 				</div>
@@ -26,47 +26,40 @@
 						</div>
 							</div>			  			
 				   			<div class="col-2" align="left">
-						     <img alt="캐리어1" src="image/캐리어1.jpeg" width="100">
+						     <img alt="캐리어1" src="elapid_img/luggage/sefton_main.jpg" width="100">
 						    </div>
 					    	<div class="col-4" align="left">
-					     		<p class="fs-4">EVOA TECH</p>
-					     		<p class="fs-7">SP 75/28 EXP NON TRACKER</p>
-					     		<p class="fs-6">BRUSHED BLACK</p>
+					     		<p class="fs-4">${cart_view.p_name }</p>
+					     		<p class="fs-6">${cart_view.p_colorname }</p>
 						   	 </div>
 						    <div class="col -2" align="right">
 						      	<p class="fs-4">X</p>
 						      	<button type="button" class="btn btn-dark">주문하기</button><br><br>
-						      	가격<br>
+						      	<p>${cart_view.p_price } 원</p>
 				   		 	</div>
 			  		</div>
 				</div>
+		<hr width="1050">
+		
+				<%--</c:forEach>  --%>
+				
+		<p class="fs-6" align="right">배송비 : 원 </p>
+			<hr width="1050">
+		<div align="right">	
+			<h5>총 계</h5>
+			<h4>원</h4>
 		</div>
-	<div align="center">
-	<hr width="1000">
-	</div>
-			<%--</c:forEach>  --%>
-			
+	</div><!-- 중앙! -->
 	
-	<div align="center">
-		<hr width="1000">
-	</div>
-	<div align="center">
-		<hr width="1000">
-	</div>
 	
-	<div class="container">
-		<div class="row">
-		</div>
+	<!-- 2분할! -->
+	<div class="d-grid gap-2 col-10">
+	  <div><button type="button" class="btn btn-dark" style="float: right;" >선택상품 주문하기</button></div>
+	 <div><button type="button" class="btn btn-dark" style="float: right;" >결제하기</button></div>
 	</div>
-	
-	<div>
-	물품이미지 :
-	물품이름 :
-	물품가격
-	주문하기:
-	포인트:
-	쿠폰종류:
-	</div>
+	<br>
+	  
+		
 	
 	
 	

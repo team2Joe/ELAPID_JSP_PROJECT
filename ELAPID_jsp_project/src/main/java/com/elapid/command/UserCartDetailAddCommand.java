@@ -16,8 +16,7 @@ public class UserCartDetailAddCommand implements ECommand {
 		String u_id = request.getParameter("u_id");
 		
 		CartDao dao = new CartDao();
-		dao.cartProductList(p_id, u_id);
-		
+	
 		
 		
 	}

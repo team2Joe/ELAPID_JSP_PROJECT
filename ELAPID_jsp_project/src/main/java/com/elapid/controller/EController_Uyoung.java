@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.elapid.command.ECartViewCommand;
 import com.elapid.command.ECommand;
 import com.elapid.command.UserCartDetailAddCommand;
 
@@ -63,16 +64,16 @@ public class EController_Uyoung extends HttpServlet {
 			viewPage = "backpackList.jsp";
 			break;
 		
+		
+			
 		//User가 Cart(장바구니)로 이동
 		case("/userCartView.do"):
+			command = new ECartViewCommand();
+			command.execute(request, response);
 			viewPage = "userCartView.jsp";
 			break;
 		
-			//장바구니 담기 버튼으로 p_id가 submit 되고 키값보내면 다시 cartView페이지로 이동.
-		case("/userCartAdd.do"):
-			command = new UserCartDetailAddCommand();
-			command.execute(request, response);
-			viewPage = "userCartView.do";
+		
 			
 		
 		
