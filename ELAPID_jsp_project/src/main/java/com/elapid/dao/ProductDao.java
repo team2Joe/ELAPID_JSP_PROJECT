@@ -37,7 +37,7 @@ public class ProductDao {
 	}
 	
 	// 대분류 상품 전체 리스트 출력
-	public ArrayList<ProductDto> mainList(){
+	public ArrayList<ProductDto> luggageList(){
 		ArrayList<ProductDto> dtos = new ArrayList<ProductDto>();
 		
 		Connection conn = null;
@@ -46,7 +46,7 @@ public class ProductDao {
 		
 		try {
 			conn = dataSource.getConnection();
-			String query = "select * from product";
+			String query = "select * from product where p_ctgmain = 'luggage'";
 			stmt = conn.prepareStatement(query);
 			
 			rs = stmt.executeQuery();
@@ -76,6 +76,66 @@ public class ProductDao {
 			}
 			
 			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+				
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		
+		return dtos;
+	}
+	
+	// 백팩리스트 전체 출력
+	public ArrayList<ProductDto> backpackList(){
+		ArrayList<ProductDto> dtos = new ArrayList<ProductDto>();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String query = "select * from product where p_ctgmain = 'backpack'";
+			stmt = conn.prepareStatement(query);
+			
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				// product 정보 가져오기 
+				int p_id = rs.getInt("p_id");
+				String p_name = rs.getString("p_name");
+				String p_stock = rs.getString("p_stock");
+				int p_price = rs.getInt("p_price");
+				int p_discountprice = rs.getInt("p_discountprice");
+				int p_size = rs.getInt("p_size");
+				String p_mainf = rs.getString("p_mainf");
+				String p_colorimg = rs.getString("p_colorimg");
+				String p_colorname = rs.getString("p_colorname");
+				Timestamp p_date = rs.getTimestamp("p_date");
+				String p_desc = rs.getString("p_desc");
+				String p_clickcount = rs.getString("p_clickcount");
+				String p_imgpath = rs.getString("p_imgpath");
+				String p_ctgmain = rs.getString("p_ctgmain");
+				String p_ctgmiddle = rs.getString("p_ctgmiddle");
+				
+				ProductDto dto = new ProductDto(p_id, p_name, p_stock, p_price, p_discountprice, p_size, p_mainf, p_colorimg, p_colorname, 
+											p_date, p_desc, p_clickcount, p_imgpath, p_ctgmain, p_ctgmiddle);
+				
+				dtos.add(dto);
+			}
+
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -219,13 +279,192 @@ public class ProductDao {
 		return dtos;
 	}
 	
+	public ArrayList<ProductDto> search(String search) {
+		ArrayList<ProductDto> dtos = new ArrayList<ProductDto>();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		
+		try {
+			conn = dataSource.getConnection();
+			String query = "select * from product where p_name like '%" + search + "%' or p_size like '%" + search + 
+					"%' or p_mainf like '%" + search + "%' or p_desc = '%" + search + "%'";
+			
+			stmt = conn.prepareStatement(query);
+			
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				// product 정보 가져오기 
+				int p_id = rs.getInt("p_id");
+				String p_name = rs.getString("p_name");
+				String p_stock = rs.getString("p_stock");
+				int p_price = rs.getInt("p_price");
+				int p_discountprice = rs.getInt("p_discountprice");
+				int p_size = rs.getInt("p_size");
+				String p_mainf = rs.getString("p_mainf");
+				String p_colorimg = rs.getString("p_colorimg");
+				String p_colorname = rs.getString("p_colorname");
+				Timestamp p_date = rs.getTimestamp("p_date");
+				String p_desc = rs.getString("p_desc");
+				String p_clickcount = rs.getString("p_clickcount");
+				String p_imgpath = rs.getString("p_imgpath");
+				String p_ctgmain = rs.getString("p_ctgmain");
+				String p_ctgmiddle = rs.getString("p_ctgmiddle");
+				
+				ProductDto dto = new ProductDto(p_id, p_name, p_stock, p_price, p_discountprice,
+						p_size, p_mainf, p_colorimg, p_colorname, p_date, p_desc, 
+						p_clickcount, p_imgpath, p_ctgmain, p_ctgmiddle);
+				
+				dtos.add(dto);
+			}
+
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+				
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return dtos;
+	}
 	
 	
+	public ArrayList<ProductDto> middleList(String sp_ctgmiddle){
+		
+		ArrayList<ProductDto> dtos = new ArrayList<ProductDto>();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+	
+		try {
+			conn = dataSource.getConnection();
+			String query = "select * from product where p_ctgmiddle = ?";
+			
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, sp_ctgmiddle);
+			
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				// product 정보 가져오기 
+				int p_id = rs.getInt("p_id");
+				String p_name = rs.getString("p_name");
+				String p_stock = rs.getString("p_stock");
+				int p_price = rs.getInt("p_price");
+				int p_discountprice = rs.getInt("p_discountprice");
+				int p_size = rs.getInt("p_size");
+				String p_mainf = rs.getString("p_mainf");
+				String p_colorimg = rs.getString("p_colorimg");
+				String p_colorname = rs.getString("p_colorname");
+				Timestamp p_date = rs.getTimestamp("p_date");
+				String p_desc = rs.getString("p_desc");
+				String p_clickcount = rs.getString("p_clickcount");
+				String p_imgpath = rs.getString("p_imgpath");
+				String p_ctgmain = rs.getString("p_ctgmain");
+				String p_ctgmiddle = rs.getString("p_ctgmiddle");
+				
+				ProductDto dto = new ProductDto(p_id, p_name, p_stock, p_price, p_discountprice,
+						p_size, p_mainf, p_colorimg, p_colorname, p_date, p_desc, 
+						p_clickcount, p_imgpath, p_ctgmain, p_ctgmiddle);
+				
+				dtos.add(dto);
+			}
+
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+				
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return dtos;
+	}
 	
 	
-	
-	
-	
+	//기능별 상품 페이지 리스트
+	public ArrayList<ProductDto> functionList(String sp_mainf){
+		
+		 ArrayList<ProductDto> dtos = new ArrayList<ProductDto>();
+		
+		 Connection conn = null;
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+		
+			try {
+				conn = dataSource.getConnection();
+				String query = "select * from product where p_mainf = ?";
+				
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, sp_mainf);
+				
+				rs = stmt.executeQuery();
+				
+				while(rs.next()) {
+					// product 정보 가져오기 
+					int p_id = rs.getInt("p_id");
+					String p_name = rs.getString("p_name");
+					String p_stock = rs.getString("p_stock");
+					int p_price = rs.getInt("p_price");
+					int p_discountprice = rs.getInt("p_discountprice");
+					int p_size = rs.getInt("p_size");
+					String p_mainf = rs.getString("p_mainf");
+					String p_colorimg = rs.getString("p_colorimg");
+					String p_colorname = rs.getString("p_colorname");
+					Timestamp p_date = rs.getTimestamp("p_date");
+					String p_desc = rs.getString("p_desc");
+					String p_clickcount = rs.getString("p_clickcount");
+					String p_imgpath = rs.getString("p_imgpath");
+					String p_ctgmain = rs.getString("p_ctgmain");
+					String p_ctgmiddle = rs.getString("p_ctgmiddle");
+					
+					ProductDto dto = new ProductDto(p_id, p_name, p_stock, p_price, p_discountprice,
+							p_size, p_mainf, p_colorimg, p_colorname, p_date, p_desc, 
+							p_clickcount, p_imgpath, p_ctgmain, p_ctgmiddle);
+					
+					dtos.add(dto);
+				}
+
+			}catch(Exception e) {
+				e.printStackTrace();
+				
+			}finally {
+				
+				try {
+					if(rs != null) rs.close();
+					if(stmt != null) stmt.close();
+					if(conn != null) conn.close();
+					
+					
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		 
+		 
+		 return dtos;
+	}
 	
 	
 }

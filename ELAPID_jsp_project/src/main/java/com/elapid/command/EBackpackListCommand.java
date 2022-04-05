@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.elapid.dao.ProductDao;
 import com.elapid.dto.ProductDto;
 
-public class ELuggageListCommand implements ECommand {
+public class EBackpackListCommand implements ECommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -17,9 +17,10 @@ public class ELuggageListCommand implements ECommand {
 		
 		ProductDao dao = new ProductDao();
 		
-		dtos = dao.luggageList();
+		dtos = dao.backpackList();
 		
 		request.setAttribute("list", dtos);
+
 	}
 
 }

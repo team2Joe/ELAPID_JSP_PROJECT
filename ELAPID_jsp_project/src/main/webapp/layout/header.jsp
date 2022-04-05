@@ -12,7 +12,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <div class="container-fluid">
-	    <a class="navbar-brand" href="index.jsp">ELAPID</a>
+	    <a class="navbar-brand" href="main.do">ELAPID</a>
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
@@ -25,35 +25,35 @@
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
 	            <li><h5>&nbsp&nbsp크기</h5></li>
 	            <li></li>
-	            <li><a class="dropdown-item" href="luggageList.do?ctg_middle=기내용">기내용</a></li>
-	            <li><a class="dropdown-item" href="luggageList.do?ctg_middle=중형수화물">중형수화물</a></li>
-	            <li><a class="dropdown-item" href="luggageList.do?ctg_middle=대형수화물">대형수화물</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?p_ctgmiddle=small">기내용</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?p_ctgmiddle=middle">중형수화물</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?p_ctgmiddle=large">대형수화물</a></li>
 	          </ul>
 	        </li>
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" onclick="navbtnlinkbackpack()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="nnavbtnlinkbackpack()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	백팩
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=비즈니스">비즈니스</a></li>
-	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=캐주얼">캐주얼</a></li>
-	            <li><a class="dropdown-item" href="#">Something else here</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?p_ctgmiddle=business">비즈니스</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?p_ctgmiddle=casual">캐주얼</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?p_ctgmiddle=other">Something else here</a></li>
 	          </ul>
 	        </li>
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="nnavbtnlinkbackpack()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	주요기능
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
 	          	<li><h5>&nbsp&nbsp크기</h5></li>
-	            <li><a class="dropdown-item" href="#">서스펜션 휠</a></li>
-	            <li><a class="dropdown-item" href="#">자동제어장치</a></li>
-	            <li><a class="dropdown-item" href="#">지문인식 장치</a></li>
-	            <li><a class="dropdown-item" href="#">RFID</a></li>
+	            <li><a class="dropdown-item" href="functionList.do?p_mainf=서스펜션휠">서스펜션 휠</a></li>
+	            <li><a class="dropdown-item" href="functionList.do?p_mainf=자동제어장치">자동제어장치</a></li>
+	            <li><a class="dropdown-item" href="functionList.do?p_mainf=지문인식">지문인식 장치</a></li>
+	            <li><a class="dropdown-item" href="functionList.do?p_mainf=rfid">RFID</a></li>
 	          </ul>
 	        </li>
 	      </ul>
@@ -112,8 +112,9 @@
 	  </div>
 	</nav>
     <div>
-    	<form action="search.do">
-    		<input type="text" name="search" size="20">
-    		<input type="submit" value="상품검색">
-    	</form>
+    	
+   		<form class="d-flex" action="search.do">
+        <input class="form-control me-sm-2" type="text" placeholder="Search" name="search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
     </div>

@@ -8,18 +8,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.elapid.dao.ProductDao;
 import com.elapid.dto.ProductDto;
 
-public class ELuggageListCommand implements ECommand {
+public class EFunctionListCommand implements ECommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		String p_mainf = request.getParameter("p_mainf");
 		
 		ArrayList<ProductDto> dtos = new ArrayList<ProductDto>();
 		
 		ProductDao dao = new ProductDao();
 		
-		dtos = dao.luggageList();
-		
+		dtos = dao.functionList(p_mainf);
+
 		request.setAttribute("list", dtos);
+
 	}
 
 }

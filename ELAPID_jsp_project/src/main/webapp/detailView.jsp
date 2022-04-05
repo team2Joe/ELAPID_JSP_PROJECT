@@ -4,19 +4,28 @@
 <!DOCTYPE html>
 		
 		<div align="center">
+		<table>
+			<tr>
+				<td>
+					
+				</td>
+				<td>
+					<h3>${detailView.p_name }</h3> <br>
+					가격 : ${detailView.p_discountprice }<br>
+					<br>
+					<img src="${detailView.p_imgpath }">
+					<br>
+					<c:forEach items="${image }" var="dto">
+						<img src="${dto.img_path }">
+					</c:forEach>
+					
+					원하는 사이즈 선택<br>
+					구매/장바구니<br>
+				</td>
+			
+			</tr>
+		</table>
 		
-		<h3>${detailView.p_name }</h3> <br>
-		가격 : ${detailView.p_discountprice }<br>
-		<br>
-		<img src="${detailView.p_imgpath }">
-		<br>
-		<c:forEach items="${image }" var="dto">
-			<img src="${dto.img_path }">
-		</c:forEach>
-		
-		
-		원하는 사이즈 선택<br>
-		구매/장바구니<br>
 		</div>
 		
 

@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.elapid.command.EBackpackListCommand;
 import com.elapid.command.ECommand;
 import com.elapid.command.EDetailViewCommand;
+import com.elapid.command.EFunctionListCommand;
 import com.elapid.command.EImageViewCommand;
 import com.elapid.command.ELuggageListCommand;
+import com.elapid.command.EMiddleViewCommand;
 import com.elapid.command.ESearchCommand;
 
 
@@ -60,21 +63,37 @@ public class EController_JJH extends HttpServlet {
 		case("/main.do"):
 			viewPage = "index.jsp";
 			break;
-			
+			// 캐리어 전체 리스트 페이지
 		case("/luggageList.do"):
 			command = new ELuggageListCommand();
 			command.execute(request, response);
-			viewPage = "luggageList.jsp";
+			viewPage = "mainList.jsp";
 			break;
-			
+			//백팩 전체리스트 페이지
 		case("/backpackList.do"):
-			viewPage = "backpackList.jsp";
+			command = new EBackpackListCommand();
+			command.execute(request, response);
+			viewPage = "mainList.jsp";
 			break;
 			
+			// 제품 상세 페이지
 		case("/detailView.do"):
 			command = new EDetailViewCommand();
 			command.execute(request, response);
 			viewPage = "detailView.jsp";
+			break;
+			
+			//제품 중분류별 페이지
+		case("/middleView.do"):
+			command = new EMiddleViewCommand();
+			command.execute(request, response);
+			viewPage = "mainList.jsp";
+			break;
+		
+		case("/functionList.do"):
+			command = new EFunctionListCommand();
+			command.execute(request, response);
+			viewPage = "mainList.jsp";
 			break;
 			
 		case("/imageView.do"):
@@ -86,7 +105,7 @@ public class EController_JJH extends HttpServlet {
 		case("/search.do"):
 			command = new ESearchCommand();
 			command.execute(request, response);
-			viewPage = "list.jsp";
+			viewPage = "mainList.jsp";
 		default:
 			break;
 		
