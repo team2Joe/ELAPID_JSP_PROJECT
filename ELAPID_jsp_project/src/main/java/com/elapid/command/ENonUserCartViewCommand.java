@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.elapid.dao.CartDao;
-import com.elapid.dto.CartViewDto;
+import com.elapid.dto.NonUserCartViewDto;
 
-public class ECartViewCommand implements ECommand {
+public class ENonUserCartViewCommand implements ECommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -18,7 +18,7 @@ public class ECartViewCommand implements ECommand {
 		int cart_id = 1;
 		//request.getParameter(Integer.parseInt("p_id"));
 		CartDao dao = new CartDao();
-		CartViewDto dto = dao.cartViewList(p_id, cart_id);
+		NonUserCartViewDto dto = dao.nonUserCartViewList(p_id, cart_id);
 		request.setAttribute("cart_view", dto);
 		
 		

@@ -15,7 +15,9 @@
 					<h3> 주문하기 </h3>
 				</div>
 		
-			<%-- <c:forEach items="" var=""> --%>
+			<%-- <c:forEach items="${cart_view }" var="dto"> 
+					//{cart_view }<== dto로 바꾸고 forEach 문 돌리기
+			--%>
 				<div class="container">
 			  		<div class="row">
 			  				<div class="col-1" style="padding: 75px 0px 0px 0px;">

@@ -1,6 +1,6 @@
 package com.elapid.dto;
 
-public class CartViewDto {
+public class NonUserCartViewDto {
 
 	
 	private int cart_id;
@@ -10,13 +10,13 @@ public class CartViewDto {
 	private int p_price;
 
 	
-	public CartViewDto() {
+	public NonUserCartViewDto() {
 		// TODO Auto-generated constructor stub
 	}
 
 
 	
-	public CartViewDto(int cart_id, int p_id, String p_name, String p_colorname, int p_price) {
+	public NonUserCartViewDto(int cart_id, int p_id, String p_name, String p_colorname, int p_price) {
 		super();
 		this.cart_id = cart_id;
 		this.p_id = p_id;

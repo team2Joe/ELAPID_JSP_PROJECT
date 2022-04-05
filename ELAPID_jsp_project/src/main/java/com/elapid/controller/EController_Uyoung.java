@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.elapid.command.ECartViewCommand;
+import com.elapid.command.ENonUserCartViewCommand;
 import com.elapid.command.ECommand;
 import com.elapid.command.UserCartDetailAddCommand;
 
@@ -67,10 +67,10 @@ public class EController_Uyoung extends HttpServlet {
 		
 			
 		//User가 Cart(장바구니)로 이동
-		case("/userCartView.do"):
-			command = new ECartViewCommand();
+		case("/nonUserCartView.do"):
+			command = new ENonUserCartViewCommand();
 			command.execute(request, response);
-			viewPage = "userCartView.jsp";
+			viewPage = "nonUserCartView.jsp";
 			break;
 		
 		

@@ -10,7 +10,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 
-import com.elapid.dto.CartViewDto;
+import com.elapid.dto.NonUserCartViewDto;
 
 public class CartDao {
 	
@@ -76,10 +76,10 @@ public class CartDao {
 	} 
 	*/
 	
-	public CartViewDto cartViewList(int p_id2, int cart_id2) {
+	public NonUserCartViewDto nonUserCartViewList(int p_id2, int cart_id2) {
 		
 		
-		CartViewDto dto = null;
+		NonUserCartViewDto dto = null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -100,7 +100,7 @@ public class CartDao {
 				String p_colorname = resultSet.getString("p_colorname");
 				int p_price = resultSet.getInt("p_price");
 				
-				dto = new CartViewDto(cart_id, p_id, p_name, p_colorname, p_price);
+				dto = new NonUserCartViewDto(cart_id, p_id, p_name, p_colorname, p_price);
 				
 				
 			
