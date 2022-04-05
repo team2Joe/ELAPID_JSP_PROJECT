@@ -8,7 +8,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.todo.dto.UDto;
 
 public class RegisterDao {
 	
@@ -35,7 +34,7 @@ public class RegisterDao {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query ="count(*) from user where uid = ?";
+			String query = "select count(*) from user where u_id = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, uid);
 			resultSet =preparedStatement.executeQuery(); //��ȸ
@@ -64,6 +63,9 @@ public class RegisterDao {
 		
 	}
 	
+	public void userAdd() {
+		
+	}
 	
 
 }

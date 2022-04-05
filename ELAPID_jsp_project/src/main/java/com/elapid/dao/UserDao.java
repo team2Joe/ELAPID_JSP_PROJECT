@@ -98,4 +98,38 @@ public class UserDao {
 		return name;
 		
 	}
+	
+	public void userAdd(String uid,String upwd,String uname, String uemail, String utel, String ugender, String ubirthdate) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "insert into user (u_id, u_pwd, u_name,u_email, u_tel, u_gender, u_birthdate, u_point, u_grade, u_registerdate ) values (?,?,?,?,?,?,? ,0 ,'브론즈' ,now())";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, uid);
+			preparedStatement.setString(2, upwd);
+			preparedStatement.setString(3, uname);
+			preparedStatement.setString(4, uemail);
+			preparedStatement.setString(5, utel);
+			preparedStatement.setString(6, ugender);
+			preparedStatement.setString(7, ubirthdate);
+		
+			
+			preparedStatement.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+			
+		
+		
+	}
 }

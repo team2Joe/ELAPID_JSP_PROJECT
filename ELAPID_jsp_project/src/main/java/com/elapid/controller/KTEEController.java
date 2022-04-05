@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.elapid.command.ECommand;
+import com.elapid.command.EIdCheckCommand;
 import com.elapid.command.ELoginCheckCommand;
 import com.elapid.command.ELogoutCommand;
 import com.elapid.command.EMainCommand;
+import com.elapid.command.ERegisterCheckCommand;
 
 /**
  * Servlet implementation class EController
@@ -65,7 +67,6 @@ public class KTEEController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = (String)request.getAttribute("loginviewparam");
 			break;
-		
 		case("/logout.do"):
 			command = new ELogoutCommand();
 			command.execute(request, response);
@@ -76,7 +77,15 @@ public class KTEEController extends HttpServlet {
 		case("/registerForm.do"):
 			viewPage = "registerForm.jsp";
 			break;
-		case("idcheck.do"):
+		case("/idCheck.do"):
+			command = new EIdCheckCommand();
+			command.execute(request, response);
+			viewPage = "registerForm.jsp";
+			break;
+		case("/registerCheck.do"):
+			command = new ERegisterCheckCommand();
+			command.execute(request, response);			
+			viewPage ="loginForm.do";
 			break;
 			
 		case("/luggageList.do"):
