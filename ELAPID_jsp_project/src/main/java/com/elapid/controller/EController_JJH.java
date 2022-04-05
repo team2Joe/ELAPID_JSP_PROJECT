@@ -16,6 +16,7 @@ import com.elapid.command.EDetailViewCommand;
 import com.elapid.command.EFunctionListCommand;
 import com.elapid.command.EImageViewCommand;
 import com.elapid.command.ELuggageListCommand;
+import com.elapid.command.EMiddleFunctionListCommand;
 import com.elapid.command.EMiddleViewCommand;
 import com.elapid.command.ESearchCommand;
 
@@ -89,7 +90,12 @@ public class EController_JJH extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "mainList.jsp";
 			break;
-		
+		case("/middleFunctionList.do"):
+			command = new EMiddleFunctionListCommand();
+			command.execute(request, response);
+			viewPage = "mainList.jsp";
+			break;
+			
 		case("/functionList.do"):
 			command = new EFunctionListCommand();
 			command.execute(request, response);

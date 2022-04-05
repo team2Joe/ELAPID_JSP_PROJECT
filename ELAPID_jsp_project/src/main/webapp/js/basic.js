@@ -16,5 +16,5 @@ function nnavbtnlinkbackpack() {
 
 function navbtnlinkfunction() {
 	
-	location.href = "list.do";
+	location.href = "middleFunctionList.do";
 }

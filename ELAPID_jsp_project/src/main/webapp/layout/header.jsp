@@ -45,7 +45,8 @@
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" onclick="nnavbtnlinkbackpack()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	        								<%-- function전체리스트 --%>
+	          <a class="nav-link" onclick="navbtnlinkfunction()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	주요기능
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
