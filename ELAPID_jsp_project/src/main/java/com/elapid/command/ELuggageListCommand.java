@@ -17,7 +17,7 @@ public class ELuggageListCommand implements ECommand {
 		
 		ProductDao dao = new ProductDao();
 		
-		dtos = dao.list();
+		dtos = dao.mainList();
 		
 		request.setAttribute("list", dtos);
 	}

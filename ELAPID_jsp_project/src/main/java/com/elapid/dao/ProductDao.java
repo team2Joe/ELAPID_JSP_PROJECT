@@ -1,5 +1,8 @@
 package com.elapid.dao;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,7 +37,7 @@ public class ProductDao {
 	}
 	
 	// 대분류 상품 전체 리스트 출력
-	public ArrayList<ProductDto> list(){
+	public ArrayList<ProductDto> mainList(){
 		ArrayList<ProductDto> dtos = new ArrayList<ProductDto>();
 		
 		Connection conn = null;
@@ -63,9 +66,11 @@ public class ProductDao {
 				String p_desc = rs.getString("p_desc");
 				String p_clickcount = rs.getString("p_clickcount");
 				String p_imgpath = rs.getString("p_imgpath");
+				String p_ctgmain = rs.getString("p_ctgmain");
+				String p_ctgmiddle = rs.getString("p_ctgmiddle");
 				
-				ProductDto dto = new ProductDto(p_id, p_name, p_stock, p_price, p_discountprice, p_size, p_mainf,
-						p_colorimg, p_colorname, p_date, p_desc, p_clickcount, p_imgpath);
+				ProductDto dto = new ProductDto(p_id, p_name, p_stock, p_price, p_discountprice, p_size, p_mainf, p_colorimg, p_colorname, 
+											p_date, p_desc, p_clickcount, p_imgpath, p_ctgmain, p_ctgmiddle);
 				
 				dtos.add(dto);
 			}
@@ -123,9 +128,12 @@ public class ProductDao {
 				String p_desc = rs.getString("p_desc");
 				String p_clickcount = rs.getString("p_clickcount");
 				String p_imgpath = rs.getString("p_imgpath");
+				String p_ctgmain = rs.getString("p_ctgmain");
+				String p_ctgmiddle = rs.getString("p_ctgmiddle");
 				
-				dto = new ProductDto(p_id, p_name, p_stock, p_price, p_discountprice, p_size, p_mainf,
-						p_colorimg, p_colorname, p_date, p_desc, p_clickcount, p_imgpath);
+				dto = new ProductDto(p_id, p_name, p_stock, p_price, p_discountprice,
+						p_size, p_mainf, p_colorimg, p_colorname, p_date, p_desc, 
+						p_clickcount, p_imgpath, p_ctgmain, p_ctgmiddle);
 				
 			}
 			
@@ -150,6 +158,7 @@ public class ProductDao {
 		return dto;
 	}
 	
+	//상세 페이지 이미지 리스트 불러오기 
 	public ArrayList<ProductImageDto> imageView(String sp_id) {
 		
 		ArrayList<ProductImageDto> dtos = new ArrayList<ProductImageDto>();
@@ -172,9 +181,18 @@ public class ProductDao {
 			while(rs.next()) {
 				int img_id = rs.getInt("img_id");
 				String img_name = rs.getString("img_name");
-				String img_path = rs.getString("img_path");
-
-				dto = new ProductImageDto(img_id, img_name, img_path);
+				
+				// 이미지 파일 불러오기
+				Blob img_file = rs.getBlob("img_file");
+				byte[] data = img_file.getBytes(img_id, (int)img_file.length());
+				
+				File file = new File("Users/tj/Desktop/jjh/elapid_img/luggage/clite_main.jpeg");
+				FileOutputStream fos = new FileOutputStream(file);
+				
+				fos.write(data);
+				fos.close();
+				
+				dto = new ProductImageDto(img_id, img_name, img_file);
 				
 				dtos.add(dto);
 			}
