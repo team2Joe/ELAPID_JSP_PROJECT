@@ -466,7 +466,7 @@ public class ProductDao {
 		 return dtos;
 	}
 	
-	// 기능 전체 페이지 리스
+	// 기능 전체 페이지 리스트
 	public ArrayList<ProductDto> middleFunctionList(){
 		
 		 ArrayList<ProductDto> dtos = new ArrayList<ProductDto>();
