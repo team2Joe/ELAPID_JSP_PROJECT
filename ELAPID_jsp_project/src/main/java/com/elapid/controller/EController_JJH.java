@@ -70,6 +70,7 @@ public class EController_JJH extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "mainList.jsp";
 			break;
+			
 			//백팩 전체리스트 페이지
 		case("/backpackList.do"):
 			command = new EBackpackListCommand();

@@ -9,8 +9,8 @@
 		
 		<table>
 			<tr align="center">
-				<td align="left">
-					dsfadfafd
+				<td>
+					
 				</td>
 				<td>
 					<br>
@@ -20,7 +20,7 @@
 						<img src="${dto.img_path }">
 					</c:forEach>
 					
-					가격 : ${detailView.p_discountprice }<br>
+					<h2>가격 : ${detailView.p_discountprice }</h2><br>
 					
 					원하는 사이즈 선택<br>
 					<br>
@@ -33,5 +33,7 @@
 		</div>
 		
 
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="js/basic.js"></script>
 <%@ include file="/layout/footer.jsp"%>	
 	

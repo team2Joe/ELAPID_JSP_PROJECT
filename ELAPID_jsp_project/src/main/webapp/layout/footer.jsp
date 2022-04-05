@@ -7,5 +7,6 @@
 	<div class="footer">
 		2joe's Work copyright。
 	</div>
+	<script src="js/basic.js"></script>
 </body>
 </html>
