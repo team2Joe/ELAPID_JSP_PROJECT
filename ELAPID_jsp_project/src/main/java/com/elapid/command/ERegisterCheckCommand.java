@@ -32,6 +32,18 @@ public class ERegisterCheckCommand implements ECommand {
 		String addspecificaddress = request.getParameter("addrDetail");
 		String addpostnumber = request.getParameter("zipNo");
 		
+		int searchresult = dao.searchAddress(addpostnumber, addaddress);
+		
+		
+		if(searchresult >= 1) {// 주소북에 같은 주소 있을 시 add_id 받아와서 relation에만 저장 
+			dao.registerAdd(uid, searchresult, addspecificaddress,uname,utel, 1);
+			
+		}else { // 주소북에 같은 주소 없을 시 주소북에 주소 저장후 relation 에 상세 주소 저장
+			dao.addressAdd(addpostnumber, addaddress);
+			int addid =  dao.searchAddress(addpostnumber, addaddress);
+			dao.registerAdd(uid,addid, addspecificaddress,uname,utel,1);
+			
+		}
 		
 		
 	}

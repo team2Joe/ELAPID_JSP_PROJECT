@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -388,42 +389,46 @@
 		</div>
 		<div class="container account-page">
 			<div class="justify-content-center account-cards">
-				<div class="row order-card">
-					<div class="text-card col-7 col-md-8">
-						<table class="table table-borderless">
-						  <tr>
-						  	<td>
-						  		이름 : 
-						  	</td>
-						  	<td>
-						  		김성수
-						  	</td>
-						  </tr>
-						  <tr>
-						  	<td>
-						  		주소 : 
-						  	</td>
-						  	<td>
-						  		서울 강남구 강남대로 238
-						  	</td>
-						  </tr>
-						  <tr>
-						  	<td>
-						  		상세주소 : 
-						  	</td>
-						  	<td>
-						  	</td>
-						  </tr>
-						  <tr>	
-						  	<td>
-						  		휴대폰 : 
-						  	</td>
-						  	<td>
-						  	</td>
-						  </tr>
-						</table>
+				<c:forEach var = "dto" items ="${registerdtos}">
+					<div class="row order-card">
+						<div class="text-card col-7 col-md-8">
+							<table class="table table-borderless">
+							  <tr>
+							  	<td>
+							  		이름 : 
+							  	</td>
+							  	<td>
+							  		${dto.reg_name }
+							  	</td>
+							  </tr>
+							  <tr>
+							  	<td>
+							  		주소 : 
+							  	</td>
+							  	<td>
+							  		서울 강남구 강남대로 238
+							  	</td>
+							  </tr>
+							  <tr>
+							  	<td>
+							  		상세주소 : 
+							  	</td>
+							  	<td>
+							  		${dto.reg_specificaddress }
+							  	</td>
+							  </tr>
+							  <tr>	
+							  	<td>
+							  		휴대폰 : 
+							  	</td>
+							  	<td>
+							  		${dto.reg_tel }
+							  	</td>
+							  </tr>
+							</table>
+						</div>
 					</div>
-				</div>
+				</c:forEach>
 				<div class="row order-card">
 					<div class="text-card col-7 col-md-8">
 						<a>

@@ -423,16 +423,16 @@
 				</div>
 				<div class=" row address-book-card">
 					<div class="col-3 col-md-2 image-card">
-						<a href="/addressbook"> <i class="wishlist-icon fa-solid fa-map-location"></i>
+						<a href="addressBookView.do"> <i class="wishlist-icon fa-solid fa-map-location"></i>
 						</a>
 					</div>
 					<div class="text-card col-7 col-md-8">
-						<a href="/addressbook">
+						<a href="addressBookView.do">
 							<h4>주소록</h4>
 						</a>
 					</div>
 					<div class="arrowed col-2 col-md-2" style="padding-top:15px">
-						<a href="/orders">
+						<a href="addressBookView.do">
 							<div class="arrow-1"></div>
 						</a>
 					</div>

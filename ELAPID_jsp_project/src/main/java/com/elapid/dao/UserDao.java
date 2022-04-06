@@ -3,11 +3,14 @@ package com.elapid.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.elapid.dto.AddressDto;
+import com.elapid.dto.RegisterDto;
 import com.elapid.dto.UserDto;
 
 public class UserDao {
@@ -255,11 +258,154 @@ public class UserDao {
 		
 	}//modify
 	
-	public UserDto profileView(String suid) {
+	public int searchAddress(String addpostnumber,String addaddress) {
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		int addid = -1;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query ="select add_id from address where add_postnumber = ? and add_address = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, addpostnumber);
+			preparedStatement.setString(2, addaddress);
+			resultSet =preparedStatement.executeQuery(); //
+			
+			
+			if(resultSet.next()) {
+				addid = resultSet.getInt(1);
+			}			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return addid;
+		
+	}
+	
+	
+	
+	public void addressAdd(String addpostnumber,String addaddress) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "insert into address (add_postnumber, add_address) values (?,?)";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, addpostnumber);
+			preparedStatement.setString(2, addaddress);
+			preparedStatement.executeUpdate();
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void registerAdd(String uid, int addid,String addspecificaddress ,String name,String tel,int defaultaddress) {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "insert into register (u_id,add_id, reg_specificaddress, reg_name,reg_tel ,reg_defaultaddress) values (?,?,?,?,?,?)";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1,uid);
+			preparedStatement.setInt(2, addid);
+			preparedStatement.setString(3, addspecificaddress);
+			preparedStatement.setString(4, name);
+			preparedStatement.setString(5, tel);
+			preparedStatement.setInt(6, defaultaddress);
+			
+			
+			preparedStatement.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	public ArrayList<RegisterDto> searchRegisterForUser(String uid) {
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		ArrayList<RegisterDto> dtos = new ArrayList<RegisterDto>();
+		RegisterDto dto = new RegisterDto();
+		
+		try {
+			connection = dataSource.getConnection();
+			String query ="select * from register where u_id = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, uid);
+			resultSet =preparedStatement.executeQuery(); //
+			
+			
+			while(resultSet.next()) {
+				dto.setU_id(resultSet.getString("u_id"));
+				dto.setAdd_id(resultSet.getInt("add_id"));
+				dto.setReg_defaultaddress(resultSet.getInt("reg_defaultaddress"));
+				dto.setReg_specificaddress(resultSet.getString("reg_specificaddress"));
+				dto.setReg_name(resultSet.getString("reg_name"));
+				dto.setReg_tel(resultSet.getString("reg_tel"));
+				
+				dtos.add(dto);
+			}			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return dtos;
+		
+	}
+	/*
+	public AddressDto (int addid) {
 		//UserDto(int u_id, String u_pwd, String u_name, String u_tel, String u_email, String u_grade, String u_gender,
 		//		String u_birthdate, int u_point, String u_resignationdate, String u_registerdate)
 		
-		UserDto dto = null;
+		AddressDto dto = null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -306,5 +452,6 @@ public class UserDao {
 		return dto;
 		
 	}
+	*/
 	
 }//userdao
