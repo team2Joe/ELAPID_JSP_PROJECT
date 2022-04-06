@@ -9,9 +9,7 @@
 		
 		<table>
 			<tr align="center">
-				<td>
-					
-				</td>
+				<%--상품 필터 col --%>
 				<td>
 					<br>
 					<img src="${detailView.p_imgpath }">
@@ -20,9 +18,20 @@
 						<img src="${dto.img_path }">
 					</c:forEach>
 					
+					
+				</td>
+				<%-- 상품 상세내용 col --%>
+				<td>
 					<h2>가격 : ${detailView.p_discountprice }</h2><br>
 					
-					원하는 사이즈 선택<br>
+					size  
+							<select name="ctg-middle">
+								<option value="small">small</option>
+								<option value="middle">middle</option>
+								<option value="large">large</option>
+							</select>
+					<br>
+					color
 					<br>
 					<c:choose>
 				      		<c:when test="">
@@ -37,7 +46,7 @@
 				      		</c:otherwise>
 			      	</c:choose>
 			      	<br>
-					<form action="#">
+					<form action="orderForm.do">
 						<button type="button" class="btn btn-dark">바로구매</button>
 					</form>
 				</td>
