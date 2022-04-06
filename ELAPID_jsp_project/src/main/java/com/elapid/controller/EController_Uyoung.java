@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.elapid.command.ENonUserCartViewCommand;
+import com.elapid.command.EUserCartViewCommand;
 import com.elapid.command.ECommand;
 import com.elapid.command.UserCartDetailAddCommand;
 
@@ -67,13 +68,20 @@ public class EController_Uyoung extends HttpServlet {
 		
 			
 		//nonUser가 Cart(장바구니)로 이동
+		//장바구니에 아이템들이 잘들어가 있어야 하는데 이건 아직 확인 못함...
 		case("/nonUserCartView.do"):
 			command = new ENonUserCartViewCommand();
 			command.execute(request, response);
 			viewPage = "nonUserCartView.jsp";
 			break;
 		
-		
+		//User가 u_id값을 들고다니면서 p_id가 달린 장바구니담기 값을 누르면 보여주는 장바구니 페이지.?
+		//p_id 값이 장바구니에 잘 보관되어야 하는데 이게 장바구니가 잘 가지고 있어줄지 걱정..
+		case("/userCartView.do"):
+			command = new EUserCartViewCommand();
+			command.execute(request, response);
+			viewPage = "userCartView.jsp";
+			break;
 			
 		
 		
