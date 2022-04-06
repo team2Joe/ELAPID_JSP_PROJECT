@@ -12,6 +12,7 @@ public class ERegisterCheckCommand implements ECommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		UserDao dao = new UserDao();
+		
 		String uid = request.getParameter("uid");
 		String upwd = request.getParameter("upassword");
 		String uname = request.getParameter("uname");

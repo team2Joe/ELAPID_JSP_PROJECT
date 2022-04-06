@@ -88,6 +88,13 @@ public class KTEEController extends HttpServlet {
 			viewPage ="loginForm.do";
 			break;
 			
+		case("/myPage.do"):
+			command = new EIdCheckCommand();
+			command.execute(request, response);
+			viewPage = "myPage.jsp";
+			break;
+	
+			
 		case("/luggageList.do"):
 			viewPage = "luggageList.jsp";
 			break;
