@@ -130,7 +130,8 @@ public class CartDao {
 					cart_amount += p_price;
 					cart_discountedamount = cart_amount * ((c_value)*0.01);
 					cart_total = ((cart_amount)-(cart_discountedamount));
-					dto = new UserCartViewDto(u_id, p_id, cart_id, c_id, p_name, p_colorname, p_price, c_name, c_atleastprice, c_value, cart_total);
+					dto = new UserCartViewDto(u_id, p_id, cart_id, c_id, p_name, p_colorname, p_price, c_name, c_atleastprice, c_value, cart_discountedamount, cart_total);
+							
 
 					//호출 확인용
 					System.out.println(u_id + p_id + cart_id + c_id + p_name + p_colorname + p_price + c_name + c_atleastprice + c_value);

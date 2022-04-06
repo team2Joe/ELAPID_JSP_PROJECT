@@ -12,6 +12,8 @@ public class UserCartViewDto {
 	String c_name; 
 	int c_atleastprice;
 	int c_value;
+	//할인량.
+	double cart_discountedamount;
 	//총합.
 	double cart_total;
 	
@@ -20,7 +22,7 @@ public class UserCartViewDto {
 	}
 
 	public UserCartViewDto(String u_id, int p_id, int cart_id, int c_id, String p_name, String p_colorname, int p_price,
-			String c_name, int c_atleastprice, int c_value, double cart_total) {
+			String c_name, int c_atleastprice, int c_value, double cart_discountedamount, double cart_total) {
 		super();
 		this.u_id = u_id;
 		this.p_id = p_id;
@@ -32,6 +34,7 @@ public class UserCartViewDto {
 		this.c_name = c_name;
 		this.c_atleastprice = c_atleastprice;
 		this.c_value = c_value;
+		this.cart_discountedamount = cart_discountedamount;
 		this.cart_total = cart_total;
 	}
 
@@ -115,6 +118,14 @@ public class UserCartViewDto {
 		this.c_value = c_value;
 	}
 
+	public double getCart_discountedamount() {
+		return cart_discountedamount;
+	}
+
+	public void setCart_discountedamount(double cart_discountedamount) {
+		this.cart_discountedamount = cart_discountedamount;
+	}
+
 	public double getCart_total() {
 		return cart_total;
 	}
@@ -123,6 +134,5 @@ public class UserCartViewDto {
 		this.cart_total = cart_total;
 	}
 
-	
 	
 }

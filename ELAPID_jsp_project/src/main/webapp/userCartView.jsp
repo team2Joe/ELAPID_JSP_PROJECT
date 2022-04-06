@@ -15,8 +15,8 @@
 					<h3> 주문하기 </h3>
 				</div>
 		
-			<c:forEach items="${User_Cart }" var="dto"> 
-					<%-- //{cart_view }<== dto로 바꾸고 forEach 문 돌리기--%>
+			<%-- <c:forEach items="${User_Cart }" var="dto"> 
+					//{cart_view }<== dto로 바꾸고 forEach 문 돌리기--%>
 			
 				<div class="container">
 			  		<div class="row">
@@ -34,20 +34,32 @@
 						    </div>
 						    <!-- 상품 정보 -->
 					    	<div class="col-4" align="left">
-					     		<p class="fs-4">${dto.p_name }</p>
-					     		<p class="fs-6">${dto.p_colorname }</p>
+					     		<p class="fs-4">${User_Cart.p_name }</p>
+					     		<p class="fs-6">${User_Cart.p_colorname }</p>
 						   	</div>
 						   	 <!-- 삭제,주문하기,가격 -->
 						    <div class="col -2" align="right">
 						      	<p class="fs-4">X</p>
 						      	<button type="button" class="btn btn-dark">주문하기</button><br><br>
-						      	<p>${dto.p_price } 원</p>
+						      	<p>${User_Cart.p_price } 원</p>
 				   		 	</div>
 			  		</div>
 				</div>
 	<hr width="1050">
-				</c:forEach><%--  --%>
-				
+				<%--</c:forEach>  --%>
+		
+		<!-- 쿠폰 -->
+		<div class="container" >
+		  <div class="row">
+		    <div class="col" align="left">
+		     	${User_Cart.c_name }
+		    </div>
+		    <div class="col" align="right">
+		      -${User_Cart.cart_discountedamount} 원
+		    </div>
+		  </div>
+		</div>
+	<hr width="1050">
 		<p class="fs-6" align="right">배송비 :??원 </p>
 	<hr width="1050">
 		<div align="right">	
