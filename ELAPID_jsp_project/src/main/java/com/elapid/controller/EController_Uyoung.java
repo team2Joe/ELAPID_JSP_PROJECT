@@ -66,7 +66,7 @@ public class EController_Uyoung extends HttpServlet {
 		
 		
 			
-		//User가 Cart(장바구니)로 이동
+		//nonUser가 Cart(장바구니)로 이동
 		case("/nonUserCartView.do"):
 			command = new ENonUserCartViewCommand();
 			command.execute(request, response);
