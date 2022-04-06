@@ -25,10 +25,37 @@
 				        <h5 class="card-title">${dto.p_name }</h5>
 				      </a>
 				        <h6 class="card-price">${dto.p_discountprice } won</h6>
-				        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+				        <div class="attribute">	
+							<div class="owl-carousel size-selection">
+								
+								<a class="attr-selector" href="#" data-attr-type="productSize" data-attr-value="55 cm">
+								55 cm
+								</a>
+						
+								<a class="attr-selector" href="#" data-attr-type="productSize" data-attr-value="69 cm">
+								69 cm
+								</a>
+								
+							</div>
+						</div>
 				      </div>
 				      <div class="card-footer">
-				        <button><small class="text-muted">Last updated 3 mins ago</small></button>
+				      <%-- 로그인 시 유저 장바구니로 들어가기 --%>
+				      	<c:choose>
+				      		<c:when test="">
+				      			<form action="userCartView.do">
+									<button type="button" class="btn btn-dark">장바구니 담기</button>
+								</form>
+				      		</c:when>
+				      		<%-- 아이디값 null시 비회원 장바구니로 들어가기 --%>
+				      		<c:otherwise>
+				      			<form action="nonUserCartView.do">
+									<button type="button" class="btn btn-dark">장바구니 담기</button>
+								</form>
+				      		</c:otherwise>
+				      	</c:choose>
+							
+						
 				      </div>
 				    </div>
 				  </div>

@@ -24,7 +24,22 @@
 					
 					원하는 사이즈 선택<br>
 					<br>
-					구매/장바구니<br>
+					<c:choose>
+				      		<c:when test="">
+				      			<form action="userCartView.do">
+									<button type="button" class="btn btn-light">장바구니 담기</button>
+								</form>
+				      		</c:when>
+				      		<c:otherwise>
+				      			<form action="nonUserCartView.do">
+									<button type="button" class="btn btn-light">장바구니 담기</button>
+								</form>
+				      		</c:otherwise>
+			      	</c:choose>
+			      	<br>
+					<form action="#">
+						<button type="button" class="btn btn-dark">바로구매</button>
+					</form>
 				</td>
 			</tr>
 		</table>
