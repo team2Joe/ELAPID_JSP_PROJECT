@@ -6,7 +6,11 @@
 		<h2 align="center">${detailView.p_name }</h2> <br>
 		
 		<div align="center">
-		
+		<c:choose>
+			<c:when test="">
+				
+			</c:when>
+		</c:choose>
 		<table>
 			<tr align="center">
 				<%--상품 필터 col --%>
@@ -18,20 +22,30 @@
 						<img src="${dto.img_path }">
 					</c:forEach>
 					
-					
 				</td>
 				<%-- 상품 상세내용 col --%>
 				<td>
 					<h2>가격 : ${detailView.p_discountprice }</h2><br>
 					
-					size  
-							<select name="ctg-middle">
-								<option value="small">small</option>
-								<option value="middle">middle</option>
-								<option value="large">large</option>
-							</select>
-					<br>
-					color
+					
+					<c:choose>
+						<c:when test="${detailView.p_ctgmain eq 'luggage' }">
+							size  
+								<select name="ctg-middle">
+									<option value="small">small</option>
+									<option value="middle">middle</option>
+									<option value="large">large</option>
+								</select>
+							<br>
+							color
+								<select name="ps_color">
+									<option value="black">검정</option>
+									<option value="grey">회색</option>
+									<option value="red">빨강</option>
+								</select>	
+						</c:when>	
+					</c:choose >
+							
 					<br>
 					<c:choose>
 				      		<c:when test="">
@@ -54,6 +68,17 @@
 		</table>
 		<br>
 		댓글-답글
+		<br>
+		
+		</div>
+		<h3>1:1문의</h3>
+		<div class="form-floating">
+		  
+		  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+		  
+		  <label for="floatingTextarea">Comments</label>
+		
+		
 		</div>
 		
 

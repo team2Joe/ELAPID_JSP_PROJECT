@@ -68,14 +68,14 @@ public class EController_JJH extends HttpServlet {
 		case("/luggageList.do"):
 			command = new ELuggageListCommand();
 			command.execute(request, response);
-			viewPage = "mainList.jsp";
+			viewPage = "luggageList.jsp";
 			break;
 			
 			//백팩 전체리스트 페이지
 		case("/backpackList.do"):
 			command = new EBackpackListCommand();
 			command.execute(request, response);
-			viewPage = "mainList.jsp";
+			viewPage = "backpackList.jsp";
 			break;
 			
 			// 제품 상세 페이지
@@ -84,6 +84,7 @@ public class EController_JJH extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "detailView.jsp";
 			break;
+
 			
 			//제품 중분류별 페이지
 		case("/middleView.do"):
@@ -91,6 +92,7 @@ public class EController_JJH extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "mainList.jsp";
 			break;
+			
 		case("/middleFunctionList.do"):
 			command = new EMiddleFunctionListCommand();
 			command.execute(request, response);
@@ -100,9 +102,10 @@ public class EController_JJH extends HttpServlet {
 		case("/functionList.do"):
 			command = new EFunctionListCommand();
 			command.execute(request, response);
-			viewPage = "mainList.jsp";
+			viewPage = "functionList.jsp";
 			break;
 			
+			// 이미지 리스트 출력
 		case("/imageView.do"):
 			command = new EImageViewCommand();
 			command.execute(request, response);
