@@ -8,6 +8,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.elapid.dto.UserDto;
+
 public class UserDao {
 	DataSource dataSource = null;
 
@@ -27,6 +29,7 @@ public class UserDao {
 		}
 	}
 	
+	// uid , upwd 를 만족하는 회원 수 리
 	public int loginCheck(String uid, String upassword) {
 		int result = 0;
 		Connection connection = null;
@@ -63,6 +66,7 @@ public class UserDao {
 		return result;
 	}
 	
+	// uid 로 uname 가져오기 
 	public String nameReturn(String uid) {
 		String name = "";
 		Connection connection = null;
@@ -99,6 +103,7 @@ public class UserDao {
 		
 	}
 	
+	// 유저 추가 (회원가입)
 	public void userAdd(String uid,String upwd,String uname, String uemail, String utel, String ugender, String ubirthdate) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -132,4 +137,174 @@ public class UserDao {
 		
 		
 	}
-}
+	
+	//유저 정보 전부 받아오기
+	public UserDto profileView(String suid) {
+		//UserDto(int u_id, String u_pwd, String u_name, String u_tel, String u_email, String u_grade, String u_gender,
+		//		String u_birthdate, int u_point, String u_resignationdate, String u_registerdate)
+		
+		UserDto dto = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query ="select * from user where u_id = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, (suid));
+			resultSet =preparedStatement.executeQuery(); //��ȸ
+			
+			
+			if(resultSet.next()) {
+				String uid = resultSet.getString("u_id");
+				String upwd = resultSet.getString("u_pwd");
+				String uname = resultSet.getString("u_name");
+				String utel = resultSet.getString("u_tel");
+				String uemail = resultSet.getString("u_email");
+				String ugender = resultSet.getString("u_gender");
+				String ubirthdate = resultSet.getString("u_birthdate");
+				String ugrade = resultSet.getString("u_grade");
+				String uregisterdate = resultSet.getString("u_registerdate");
+				String uresignationdate = resultSet.getString("u_resignationdate");
+				int upoint = resultSet.getInt("u_point");
+			
+				
+				dto = new UserDto(uid,upwd,uname,utel,uemail,ugrade,ugender,ubirthdate,upoint,uresignationdate,uregisterdate);
+				
+			}			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+		
+	}
+	
+	//유저정보 수정 
+	public void profileModify(String uid, String uemail, String upwd, String utel, String ugender, String ubirthdate) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query ="update user set u_email = ? ,u_pwd= ? , u_tel= ? , u_gender = ? , u_birthdate = ? where u_id = ?";
+			
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, uemail);
+			preparedStatement.setString(2, upwd);
+			preparedStatement.setString(3, utel);
+			preparedStatement.setString(4, ugender);
+			preparedStatement.setString(5, ubirthdate);
+			preparedStatement.setString(6, uid);	
+			preparedStatement.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	
+		
+	}//modify
+	
+	//탈퇴하기
+	public void profileDelete(String uid) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query ="delete from user where u_id = ?";
+			
+			preparedStatement = connection.prepareStatement(query);
+
+			preparedStatement.setString(1, uid);	
+			preparedStatement.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+	}//modify
+	
+	public UserDto profileView(String suid) {
+		//UserDto(int u_id, String u_pwd, String u_name, String u_tel, String u_email, String u_grade, String u_gender,
+		//		String u_birthdate, int u_point, String u_resignationdate, String u_registerdate)
+		
+		UserDto dto = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query ="select * from user where u_id = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, (suid));
+			resultSet =preparedStatement.executeQuery(); //��ȸ
+			
+			
+			if(resultSet.next()) {
+				String uid = resultSet.getString("u_id");
+				String upwd = resultSet.getString("u_pwd");
+				String uname = resultSet.getString("u_name");
+				String utel = resultSet.getString("u_tel");
+				String uemail = resultSet.getString("u_email");
+				String ugender = resultSet.getString("u_gender");
+				String ubirthdate = resultSet.getString("u_birthdate");
+				String ugrade = resultSet.getString("u_grade");
+				String uregisterdate = resultSet.getString("u_registerdate");
+				String uresignationdate = resultSet.getString("u_resignationdate");
+				int upoint = resultSet.getInt("u_point");
+			
+				
+				dto = new UserDto(uid,upwd,uname,utel,uemail,ugrade,ugender,ubirthdate,upoint,uresignationdate,uregisterdate);
+				
+			}			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+		
+	}
+	
+}//userdao

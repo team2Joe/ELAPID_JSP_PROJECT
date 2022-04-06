@@ -1,3 +1,4 @@
+<%@page import="com.elapid.dto.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -54,7 +55,12 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 		
 }
 
+
 </script>
+<% 
+	UserDto dto = new UserDto(); 
+	dto = (UserDto)request.getAttribute("profiledto");
+%>
 
 <div class="container">
   <div class="row justify-content-md-center">
@@ -65,22 +71,17 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
     	<div style="padding-top:100px; padding-bottom:100px; width: 1000px">
 	    	<h1> 회원정보 입력 </h1>
     	</div>
-      	<form class="register" id="registerForm" action="registerCheck.do" method="post">
+      	<form class="register" id="usermodifyForm" action="profileModify.do" method="post">
 			
 		  <div class="mb-3 row">
 		    <label for="inputPassword" class="col-sm-2 col-form-label">아이디 : </label>
 		    <div class="col-sm-2">
-		      <input type="text" class="form-control" name="uid" id="userid" onkeyup="idformcheck()" value = "${sessionScope.uid}">
+		      <input type="text" class="form-control" name="uid" id="userid" onkeyup="idformcheck()" readonly="readonly" value = "${sessionScope.uid}">
 		    </div>
-		    <div class="col-sm-2">
-		      <button type="button"  class="btn btn-dark" onclick="idduplicatecheck()">중복체크</button> 
-		    </div>
-		    <div class = "col-sm-5 " id="idcondition"> 영문시작 총 6~12자 영문/숫자 조합으로 작성해주세요. 
-	        </div>
+
 		  </div>
-		  <div style="padding-right:500px" > 
-		  	<input type="text" style="border:none" id="idcheckcomment" readonly="readonly" value="${sessionScope.idcheckcomment}">
-		  </div>
+		  
+		  
 		  <div class="mb-3 row">
 		    <label for="inputPassword" class="col-sm-2 col-form-label">비밀번호 : </label>
 		    <div class="col-sm-3">
@@ -89,6 +90,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 		    <div class = "col-sm-7" id="pwdcondition"> 8~12자 영문/숫자/특수문자 조합으로 작성해주세요.
 	        </div>
 		  </div>
+		  
 		  <div class="mb-3 row">
 		    <label for="inputPassword" class="col-sm-2 col-form-label">비밀번호 확인 : </label>
 		    <div class="col-sm-3">
@@ -96,31 +98,29 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 		    </div>
   		    <div class = "col-sm-6 " id="pwdcondition2"> 다시 한 번 작성해주세요.
 	        </div>
-
 		  </div>
+		  
 		  <div class="mb-3 row">
 		    <label for="inputPassword" class="col-sm-2 col-form-label"> 이름 : </label>
 		    <div class="col-sm-3">
-		      <input type="text" class="form-control" name="uname" id="inputName" onkeyup="nameformcheck()" value="${sessionScope.uname}">
+		      <input type="text" class="form-control" name="uname" id="inputName" onkeyup="nameformcheck()" readonly="readonly" value="${profiledto.u_name}">
 			</div>
-  		    <div class = "col-sm-6 " id="namecondition">
-  		    	한글 정자로 기입해주세요. 
-	        </div>
 	      </div>
+	      
 		  <div class="mb-3 row">
 		    <label for="inputPassword" class="col-sm-2 col-form-label"> 이메일 : </label>
 		    <div class="col-sm-3">
-		      <input type="text" class="form-control" name="uemail" id="inputEmail" onkeyup="emailformcheck()" value="${sessionScope.uemail}">
+		      <input type="text" class="form-control" name="uemail" id="inputEmail" onkeyup="emailformcheck()" value="${profiledto.u_email}">
 			</div>
-
-  		    <div class = "col-sm-3 " id="emailcondition">
+  		    <div class = "col-sm-6 " id="emailcondition">
   		    	이메일 형식으로 작성해주세요. 
 	        </div>
 	      </div>
+	      
 	     <div class="mb-3 row">
 		    <label for="inputPassword" class="col-sm-2 col-form-label"> 휴대폰 : </label>
 		    <div class="col-sm-3">
-		      <input type="text" class="form-control" name="utel" id="inputTel" onkeyup="telformcheck()" value="${sessionScope.utel}">
+		      <input type="text" class="form-control" name="utel" id="inputTel" onkeyup="telformcheck()" value="${profiledto.u_tel}">
 			</div>
   		    <div class = "col-sm-6 " id="telcondition">
   		    	(ex 010-1234-1234) 
@@ -128,9 +128,21 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 		  </div>
 		  <div class="mb-3 row">
 		    <label for="inputPassword" class="col-sm-2 col-form-label"> 성별 : </label>
-		    <div class="col-sm-3" style="padding-top:10px">
-  		    	<input type="radio" name = "ugender" value = "male" checked="checked"> 남 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  		    	<input type="radio" name = "ugender" value = "female"> 여
+		    <div class="col-sm-3" style="padding-top:10px" >
+		    <%
+		    	String gender = dto.getU_gender();
+			   	if(gender.equals("male")){
+			%>
+  		    	<input type="radio" name = "ugender" value = "male" checked="checked" readonly="readonly"> 남 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  		    	<input type="radio" name = "ugender" value = "female" readonly="readonly"> 여
+		    <%
+			   	}else{
+		    %>
+		      	<input type="radio" name = "ugender" value = "male"  readonly="readonly"> 남 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  		    	<input type="radio" name = "ugender" value = "female" checked="checked" readonly="readonly"> 여
+		    <%
+			   	}
+		    %>
 			</div>
   		    <div class = "col-sm-6 " id="telcondition">
   		    	 
@@ -141,45 +153,37 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 		    	생년월일 :
 		    </div>
 		    <div class="col-sm-3"> 
-  		    	<select name = "birthyear" id="inputBirthYear">
-  		    		<c:forEach var = "cnt" begin="1900" end= "2022">
-  		    			<option value="${cnt }" selected="selected">${cnt }</option>
-					</c:forEach>
-  		    	</select>
+				<%
+					
+					
+					
+					String birthdate = dto.getU_birthdate();
+					String year = birthdate.substring(0,4);
+					String month = birthdate.substring(5,7);
+					String day = birthdate.substring(8);
+					
+				%>
+  		    	<input type="text"  name="birthyear" id="inputBirthYear" onkeyup="modbirthformcheck()" maxlength="4" size = "4px" value="<%=year %>" > 년 
   		    	&nbsp
-  		    	<input type="text"  name="birthmonth" id="inputBirthMonth" onkeyup="birthformcheck()" maxlength="2" size = "5px"> 월 
-  		    	<input type="text"  name="birthday" id="inputBirthDay" onkeyup="birthformcheck()" maxlength="2" size="5px"> 일 
+  		    	<input type="text"  name="birthmonth" id="inputBirthMonth" onkeyup="modbirthformcheck()" maxlength="2" size = "2px" value="<%=month%>"> 월 
+  		    	&nbsp
+  		    	<input type="text"  name="birthday" id="inputBirthDay" onkeyup="modbirthformcheck()" maxlength="2" size="2px" value="<%=day%>"> 일 
 			</div>
-  		    <div class = "col-sm-6 " id="birthcondition">
-  		    	(ex) 09월 12일
+
+  		    <div class = "col-sm-5" id="birthcondition">
+  		    	(ex) 1990년 09월 12일
 	        </div>
-	      <div class="mb-3 row">
-	        <div >
-				<div id="list"></div>
-				<div id="callBackDiv">
-					<table>
-				
-						<tr><td >우편번호             </td><td style="text-align:left; padding-left:35px; padding-top:5px;"><input type="text"  style="width:100px;" id="zipNo"  name="zipNo" readonly="readonly"/>
-							<input type="button" class = "btn btn-dark" onClick="goPopup();" value="주소 찾기 "/> 
-						 </td></tr>
-						<tr ><td style= "padding-right:13px">도로명주소 전체</td><td style="padding-left:35px; padding-bottom:7px;"><input type="text"  style=" width:400px;" id="roadFullAddr"  name="roadFullAddr" readonly="readonly"/></td></tr>
-						<tr><td>지번                 </td><td style="padding-left:35px; padding-bottom:7px;"><input type="text"  style="width:400px; " id="jibunAddr"  name="jibunAddr" readonly="readonly"/> </td></tr>
-						<tr><td style="padding-left:25px; padding-right:20px">고객입력 상세주소 :   </td><td style="padding-left:35px; padding-bottom:7px;"><input type="text"  style="width:400px;" id="addrDetail"  name="addrDetail" /></td></tr>
-					</table>
-				</div>
-				<div class = "col-sm-8 " id="addresscondition">
-				
-  		    		주소와 상세주소를 기입해주세요.
-	       		</div>
-			
-	          </div>
-	        </div>
+	  
 		  </div>
 		  <div>
 		  	<input type="hidden" id="idcheckresult" value="${sessionScope.idcheckresult}">
-		  	<button type="button" onclick="registercheck()"> 가입하기 </button>
+		  	<button type="button" class="btn btn-dark" onclick="modifycheck()"> 수정하기 </button> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="button" class="btn btn-dark" onclick="userdelete()"> 탈퇴하기 </button>
+		  </div>
+		  <div>
+		  	
 		  </div>
 		</form>
+		
     </div>
     <div class="col col-lg-1">
       3/3
@@ -189,7 +193,6 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 </div>
 
 
-<%session.invalidate(); %>
  
   
 	

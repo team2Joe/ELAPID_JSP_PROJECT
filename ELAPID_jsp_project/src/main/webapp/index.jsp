@@ -161,7 +161,7 @@ request.setCharacterEncoding("utf-8");
 	    </div>
 	  </div>
 	</nav>
-	${comment }
+	${sessionScope.comment }
 	<!-- END HEADER -->
 	
 	

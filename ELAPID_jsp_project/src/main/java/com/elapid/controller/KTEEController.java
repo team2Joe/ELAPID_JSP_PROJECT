@@ -10,11 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.elapid.command.EAddressBookViewCommand;
 import com.elapid.command.ECommand;
 import com.elapid.command.EIdCheckCommand;
 import com.elapid.command.ELoginCheckCommand;
 import com.elapid.command.ELogoutCommand;
 import com.elapid.command.EMainCommand;
+import com.elapid.command.EMyPageCommand;
+import com.elapid.command.EProfileDeleteCommand;
+import com.elapid.command.EProfileModifyCommand;
 import com.elapid.command.ERegisterCheckCommand;
 
 /**
@@ -89,10 +93,32 @@ public class KTEEController extends HttpServlet {
 			break;
 			
 		case("/myPage.do"):
-			command = new EIdCheckCommand();
+			command = new EMyPageCommand();
 			command.execute(request, response);
 			viewPage = "myPage.jsp";
 			break;
+		case("/profileView.do"):
+			command = new EMyPageCommand();
+			command.execute(request, response);
+			viewPage = "profileView.jsp";
+			break;
+		case("/profileModify.do"):
+			command = new EProfileModifyCommand();
+			command.execute(request, response);
+			viewPage = "profileView.do";
+			break;
+		case("/profileDelete.do"):
+			command = new EProfileDeleteCommand();
+			command.execute(request, response);
+			viewPage = "main.do";
+			break;
+		
+		case("/addressBookView.do"):
+			command = new EAddressBookViewCommand();
+			command.execute(request, response);
+			viewPage = "addressBookView.jsp";
+			break;
+		
 	
 			
 		case("/luggageList.do"):
@@ -101,7 +127,7 @@ public class KTEEController extends HttpServlet {
 		case("/backpackList.do"):
 			viewPage = "backpackList.jsp";
 			break;
-			
+		
 		default:
 			break;
 		}

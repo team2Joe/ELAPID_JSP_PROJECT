@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+<%
+//%@ include file="/layout/header.jsp"%
+request.setCharacterEncoding("utf-8");
+%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -9,6 +14,12 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="css/basic.css" rel="stylesheet" type="text/css" />
 <body>
+	          <%
+	          	String uid =""; 
+		          	uid = (String)session.getAttribute("uid");
+		      %>
+		      
+		      
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <div class="container-fluid">
 	    <a class="navbar-brand" href="main.do">ELAPID</a>
@@ -93,21 +104,61 @@
 	        </li>
 	      </ul>
 	    </div>
-	    <div>
-	      <ul class="navbar-nav">
-
-
+	    <div class = "col-md-3" style = "text-align:right;">
+	      <ul class="navbar-nav" style = "width:500px;">
+	        <li class="nav-item dropdown">
+	          <a class="nav-link" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	            ${comment }
+	          </a>
+	        </li>
+	        <%
+	          	try{
+	         	 	if(!uid.equals("")){
+	          		
+	        %>
+	        <li class="nav-item dropdown">
+	          <a href="logout.do" class="nav-link">
+	          
+	            <U>log out</U>
+	          </a>
+	        </li>
+			<%
+	          		}
+	          	}catch(Exception e){
+	          			e.printStackTrace();
+	          	}
+	          			
+			%>
 	        <li class="nav-item dropdown">
 	          <a class="nav-link" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	            회원
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+		      <%
+	          	try{
+	         	 	if(!uid.equals("")){
+	          		
+	          %>
+	            <li><a class="dropdown-item" href="myPage.do">마이페이지</a></li>
+	            <li><a class="dropdown-item" href="logout.do">로그 아웃</a></li>
+			  <%
+	          		}
+			  %>	          		
+			  <%
+	          	}catch(Exception e){
+	          		
+	          		e.printStackTrace();
+			  %>
 	            <li><a class="dropdown-item" href="">주문내용확인</a></li>
-	            <li><a class="dropdown-item" href="">마이페이지</a></li>
 	            <li><a class="dropdown-item" href="loginForm.do">로그인하기</a></li>
+	          <%
+	          	}
+	          %>
+	          	
 	          </ul>
 	        </li>
 	      </ul>
 	    </div>
 	  </div>
 	</nav>
+	${sessionScope.comment }

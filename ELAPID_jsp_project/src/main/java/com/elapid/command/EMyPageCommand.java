@@ -5,26 +5,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.elapid.dao.UserDao;
+import com.elapid.dto.UserDto;
 
-public class EMainCommand implements ECommand {
+public class EMyPageCommand implements ECommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		String uid = ""; 
-		String uname = "";
+		String uid = (String)session.getAttribute("uid");
+		
 		UserDao dao = new UserDao();
-		String comment = "";
-		uid = (String) session.getAttribute("uid");
+		UserDto dto = new UserDto();
 		
-		uname = dao.nameReturn(uid);
+		dto = dao.profileView(uid);
 		
-		comment = (uname == "") ? "": (uname+"님 환영합니다."); 
-		
-		request.setAttribute("uid", uid);
-		session.setAttribute("comment", comment);
-		
+		request.setAttribute("profiledto", dto);
+
 	}
 
 }

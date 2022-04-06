@@ -379,142 +379,73 @@
 	<div class="page" data-action="Account-Show" data-activelocale="ko_KR"
 		data-querystring="">
 		<div > 
-			<div class="title-contain col-11" style="text-align:center; padding-top :100px;padding-bottom :50px;">
-				<h1 >${profiledto.u_name }님 정보</h1>
+			<div class="title-contain col-11" style="text-align:center; padding-top :100px;">
+				<h1 >주소록</h1>
 				<ul class="profile-level">
-					<li><span> 회원등급 </span></li>
-					<li><span> ${profiledto.u_grade } </span></li>
+
 				</ul>
 			</div>
 		</div>
 		<div class="container account-page">
 			<div class="justify-content-center account-cards">
 				<div class="row order-card">
-					<div class="col-3 col-md-2 image-card">
-						<a href="/orders"><i class="wishlist-icon fa-solid fa-basket-shopping"></i>
-						</a>
-					</div>
 					<div class="text-card col-7 col-md-8">
-						<a href="/orders">
+						<table class="table table-borderless">
+						  <tr>
+						  	<td>
+						  		이름 : 
+						  	</td>
+						  	<td>
+						  		김성수
+						  	</td>
+						  </tr>
+						  <tr>
+						  	<td>
+						  		주소 : 
+						  	</td>
+						  	<td>
+						  		서울 강남구 강남대로 238
+						  	</td>
+						  </tr>
+						  <tr>
+						  	<td>
+						  		상세주소 : 
+						  	</td>
+						  	<td>
+						  	</td>
+						  </tr>
+						  <tr>	
+						  	<td>
+						  		휴대폰 : 
+						  	</td>
+						  	<td>
+						  	</td>
+						  </tr>
+						</table>
+					</div>
+				</div>
+				<div class="row order-card">
+					<div class="text-card col-7 col-md-8">
+						<a>
 							<h4>나의 구매내역</h4>
 						</a>
 					</div>
-					<div class="arrowed col-2 col-md-2" style="padding-top:15px">
-						<a href="/orders">
-							<div class="arrow-1"></div>
-						</a>
-					</div>
-				</div>
-				<div class="row profile-card">
-					<div class="col-3 col-md-2 image-card">
-						<a href="profileView.do"> <i class="wishlist-icon fa-solid fa-id-badge"></i>
-						</a>
-					</div>
-					<div class="text-card col-7 col-md-8">
-						<a href="profileView.do">
-							<h4>내 프로필 보기</h4>
-						</a>
-					</div>
-					<div class="arrowed col-2 col-md-2" style="padding-top:15px">
-						<a href="profileView.do">
-							<div class="arrow-1"></div>
-						</a>
-					</div>
-				</div>
-				<div class=" row address-book-card">
-					<div class="col-3 col-md-2 image-card">
-						<a href="/addressbook"> <i class="wishlist-icon fa-solid fa-map-location"></i>
-						</a>
-					</div>
-					<div class="text-card col-7 col-md-8">
-						<a href="/addressbook">
-							<h4>주소록</h4>
-						</a>
-					</div>
-					<div class="arrowed col-2 col-md-2" style="padding-top:15px">
-						<a href="/orders">
-							<div class="arrow-1"></div>
-						</a>
-					</div>
-				</div>
-				<div class="row payment-card">
-					<div class="col-3 col-md-2 image-card">
-						<a href="/accountcoupon"><i class="wishlist-icon fa-solid fa-money-bill-1-wave"></i>
-						</a>
-					</div>
-					<div class="text-card col-7 col-md-8">
-						<a href="/accountcoupon">
-							<h4>쿠폰 현황</h4>
-						</a>
-					</div>
-					<div class="arrowed col-2 col-md-2" style="padding-top:15px">
-						<a href="/orders">
-							<div class="arrow-1"></div>
-						</a>
-					</div>
-				</div>
-				<div class="content-asset">
-					<div class="row payment-card">
-						<div class="col-3 col-md-2 image-card">
-							<a href="/accountpoint"> <i class="wishlist-icon fa-solid fa-coins"></i>
-							</a>
-						</div>
-						<div class="text-card col-7 col-md-8">
-							<a href="/accountpoint">
-								<h4>내 포인트</h4>
-							</a>
-						</div>
-						<div class="arrowed col-2 col-md-2" style="padding-top:15px">
-							<a href="/orders">
-								<div class="arrow-1"></div>
-							</a>
-						</div>
-					</div>
-
-					<div class="row my-qa-card">
-						<div class="col-3 col-md-2 image-card">
-							<a href="https://www.samsonite.co.kr/accountinquiry"> 
-								<i class="wishlist-icon fa-solid fa-circle-question"></i>
-							</a>
-						</div>
-						<div class="text-card col-7 col-md-8">
-							<a href="https://www.samsonite.co.kr/accountinquiry">
-								<h4>1:1문의</h4>
-							</a>
-						</div>
-						<div class="arrowed col-2 col-md-2" style="padding-top:15px">
-							<a href="/orders">
-								<div class="arrow-1"></div>
-							</a>
-						</div>
-					</div>
-
-					<div class="row wishlist-account-card">
-						<div class="col-3 col-md-2 image-card">
-							<a
-								href="https://www.samsonite.co.kr/on/demandware.store/Sites-MonoSamsoniteKR-Site/ko_KR/Wishlist-Show">
-								<i class="wishlist-icon fa fa-heart-o"></i>
-							</a>
-						</div>
-						<div class="text-card col-7 col-md-8">
-							<a
-								href="https://www.samsonite.co.kr/on/demandware.store/Sites-MonoSamsoniteKR-Site/ko_KR/Wishlist-Show">
-								<h4>위시리스트</h4>
-							</a>
-						</div>
-						<div class="arrowed col-2 col-md-2" style="padding-top:15px">
-						<a href="/orders">
-							<div class="arrow-1"></div>
-						</a>
-						</div>
-					</div>
 				</div>
 			</div>
-	`	</div>
+		</div>
 	</div>
 		
 	<div class="error-messaging"></div>
 	<div class="modal-background"></div>
+	
+	
+	
+	
+    <!-------------------------- START FOOTER ---------------------------->
+    <!-------------------------- START FOOTER ---------------------------->
+    <!-------------------------- START FOOTER ---------------------------->
+	
+	
   <div class="footer">
 		ELAPID's Work copyright。
   </div>	

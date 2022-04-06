@@ -54,6 +54,13 @@ function emailcheck(){
 }
 */
 
+function userdelete(){
+	if (window.confirm("정말로 탈퇴하시겠습니까?")) {
+		location.href="profileDelete.do";
+}
+	
+}
+
 function idformcheck(){
 	
 	var uid = document.getElementById("userid").value;
@@ -154,7 +161,7 @@ function emailformcheck(){
 		
 	}else{
 		uemailvalidate = 1;
-		emailcondition.className = originemailcondition;
+		emailcondition.className = "col-sm-6 ";
 	}
 }
 function telformcheck(){
@@ -171,7 +178,7 @@ function telformcheck(){
 		
 	}else{
 		utelvalidate = 1;
-		telcondition.className = originemailcondition;
+		telcondition.className = "col-sm-6 ";
 	}
 }
 function birthformcheck(){
@@ -191,7 +198,28 @@ function birthformcheck(){
 		
 	}else{
 		ubirthvalidate = 1;
-		birthcondition.className = originbirthcondition;
+		birthcondition.className = "col-sm-6 ";
+	}
+}
+function modbirthformcheck(){
+	
+	var ubirthyear = document.getElementById("inputBirthYear").value;
+	var ubirthmonth = document.getElementById("inputBirthMonth").value;
+	var ubirthday = document.getElementById("inputBirthDay").value;
+	var regExpBirthMonth = /^(0[0-9]|1[0-2])$/;
+	var regExpBirthDay = /^(0[1-9]|[1-2][0-9]|3[0-1])$/;
+	var regExpBirthYear = /^(19[0-9][0-9]|20\d{2})$/;
+	
+	var birthcondition = document.getElementById("birthcondition");
+	
+	if(!regExpBirthMonth.test(ubirthmonth) || !regExpBirthDay.test(ubirthday) || !regExpBirthYear.test(ubirthyear) ){
+		//alert("패스워드 조건 ")
+		birthcondition.className += " text-danger";		
+		ubirthvalidate = 0;
+		
+	}else{
+		ubirthvalidate = 1;
+		birthcondition.className = "col-sm-6 ";
 	}
 }
 function addressformcheck(){
@@ -258,6 +286,36 @@ function registercheck(){
 		form.submit();
 		
 	}
+}
+function modifycheck(){
+	passwordformcheck()
+	passwordformcheck2()
+	emailformcheck()
+	telformcheck()
+	birthformcheck()
+	
+	var form = document.getElementById("usermodifyForm");
+	
+	if(upasswordvalidate == 0){
+		alert("비밀번호 형식을 확인해주세요")
+		
+	}else if(upassword2validate == 0){
+		alert("비밀번호가 동일한지 확인해주세요")
+		
+	}else if(utelvalidate == 0){
+		alert("휴대폰 형식을 확인해주세요")
+		
+	}else if(uemailvalidate == 0){
+		alert("이메일 형식을 확인해주세요")
+		
+	}else if(ubirthvalidate == 0){
+		alert("생년월일 형식을 확인해주세요")
+		
+	}else{
+		form.submit();
+		
+	}
+}
 
 	
 	/*
@@ -272,7 +330,6 @@ ubirthvalidate
 	*/
 	//var ubirtyear = document.getElementById("inputBirthYear").value;
 
-}
 
 
 //https://rateye.tistory.com/468
