@@ -18,7 +18,7 @@
 				</div>
 			</div>
 
-						<div class="row row-cols-1 row-cols-md-3 g-4">
+			<div class="row row-cols-1 row-cols-md-3 g-4">
 				
  <%
  	ArrayList<ProductDto> list = (ArrayList<ProductDto>) request.getAttribute("list");
@@ -37,7 +37,7 @@
  	if(check){
 
 %>
-				 
+	 
 				 <div class="col">
 				    <div class="card h-100" align="center">
 			    	  <a href="detailView.do?p_id=<%=list.get(i).getP_id() %>&p_ctgmiddle=<%=list.get(i).getP_ctgmiddle() %>">

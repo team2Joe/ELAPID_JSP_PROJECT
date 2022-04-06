@@ -16,7 +16,7 @@
 						<h2>백팩</h2>
 					</div>
 				</div>
-
+				</div>
 
 			<div class="row row-cols-1 row-cols-md-3 g-4">
  <%
@@ -27,9 +27,9 @@
  	for(int j = 0; j < i; j++){
  		
  		if((list.get(i).getP_name().equals(list.get(j).getP_name()) &&  list.get(i).getP_size() != list.get(j).getP_size())
- 			|| (list.get(i).getP_name().equals(list.get(j).getP_name()) &&  list.get(i).getP_colorimg() != list.get(j).getP_colorimg())	){
+ 			|| (list.get(i).getP_name().equals(list.get(j).getP_name()) &&  list.get(i).getP_colorname() != list.get(j).getP_colorname())	){
  			check = false;
- 			continue;
+ 			break;
  		}
  		
  	}

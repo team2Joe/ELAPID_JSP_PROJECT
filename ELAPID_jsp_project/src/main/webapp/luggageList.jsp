@@ -26,11 +26,12 @@
  for(int i = 0; i < list.size(); i++){
 	 boolean check = true;
  	for(int j = 0; j < i; j++){
- 		// list내의 product이름이 서로 같고 컬러나 사이즈가 서로 다른 상품은 리스트에서 하나만 띄우고 나머지는 제
+ 		
+ 		// list내의 product이름이 서로 같고 컬러나 사이즈가 서로 다른 상품은 리스트에서 하나만 띄우고 나머지는 제외
  		if((list.get(i).getP_name().equals(list.get(j).getP_name()) &&  list.get(i).getP_size() != list.get(j).getP_size())
- 	 			|| (list.get(i).getP_name().equals(list.get(j).getP_name()) &&  list.get(i).getP_colorimg() != list.get(j).getP_colorimg())	){
+ 	 			|| (list.get(i).getP_name().equals(list.get(j).getP_name()) &&  list.get(i).getP_colorname() != list.get(j).getP_colorname())	){
  			check = false;
- 			continue;
+ 			break;
  		}
  		
  	}
