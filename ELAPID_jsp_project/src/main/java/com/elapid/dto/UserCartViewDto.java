@@ -12,13 +12,15 @@ public class UserCartViewDto {
 	String c_name; 
 	int c_atleastprice;
 	int c_value;
+	//총합.
+	double cart_total;
 	
 	public UserCartViewDto() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public UserCartViewDto(String u_id, int p_id, int cart_id, int c_id, String p_name, String p_colorname, int p_price,
-			String c_name, int c_atleastprice, int c_value) {
+			String c_name, int c_atleastprice, int c_value, double cart_total) {
 		super();
 		this.u_id = u_id;
 		this.p_id = p_id;
@@ -30,6 +32,7 @@ public class UserCartViewDto {
 		this.c_name = c_name;
 		this.c_atleastprice = c_atleastprice;
 		this.c_value = c_value;
+		this.cart_total = cart_total;
 	}
 
 	public String getU_id() {
@@ -112,5 +115,14 @@ public class UserCartViewDto {
 		this.c_value = c_value;
 	}
 
+	public double getCart_total() {
+		return cart_total;
+	}
+
+	public void setCart_total(double cart_total) {
+		this.cart_total = cart_total;
+	}
+
+	
 	
 }

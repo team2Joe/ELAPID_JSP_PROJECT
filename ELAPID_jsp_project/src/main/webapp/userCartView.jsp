@@ -15,9 +15,9 @@
 					<h3> 주문하기 </h3>
 				</div>
 		
-			<%-- <c:forEach items="${cart_view }" var="dto"> 
-					//{cart_view }<== dto로 바꾸고 forEach 문 돌리기
-			--%>
+			<c:forEach items="${User_Cart }" var="dto"> 
+					<%-- //{cart_view }<== dto로 바꾸고 forEach 문 돌리기--%>
+			
 				<div class="container">
 			  		<div class="row">
 			  				<div class="col-1" style="padding: 75px 0px 0px 0px;">
@@ -26,36 +26,54 @@
 						  <label class="form-check-label" for="flexCheckDefault">
 						  </label>
 						</div>
-							</div>			  			
+							</div>
+							
+							<!-- 상품 이미지 -->			  			
 				   			<div class="col-2" align="left">
 						     <img alt="캐리어1" src="elapid_img/luggage/sefton_main.jpg" width="100">
 						    </div>
+						    <!-- 상품 정보 -->
 					    	<div class="col-4" align="left">
-					     		<p class="fs-4">${User_Cart.p_name }</p>
-					     		<p class="fs-6">${User_Cart.p_colorname }</p>
-						   	 </div>
+					     		<p class="fs-4">${dto.p_name }</p>
+					     		<p class="fs-6">${dto.p_colorname }</p>
+						   	</div>
+						   	 <!-- 삭제,주문하기,가격 -->
 						    <div class="col -2" align="right">
 						      	<p class="fs-4">X</p>
 						      	<button type="button" class="btn btn-dark">주문하기</button><br><br>
-						      	<p>${User_Cart.p_price } 원</p>
+						      	<p>${dto.p_price } 원</p>
 				   		 	</div>
 			  		</div>
 				</div>
-		<hr width="1050">
-		
-				<%--</c:forEach>  --%>
+	<hr width="1050">
+				</c:forEach><%--  --%>
 				
-		<p class="fs-6" align="right">배송비 : 원 </p>
-			<hr width="1050">
+		<p class="fs-6" align="right">배송비 :??원 </p>
+	<hr width="1050">
 		<div align="right">	
 			<h5>총 계</h5>
-			<h4>원</h4>
+			<h4>${User_Cart.cart_total }원</h4>
 		</div>
+	
+	
+	<!-- Small button group -->
+	<div class="dropdown" >
+	  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+	    쿠폰사용
+	  </a>
+	
+	  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+	    <li><a class="dropdown-item" href="#">${Cart_View.c_name }</a></li>
+	    <li><a class="dropdown-item" href="#">Another action</a></li>
+	    <li><a class="dropdown-item" href="#">Something else here</a></li>
+	  </ul>
+	</div>
+		
+		
 	</div><!-- 중앙! -->
-	
-	
 	<!-- 2분할! -->
 	<div class="d-grid gap-2 col-10">
+	
 	  <div><button type="button" class="btn btn-dark" style="float: right;" >선택상품 주문하기</button></div>
 	 <div><button type="button" class="btn btn-dark" style="float: right;" >결제하기</button></div>
 	</div>
