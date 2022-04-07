@@ -5,19 +5,6 @@
 <%@ include file="/layout/header.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-			<div class="category-banner">
-				<div class="image-group">
-					<div class="image-field">
-						<picture>
-						<img src="elapid_img/backpack_header.png">
-						</picture>
-					</div>
-					<div class="header-field">
-						<h2>백팩</h2>
-					</div>
-				</div>
-				</div>
 
 			<div class="row row-cols-1 row-cols-md-3 g-4">
  			<c:forEach items="${list }" var="dto">

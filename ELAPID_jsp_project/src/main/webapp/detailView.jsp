@@ -1,4 +1,5 @@
-<%@page import="com.elapid.dto.ProductListDto"%>
+
+<%@page import="com.elapid.dto.ProductDetailDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@ include file="/layout/header.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,7 +9,11 @@
 		
 <%
 	// 상품명이 같을 경우 하나만 출력해주는 조건
-	ArrayList<ProductListDto> detailView = (ArrayList<ProductListDto>)request.getAttribute("detailView");
+	
+	// 해당 조건은 정해진 단일 상품만을 보여주는 단점이 존재함
+	// 해당 사이즈 혹은 색상에 맞는 상품이 상세페이지에도 이에 맞게 출력되야한다...
+	
+	ArrayList<ProductDetailDto> detailView = (ArrayList<ProductDetailDto>)request.getAttribute("detailView");
 	
 	
 	for (int i = 0; i < detailView.size(); i++ ){
@@ -34,13 +39,17 @@
 			<table>
 				<tr align="center">
 					<%--상품 필터 col --%>
-					<td colspan="2">
-						<img src="<%=detailView.get(i).getImg_thum()%>">
+					<td align="center">
+						<img src="<%=detailView.get(i).getImg_01()%>" width="500" height="700">
+						
+						
+						
 						
 					</td>
 					<%-- 상품 상세내용 col --%>
-					<td>
-						<h2>가격 : <%=detailView.get(i).getP_price() %></h2><br>
+					<td align="center">
+						<h2> <%=detailView.get(i).getP_name() %></h2>
+						<h4>가격 : <%=detailView.get(i).getP_price() %></h4><br>
 						
 				<%
 						if(detailView.get(i).getCtg_main().equals("luggage")){
@@ -65,17 +74,18 @@
 								
 						<br>
 						<br>
+						남은 수량 : <%=detailView.get(i).getP_stock() %>
 						<c:choose>
-					      		<c:when test="">
-					      			<form action="userCartView.do">
-										<button type="button" class="btn btn-light">장바구니 담기</button>
-									</form>
-					      		</c:when>
-					      		<c:otherwise>
-					      			<form action="nonUserCartView.do">
-										<button type="button" class="btn btn-light">장바구니 담기</button>
-									</form>
-					      		</c:otherwise>
+				      		<c:when test="${sessionScope.u_id eq '' } %>">
+				      			<form action="nonUserCartView.do?p_id=<%=detailView.get(i).getP_id() %>">
+									<button type="button" class="btn btn-light">장바구니 담기</button>
+								</form>
+				      		</c:when>
+				      		<c:otherwise>
+				      			<form action="UserCartView.do?u_id=${sessionScope.u_id }&p_id=<%=detailView.get(i).getP_id() %>">
+									<button type="button" class="btn btn-light">장바구니 담기</button>
+								</form>
+				      		</c:otherwise>
 				      	</c:choose>
 				      	<br>
 						<form action="orderForm.do">
@@ -85,7 +95,12 @@
 					
 				</tr>
 				<tr>
-					<td>
+					<td align="center">
+						<img src="<%=detailView.get(i).getImg_02()%>" width="500" height="700">
+						<img src="<%=detailView.get(i).getImg_03()%>" width="500" height="700">
+						<img src="<%=detailView.get(i).getImg_04()%>" width="500" height="700">
+						<img src="<%=detailView.get(i).getImg_05()%>" width="500" height="700">
+						<img src="<%=detailView.get(i).getImg_06()%>" width="500" height="700">
 					</td>
 					<td>
 						<textarea rows="50" cols="50" readonly="readonly"><%=detailView.get(i).getP_desc() %></textarea> 
@@ -98,18 +113,18 @@
 <%
 	 	}
 	}
-%>
+%>			
 		
-		</div>
-		<h3>1:1문의</h3>
-		<div class="form-floating">
-		  
-		  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-		  
-		  <label for="floatingTextarea">Comments</label>
-		
-		
-		</div>
+			</div>
+			<h3>1:1문의</h3>
+			<div class="form-floating">
+			  
+			  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+			  
+			  <label for="floatingTextarea">Comments</label>
+			
+			
+			</div>
 
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

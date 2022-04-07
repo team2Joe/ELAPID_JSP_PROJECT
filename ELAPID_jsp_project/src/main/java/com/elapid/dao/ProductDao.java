@@ -13,6 +13,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.elapid.dto.ProductDetailDto;
 import com.elapid.dto.ProductDto;
 import com.elapid.dto.ProductImageDetailDto;
 import com.elapid.dto.ProductImageDto;
@@ -207,8 +208,9 @@ public class ProductDao {
 		return dtos;
 	}
 	
-	public ArrayList<ProductListDto> detailView(String sp_name) {
-		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
+	// 상품 상세 페이지 출력
+	public ArrayList<ProductDetailDto> detailView(String sp_name) {
+		ArrayList<ProductDetailDto> dtos = new ArrayList<ProductDetailDto>();
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -264,10 +266,19 @@ public class ProductDao {
 				String ctg_sub = rs.getString("ctg_sub");
 				String img_thum = rs.getString("img_thum");
 				String ps_color = rs.getString("ps_color");
+				String img_01 = rs.getString("img_01");
+				String img_02 = rs.getString("img_02");
+				String img_03 = rs.getString("img_03");
+				String img_04 = rs.getString("img_04");
+				String img_05 = rs.getString("img_05");
+				String img_06 = rs.getString("img_06");
 				
-				ProductListDto dto = new ProductListDto(p_id, p_name, p_stock, price, discountPrice,
-						p_size, p_mainf, p_colorimg, p_colorname, p_date, p_desc, p_clickcount,
-						ctg_id, ctg_main, ctg_middle, ctg_sub, img_thum, ps_color);
+				
+				ProductDetailDto dto = new ProductDetailDto(p_id, p_name, p_stock,
+						price, discountPrice, p_size, p_mainf, p_colorimg,
+						p_colorname, p_desc, p_clickcount, ctg_id, ctg_main,
+						ctg_middle, ctg_sub, img_thum, ps_color, img_01, img_02,
+						img_03, img_04, img_05, img_06);
 				
 				dtos.add(dto);
 			}
@@ -291,8 +302,7 @@ public class ProductDao {
 		return dtos;
 	}
 	
-
-	
+	// 상품 검색 페이지 출력
 	public ArrayList<ProductListDto> search(String search) {
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
@@ -315,9 +325,9 @@ public class ProductDao {
 					+ "join product_detail pd\n"
 					+ "on pd.p_id = p.p_id\n"
 					+ "join product_spec s\n"
-					+ "on s.ps_id = pd.ps_id where p_name like '%" + search + "%' or p_size like '%" + search + 
-					"%' or p_mainf like '%" + search + "%' or p_desc = '%" + search + "%' or p_ctgmain like '%" + search
-					+ "%' or p_ctgmiddle like '%" + search + "%'";
+					+ "on s.ps_id = pd.ps_id where p.p_name like '%" + search + "%' or p.p_size like '%" + search + 
+					"%' or p.p_mainf like '%" + search + "%' or p.p_desc = '%" + search + "%' or c.ctg_main like '%" + search
+					+ "%' or c.ctg_middle like '%" + search + "%'";
 			
 			stmt = conn.prepareStatement(query);
 			
@@ -370,8 +380,8 @@ public class ProductDao {
 		return dtos;
 	}
 	
-	
-	public ArrayList<ProductListDto> middleList(String sp_ctgmiddle){
+	// 상품 중분류 페이지 출력
+	public ArrayList<ProductListDto> middleList(String sctg_middle){
 		
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
@@ -394,10 +404,10 @@ public class ProductDao {
 					+ "join product_detail pd\n"
 					+ "on pd.p_id = p.p_id\n"
 					+ "join product_spec s\n"
-					+ "on s.ps_id = pd.ps_id where p_ctgmiddle = ?";
+					+ "on s.ps_id = pd.ps_id where ctg_middle = ?";
 			
 			stmt = conn.prepareStatement(query);
-			stmt.setString(1, sp_ctgmiddle);
+			stmt.setString(1, sctg_middle);
 			
 			rs = stmt.executeQuery();
 			
@@ -447,7 +457,6 @@ public class ProductDao {
 
 		return dtos;
 	}
-	
 	
 	//기능별 상품 페이지 리스트
 	public ArrayList<ProductListDto> functionList(String sp_mainf){
@@ -754,7 +763,7 @@ public class ProductDao {
 				+ "on pd.p_id = p.p_id\n"
 				+ "\n"
 				+ "join product_spec s\n"
-				+ "on s.ps_id = pd.ps_id where p_ctgmain = 'luggage'";
+				+ "on s.ps_id = pd.ps_id where c.ctg_main = 'luggage'";
 		
 		try {
 			conn = dataSource.getConnection();
@@ -766,9 +775,9 @@ public class ProductDao {
 			for(int i = 0; i < sctg_middle.length; i++) {
 				
 				if(i == 0) {
-					queryValues[i] = " and p_ctgmiddle = '" + sctg_middle[i] + "'";
+					queryValues[i] = " and c.ctg_middle = '" + sctg_middle[i] + "'";
 				}else {
-					queryValues[i] = " or p_ctgmiddle = '" + sctg_middle[i] + "'";
+					queryValues[i] = " or c.ctg_middle = '" + sctg_middle[i] + "'";
 				}
 			
 				querySum += queryValues[i];
@@ -827,7 +836,6 @@ public class ProductDao {
 		return dtos;
 	}
 	
-	
 	//기능별 필터 분류 하기
 	public ArrayList<ProductListDto> functionFilterList(String[] sp_mainf){
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
@@ -855,7 +863,7 @@ public class ProductDao {
 				+ "on pd.p_id = p.p_id\n"
 				+ "\n"
 				+ "join product_spec s\n"
-				+ "on s.ps_id = pd.ps_id where p_ctgmain = 'luggage'";
+				+ "on s.ps_id = pd.ps_id where c.ctg_main = 'luggage'";
 		
 		try {
 			conn = dataSource.getConnection();

@@ -41,7 +41,7 @@
 				 
 				 <div class="col">
 				    <div class="card h-100" align="center">
-			    	  <a href="detailView.do?p_id=<%=list.get(i).getP_id() %>&ctg_middle=<%=list.get(i).getCtg_middle() %>">
+			    	  <a href="detailView.do?p_name=<%=list.get(i).getP_name() %>&ctg_middle=<%=list.get(i).getCtg_middle() %>">
 				      <img src="<%=list.get(i).getImg_thum() %>" alt="..." align="center">
 				      <div class="card-body">
 				        <h5 class="card-title"><%=list.get(i).getP_name() %></h5>

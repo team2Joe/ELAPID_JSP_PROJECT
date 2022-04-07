@@ -66,6 +66,7 @@ public class EController_JJH extends HttpServlet {
 		case("/main.do"):
 			viewPage = "index.jsp";
 			break;
+			
 			// 캐리어 전체 리스트 페이지
 		case("/luggageList.do"):
 			command = new ELuggageListCommand();
@@ -88,26 +89,26 @@ public class EController_JJH extends HttpServlet {
 			break;
 
 			
-			//제품 중분류별 페이지
+			//제품 중분류별 리스트 페이지
 		case("/middleView.do"):
 			command = new EMiddleViewCommand();
 			command.execute(request, response);
 			viewPage = "mainList.jsp";
 			break;
 			
+			// 제품 기능전체 리스트페이지
 		case("/middleFunctionList.do"):
 			command = new EMiddleFunctionListCommand();
 			command.execute(request, response);
 			viewPage = "mainList.jsp";
 			break;
 			
+			// 제품 기능별 리스트 페이지
 		case("/functionList.do"):
 			command = new EFunctionListCommand();
 			command.execute(request, response);
 			viewPage = "functionList.jsp";
 			break;
-			
-			// 이미지 리스트 출력
 
 			// 검색목록 출력
 		case("/search.do"):
@@ -122,6 +123,7 @@ public class EController_JJH extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "luggageList.jsp";
 			break;
+			
 			// 캐리어사이즈별 필터
 		case("/sizeFilterList.do"):
 			command = new ESizeFilterListCommand();
@@ -129,6 +131,7 @@ public class EController_JJH extends HttpServlet {
 			viewPage = "luggageList.jsp";
 			break;
 			
+			// 제품 기능별 필터 
 		case("/functionFilterList.do"):
 			command = new EFunctionFilterListCommand();
 			command.execute(request, response);
