@@ -1,5 +1,6 @@
 package com.elapid.dto;
 
+
 public class UserCartViewDto {
 
 	String u_id;
@@ -13,16 +14,17 @@ public class UserCartViewDto {
 	int c_atleastprice;
 	int c_value;
 	//할인량.
-	double cart_discountedamount;
+	int cart_totaldiscountedamount;
 	//총합.
-	double cart_total;
+	int cart_totalamount;
 	
 	public UserCartViewDto() {
 		// TODO Auto-generated constructor stub
+		
 	}
 
 	public UserCartViewDto(String u_id, int p_id, int cart_id, int c_id, String p_name, String p_colorname, int p_price,
-			String c_name, int c_atleastprice, int c_value, double cart_discountedamount, double cart_total) {
+			String c_name, int c_atleastprice, int c_value, int cart_totaldiscountedamount, int cart_totalamount) {
 		super();
 		this.u_id = u_id;
 		this.p_id = p_id;
@@ -34,8 +36,8 @@ public class UserCartViewDto {
 		this.c_name = c_name;
 		this.c_atleastprice = c_atleastprice;
 		this.c_value = c_value;
-		this.cart_discountedamount = cart_discountedamount;
-		this.cart_total = cart_total;
+		this.cart_totaldiscountedamount = cart_totaldiscountedamount;
+		this.cart_totalamount = cart_totalamount;
 	}
 
 	public String getU_id() {
@@ -118,21 +120,22 @@ public class UserCartViewDto {
 		this.c_value = c_value;
 	}
 
-	public double getCart_discountedamount() {
-		return cart_discountedamount;
+	public int getCart_totaldiscountedamount() {
+		return cart_totaldiscountedamount;
 	}
 
-	public void setCart_discountedamount(double cart_discountedamount) {
-		this.cart_discountedamount = cart_discountedamount;
+	public void setCart_totaldiscountedamount(int cart_totaldiscountedamount) {
+		this.cart_totaldiscountedamount = cart_totaldiscountedamount;
 	}
 
-	public double getCart_total() {
-		return cart_total;
+	public int getCart_totalamount() {
+		return cart_totalamount;
 	}
 
-	public void setCart_total(double cart_total) {
-		this.cart_total = cart_total;
+	public void setCart_totalamount(int cart_totalamount) {
+		this.cart_totalamount = cart_totalamount;
 	}
 
+	
 	
 }

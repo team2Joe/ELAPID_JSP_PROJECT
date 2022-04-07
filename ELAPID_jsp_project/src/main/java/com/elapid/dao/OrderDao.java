@@ -23,4 +23,9 @@ public class OrderDao {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public void userOrderView() {
+		
+	}
 }

@@ -1,22 +1,43 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%@page import="com.elapid.dto.AddCartDto"%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/layout/header.jsp"%>
+<%
+	ArrayList<AddCartDto> cart = null;
+
+	Object object = session.getAttribute("cart");
+
+
+
+
+%>
+
+
+
+
 
 <html>
 <head>
 <meta charset="UTF-8">
-<title>OrderFom</title>
+<title>cartForm</title>
 </head>
 	<body>
+		
+		
+		
+		
 			<div style = "padding: 30px 200px 20px 200px;"> <!-- 중앙! --> 
 				<div class="">
 					<h3> 주문하기 </h3>
 				</div>
 		
-			<%-- <c:forEach items="${User_Cart }" var="dto"> 
-					//{cart_view }<== dto로 바꾸고 forEach 문 돌리기--%>
+				<c:forEach items="${add }" var="adddto">
+			
 			
 				<div class="container">
 			  		<div class="row">
@@ -34,28 +55,28 @@
 						    </div>
 						    <!-- 상품 정보 -->
 					    	<div class="col-4" align="left">
-					     		<p class="fs-4">${User_Cart.p_name }</p>
-					     		<p class="fs-6">${User_Cart.p_colorname }</p>
+					     		<p class="fs-4">${adddto.p_name }</p>
+					     		<p class="fs-6">${adddto.p_colorname }</p>
 						   	</div>
 						   	 <!-- 삭제,주문하기,가격 -->
 						    <div class="col -2" align="right">
-						      	<p class="fs-4">X</p>
+						      	<p class="fs-4" >X</p>
 						      	<button type="button" class="btn btn-dark">주문하기</button><br><br>
-						      	<p>${User_Cart.p_price } 원</p>
+						      	<p>${adddto.p_price } 원</p>
 				   		 	</div>
 			  		</div>
 				</div>
 	<hr width="1050">
-				<%--</c:forEach>  --%>
+				</c:forEach>
 		
 		<!-- 쿠폰 -->
 		<div class="container" >
 		  <div class="row">
 		    <div class="col" align="left">
-		     	${User_Cart.c_name }
+		     	
 		    </div>
 		    <div class="col" align="right">
-		      -${User_Cart.cart_discountedamount} 원
+		      - 원
 		    </div>
 		  </div>
 		</div>
@@ -64,24 +85,12 @@
 	<hr width="1050">
 		<div align="right">	
 			<h5>총 계</h5>
-			<h4>${User_Cart.cart_total }원</h4>
+			<h4>원</h4>
 		</div>
 	
 	
 	<!-- Small button group -->
-	<div class="dropdown" >
-	  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-	    쿠폰사용
-	  </a>
 	
-	  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-	    <li><a class="dropdown-item" href="#">${Cart_View.c_name }</a></li>
-	    <li><a class="dropdown-item" href="#">Another action</a></li>
-	    <li><a class="dropdown-item" href="#">Something else here</a></li>
-	  </ul>
-	</div>
-		
-		
 	</div><!-- 중앙! -->
 	<!-- 2분할! -->
 	<div class="d-grid gap-2 col-10">
@@ -93,13 +102,6 @@
 	  
 		
 	<div align="center">
-		u_id; = ${User_Cart.u_id } <br>
-		p_id; = ${User_Cart.p_id }<br>
-		cart_id; = ${User_Cart.cart_id }<br>
-		c_id; = ${User_Cart.c_id }<br>
-		c_name; = ${User_Cart.c_name }<br>
-		c_atleastprice; = ${User_Cart.c_atleastprice }<br>
-		c_value; = ${User_Cart.c_value }<br>
 	</div>
 	
 	
