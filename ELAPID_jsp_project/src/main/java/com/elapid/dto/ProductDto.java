@@ -16,30 +16,21 @@ public class ProductDto {
 	private Timestamp p_date;
 	private String p_desc;
 	private String p_clickcount;
-<<<<<<< HEAD
-=======
 	private String p_imgpath;
 	private String p_ctgmain;
 	private String p_ctgmiddle;
 	
 	// 상품 메인 사진 컬럼필드 추가!!
->>>>>>> jjh_test
 	
 	public ProductDto() {
 		// TODO Auto-generated constructor stub
 	}
 
-<<<<<<< HEAD
-	public ProductDto(int p_id, String p_name, String p_stock, int p_price, int p_discountprice, int p_size,
-			String p_mainf, String p_colorimg, String p_colorname, Timestamp p_date, String p_desc,
-			String p_clickcount) {
-=======
 
 
 	public ProductDto(int p_id, String p_name, String p_stock, int p_price, int p_discountprice, int p_size,
 			String p_mainf, String p_colorimg, String p_colorname, Timestamp p_date, String p_desc, String p_clickcount,
 			String p_imgpath, String p_ctgmain, String p_ctgmiddle) {
->>>>>>> jjh_test
 		super();
 		this.p_id = p_id;
 		this.p_name = p_name;
@@ -53,10 +44,6 @@ public class ProductDto {
 		this.p_date = p_date;
 		this.p_desc = p_desc;
 		this.p_clickcount = p_clickcount;
-<<<<<<< HEAD
-	}
-
-=======
 		this.p_imgpath = p_imgpath;
 		this.p_ctgmain = p_ctgmain;
 		this.p_ctgmiddle = p_ctgmiddle;
@@ -64,7 +51,6 @@ public class ProductDto {
 
 
 
->>>>>>> jjh_test
 	public int getP_id() {
 		return p_id;
 	}
@@ -160,8 +146,6 @@ public class ProductDto {
 	public void setP_clickcount(String p_clickcount) {
 		this.p_clickcount = p_clickcount;
 	}
-<<<<<<< HEAD
-=======
 
 	public String getP_imgpath() {
 		return p_imgpath;
@@ -194,7 +178,6 @@ public class ProductDto {
 	public void setP_ctgmiddle(String p_ctgmiddle) {
 		this.p_ctgmiddle = p_ctgmiddle;
 	}
->>>>>>> jjh_test
 	
 	
 	

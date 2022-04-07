@@ -50,7 +50,7 @@
 					<br>
 					<c:choose>
 				      		<c:when test="">
-				      			<form action="userCartView.do">
+				      			<form action="addCart.do">
 									<button type="button" class="btn btn-light">장바구니 담기</button>
 								</form>
 				      		</c:when>

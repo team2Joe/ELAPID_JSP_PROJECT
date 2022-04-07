@@ -1,7 +1,6 @@
 package com.elapid.dao;
 
-<<<<<<< HEAD
-=======
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.Blob;
@@ -11,17 +10,21 @@ import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
->>>>>>> jjh_test
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+import com.elapid.dto.ProductDto;
+import com.elapid.dto.ProductImageDetailDto;
+import com.elapid.dto.ProductImageDto;
+import com.elapid.dto.ProductSpecDto;
 
-<<<<<<< HEAD
+
 public class ProductDao {
+	DataSource dataSource = null;
 
 	public ProductDao() {
 		// TODO Auto-generated constructor stub
-		DataSource dataSource = null;
 
 		
 		try {
@@ -36,29 +39,7 @@ public class ProductDao {
 		}
 	
 	}
-=======
-import com.elapid.dto.ProductDto;
-import com.elapid.dto.ProductImageDetailDto;
-import com.elapid.dto.ProductImageDto;
-import com.elapid.dto.ProductSpecDto;
 
-public class ProductDao {
-
-	DataSource dataSource = null;
-	
-	public ProductDao() {
-		
-		try {
-			
-			Context context = new InitialContext();
-			
-			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/elapid");
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
 	
 	// 대분류 상품 전체 리스트 출력
 	public ArrayList<ProductDto> luggageList(){
@@ -786,7 +767,6 @@ public class ProductDao {
 		return dtos;
 	}
 	
->>>>>>> jjh_test
 }
 
 
