@@ -1,24 +1,28 @@
 package com.elapid.command;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.elapid.dao.ProductDao;
 import com.elapid.dto.ProductDto;
+import com.elapid.dto.ProductListDto;
 
 public class EDetailViewCommand implements ECommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		String p_id = request.getParameter("p_id");
+		String p_name = request.getParameter("p_name");
 		
-		ProductDto dto = new ProductDto();
+		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
+		
 		ProductDao dao = new ProductDao();
 		
-		dto = dao.detailView(p_id);
+		dtos = dao.detailView(p_name);
 		
-		request.setAttribute("detailView", dto);
+		request.setAttribute("detailView", dtos);
 
 	}
 

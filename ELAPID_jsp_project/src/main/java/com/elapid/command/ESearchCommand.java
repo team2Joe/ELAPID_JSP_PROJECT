@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.elapid.dao.ProductDao;
 import com.elapid.dto.ProductDto;
+import com.elapid.dto.ProductListDto;
 
 public class ESearchCommand implements ECommand {
 
@@ -17,7 +18,7 @@ public class ESearchCommand implements ECommand {
 		
 		ProductDao dao = new ProductDao();
 		
-		ArrayList<ProductDto> dtos = new ArrayList<ProductDto>();
+		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
 		dtos = dao.search(search);
 		

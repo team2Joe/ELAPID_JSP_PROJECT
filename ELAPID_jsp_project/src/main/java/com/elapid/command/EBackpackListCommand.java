@@ -7,13 +7,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.elapid.dao.ProductDao;
 import com.elapid.dto.ProductDto;
+import com.elapid.dto.ProductListDto;
 
 public class EBackpackListCommand implements ECommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		ArrayList<ProductDto> dtos = new ArrayList<ProductDto>();
+		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
 		ProductDao dao = new ProductDao();
 		

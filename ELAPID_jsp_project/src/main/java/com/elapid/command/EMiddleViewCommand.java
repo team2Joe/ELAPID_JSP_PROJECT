@@ -7,19 +7,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.elapid.dao.ProductDao;
 import com.elapid.dto.ProductDto;
+import com.elapid.dto.ProductListDto;
 
 public class EMiddleViewCommand implements ECommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		String p_ctgmiddle = request.getParameter("p_ctgmiddle");
+		String ctg_middle = request.getParameter("ctg_middle");
 		
-		ArrayList<ProductDto> dtos = new ArrayList<ProductDto>();
+		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
 		ProductDao dao = new ProductDao();
 		
-		dtos = dao.middleList(p_ctgmiddle);
+		dtos = dao.middleList(ctg_middle);
 
 		request.setAttribute("list", dtos);
 	}

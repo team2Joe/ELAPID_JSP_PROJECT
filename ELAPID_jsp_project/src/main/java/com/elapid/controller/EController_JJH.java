@@ -16,7 +16,6 @@ import com.elapid.command.ECommand;
 import com.elapid.command.EDetailViewCommand;
 import com.elapid.command.EFunctionFilterListCommand;
 import com.elapid.command.EFunctionListCommand;
-import com.elapid.command.EImageViewCommand;
 import com.elapid.command.ELuggageListCommand;
 import com.elapid.command.EMiddleFunctionListCommand;
 import com.elapid.command.EMiddleViewCommand;
@@ -109,16 +108,12 @@ public class EController_JJH extends HttpServlet {
 			break;
 			
 			// 이미지 리스트 출력
-		case("/imageView.do"):
-			command = new EImageViewCommand();
-			command.execute(request, response);
-			viewPage = "detailView.jsp";
-			break;
-		
+
+			// 검색목록 출력
 		case("/search.do"):
 			command = new ESearchCommand();
 			command.execute(request, response);
-			viewPage = "mainList.jsp";
+			viewPage = "searchList.jsp";
 			break;
 			
 			// 색깔 필터

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.elapid.dao.ProductDao;
 import com.elapid.dto.ProductDto;
+import com.elapid.dto.ProductListDto;
 
 public class EFunctionFilterListCommand implements ECommand {
 
@@ -15,7 +16,7 @@ public class EFunctionFilterListCommand implements ECommand {
 		
 		String[] p_mainf = request.getParameterValues("p_mainf");
 		
-		ArrayList<ProductDto> dtos = new ArrayList<ProductDto>();
+		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
 		ProductDao dao = new ProductDao();
 		

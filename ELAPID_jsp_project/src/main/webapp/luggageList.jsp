@@ -1,4 +1,5 @@
 
+<%@page import="com.elapid.dto.ProductListDto"%>
 <%@page import="com.elapid.dto.ProductDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@ include file="/layout/header.jsp"%>
@@ -22,19 +23,19 @@
 				<h4>필터</h4>
 				<h5>크기</h5>
 				<form action="sizeFilterList.do">
-					기내용/소형 <input type="checkbox" name="p_ctgmiddle" value="small">
-					중형수하물 <input type="checkbox" name="p_ctgmiddle" value="middle">
-					대형수하물 <input type="checkbox" name="p_ctgmiddle" value="large">
+					기내용/소형 <input type="checkbox" name="ctg_middle" value="small">
+					중형수하물 <input type="checkbox" name="ctg_middle" value="middle">
+					대형수하물 <input type="checkbox" name="ctg_middle" value="large">
 					<input type="submit" value="확인">
 				</form>
 				
 				<h5>색상</h5>
 				<form action="colorFilterList.do">
 					
-					검정 <input type="checkbox" name="p_colorname" value="black">
-					회색 <input type="checkbox" name="p_colorname" value="grey">
-					빨강 <input type="checkbox" name="p_colorname" value="red">
-					흰색 <input type="checkbox" name="p_colorname" value="white">
+					검정 <input type="checkbox" name="ps_color" value="black">
+					회색 <input type="checkbox" name="ps_color" value="grey">
+					빨강 <input type="checkbox" name="ps_color" value="red">
+					흰색 <input type="checkbox" name="ps_color" value="white">
 					<input type="submit" value="확인">
 				</form>
 				
@@ -61,7 +62,7 @@
 
 				
  <%
- 	ArrayList<ProductDto> list = (ArrayList<ProductDto>) request.getAttribute("list");
+ 	ArrayList<ProductListDto> list = (ArrayList<ProductListDto>) request.getAttribute("list");
  
  for(int i = 0; i < list.size(); i++){
 	 boolean check = true;
@@ -69,7 +70,7 @@
  		
  		// list내의 product이름이 서로 같고 컬러나 사이즈가 서로 다른 상품은 리스트에서 하나만 띄우고 나머지는 제외
  		if((list.get(i).getP_name().equals(list.get(j).getP_name()) &&  list.get(i).getP_size() != list.get(j).getP_size())
- 	 			|| (list.get(i).getP_name().equals(list.get(j).getP_name()) &&  list.get(i).getP_colorname() != list.get(j).getP_colorname())	){
+ 	 			|| (list.get(i).getP_name().equals(list.get(j).getP_name()) &&  list.get(i).getPs_color() != list.get(j).getPs_color())	){
  			check = false;
  			break;
  		}
@@ -81,12 +82,12 @@
 				 
 				 <div class="col">
 				    <div class="card h-100" align="center">
-			    	  <a href="detailView.do?p_id=<%=list.get(i).getP_id() %>&p_ctgmiddle=<%=list.get(i).getP_ctgmiddle() %>">
-				      <img src="<%=list.get(i).getP_imgpath() %>" alt="..." align="center">
+			    	  <a href="detailView.do?p_name=<%=list.get(i).getP_name() %>&ctg_middle=<%=list.get(i).getCtg_middle() %>">
+				      <img src="<%=list.get(i).getImg_thum() %>" alt="..." align="center">
 				      <div class="card-body">
 				        <h5 class="card-title"><%=list.get(i).getP_name() %></h5>
 				      </a>
-				        <h6 class="card-price"><%=list.get(i).getP_discountprice() %> won</h6>
+				        <h6 class="card-price"><%=list.get(i).getP_price() %> won</h6>
 				        <div class="attribute">	
 							
 						</div>

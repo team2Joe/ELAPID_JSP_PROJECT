@@ -36,9 +36,9 @@
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
 	            <li><h5>&nbsp&nbsp크기</h5></li>
 	            <li></li>
-	            <li><a class="dropdown-item" href="middleView.do?p_ctgmiddle=small">기내용</a></li>
-	            <li><a class="dropdown-item" href="middleView.do?p_ctgmiddle=middle">중형수화물</a></li>
-	            <li><a class="dropdown-item" href="middleView.do?p_ctgmiddle=large">대형수화물</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=small">기내용</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=middle">중형수화물</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=large">대형수화물</a></li>
 	          </ul>
 	        </li>
 	      </ul>
@@ -48,9 +48,9 @@
 	          	백팩
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-	            <li><a class="dropdown-item" href="middleView.do?p_ctgmiddle=business">비즈니스</a></li>
-	            <li><a class="dropdown-item" href="middleView.do?p_ctgmiddle=casual">캐주얼</a></li>
-	            <li><a class="dropdown-item" href="middleView.do?p_ctgmiddle=other">기타</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=business">비즈니스</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=casual">캐주얼</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=other">기타</a></li>
 	          </ul>
 	        </li>
 	      </ul>

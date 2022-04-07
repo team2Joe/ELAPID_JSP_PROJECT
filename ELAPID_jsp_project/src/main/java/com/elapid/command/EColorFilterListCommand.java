@@ -7,19 +7,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.elapid.dao.ProductDao;
 import com.elapid.dto.ProductDto;
+import com.elapid.dto.ProductListDto;
 
 public class EColorFilterListCommand implements ECommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		String[] p_colorname = request.getParameterValues("p_colorname");
+		String[] ps_color = request.getParameterValues("ps_color");
 		
-		ArrayList<ProductDto> dtos = new ArrayList<ProductDto>();
+		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
 		ProductDao dao = new ProductDao();
 		
-		dtos = dao.colorFilterList(p_colorname);
+		dtos = dao.colorFilterList(ps_color);
 
 		request.setAttribute("list", dtos);
 
