@@ -25,6 +25,7 @@ import com.elapid.command.ERegisterDeleteCommand;
 import com.elapid.command.ERegisterModifyCommand;
 import com.elapid.command.ERegisterModifyFormCommand;
 import com.elapid.command.ERegisterSetDefault;
+import com.elapid.command.EUserOrderFormCommand;
 import com.mysql.cj.protocol.a.MergingColumnDefinitionFactory;
 
 /**
@@ -144,6 +145,11 @@ public class KTEEController extends HttpServlet {
 			viewPage = "addressBookView.do";
 			break;
 			
+		case("/userOrderForm.do"):
+			command = new EUserOrderFormCommand();
+			command.execute(request, response);
+			viewPage = "userOrderPage.jsp";
+			break;
 			
 		case("/luggageList.do"):
 			viewPage = "luggageList.jsp";

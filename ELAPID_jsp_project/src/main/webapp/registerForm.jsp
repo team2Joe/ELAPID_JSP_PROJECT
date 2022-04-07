@@ -70,7 +70,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 		  <div class="mb-3 row">
 		    <label for="inputPassword" class="col-sm-2 col-form-label">아이디 : </label>
 		    <div class="col-sm-2">
-		      <input type="text" class="form-control" name="uid" id="userid" onkeyup="idformcheck()" value = "${sessionScope.uid}">
+		      <input type="text" class="form-control" name="uid" id="userid" onkeyup="idformcheck()" value = "${sessionScope.reguid}">
 		    </div>
 		    <div class="col-sm-2">
 		      <button type="button"  class="btn btn-dark" onclick="idduplicatecheck()">중복체크</button> 

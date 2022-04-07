@@ -29,7 +29,7 @@ public class EIdCheckCommand implements ECommand {
 			comment = "사용 가능한 아이디입니다.";
 		}
 		
-		session.setAttribute("uid",uid);
+		session.setAttribute("reguid",uid);
 		session.setAttribute("uname",uname);
 		session.setAttribute("uemail",uemail);
 		session.setAttribute("utel",utel);

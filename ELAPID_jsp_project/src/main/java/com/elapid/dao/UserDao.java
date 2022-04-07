@@ -443,7 +443,7 @@ public class UserDao {
 		
 	}
 	
-	public RegisterJoinDto searchRegister(String uid,String addid) {
+	public RegisterJoinDto searchRegister(String uid,int addid) {
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -454,6 +454,49 @@ public class UserDao {
 		try {
 			connection = dataSource.getConnection();
 			String query ="SELECT u_id, r.add_id , reg_name, reg_tel, add_address  , reg_specificaddress,reg_defaultaddress FROM register as r inner join address as a on r.add_id = a.add_id where u_id = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, uid);
+			resultSet =preparedStatement.executeQuery(); //
+			
+			while(resultSet.next()) {
+				dto.setAdd_address(resultSet.getString("add_address"));
+				dto.setReg_defaultaddress(resultSet.getInt("reg_defaultaddress"));
+				dto.setReg_specificaddress(resultSet.getString("reg_specificaddress")); 
+				dto.setReg_name(resultSet.getString("reg_name")); 
+				dto.setReg_tel(resultSet.getString("reg_tel"));
+				dto.setU_id(resultSet.getString("reg_tel"));
+				dto.setAdd_id(resultSet.getInt("add_id"));
+			}			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+		return dto;
+	}
+	public RegisterJoinDto searchRegisterForDefault(String uid) {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		RegisterJoinDto dto = new RegisterJoinDto();
+		
+		
+		try {
+			connection = dataSource.getConnection();
+			String query ="SELECT u_id, r.add_id , reg_name, reg_tel, add_address  , reg_specificaddress,reg_defaultaddress FROM register as r inner join address as a on r.add_id = a.add_id where u_id = ? and reg_defaultaddress = 1";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, uid);
 			resultSet =preparedStatement.executeQuery(); //
