@@ -1,24 +1,25 @@
 
-<%@page import="com.elapid.dto.ProductDto"%>
+		<%@page import="com.elapid.dto.ProductDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@ include file="/layout/header.jsp"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+		<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-			<div class="category-banner">
+    		
+    		<div class="category-banner">
 				<div class="image-group">
 					<div class="image-field">
 						<picture>
-						<img src="elapid_img/backpack_header.png">
+						<img src="elapid_img/suspension_header.png">
 						</picture>
 					</div>
 					<div class="header-field">
-						<h2>백팩</h2>
+						<h2>주요기능</h2>
 					</div>
 				</div>
-				</div>
+			</div>
 
 			<div class="row row-cols-1 row-cols-md-3 g-4">
+				
  <%
  	ArrayList<ProductDto> list = (ArrayList<ProductDto>) request.getAttribute("list");
  
@@ -27,16 +28,16 @@
  	for(int j = 0; j < i; j++){
  		
  		if((list.get(i).getP_name().equals(list.get(j).getP_name()) &&  list.get(i).getP_size() != list.get(j).getP_size())
- 			|| (list.get(i).getP_name().equals(list.get(j).getP_name()) &&  list.get(i).getP_colorname() != list.get(j).getP_colorname())	){
+ 	 			|| (list.get(i).getP_name().equals(list.get(j).getP_name()) &&  list.get(i).getP_colorimg() != list.get(j).getP_colorimg())	){
  			check = false;
- 			break;
+ 			continue;
  		}
  		
  	}
  	if(check){
 
 %>
-				 
+	 
 				 <div class="col">
 				    <div class="card h-100" align="center">
 			    	  <a href="detailView.do?p_id=<%=list.get(i).getP_id() %>&p_ctgmiddle=<%=list.get(i).getP_ctgmiddle() %>">
@@ -46,17 +47,7 @@
 				      </a>
 				        <h6 class="card-price"><%=list.get(i).getP_discountprice() %> won</h6>
 				        <div class="attribute">	
-							<div class="owl-carousel size-selection">
-								
-								<a class="attr-selector" href="#" data-attr-type="productSize" data-attr-value="55 cm">
-								55 cm
-								</a>
-						
-								<a class="attr-selector" href="#" data-attr-type="productSize" data-attr-value="69 cm">
-								69 cm
-								</a>
-								
-							</div>
+							
 						</div>
 				      </div>
 				      <div class="card-footer">

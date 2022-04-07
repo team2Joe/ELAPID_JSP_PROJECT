@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 <%@page import="javax.servlet.jsp.tagext.TryCatchFinally"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -190,4 +191,14 @@
 <% 
 //%@ include file="/layout/footer.jsp"%	
 %>
+=======
+<%@ include file="/layout/header.jsp"%>
+
+  
+  
+  
+	
+	
+<%@ include file="/layout/footer.jsp"%>	
+>>>>>>> jjh_test
 	

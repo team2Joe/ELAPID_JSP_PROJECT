@@ -6,9 +6,15 @@
 	
 function navbtnlinkluggage() {
 
-	location.href = "luggageList.jsp";
+	location.href = "luggageList.do";
 }
-function navbtnlinkbackpack() {
 
-	location.href = "backpackList.jsp";
+function nnavbtnlinkbackpack() {
+	
+	location.href = "backpackList.do";
+}
+
+function navbtnlinkfunction() {
+	
+	location.href = "middleFunctionList.do";
 }
