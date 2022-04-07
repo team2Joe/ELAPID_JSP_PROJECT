@@ -11,6 +11,7 @@ import org.apache.catalina.User;
 import com.elapid.dao.UserDao;
 import com.elapid.dto.AddressDto;
 import com.elapid.dto.RegisterDto;
+import com.elapid.dto.RegisterJoinDto;
 
 public class EAddressBookViewCommand implements ECommand {
 
@@ -20,7 +21,7 @@ public class EAddressBookViewCommand implements ECommand {
 		HttpSession session = request.getSession();
 		
 		UserDao dao = new UserDao();
-		ArrayList<RegisterDto> dtos = new ArrayList<RegisterDto>();
+		ArrayList<RegisterJoinDto> dtos = new ArrayList<RegisterJoinDto>();
 		String uid = (String) session.getAttribute("uid"); 
 		
 		dtos = dao.searchRegisterForUser(uid);

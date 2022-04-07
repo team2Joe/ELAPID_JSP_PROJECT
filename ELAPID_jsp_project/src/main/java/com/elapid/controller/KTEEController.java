@@ -19,6 +19,7 @@ import com.elapid.command.EMainCommand;
 import com.elapid.command.EMyPageCommand;
 import com.elapid.command.EProfileDeleteCommand;
 import com.elapid.command.EProfileModifyCommand;
+import com.elapid.command.ERegisterAddCommand;
 import com.elapid.command.ERegisterCheckCommand;
 
 /**
@@ -118,8 +119,12 @@ public class KTEEController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "addressBookView.jsp";
 			break;
-		
+		case("/registerAddForm.do"):
+
+			viewPage = "registerAddForm.jsp";
+			break;
 	
+			
 			
 		case("/luggageList.do"):
 			viewPage = "luggageList.jsp";

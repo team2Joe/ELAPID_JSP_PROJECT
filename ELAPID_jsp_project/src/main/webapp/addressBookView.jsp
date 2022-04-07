@@ -391,14 +391,17 @@
 			<div class="justify-content-center account-cards">
 				<c:forEach var = "dto" items ="${registerdtos}">
 					<div class="row order-card">
-						<div class="text-card col-7 col-md-8">
+						<div class="text-card col-12 col-md-12">
 							<table class="table table-borderless">
-							  <tr>
-							  	<td>
+							  <tr >
+							  	<td class = "col-md-2">
 							  		이름 : 
 							  	</td>
-							  	<td>
+							  	<td class = "col-md-6">
 							  		${dto.reg_name }
+							  	</td>
+							  	<td class = "col-md-1">
+							  		<a href="">수정</a>
 							  	</td>
 							  </tr>
 							  <tr>
@@ -406,7 +409,10 @@
 							  		주소 : 
 							  	</td>
 							  	<td>
-							  		서울 강남구 강남대로 238
+							  		${dto.add_address }
+							  	</td>
+							  	<td class = "col-md-1">
+							  		<a href="">  삭제 </a>
 							  	</td>
 							  </tr>
 							  <tr>
@@ -429,12 +435,8 @@
 						</div>
 					</div>
 				</c:forEach>
-				<div class="row order-card">
-					<div class="text-card col-7 col-md-8">
-						<a>
-							<h4>나의 구매내역</h4>
-						</a>
-					</div>
+				<div style = "text-align:center; padding-top:30px">
+					<button type="button" class= "btn btn-dark" onclick = "location.href='registerAddForm.do'">새 주소 추가하기</button>
 				</div>
 			</div>
 		</div>

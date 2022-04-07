@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 import com.elapid.dto.AddressDto;
 import com.elapid.dto.RegisterDto;
+import com.elapid.dto.RegisterJoinDto;
 import com.elapid.dto.UserDto;
 
 public class UserDao {
@@ -356,25 +357,23 @@ public class UserDao {
 	}
 	
 	
-	public ArrayList<RegisterDto> searchRegisterForUser(String uid) {
+	public ArrayList<RegisterJoinDto> searchRegisterForUser(String uid) {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
-		ArrayList<RegisterDto> dtos = new ArrayList<RegisterDto>();
-		RegisterDto dto = new RegisterDto();
+		ArrayList<RegisterJoinDto> dtos = new ArrayList<RegisterJoinDto>();
+		RegisterJoinDto dto = new RegisterJoinDto();
 		
 		try {
 			connection = dataSource.getConnection();
-			String query ="select * from register where u_id = ?";
+			String query ="SELECT reg_name, reg_tel, add_address  , reg_specificaddress,reg_defaultaddress FROM register as r inner join address as a on r.add_id = a.add_id where u_id = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, uid);
 			resultSet =preparedStatement.executeQuery(); //
 			
-			
 			while(resultSet.next()) {
-				dto.setU_id(resultSet.getString("u_id"));
-				dto.setAdd_id(resultSet.getInt("add_id"));
+				dto.setAdd_address(resultSet.getString("add_address"));
 				dto.setReg_defaultaddress(resultSet.getInt("reg_defaultaddress"));
 				dto.setReg_specificaddress(resultSet.getString("reg_specificaddress"));
 				dto.setReg_name(resultSet.getString("reg_name"));
