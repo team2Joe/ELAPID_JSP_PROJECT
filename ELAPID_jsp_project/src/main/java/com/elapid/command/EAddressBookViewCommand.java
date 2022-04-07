@@ -26,9 +26,12 @@ public class EAddressBookViewCommand implements ECommand {
 		
 		dtos = dao.searchRegisterForUser(uid);
 		
-				
-		
-		
+//		RegisterJoinDto dto = new RegisterJoinDto();
+//		
+//		dto = dtos.get(1);
+//		System.out.println("*********");
+//		System.out.println(dto.getReg_name());
+//				
 		request.setAttribute("registerdtos", dtos);
 		
 	}

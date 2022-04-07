@@ -54,6 +54,9 @@ function emailcheck(){
 }
 */
 
+
+
+
 function userdelete(){
 	if (window.confirm("정말로 탈퇴하시겠습니까?")) {
 		location.href="profileDelete.do";
@@ -143,7 +146,7 @@ function nameformcheck(){
 		
 	}else{
 		unamevalidate = 1;
-		namecondition.className = originnamecondition;
+		namecondition.className = "col-sm-6";
 	}
 }
 
@@ -317,6 +320,57 @@ function modifycheck(){
 	}
 }
 
+function registerAddCheck(){
+	
+	nameformcheck();
+	telformcheck();
+	
+	
+	var form = document.getElementById("registerAddForm");
+	var addrDetail = document.getElementById("addrDetail").value;
+	
+	if(unamevalidate == 0 || document.getElementById("inputName").value == ""){
+		alert("이름 형식을 확인해주세요")
+		
+	}else if(utelvalidate == 0){
+		alert("휴대폰 형식을 확인해주세요")
+		
+	}else if(addrDetail == ""){
+		alert("주소를 입력해주세요")
+		
+	}else{
+		form.submit();
+
+		
+	}	
+	
+}
+
+function registerModifyCheck(){
+	
+	nameformcheck();
+	telformcheck();
+	
+	
+	var form = document.getElementById("registerModifyForm");
+	var addrDetail = document.getElementById("addrDetail").value;
+	
+	if(unamevalidate == 0 || document.getElementById("inputName").value == ""){
+		alert("이름 형식을 확인해주세요")
+		
+	}else if(utelvalidate == 0){
+		alert("휴대폰 형식을 확인해주세요")
+		
+	}else if(addrDetail == ""){
+		alert("주소를 입력해주세요")
+		
+	}else{
+		form.submit();
+
+		
+	}	
+	
+}
 	
 	/*
 registervalidate

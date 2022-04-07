@@ -208,6 +208,7 @@
 			CQuotient.activities.push({
 				activityType : 'viewProduct',
 				parameters : cq_params
+				
 			});
 		}
 	};
@@ -401,7 +402,7 @@
 							  		${dto.reg_name }
 							  	</td>
 							  	<td class = "col-md-1">
-							  		<a href="">수정</a>
+							  		<a href="registerDelete.do?add_id=${dto.add_id}" >  삭제 </a>
 							  	</td>
 							  </tr>
 							  <tr>
@@ -412,7 +413,7 @@
 							  		${dto.add_address }
 							  	</td>
 							  	<td class = "col-md-1">
-							  		<a href="">  삭제 </a>
+							  		
 							  	</td>
 							  </tr>
 							  <tr>
@@ -429,6 +430,14 @@
 							  	</td>
 							  	<td>
 							  		${dto.reg_tel }
+							  	</td>
+							  	<td class = "col-md-1">
+									<c:if test="${dto.reg_defaultaddress eq 1}">
+								  		<a >  기본주소지 </a>
+									</c:if>
+									<c:if test="${dto.reg_defaultaddress eq 0}">
+								  		<a href="registerSetDefault.do?add_id=${dto.add_id }">  기본주소지로 설정 </a>
+									</c:if>
 							  	</td>
 							  </tr>
 							</table>

@@ -356,18 +356,104 @@ public class UserDao {
 		}
 	}
 	
-	
-	public ArrayList<RegisterJoinDto> searchRegisterForUser(String uid) {
-
+	public void registerSetNoDefault(String uid) {
+		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-		ArrayList<RegisterJoinDto> dtos = new ArrayList<RegisterJoinDto>();
-		RegisterJoinDto dto = new RegisterJoinDto();
 		
 		try {
 			connection = dataSource.getConnection();
-			String query ="SELECT reg_name, reg_tel, add_address  , reg_specificaddress,reg_defaultaddress FROM register as r inner join address as a on r.add_id = a.add_id where u_id = ?";
+			String query = "update register set reg_defaultaddress = 0 where u_id = ? and reg_defaultaddress = 1 ";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1,uid);
+			
+			preparedStatement.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void registerSetDefault(String uid, int addid) {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "update register set reg_defaultaddress = 1 where u_id = ? and add_id = ? ";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1,uid);
+			preparedStatement.setInt(2,addid);
+			
+			preparedStatement.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	
+	public void registerDelete(String uid,int addid) {
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		
+		try {
+			connection = dataSource.getConnection();
+			String query ="delete from register where u_id = ? and add_id = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, uid);
+			preparedStatement.setInt(2, addid);
+			
+			preparedStatement.executeUpdate();
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+	}
+	
+	public RegisterJoinDto searchRegister(String uid,String addid) {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		RegisterJoinDto dto = new RegisterJoinDto();
+		
+		
+		try {
+			connection = dataSource.getConnection();
+			String query ="SELECT u_id, r.add_id , reg_name, reg_tel, add_address  , reg_specificaddress,reg_defaultaddress FROM register as r inner join address as a on r.add_id = a.add_id where u_id = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, uid);
 			resultSet =preparedStatement.executeQuery(); //
@@ -375,11 +461,59 @@ public class UserDao {
 			while(resultSet.next()) {
 				dto.setAdd_address(resultSet.getString("add_address"));
 				dto.setReg_defaultaddress(resultSet.getInt("reg_defaultaddress"));
-				dto.setReg_specificaddress(resultSet.getString("reg_specificaddress"));
-				dto.setReg_name(resultSet.getString("reg_name"));
+				dto.setReg_specificaddress(resultSet.getString("reg_specificaddress")); 
+				dto.setReg_name(resultSet.getString("reg_name")); 
 				dto.setReg_tel(resultSet.getString("reg_tel"));
+				dto.setU_id(resultSet.getString("reg_tel"));
+				dto.setAdd_id(resultSet.getInt("add_id"));
+			}			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+		return dto;
+	}
+	
+	public ArrayList<RegisterJoinDto> searchRegisterForUser(String uid) {
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		ArrayList<RegisterJoinDto> dtos = new ArrayList<RegisterJoinDto>();
+		
+		
+		try {
+			connection = dataSource.getConnection();
+			String query ="SELECT u_id, r.add_id , reg_name, reg_tel, add_address  , reg_specificaddress,reg_defaultaddress FROM register as r inner join address as a on r.add_id = a.add_id where u_id = ? order by reg_defaultaddress desc";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, uid);
+			resultSet =preparedStatement.executeQuery(); //
+			
+			while(resultSet.next()) {
+				String add_address = resultSet.getString("add_address");
+				int reg_defaultaddress = resultSet.getInt("reg_defaultaddress");
+				String reg_specificaddress = resultSet.getString("reg_specificaddress");
+				String reg_name = resultSet.getString("reg_name");
+				String reg_tel = resultSet.getString("reg_tel");
+				String u_id = resultSet.getString("u_id");
+				int add_id = resultSet.getInt("add_id");
+				RegisterJoinDto dto = new RegisterJoinDto(reg_specificaddress,reg_defaultaddress,reg_name,reg_tel,add_id,u_id, add_address);
 				
 				dtos.add(dto);
+				
 			}			
 			
 		}catch (Exception e) {
@@ -396,9 +530,12 @@ public class UserDao {
 			}
 		}
 		
+
+		
 		return dtos;
 		
 	}
+	
 	/*
 	public AddressDto (int addid) {
 		//UserDto(int u_id, String u_pwd, String u_name, String u_tel, String u_email, String u_grade, String u_gender,

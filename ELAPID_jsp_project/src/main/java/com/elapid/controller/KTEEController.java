@@ -21,6 +21,11 @@ import com.elapid.command.EProfileDeleteCommand;
 import com.elapid.command.EProfileModifyCommand;
 import com.elapid.command.ERegisterAddCommand;
 import com.elapid.command.ERegisterCheckCommand;
+import com.elapid.command.ERegisterDeleteCommand;
+import com.elapid.command.ERegisterModifyCommand;
+import com.elapid.command.ERegisterModifyFormCommand;
+import com.elapid.command.ERegisterSetDefault;
+import com.mysql.cj.protocol.a.MergingColumnDefinitionFactory;
 
 /**
  * Servlet implementation class EController
@@ -120,10 +125,24 @@ public class KTEEController extends HttpServlet {
 			viewPage = "addressBookView.jsp";
 			break;
 		case("/registerAddForm.do"):
-
 			viewPage = "registerAddForm.jsp";
 			break;
-	
+		case("/registerAdd.do"):
+			command = new ERegisterAddCommand();
+			command.execute(request, response);
+			viewPage = "addressBookView.do";
+			break;
+
+		case("/registerDelete.do"):
+			command = new ERegisterDeleteCommand(); 
+			command.execute(request, response);
+			viewPage = "addressBookView.do";
+			break;
+		case("/registerSetDefault.do"):
+			command = new ERegisterSetDefault(); 
+			command.execute(request, response);
+			viewPage = "addressBookView.do";
+			break;
 			
 			
 		case("/luggageList.do"):

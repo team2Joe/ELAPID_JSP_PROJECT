@@ -67,7 +67,7 @@
 				<h1>회원정보 입력</h1>
 			</div>
 			<div style="padding-left : 100px">
-			<form class="register" id="registerAddForm" action="registerAdd.do" method="post">
+			<form class="register" id="registerModifyForm" action="registerModify.do" method="post">
 
 
 				<div class="mb-3 row" style="padding-left: 33px;">
@@ -76,7 +76,7 @@
 					<div class="col-sm-3" style="padding-left: 32px;">
 						<input type="text" class="form-control" name="uname"
 							id="inputName" onkeyup="nameformcheck()"
-							value="${sessionScope.uname}">
+							value="${registerjoindto.reg_name}">
 					</div>
 					<div class="col-sm-6 " id="namecondition">한글 정자로 기입해주세요.</div>
 				</div>
@@ -86,7 +86,7 @@
 						휴대폰 : </label>
 					<div class="col-sm-3" style="padding-left: 32px;">
 						<input type="text" class="form-control" name="utel" id="inputTel"
-							onkeyup="telformcheck()" value="${sessionScope.utel}">
+							onkeyup="telformcheck()" value="${registerjoindto.reg_tel}">
 					</div>
 					<div class="col-sm-6 " id="telcondition">(ex 010-1234-1234)</div>
 				</div>
@@ -109,19 +109,19 @@
 									<td style="padding-right: 13px">도로명주소 전체</td>
 									<td style="padding-left: 35px; padding-bottom: 7px;"><input
 										type="text" style="width: 400px;" id="roadFullAddr"
-										name="roadFullAddr" readonly="readonly" /></td>
+										name="roadFullAddr" value = "" readonly="readonly" /></td>
 								</tr>
 								<tr>
 									<td>지번</td>
 									<td style="padding-left: 35px; padding-bottom: 7px;"><input
 										type="text" style="width: 400px;" id="jibunAddr"
-										name="jibunAddr" readonly="readonly" /></td>
+										name="jibunAddr" value = "${registerjoindto.add_address}" readonly="readonly" /></td>
 								</tr>
 								<tr>
 									<td style="padding-left: 25px; padding-right: 20px">고객입력
 										상세주소 :</td>
 									<td style="padding-left: 35px; padding-bottom: 7px;"><input
-										type="text" style="width: 400px;" id="addrDetail"
+										type="text" style="width: 400px;" id="addrDetail" value="${registerjoindto.reg_specificaddress}"
 										name="addrDetail" /></td>
 								</tr>
 							</table>
@@ -132,8 +132,10 @@
 					</div>
 				</div>
 				<div>
-				<button type="button"  class="btn btn-dark" onclick = "registerAddCheck()" >추가하기</button>
+				<button type="button"  class="btn btn-dark" onclick = "registerModifyCheck()" >추가하기</button>
 				</div>
+				
+				<input type="hidden" name="add_id" value="${registerjoindto.add_id}">
 			</form>
 			</div>
 		<div></div>
@@ -142,9 +144,6 @@
 </div>
 
 </div>
-
-
-
 
 
 
