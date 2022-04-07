@@ -525,6 +525,243 @@ public class ProductDao {
 		 return dtos;
 	}
 	
+	// 색상 별 필터 분류 하기
+	public ArrayList<ProductDto> colorFilterList(String[] sp_colorname){
+		ArrayList<ProductDto> dtos = new ArrayList<ProductDto>();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+	
+		String query = "select * from product where p_ctgmain = 'luggage' ";
+		
+		try {
+			conn = dataSource.getConnection();
+			
+			String[] queryValues = new String[sp_colorname.length];
+			
+			String querySum = "";
+			
+			for(int i = 0; i < sp_colorname.length; i++) {
+				
+				if(i == 0) {
+					queryValues[i] = " and p_colorname = '" + sp_colorname[i] + "'";
+				}else {
+					queryValues[i] = " or p_colorname = '" + sp_colorname[i] + "'";
+				}
+			
+				querySum += queryValues[i];
+			}
+				
+			System.out.println(query+querySum);
+			
+				stmt = conn.prepareStatement(query+querySum);
+
+			
+
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				// product 정보 가져오기 
+				int p_id = rs.getInt("p_id");
+				String p_name = rs.getString("p_name");
+				String p_stock = rs.getString("p_stock");
+				int p_price = rs.getInt("p_price");
+				int p_discountprice = rs.getInt("p_discountprice");
+				int p_size = rs.getInt("p_size");
+				String p_mainf = rs.getString("p_mainf");
+				String p_colorimg = rs.getString("p_colorimg");
+				String p_colorname = rs.getString("p_colorname");
+				Timestamp p_date = rs.getTimestamp("p_date");
+				String p_desc = rs.getString("p_desc");
+				String p_clickcount = rs.getString("p_clickcount");
+				String p_imgpath = rs.getString("p_imgpath");
+				String p_ctgmain = rs.getString("p_ctgmain");
+				String p_ctgmiddle = rs.getString("p_ctgmiddle");
+				
+				ProductDto dto = new ProductDto(p_id, p_name, p_stock, p_price, p_discountprice,
+						p_size, p_mainf, p_colorimg, p_colorname, p_date, p_desc, 
+						p_clickcount, p_imgpath, p_ctgmain, p_ctgmiddle);
+				
+				dtos.add(dto);
+			}
+
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+				
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return dtos;
+	}
+	
+	//사이즈 별 필터 분류 하기
+	public ArrayList<ProductDto> sizeFilterList(String[] sp_ctgmiddle){
+		ArrayList<ProductDto> dtos = new ArrayList<ProductDto>();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+	
+		String query = "select * from product where p_ctgmain = 'luggage'";
+		
+		try {
+			conn = dataSource.getConnection();
+			
+			String[] queryValues = new String[sp_ctgmiddle.length];
+			
+			String querySum = "";
+			
+			for(int i = 0; i < sp_ctgmiddle.length; i++) {
+				
+				if(i == 0) {
+					queryValues[i] = " and p_ctgmiddle = '" + sp_ctgmiddle[i] + "'";
+				}else {
+					queryValues[i] = " or p_ctgmiddle = '" + sp_ctgmiddle[i] + "'";
+				}
+			
+				querySum += queryValues[i];
+			}
+				
+			System.out.println(query+querySum);
+			stmt = conn.prepareStatement(query+querySum);
+
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				// product 정보 가져오기 
+				int p_id = rs.getInt("p_id");
+				String p_name = rs.getString("p_name");
+				String p_stock = rs.getString("p_stock");
+				int p_price = rs.getInt("p_price");
+				int p_discountprice = rs.getInt("p_discountprice");
+				int p_size = rs.getInt("p_size");
+				String p_mainf = rs.getString("p_mainf");
+				String p_colorimg = rs.getString("p_colorimg");
+				String p_colorname = rs.getString("p_colorname");
+				Timestamp p_date = rs.getTimestamp("p_date");
+				String p_desc = rs.getString("p_desc");
+				String p_clickcount = rs.getString("p_clickcount");
+				String p_imgpath = rs.getString("p_imgpath");
+				String p_ctgmain = rs.getString("p_ctgmain");
+				String p_ctgmiddle = rs.getString("p_ctgmiddle");
+				
+				ProductDto dto = new ProductDto(p_id, p_name, p_stock, p_price, p_discountprice,
+						p_size, p_mainf, p_colorimg, p_colorname, p_date, p_desc, 
+						p_clickcount, p_imgpath, p_ctgmain, p_ctgmiddle);
+				
+				dtos.add(dto);
+			}
+
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+				
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return dtos;
+	}
+	
+	//기능별 필터 분류 하기
+	public ArrayList<ProductDto> functionFilterList(String[] sp_mainf){
+		ArrayList<ProductDto> dtos = new ArrayList<ProductDto>();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+	
+		String query = "select * from product where p_ctgmain = 'luggage'";
+		
+		try {
+			conn = dataSource.getConnection();
+			
+			String[] queryValues = new String[sp_mainf.length];
+			
+			String querySum = "";
+			
+			for(int i = 0; i < sp_mainf.length; i++) {
+				
+				if(i == 0) {
+					queryValues[i] = " and p_mainf = '" + sp_mainf[i] + "'";
+				}else {
+					queryValues[i] = " or p_mainf = '" + sp_mainf[i] + "'";
+				}
+			
+				querySum += queryValues[i];
+			}
+				
+			System.out.println(query+querySum);
+			stmt = conn.prepareStatement(query+querySum);
+
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				// product 정보 가져오기 
+				int p_id = rs.getInt("p_id");
+				String p_name = rs.getString("p_name");
+				String p_stock = rs.getString("p_stock");
+				int p_price = rs.getInt("p_price");
+				int p_discountprice = rs.getInt("p_discountprice");
+				int p_size = rs.getInt("p_size");
+				String p_mainf = rs.getString("p_mainf");
+				String p_colorimg = rs.getString("p_colorimg");
+				String p_colorname = rs.getString("p_colorname");
+				Timestamp p_date = rs.getTimestamp("p_date");
+				String p_desc = rs.getString("p_desc");
+				String p_clickcount = rs.getString("p_clickcount");
+				String p_imgpath = rs.getString("p_imgpath");
+				String p_ctgmain = rs.getString("p_ctgmain");
+				String p_ctgmiddle = rs.getString("p_ctgmiddle");
+				
+				ProductDto dto = new ProductDto(p_id, p_name, p_stock, p_price, p_discountprice,
+						p_size, p_mainf, p_colorimg, p_colorname, p_date, p_desc, 
+						p_clickcount, p_imgpath, p_ctgmain, p_ctgmiddle);
+				
+				dtos.add(dto);
+			}
+
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+				
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return dtos;
+	}
+	
 }
 
 

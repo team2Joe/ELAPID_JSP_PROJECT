@@ -18,7 +18,47 @@
 				</div>
 			</div>
 			
+			<div>
+				<h4>필터</h4>
+				<h5>크기</h5>
+				<form action="sizeFilterList.do">
+					기내용/소형 <input type="checkbox" name="p_ctgmiddle" value="small">
+					중형수하물 <input type="checkbox" name="p_ctgmiddle" value="middle">
+					대형수하물 <input type="checkbox" name="p_ctgmiddle" value="large">
+					<input type="submit" value="확인">
+				</form>
+				
+				<h5>색상</h5>
+				<form action="colorFilterList.do">
+					
+					검정 <input type="checkbox" name="p_colorname" value="black">
+					회색 <input type="checkbox" name="p_colorname" value="grey">
+					빨강 <input type="checkbox" name="p_colorname" value="red">
+					흰색 <input type="checkbox" name="p_colorname" value="white">
+					<input type="submit" value="확인">
+				</form>
+				
+				<h5>주요기능</h5>
+				<form action="functionFilterList.do">
+					서스펜션 휠 <input type="checkbox" name="p_mainf" value="서스펜션휠">
+					자동제어장치 <input type="checkbox" name="p_mainf" value="자동제어장치">
+					지문인식 <input type="checkbox" name="p_mainf" value="지문인식">
+					RFID <input type="checkbox" name="p_mainf" value="rfid">
+					<input type="submit" value="확인">
+				</form>
+				
+				<form action="">
+					<label for="customRange3" class="form-label">가격</label>
+					<input type="range" class="form-range" min="68000" max="890000" step="1000" id="customRange3">
+				</form>
+				
+			</div>
+			
 			<div class="row row-cols-1 row-cols-md-3 g-4">
+				
+					
+					
+
 				
  <%
  	ArrayList<ProductDto> list = (ArrayList<ProductDto>) request.getAttribute("list");
@@ -48,17 +88,7 @@
 				      </a>
 				        <h6 class="card-price"><%=list.get(i).getP_discountprice() %> won</h6>
 				        <div class="attribute">	
-							<div class="owl-carousel size-selection">
-								
-								<a class="attr-selector" href="#" data-attr-type="productSize" data-attr-value="55 cm">
-								55 cm
-								</a>
-						
-								<a class="attr-selector" href="#" data-attr-type="productSize" data-attr-value="69 cm">
-								69 cm
-								</a>
-								
-							</div>
+							
 						</div>
 				      </div>
 				      <div class="card-footer">
@@ -86,5 +116,12 @@
 						 }
 		 }
 	 %>
-			</div>
+				</div>
+			
 		<%@ include file="/layout/footer.jsp"%>	
+		
+		
+		
+		
+		
+		

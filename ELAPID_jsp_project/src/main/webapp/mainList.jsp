@@ -35,17 +35,7 @@
 				      </a>
 				        <h6 class="card-price"><%=list.get(i).getP_discountprice() %> won</h6>
 				        <div class="attribute">	
-							<div class="owl-carousel size-selection">
-								
-								<a class="attr-selector" href="#" data-attr-type="productSize" data-attr-value="55 cm">
-								55 cm
-								</a>
-						
-								<a class="attr-selector" href="#" data-attr-type="productSize" data-attr-value="69 cm">
-								69 cm
-								</a>
-								
-							</div>
+							
 						</div>
 				      </div>
 				      <div class="card-footer">

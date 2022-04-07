@@ -11,14 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.elapid.command.EBackpackListCommand;
+import com.elapid.command.EColorFilterListCommand;
 import com.elapid.command.ECommand;
 import com.elapid.command.EDetailViewCommand;
+import com.elapid.command.EFunctionFilterListCommand;
 import com.elapid.command.EFunctionListCommand;
 import com.elapid.command.EImageViewCommand;
 import com.elapid.command.ELuggageListCommand;
 import com.elapid.command.EMiddleFunctionListCommand;
 import com.elapid.command.EMiddleViewCommand;
 import com.elapid.command.ESearchCommand;
+import com.elapid.command.ESizeFilterListCommand;
 
 
 @WebServlet("*.do")
@@ -116,9 +119,26 @@ public class EController_JJH extends HttpServlet {
 			command = new ESearchCommand();
 			command.execute(request, response);
 			viewPage = "mainList.jsp";
-		default:
 			break;
-		
+			
+			// 색깔 필터
+		case("/colorFilterList.do"):
+			command = new EColorFilterListCommand();
+			command.execute(request, response);
+			viewPage = "luggageList.jsp";
+			break;
+			// 캐리어사이즈별 필터
+		case("/sizeFilterList.do"):
+			command = new ESizeFilterListCommand();
+			command.execute(request, response);
+			viewPage = "luggageList.jsp";
+			break;
+			
+		case("/functionFilterList.do"):
+			command = new EFunctionFilterListCommand();
+			command.execute(request, response);
+			viewPage = "luggageList.jsp";
+			break;
 		}
 		
 		

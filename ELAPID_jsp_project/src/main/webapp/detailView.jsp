@@ -14,7 +14,7 @@
 		<table>
 			<tr align="center">
 				<%--상품 필터 col --%>
-				<td>
+				<td colspan="2">
 					<br>
 					<img src="${detailView.p_imgpath }">
 					<br>
@@ -47,6 +47,7 @@
 					</c:choose >
 							
 					<br>
+					<br>
 					<c:choose>
 				      		<c:when test="">
 				      			<form action="userCartView.do">
@@ -64,11 +65,20 @@
 						<button type="button" class="btn btn-dark">바로구매</button>
 					</form>
 				</td>
+				
+			</tr>
+			<tr>
+				<td>
+				</td>
+				<td>
+					<textarea rows="50" cols="50" readonly="readonly">${detailView.p_desc }</textarea> 
+				</td>
 			</tr>
 		</table>
 		<br>
 		댓글-답글
 		<br>
+
 		
 		</div>
 		<h3>1:1문의</h3>
