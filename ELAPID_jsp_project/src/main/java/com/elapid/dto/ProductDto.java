@@ -18,7 +18,6 @@ public class ProductDto {
 	private String p_clickcount;
 
 	
-	
 	// 상품 메인 사진 컬럼필드 추가!!
 	
 	public ProductDto() {
@@ -28,8 +27,8 @@ public class ProductDto {
 
 
 	public ProductDto(int p_id, String p_name, String p_stock, int p_price, int p_discountprice, int p_size,
-			String p_mainf, String p_colorimg, String p_colorname, Timestamp p_date, String p_desc, String p_clickcount,
-			String p_imgpath, String p_ctgmain, String p_ctgmiddle) {
+			String p_mainf, String p_colorimg, String p_colorname, Timestamp p_date, String p_desc, String p_clickcount
+			) {
 
 		super();
 		this.p_id = p_id;
@@ -46,6 +45,7 @@ public class ProductDto {
 		this.p_clickcount = p_clickcount;
 
 	}
+
 
 
 	public int getP_id() {
@@ -143,6 +143,5 @@ public class ProductDto {
 	public void setP_clickcount(String p_clickcount) {
 		this.p_clickcount = p_clickcount;
 	}
-
 	
 }

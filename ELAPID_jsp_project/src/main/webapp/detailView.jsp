@@ -53,7 +53,6 @@
 						
 				<%
 						if(detailView.get(i).getCtg_main().equals("luggage")){
-							
 				%>		
 								size  
 									<select name="ctg_middle">
@@ -78,6 +77,7 @@
 						<c:choose>
 				      		<c:when test="${sessionScope.u_id eq '' } %>">
 				      			<form action="nonUserCartView.do?p_id=<%=detailView.get(i).getP_id() %>">
+
 									<button type="button" class="btn btn-light">장바구니 담기</button>
 								</form>
 				      		</c:when>

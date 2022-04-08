@@ -11,6 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.elapid.command.EAddressBookViewCommand;
+
+import com.elapid.command.ENonUserCartViewCommand;
+import com.elapid.command.ESearchCommand;
+import com.elapid.command.ESizeFilterListCommand;
+import com.elapid.command.EUserCartViewCommand;
+import com.elapid.command.AddCartCommand;
+
 import com.elapid.command.EBackpackListCommand;
 import com.elapid.command.EColorFilterListCommand;
 import com.elapid.command.ECommand;
@@ -24,6 +31,7 @@ import com.elapid.command.ELuggageFilterListCommand;
 import com.elapid.command.ELuggageListCommand;
 import com.elapid.command.EMiddleFunctionListCommand;
 import com.elapid.command.EMiddleViewCommand;
+
 import com.elapid.command.EMyPageCommand;
 import com.elapid.command.EProfileDeleteCommand;
 import com.elapid.command.EProfileModifyCommand;
@@ -36,32 +44,33 @@ import com.elapid.command.ESizeFilterListCommand;
 import com.elapid.command.EUserOrderFormCommand;
 
 
-@WebServlet("*.do")
-public class EController_JJH extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import com.elapid.command.UserCartDetailAddCommand;
 
-    public EController_JJH() {
+
+/**
+ * Servlet implementation class EController
+ */
+@WebServlet("*.do")
+public class EController_Uyoung extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+     
+	
+    public EController_Uyoung() {
         super();
     }
-
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		actionDo(request, response);
 		System.out.println("doGet");
+		actiondo(request,response);
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		actionDo(request, response);	
 		System.out.println("doPost");
+		actiondo(request,response);
 	}
-
-	public void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
+	protected void actiondo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		
 		HttpSession session = request.getSession();
 		
 		ECommand command = null;
@@ -75,7 +84,6 @@ public class EController_JJH extends HttpServlet {
 		System.out.println(com);
 		
 		switch(com) {
-		
 		case("/main.do"):
 			viewPage = "index.jsp";
 			break;
@@ -237,13 +245,49 @@ public class EController_JJH extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "userOrderPage.jsp";
 			break;
+		case("/addCart.do"):
+			command = new AddCartCommand();
+		command.execute(request, response);
+		viewPage = "userCartView.jsp";
+		break;
+		
 			
 		}
 		
 		
+			
+//			
+//		//nonUser가 Cart(장바구니)로 이동
+//		//장바구니에 아이템들이 잘들어가 있어야 하는데 이건 아직 확인 못함...
+//		case("/nonUserCartView.do"):
+//			command = new ENonUserCartViewCommand();
+//			command.execute(request, response);
+//			viewPage = "nonUserCartView.jsp";
+//			break;
+//		
+//		//User가 u_id값을 들고다니면서 p_id가 달린 장바구니담기 값을 누르면 보여주는 장바구니 페이지.?
+//		//p_id 값이 장바구니에 잘 보관되어야 하는데 이게 장바구니가 잘 가지고 있어줄지 걱정..
+			
+//		case("/userCartView.do"):
+//			command = new EUserCartViewCommand();
+//			command.execute(request, response);
+//			viewPage = "userCartView.jsp";
+//			break;
+			
+		
+		
+		
+		
+		
+		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
+
+		}
 		
 	}
 	
-}
+	
+
+

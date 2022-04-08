@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@page import="com.elapid.dto.RegisterJoinDto"%>
 <%@page import="com.elapid.dto.ProductListDto"%>
 <%@page import="java.util.ArrayList"%>
@@ -7,11 +8,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <%@ include file="/layout/header.jsp"%>
 <meta charset="UTF-8">
 <title>UserOrderPage</title>
 </head>
 
+<<<<<<< HEAD
 
 </head>
 
@@ -195,4 +198,5 @@
 
 </body>
 <%@ include file="/layout/footer.jsp"%>
+
 </html>
