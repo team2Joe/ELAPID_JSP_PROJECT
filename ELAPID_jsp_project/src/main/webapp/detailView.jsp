@@ -88,7 +88,7 @@
 				      		</c:otherwise>
 				      	</c:choose>
 				      	<br>
-						<form action="orderForm.do">
+						<form action="userOrderForm.do?p_id=<%=detailView.get(i).getP_id() %>">
 							<button type="button" class="btn btn-dark">바로구매</button>
 						</form>
 					</td>

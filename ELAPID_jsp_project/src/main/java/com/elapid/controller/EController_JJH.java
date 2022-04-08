@@ -20,6 +20,7 @@ import com.elapid.command.EFunctionListCommand;
 import com.elapid.command.EIdCheckCommand;
 import com.elapid.command.ELoginCheckCommand;
 import com.elapid.command.ELogoutCommand;
+import com.elapid.command.ELuggageFilterListCommand;
 import com.elapid.command.ELuggageListCommand;
 import com.elapid.command.EMiddleFunctionListCommand;
 import com.elapid.command.EMiddleViewCommand;
@@ -150,6 +151,12 @@ public class EController_JJH extends HttpServlet {
 			viewPage = "luggageList.jsp";
 			break;
 			
+			// 캐리어 전용 필터
+		case("/luggageFilterList.do"):
+			command = new ELuggageFilterListCommand();
+			command.execute(request, response);
+			viewPage = "luggageList.jsp";
+			break;
 		case("/loginForm.do"):
 			viewPage = "loginForm.jsp";
 			break;

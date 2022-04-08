@@ -22,25 +22,18 @@
 			<div>
 				<h4>필터</h4>
 				<h5>크기</h5>
-				<form action="sizeFilterList.do">
+				<form action="luggageFilterList.do">
 					기내용/소형 <input type="checkbox" name="ctg_middle" value="small">
 					중형수하물 <input type="checkbox" name="ctg_middle" value="middle">
 					대형수하물 <input type="checkbox" name="ctg_middle" value="large">
-					<input type="submit" value="확인">
-				</form>
 				
 				<h5>색상</h5>
-				<form action="colorFilterList.do">
-					
 					검정 <input type="checkbox" name="ps_color" value="black">
 					회색 <input type="checkbox" name="ps_color" value="grey">
 					빨강 <input type="checkbox" name="ps_color" value="red">
 					흰색 <input type="checkbox" name="ps_color" value="white">
-					<input type="submit" value="확인">
-				</form>
 				
 				<h5>주요기능</h5>
-				<form action="functionFilterList.do">
 					서스펜션 휠 <input type="checkbox" name="p_mainf" value="서스펜션휠">
 					자동제어장치 <input type="checkbox" name="p_mainf" value="자동제어장치">
 					지문인식 <input type="checkbox" name="p_mainf" value="지문인식">
