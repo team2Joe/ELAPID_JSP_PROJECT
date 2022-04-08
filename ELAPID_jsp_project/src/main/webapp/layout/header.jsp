@@ -173,8 +173,15 @@ request.setCharacterEncoding("utf-8");
 	</nav>
 
     <div>
-    	
-   		<form class="d-flex" action="search.do">
+	  <form class="d-flex" action="search.do">
+	  	<select name="category">
+	  	
+	  		<option value="all">전체</option>
+	  		<option value="p.p_name">상품명</option>
+	  		<option value="p.p_size">사이즈</option>
+	  		<option value="p.p_mainf">주요기능</option>
+	  		<option value="s.ps_color">색상</option>
+	  	</select>
         <input class="form-control me-sm-2" type="text" placeholder="Search" name="search" size="10">
         <buttons class="btn btn-secondary" type="submit">Search</button>
       </form>

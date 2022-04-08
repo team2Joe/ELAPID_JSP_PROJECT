@@ -14,15 +14,12 @@ import com.elapid.command.EAddressBookViewCommand;
 
 import com.elapid.command.ENonUserCartViewCommand;
 import com.elapid.command.ESearchCommand;
-import com.elapid.command.ESizeFilterListCommand;
 import com.elapid.command.EUserCartViewCommand;
 import com.elapid.command.AddCartCommand;
 
 import com.elapid.command.EBackpackListCommand;
-import com.elapid.command.EColorFilterListCommand;
 import com.elapid.command.ECommand;
 import com.elapid.command.EDetailViewCommand;
-import com.elapid.command.EFunctionFilterListCommand;
 import com.elapid.command.EFunctionListCommand;
 import com.elapid.command.EIdCheckCommand;
 import com.elapid.command.ELoginCheckCommand;
@@ -42,7 +39,6 @@ import com.elapid.command.ERegisterCheckCommand;
 import com.elapid.command.ERegisterDeleteCommand;
 import com.elapid.command.ERegisterSetDefault;
 import com.elapid.command.ESearchCommand;
-import com.elapid.command.ESizeFilterListCommand;
 import com.elapid.command.EUserOrderFormCommand;
 
 
@@ -140,41 +136,23 @@ public class EController_Uyoung extends HttpServlet {
 			viewPage = "searchList.jsp";
 			break;
 			
-			// 색깔 필터
-		case("/colorFilterList.do"):
-			command = new EColorFilterListCommand();
-			command.execute(request, response);
-			viewPage = "luggageList.jsp";
-			break;
-			
-			// 캐리어사이즈별 필터
-		case("/sizeFilterList.do"):
-			command = new ESizeFilterListCommand();
-			command.execute(request, response);
-			viewPage = "luggageList.jsp";
-			break;
-			
-			// 제품 기능별 필터 
-		case("/functionFilterList.do"):
-			command = new EFunctionFilterListCommand();
-			command.execute(request, response);
-			viewPage = "luggageList.jsp";
-			break;
-			
 			// 캐리어 전용 필터
 		case("/luggageFilterList.do"):
 			command = new ELuggageFilterListCommand();
 			command.execute(request, response);
 			viewPage = "luggageList.jsp";
 			break;
+			
 		case("/loginForm.do"):
 			viewPage = "loginForm.jsp";
 			break;
+			
 		case("/loginCheck.do"):
 			command = new ELoginCheckCommand();
 			command.execute(request, response);
 			viewPage = (String)request.getAttribute("loginviewparam");
 			break;
+			
 		case("/logout.do"):
 			command = new ELogoutCommand();
 			command.execute(request, response);
@@ -185,11 +163,13 @@ public class EController_Uyoung extends HttpServlet {
 		case("/registerForm.do"):
 			viewPage = "registerForm.jsp";
 			break;
+			
 		case("/idCheck.do"):
 			command = new EIdCheckCommand();
 			command.execute(request, response);
 			viewPage = "registerForm.jsp";
 			break;
+			
 		case("/registerCheck.do"):
 			command = new ERegisterCheckCommand();
 			command.execute(request, response);			
@@ -201,16 +181,19 @@ public class EController_Uyoung extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "myPage.jsp";
 			break;
+			
 		case("/profileView.do"):
 			command = new EMyPageCommand();
 			command.execute(request, response);
 			viewPage = "profileView.jsp";
 			break;
+			
 		case("/profileModify.do"):
 			command = new EProfileModifyCommand();
 			command.execute(request, response);
 			viewPage = "profileView.do";
 			break;
+			
 		case("/profileDelete.do"):
 			command = new EProfileDeleteCommand();
 			command.execute(request, response);
@@ -222,9 +205,11 @@ public class EController_Uyoung extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "addressBookView.jsp";
 			break;
+			
 		case("/registerAddForm.do"):
 			viewPage = "registerAddForm.jsp";
 			break;
+			
 		case("/registerAdd.do"):
 			command = new ERegisterAddCommand();
 			command.execute(request, response);
@@ -236,6 +221,7 @@ public class EController_Uyoung extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "addressBookView.do";
 			break;
+			
 		case("/registerSetDefault.do"):
 			command = new ERegisterSetDefault(); 
 			command.execute(request, response);
@@ -247,6 +233,7 @@ public class EController_Uyoung extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "userOrderPage.jsp";
 			break;
+			
 		case("/addCart.do"):
 			command = new AddCartCommand();
 			command.execute(request, response);
@@ -258,6 +245,7 @@ public class EController_Uyoung extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "questionList.jsp";
 			break;
+			
 		case("/questionContentView.do"):
 			command = new EQuestionContentViewCommand();
 			command.execute(request, response);

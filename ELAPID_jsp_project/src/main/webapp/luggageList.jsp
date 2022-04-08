@@ -5,8 +5,13 @@
 <%@ include file="/layout/header.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-			<div class="category-banner">
+   <style>
+   .div1 {
+   padding : 0 0 0 100px;
+   }
+   </style> 
+			<div class="div1">
+			<div class="category-banner0">
 				<div class="image-group">
 					<div class="image-field">
 						<picture>
@@ -47,7 +52,7 @@
 				</form>
 				
 			</div>
-			
+			</div>
 			<div class="row row-cols-1 row-cols-md-3 g-4">
 				
 					

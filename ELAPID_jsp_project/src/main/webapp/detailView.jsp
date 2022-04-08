@@ -12,20 +12,19 @@
 	
 	// 해당 조건은 정해진 단일 상품만을 보여주는 단점이 존재함
 	// 해당 사이즈 혹은 색상에 맞는 상품이 상세페이지에도 이에 맞게 출력되야한다...
-	
 	ArrayList<ProductDetailDto> detailView = (ArrayList<ProductDetailDto>)request.getAttribute("detailView");
 	
 	
 	for (int i = 0; i < detailView.size(); i++ ){
 		boolean check = true;
 		for(int j = 0; j < i; j++ ){
-	 		if((detailView.get(i).getP_name().equals(detailView.get(j).getP_name()) &&  detailView.get(i).getP_size() != detailView.get(j).getP_size())
+	 		if((detailView.get(i).getP_name().equals(detailView.get(j).getP_name()) && detailView.get(i).getP_size() != detailView.get(j).getP_size())
 	 	 			|| (detailView.get(i).getP_name().equals(detailView.get(j).getP_name()) &&  detailView.get(i).getPs_color() != detailView.get(j).getPs_color())	){
 	 			check = false;
 	 			break;
 	 		}
-	 		
 	 	}
+		
 	 	if(check){
 %>		
 			<h2 align="center"><%=detailView.get(i).getP_id() %></h2> <br>
@@ -40,10 +39,7 @@
 				<tr align="center">
 					<%--상품 필터 col --%>
 					<td align="center">
-						<img src="<%=detailView.get(i).getImg_01()%>" width="500" height="700">
-						
-						
-						
+						<img src="<%=detailView.get(i).getImg_01() %>" width="500" height="700">
 						
 					</td>
 					<%-- 상품 상세내용 col --%>

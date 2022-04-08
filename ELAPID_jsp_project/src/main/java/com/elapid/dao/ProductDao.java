@@ -312,12 +312,20 @@ public class ProductDao {
 
 	// 상품 검색 페이지 출력
 
-	public ArrayList<ProductListDto> search(String search) {
+	public ArrayList<ProductListDto> search(String search, String category) {
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
+		
+		// 검색 카테고리에서 각각의 항목을 클릭시 해당 조건 검색해주는 조건 쿼리문
+		String categoryQuery = " where " + category +" like '%" + search + "%'";
+		
+		// 카테고리에서 전체항목 버튼 클릭시 출력할 조건 쿼리문
+		String allQuery = " where p.p_name like '%" + search + "%' or p.p_size like '%" + search + 
+				"%' or p.p_mainf like '%" + search + "%' or p.p_desc = '%" + search + "%' or c.ctg_main like '%" + search
+				+ "%' or c.ctg_middle like '%" + search + "%'";
 		
 		try {
 			conn = dataSource.getConnection();
@@ -334,9 +342,18 @@ public class ProductDao {
 					+ "join product_detail pd\n"
 					+ "on pd.p_id = p.p_id\n"
 					+ "join product_spec s\n"
-					+ "on s.ps_id = pd.ps_id where p.p_name like '%" + search + "%' or p.p_size like '%" + search + 
-					"%' or p.p_mainf like '%" + search + "%' or p.p_desc = '%" + search + "%' or c.ctg_main like '%" + search
-					+ "%' or c.ctg_middle like '%" + search + "%'";
+					+ "on s.ps_id = pd.ps_id";
+			
+					// 검색 카테고리가 전체 가 아닌경우
+					if(category == "all") {
+						query += allQuery;
+												
+						// 이외에는 전체 카테고리로 검색하는 쿼리문 출력
+					}else {
+						query += categoryQuery;
+					}
+					
+					
 
 			stmt = conn.prepareStatement(query);
 			
@@ -641,313 +658,7 @@ public class ProductDao {
 		 return dtos;
 	}
 	
-	// 색상 별 필터 분류 하기
-	public ArrayList<ProductListDto> colorFilterList(String[] sps_color){
-		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
-		
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-	
-		String query = "select *\n"
-				+ "from product_image i \n"
-				+ "\n"
-				+ "join image_detail id\n"
-				+ "on i.img_id = id.img_id\n"
-				+ "\n"
-				+ "join product p\n"
-				+ "on p.p_id = id.p_id\n"
-				+ "\n"
-				+ "join category_detail cd\n"
-				+ "on p.p_id = cd.p_id\n"
-				+ "\n"
-				+ "join category c\n"
-				+ "on c.ctg_id = cd.ctg_id\n"
-				+ "\n"
-				+ "join product_detail pd\n"
-				+ "on pd.p_id = p.p_id\n"
-				+ "\n"
-				+ "join product_spec s\n"
-				+ "on s.ps_id = pd.ps_id "
-				+ "where c.ctg_main = 'luggage'";
-		
-		try {
-			conn = dataSource.getConnection();
-			
-			String[] queryValues = new String[sps_color.length];
-			
-			String querySum = "";
-			
-			for(int i = 0; i < sps_color.length; i++) {
-				
-				if(i == 0) {
-					queryValues[i] = " and s.ps_color = '" + sps_color[i] + "'";
-				}else {
-					queryValues[i] = " or s.ps_color = '" + sps_color[i] + "'";
-				}
-			
-				querySum += queryValues[i];
-			}
-				
-			System.out.println(query+querySum);
-			
-				stmt = conn.prepareStatement(query+querySum);
-
-			
-
-			rs = stmt.executeQuery();
-			
-			while(rs.next()) {
-				// product 정보 가져오기 
-				int p_id = rs.getInt("p_id");
-				String p_name = rs.getString("p_name");
-				int p_stock = rs.getInt("p_stock");
-				int price = rs.getInt("p_price");
-				int discountPrice = rs.getInt("p_discountPrice");
-				int p_size = rs.getInt("p_size");
-				String p_mainf = rs.getString("p_mainf");
-				String p_colorimg = rs.getString("p_colorimg");
-				String p_colorname = rs.getString("p_colorname");
-				Timestamp p_date = rs.getTimestamp("p_date");
-				String p_desc = rs.getString("p_desc");
-				String p_clickcount = rs.getString("p_clickcount");
-				String ctg_id = rs.getString("ctg_id");
-				String ctg_main = rs.getString("ctg_main");
-				String ctg_middle = rs.getString("ctg_middle");
-				String ctg_sub = rs.getString("ctg_sub");
-				String img_thum = rs.getString("img_thum");
-				String ps_color = rs.getString("ps_color");
-				
-				ProductListDto dto = new ProductListDto(p_id, p_name, p_stock, price, discountPrice,
-						p_size, p_mainf, p_colorimg, p_colorname, p_date, p_desc, p_clickcount,
-						ctg_id, ctg_main, ctg_middle, ctg_sub, img_thum, ps_color);
-				
-				dtos.add(dto);
-			}
-
-		}catch(Exception e) {
-			e.printStackTrace();
-			
-		}finally {
-			
-			try {
-				if(rs != null) rs.close();
-				if(stmt != null) stmt.close();
-				if(conn != null) conn.close();
-				
-				
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		
-		return dtos;
-	}
-	
-	//사이즈 별 필터 분류 하기
-	public ArrayList<ProductListDto> sizeFilterList(String[] sctg_middle){
-		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
-		
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-	
-		String query = "select *\n"
-				+ "from product_image i \n"
-				+ "\n"
-				+ "join image_detail id\n"
-				+ "on i.img_id = id.img_id\n"
-				+ "\n"
-				+ "join product p\n"
-				+ "on p.p_id = id.p_id\n"
-				+ "\n"
-				+ "join category_detail cd\n"
-				+ "on p.p_id = cd.p_id\n"
-				+ "\n"
-				+ "join category c\n"
-				+ "on c.ctg_id = cd.ctg_id\n"
-				+ "\n"
-				+ "join product_detail pd\n"
-				+ "on pd.p_id = p.p_id\n"
-				+ "\n"
-				+ "join product_spec s\n"
-				+ "on s.ps_id = pd.ps_id where c.ctg_main = 'luggage'";
-
-		
-		try {
-			conn = dataSource.getConnection();
-			
-			String[] queryValues = new String[sctg_middle.length];
-			
-			String querySum = "";
-			
-			for(int i = 0; i < sctg_middle.length; i++) {
-				
-				if(i == 0) {
-
-
-					queryValues[i] = " and c.ctg_middle = '" + sctg_middle[i] + "'";
-				}else {
-					queryValues[i] = " or c.ctg_middle = '" + sctg_middle[i] + "'";
-
-				}
-			
-				querySum += queryValues[i];
-			}
-				
-			System.out.println(query+querySum);
-			stmt = conn.prepareStatement(query+querySum);
-
-			rs = stmt.executeQuery();
-			
-			while(rs.next()) {
-				// product 정보 가져오기 
-				int p_id = rs.getInt("p_id");
-				String p_name = rs.getString("p_name");
-				int p_stock = rs.getInt("p_stock");
-				int price = rs.getInt("p_price");
-				int discountPrice = rs.getInt("p_discountPrice");
-				int p_size = rs.getInt("p_size");
-				String p_mainf = rs.getString("p_mainf");
-				String p_colorimg = rs.getString("p_colorimg");
-				String p_colorname = rs.getString("p_colorname");
-				Timestamp p_date = rs.getTimestamp("p_date");
-				String p_desc = rs.getString("p_desc");
-				String p_clickcount = rs.getString("p_clickcount");
-				String ctg_id = rs.getString("ctg_id");
-				String ctg_main = rs.getString("ctg_main");
-				String ctg_middle = rs.getString("ctg_middle");
-				String ctg_sub = rs.getString("ctg_sub");
-				String img_thum = rs.getString("img_thum");
-				String ps_color = rs.getString("ps_color");
-				
-				ProductListDto dto = new ProductListDto(p_id, p_name, p_stock, price, discountPrice,
-						p_size, p_mainf, p_colorimg, p_colorname, p_date, p_desc, p_clickcount,
-						ctg_id, ctg_main, ctg_middle, ctg_sub, img_thum, ps_color);
-				
-				dtos.add(dto);
-			}
-
-		}catch(Exception e) {
-			e.printStackTrace();
-			
-		}finally {
-			
-			try {
-				if(rs != null) rs.close();
-				if(stmt != null) stmt.close();
-				if(conn != null) conn.close();
-				
-				
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		
-		return dtos;
-	}
-
-	//기능별 필터 분류 하기
-	public ArrayList<ProductListDto> functionFilterList(String[] sp_mainf){
-		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
-		
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-	
-		String query = "select *\n"
-				+ "from product_image i \n"
-				+ "\n"
-				+ "join image_detail id\n"
-				+ "on i.img_id = id.img_id\n"
-				+ "\n"
-				+ "join product p\n"
-				+ "on p.p_id = id.p_id\n"
-				+ "\n"
-				+ "join category_detail cd\n"
-				+ "on p.p_id = cd.p_id\n"
-				+ "\n"
-				+ "join category c\n"
-				+ "on c.ctg_id = cd.ctg_id\n"
-				+ "\n"
-				+ "join product_detail pd\n"
-				+ "on pd.p_id = p.p_id\n"
-				+ "\n"
-				+ "join product_spec s\n"
-				+ "on s.ps_id = pd.ps_id where c.ctg_main = 'luggage'";
-
-		try {
-			conn = dataSource.getConnection();
-			
-			String[] queryValues = new String[sp_mainf.length];
-			
-			String querySum = "";
-			
-			for(int i = 0; i < sp_mainf.length; i++) {
-				
-				if(i == 0) {
-					queryValues[i] = " and p_mainf = '" + sp_mainf[i] + "'";
-				}else {
-					queryValues[i] = " or p_mainf = '" + sp_mainf[i] + "'";
-				}
-			
-				querySum += queryValues[i];
-			}
-				
-			System.out.println(query+querySum);
-			stmt = conn.prepareStatement(query+querySum);
-
-			rs = stmt.executeQuery();
-			while(rs.next()) {
-				// product 정보 가져오기 
-				int p_id = rs.getInt("p_id");
-				String p_name = rs.getString("p_name");
-				int p_stock = rs.getInt("p_stock");
-				int price = rs.getInt("p_price");
-				int discountPrice = rs.getInt("p_discountPrice");
-				int p_size = rs.getInt("p_size");
-				String p_mainf = rs.getString("p_mainf");
-				String p_colorimg = rs.getString("p_colorimg");
-				String p_colorname = rs.getString("p_colorname");
-				Timestamp p_date = rs.getTimestamp("p_date");
-				String p_desc = rs.getString("p_desc");
-				String p_clickcount = rs.getString("p_clickcount");
-				String ctg_id = rs.getString("ctg_id");
-				String ctg_main = rs.getString("ctg_main");
-				String ctg_middle = rs.getString("ctg_middle");
-				String ctg_sub = rs.getString("ctg_sub");
-				String img_thum = rs.getString("img_thum");
-				String ps_color = rs.getString("ps_color");
-				
-				ProductListDto dto = new ProductListDto(p_id, p_name, p_stock, price, discountPrice,
-						p_size, p_mainf, p_colorimg, p_colorname, p_date, p_desc, p_clickcount,
-						ctg_id, ctg_main, ctg_middle, ctg_sub, img_thum, ps_color);
-				
-				dtos.add(dto);
-			}
-
-		}catch(Exception e) {
-			e.printStackTrace();
-			
-		}finally {
-			
-			try {
-				if(rs != null) rs.close();
-				if(stmt != null) stmt.close();
-				if(conn != null) conn.close();
-				
-				
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		
-		return dtos;
-	}
-
+	// 캐리어 필터 리스트 메소드
 	public ArrayList<ProductListDto> luggageFilterList(String[] sctg_middle, String[] sps_color, String[] sp_mainf) {
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 

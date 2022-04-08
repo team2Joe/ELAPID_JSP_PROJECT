@@ -15,15 +15,14 @@ public class ESearchCommand implements ECommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		String search = request.getParameter("search");
-		
+		String category = request.getParameter("category");		
 		ProductDao dao = new ProductDao();
 		
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
-		dtos = dao.search(search);
+		dtos = dao.search(search, category);
 		
 		request.setAttribute("list", dtos);
-		
 	}
 
 }
