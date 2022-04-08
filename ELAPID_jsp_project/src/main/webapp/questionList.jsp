@@ -34,14 +34,14 @@
   </thead>
   <tbody>
   
-    <c:forEach items="${questionList }" var ="ProductQuestionDto">
+   <c:forEach items="${questionList }" var ="dtos">
     <tr>
-  	<td> ${ProductQuestionDto.pq_id}></td>
-		<td> ${ProductQuestionDto.qc_name }</td>
-		<td> ${ProductQuestionDto.pq_title }</td>
+  	<td> ${dtos.pq_id}></td>
+		<td> ${dtos.qc_name }</td>
+		<td> ${dtos.pq_title }</td>
 		<td></td>
     </tr>
-    </c:forEach>
+   </c:forEach>
     <tr>
     <td></td>
     <td></td>

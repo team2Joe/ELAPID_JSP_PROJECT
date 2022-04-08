@@ -22,7 +22,7 @@ public class EQuestionListCommand implements ECommand {
 		ArrayList<ProductQuestionDto> dtos = new ArrayList<ProductQuestionDto>();
 		QnaDao dao = new QnaDao();
 		
-		dtos = dao.questionList();
+		dtos = dao.questionList(u_id);
 		
 		request.setAttribute("QuestionList", dtos);
 	}

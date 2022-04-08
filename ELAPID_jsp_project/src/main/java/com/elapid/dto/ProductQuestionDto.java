@@ -4,7 +4,7 @@ public class ProductQuestionDto {
 
 	private String qc_name;
 	private String u_id;
-	private String pq_id;
+	private int pq_id;
 	private String pq_title;
 	private String pq_content;
 	
@@ -12,7 +12,7 @@ public class ProductQuestionDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProductQuestionDto(String qc_name, String u_id, String pq_id, String pq_title, String pq_content) {
+	public ProductQuestionDto(String qc_name, String u_id, int pq_id, String pq_title, String pq_content) {
 		super();
 		this.qc_name = qc_name;
 		this.u_id = u_id;
@@ -37,11 +37,11 @@ public class ProductQuestionDto {
 		this.u_id = u_id;
 	}
 
-	public String getPq_id() {
+	public int getPq_id() {
 		return pq_id;
 	}
 
-	public void setPq_id(String pq_id) {
+	public void setPq_id(int pq_id) {
 		this.pq_id = pq_id;
 	}
 
@@ -60,6 +60,7 @@ public class ProductQuestionDto {
 	public void setPq_content(String pq_content) {
 		this.pq_content = pq_content;
 	}
+
 	
 	
 }
