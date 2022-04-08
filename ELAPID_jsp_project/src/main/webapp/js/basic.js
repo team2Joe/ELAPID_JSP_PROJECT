@@ -12,9 +12,15 @@ function navbtnlinkluggage2() {
 
 	location.href = "luggageList.do";
 }
-function navbtnlinkbackpack() {
 
+function nnavbtnlinkbackpack() {
+	
 	location.href = "backpackList.do";
+}
+
+function navbtnlinkfunction() {
+	
+	location.href = "middleFunctionList.do";
 }
 
 function qnaregister() {

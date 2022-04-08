@@ -9,11 +9,9 @@ public class RegisterDto {
 	private String reg_name;
 	private String reg_tel;
 	
-	
 	public RegisterDto() {
 		// TODO Auto-generated constructor stub
 	}
-
 
 	public RegisterDto(int add_id, String u_id, String reg_specificaddress, int reg_defaultaddress, String reg_name,
 			String reg_tel) {
@@ -87,6 +85,4 @@ public class RegisterDto {
 	}
 
 
-
-	
 }

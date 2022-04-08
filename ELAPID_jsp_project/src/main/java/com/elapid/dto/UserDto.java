@@ -20,7 +20,6 @@ public class UserDto {
 	
 	
 	
-	
 	public UserDto() {
 		// TODO Auto-generated constructor stub
 	}
@@ -59,13 +58,9 @@ public class UserDto {
 	}
 
 
-
-
 	public String getU_pwd() {
 		return u_pwd;
 	}
-
-
 
 
 	public void setU_pwd(String u_pwd) {
@@ -73,33 +68,22 @@ public class UserDto {
 	}
 
 
-
-
 	public String getU_name() {
 		return u_name;
 	}
-
-
 
 
 	public void setU_name(String u_name) {
 		this.u_name = u_name;
 	}
 
-
-
-
 	public String getU_tel() {
 		return u_tel;
 	}
 
-
-
-
 	public void setU_tel(String u_tel) {
 		this.u_tel = u_tel;
 	}
-
 
 
 
@@ -162,8 +146,6 @@ public class UserDto {
 	public int getU_point() {
 		return u_point;
 	}
-
-
 
 
 	public void setU_point(int u_point) {
