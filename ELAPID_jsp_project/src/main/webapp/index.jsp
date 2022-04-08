@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -191,15 +192,4 @@ request.setCharacterEncoding("utf-8");
 <% 
 //%@ include file="/layout/footer.jsp"%	
 %>
-=======
-
-<%@ include file="/layout/header.jsp"%>
-
-  
-  
-  
-	
-	
-<%@ include file="/layout/footer.jsp"%>	
->>>>>>> 81601e412d6b3175f02abe3a7c70db70c4af6750
 	

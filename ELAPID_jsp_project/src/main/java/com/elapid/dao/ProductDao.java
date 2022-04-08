@@ -1,46 +1,38 @@
 package com.elapid.dao;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-<<<<<<< HEAD
-import com.elapid.dto.ProductDto;
-=======
+
 import com.elapid.dto.ProductDetailDto;
-import com.elapid.dto.ProductDto;
-import com.elapid.dto.ProductImageDetailDto;
-import com.elapid.dto.ProductImageDto;
->>>>>>> 81601e412d6b3175f02abe3a7c70db70c4af6750
 import com.elapid.dto.ProductListDto;
-import com.elapid.dto.ProductSpecDto;
 
 public class ProductDao {
-
 	DataSource dataSource = null;
-	
+
 	public ProductDao() {
+		// TODO Auto-generated constructor stub
+
 		
 		try {
 			
+			
 			Context context = new InitialContext();
 			
-			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/elapid");
+			dataSource = (DataSource)context.lookup("java:comp/env/jdbc/elapid");
 			
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+	
 	}
+
 	
 	// 대분류 상품 전체 리스트 출력
 	public ArrayList<ProductListDto> luggageList(){
