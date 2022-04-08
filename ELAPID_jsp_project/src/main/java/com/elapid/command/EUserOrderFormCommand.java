@@ -35,12 +35,13 @@ public class EUserOrderFormCommand implements ECommand {
 		p_ids.add(1);
 		p_ids.add(2);
 		
+		System.out.println(p_ids.get(1));
 		
 		OrderDao orderDao = new OrderDao();
 		ArrayList<ProductListDto> pListDtos = orderDao.productsInfo(p_ids);
 		
 		request.setAttribute("pListDtos", pListDtos);
-		request.setAttribute("shipDtos", shipDtos);
+		request.setAttribute("registerDtos", shipDtos);
 		request.setAttribute("userDto", userDto);
 		
 		

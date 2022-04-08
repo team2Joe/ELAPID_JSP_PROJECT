@@ -32,6 +32,7 @@ public class OrderDao {
 		}
 	}
 	
+	@SuppressWarnings("resource")
 	public ArrayList<ProductListDto> productsInfo(ArrayList<Integer> p_ids) {
 		
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
@@ -67,11 +68,11 @@ public class OrderDao {
 						+ "on s.ps_id = pd.ps_id\n"
 						+ "\n"
 						+ "where p.p_id = ? ";
-				
-				stmt.setInt(1, p_ids.get(0));
+				System.out.println(" **************" + p_ids.get(1));
 				stmt = conn.prepareStatement(query);
+				stmt.setInt(1, p_ids.get(i));
 				rs = stmt.executeQuery();
-				
+
 				while(rs.next()) {
 					// product 정보 가져오기 
 					int sp_id = rs.getInt("p_id");
