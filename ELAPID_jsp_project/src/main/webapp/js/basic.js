@@ -13,7 +13,7 @@ function navbtnlinkluggage2() {
 	location.href = "luggageList.do";
 }
 
-function nnavbtnlinkbackpack() {
+function navbtnlinkbackpack() {
 	
 	location.href = "backpackList.do";
 }

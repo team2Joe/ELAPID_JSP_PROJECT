@@ -32,10 +32,21 @@ public class EUserOrderFormCommand implements ECommand {
 		
 		ArrayList<Integer> p_ids = new ArrayList<Integer>();
 		
-		p_ids.add(1);
-		p_ids.add(2);
+		int p_id = -1; 
+		p_id = Integer.parseInt(request.getParameter("p_id"));
 		
-		System.out.println(p_ids.get(1));
+		if(p_id == -1) {
+			
+		}else {
+			
+			p_ids.add(p_id);
+			
+		}
+				
+//		p_ids.add(1);
+//		p_ids.add(2);
+//		
+//		System.out.println(p_ids.get(1));
 		
 		OrderDao orderDao = new OrderDao();
 		ArrayList<ProductListDto> pListDtos = orderDao.productsInfo(p_ids);

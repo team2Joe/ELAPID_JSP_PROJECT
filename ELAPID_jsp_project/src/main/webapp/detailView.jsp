@@ -89,7 +89,7 @@
 				      	</c:choose>
 				      	<br>
 						<form action="orderForm.do">
-							<button type="button" class="btn btn-dark">바로구매</button>
+							<button type="button" class="btn btn-dark" onclick= "location.href='userOrderForm.do?p_id=<%=detailView.get(i).getP_id() %>'">바로구매</button>
 						</form>
 					</td>
 					

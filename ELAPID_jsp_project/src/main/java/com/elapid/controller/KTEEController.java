@@ -75,85 +75,102 @@ public class KTEEController extends HttpServlet {
 		System.out.println(com);
 		
 		switch(com) {
+			//메인 화면 
 		case("/main.do"):
 			command = new EMainCommand();
 			command.execute(request, response);
 			viewPage = "index.jsp";
 			break;
+			
+			//로그인 화면
 		case("/loginForm.do"):
 			viewPage = "loginForm.jsp";
 			break;
+			//로그인 양식 체크 후 로그인
 		case("/loginCheck.do"):
 			command = new ELoginCheckCommand();
 			command.execute(request, response);
 			viewPage = (String)request.getAttribute("loginviewparam");
 			break;
+			//로그아웃
 		case("/logout.do"):
 			command = new ELogoutCommand();
 			command.execute(request, response);
 			viewPage = "loginForm.do";
 			break;
-		
+			
+			//회원가입 화면
 		case("/registerForm.do"):
 			viewPage = "registerForm.jsp";
 			break;
+			//아이디 중복 체크
 		case("/idCheck.do"):
 			command = new EIdCheckCommand();
 			command.execute(request, response);
 			viewPage = "registerForm.jsp";
 			break;
+			//회원가입 양식 체크 후 회원가입
 		case("/registerCheck.do"):
 			command = new ERegisterCheckCommand();
 			command.execute(request, response);			
 			viewPage ="loginForm.do";
 			break;
 			
+			//마이페이지 화면
 		case("/myPage.do"):
 			command = new EMyPageCommand();
 			command.execute(request, response);
 			viewPage = "myPage.jsp";
 			break;
+			//내 정보 보기 
 		case("/profileView.do"):
 			command = new EMyPageCommand();
 			command.execute(request, response);
 			viewPage = "profileView.jsp";
 			break;
+			//내 정보 수정
 		case("/profileModify.do"):
 			command = new EProfileModifyCommand();
 			command.execute(request, response);
 			viewPage = "profileView.do";
 			break;
+			//회원 탈퇴
 		case("/profileDelete.do"):
 			command = new EProfileDeleteCommand();
 			command.execute(request, response);
 			viewPage = "main.do";
 			break;
-		
+			
+			//주소록 보기
 		case("/addressBookView.do"):
 			command = new EAddressBookViewCommand();
 			command.execute(request, response);
 			viewPage = "addressBookView.jsp";
 			break;
+			//주소 추가 화면
 		case("/registerAddForm.do"):
 			viewPage = "registerAddForm.jsp";
 			break;
+			//주소 추가
 		case("/registerAdd.do"):
 			command = new ERegisterAddCommand();
 			command.execute(request, response);
 			viewPage = "addressBookView.do";
 			break;
-
+			//주소 삭제 
 		case("/registerDelete.do"):
 			command = new ERegisterDeleteCommand(); 
 			command.execute(request, response);
 			viewPage = "addressBookView.do";
 			break;
+			//기본 주소지 설정 
 		case("/registerSetDefault.do"):
 			command = new ERegisterSetDefault(); 
 			command.execute(request, response);
 			viewPage = "addressBookView.do";
 			break;
 			
+			//회원 주문하기 화면
 		case("/userOrderForm.do"):
 			command = new EUserOrderFormCommand();
 			command.execute(request, response);
@@ -229,7 +246,6 @@ public class KTEEController extends HttpServlet {
 			command = new EFunctionFilterListCommand();
 			command.execute(request, response);
 			viewPage = "luggageList.jsp";
-			
 			break;
 			
 		case("/questionList.do"):

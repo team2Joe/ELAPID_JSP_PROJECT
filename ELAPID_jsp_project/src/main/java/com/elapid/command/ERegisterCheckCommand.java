@@ -3,6 +3,7 @@ package com.elapid.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.elapid.dao.CartDao2;
 import com.elapid.dao.RegisterDao;
 import com.elapid.dao.UserDao;
 
@@ -24,8 +25,11 @@ public class ERegisterCheckCommand implements ECommand {
 		String birthday = request.getParameter("birthday");
 		String ubirthdate = birthyear + "-" +birthmonth + "-" + birthday;
 		
-		
 		dao.userAdd(uid, upwd, uname, uemail, utel, ugender, ubirthdate);
+		
+		CartDao2 cdao2 =new CartDao2();
+		
+		cdao2.CartaddAdd(uid);
 		
 		
 		String addaddress = request.getParameter("jibunAddr");
@@ -34,10 +38,8 @@ public class ERegisterCheckCommand implements ECommand {
 		
 		int searchresult = dao.searchAddress(addpostnumber, addaddress);
 		
-		
 		if(searchresult >= 1) {// 주소북에 같은 주소 있을 시 add_id 받아와서 relation에만 저장 
 			dao.registerAdd(uid, searchresult, addspecificaddress,uname,utel, 1);
-			
 		}else { // 주소북에 같은 주소 없을 시 주소북에 주소 저장후 relation 에 상세 주소 저장
 			dao.addressAdd(addpostnumber, addaddress);
 			int addid =  dao.searchAddress(addpostnumber, addaddress);

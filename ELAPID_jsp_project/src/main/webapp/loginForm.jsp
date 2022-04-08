@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <div class="row" style = "height:700px">
 <div class = "col-lg-7" >
-	<img alt="loginFormImg" src="images/loginform.jpeg" width="100%" height="100%">
+	<img alt="loginFormImg" src="elapid_img/loginform.jpeg" width="100%" height="100%">
 </div>
 <div class = "col-lg-5">
 	<form action="loginCheck.do"  method="post">

@@ -251,7 +251,7 @@
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" onclick="nnavbtnlinkbackpack()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="navbtnlinkbackpack()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	백팩
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -537,7 +537,7 @@
 		async="async"></script>
 	<script src="https://cdn.cquotient.com/js/v2/gretel.min.js"
 		type="text/javascript" async="async"></script>
-		
+	<script src="js/basic.js"></script>
 	
 </body>
 </html>
