@@ -95,12 +95,12 @@
 				 	<%-- 아이디값 null시 비회원 장바구니로 들어가기 --%>
 				      	<c:choose>
 				      		<c:when test="${sessionScope.u_id eq '' }">
-				      			<form action="addCart.do">
+				      			<form action="addCart.do?p_id=<%=list.get(i).getP_id() %>">
 									<button type="submit" class="btn btn-dark" >장바구니 담기</button>
 								</form>
 				      		</c:when>
 				      		<c:otherwise>
-				      			<form action="addCart.do">
+				      			<form action="addCart.do?p_id=<%=list.get(i).getP_id() %>">
 									<button type="submit" class="btn btn-dark">장바구니 담기</button>
 								</form>
 				      		</c:otherwise>

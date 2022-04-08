@@ -113,7 +113,7 @@ public class CartDao {
 				
 				preparedStatement  = connection.prepareStatement(query);
 				//임시로 값 줌! 나중에 p_id 받으면 수정하기!
-				preparedStatement.setString(1 , "11");
+				preparedStatement.setString(1 , "aaa");
 				preparedStatement.setInt(2 , 1);
 				resultSet = preparedStatement.executeQuery();
 				
@@ -159,7 +159,7 @@ public class CartDao {
 		}
 
 	
-	
+	//Cart에 추가 하는거 다시 해야함..
 	public ArrayList<AddCartDto> addcart(String p_id1, String u_id1) {
 		
 		ArrayList<AddCartDto> dtos=  new ArrayList<AddCartDto>();

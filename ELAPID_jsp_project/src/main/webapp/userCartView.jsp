@@ -7,19 +7,6 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/layout/header.jsp"%>
-<%
-	ArrayList<AddCartDto> cart = null;
-
-	Object object = session.getAttribute("cart");
-
-
-
-
-%>
-
-
-
-
 
 <html>
 <head>
@@ -36,9 +23,8 @@
 					<h3> 주문하기 </h3>
 				</div>
 		
-				<c:forEach items="${add }" var="adddto">
-			
-			
+		
+			<c:forEach items="${add }" var="adddto">
 				<div class="container">
 			  		<div class="row">
 			  				<div class="col-1" style="padding: 75px 0px 0px 0px;">
@@ -66,8 +52,10 @@
 				   		 	</div>
 			  		</div>
 				</div>
-	<hr width="1050">
-				</c:forEach>
+							<hr width="1050">
+			</c:forEach>
+		
+		
 		
 		<!-- 쿠폰 -->
 		<div class="container" >
@@ -76,7 +64,7 @@
 		     	
 		    </div>
 		    <div class="col" align="right">
-		      - 원
+		     coupon
 		    </div>
 		  </div>
 		</div>
