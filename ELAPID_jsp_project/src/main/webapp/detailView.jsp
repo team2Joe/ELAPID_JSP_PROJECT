@@ -53,6 +53,7 @@
 						
 				<%
 						if(detailView.get(i).getCtg_main().equals("luggage")){
+
 				%>		
 								size  
 									<select name="ctg_middle">

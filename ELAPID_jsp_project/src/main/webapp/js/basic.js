@@ -22,3 +22,14 @@ function navbtnlinkfunction() {
 	
 	location.href = "middleFunctionList.do";
 }
+
+
+function qnaregister() {
+
+	location.href = "questionList.do";
+}
+
+function qnawrite() {
+
+	location.href = "questionContentView.do";
+}

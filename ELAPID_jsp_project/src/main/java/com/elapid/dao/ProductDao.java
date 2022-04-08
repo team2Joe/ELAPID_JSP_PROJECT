@@ -1,6 +1,5 @@
 package com.elapid.dao;
 
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.Blob;
@@ -22,7 +21,6 @@ import com.elapid.dto.ProductImageDetailDto;
 import com.elapid.dto.ProductImageDto;
 import com.elapid.dto.ProductListDto;
 import com.elapid.dto.ProductSpecDto;
-
 
 
 public class ProductDao {
@@ -395,7 +393,6 @@ public class ProductDao {
 	// 상품 중분류 페이지 출력
 	public ArrayList<ProductListDto> middleList(String sctg_middle){
 
-		
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
 		Connection conn = null;
@@ -471,7 +468,6 @@ public class ProductDao {
 		return dtos;
 	}
 	
-
 	//기능별 상품 페이지 리스트
 	public ArrayList<ProductListDto> functionList(String sp_mainf){
 		
@@ -790,6 +786,7 @@ public class ProductDao {
 			for(int i = 0; i < sctg_middle.length; i++) {
 				
 				if(i == 0) {
+
 
 					queryValues[i] = " and c.ctg_middle = '" + sctg_middle[i] + "'";
 				}else {

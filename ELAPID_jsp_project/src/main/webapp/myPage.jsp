@@ -219,6 +219,8 @@
 	<link href="css/basic.css" rel="stylesheet" type="text/css" />
 	
 </head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link href="css/basic.css" rel="stylesheet" type="text/css" />
 <body>
 	          <%
 	          	String uid =""; 
@@ -241,9 +243,9 @@
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
 	            <li><h5>&nbsp&nbsp크기</h5></li>
 	            <li></li>
-	            <li><a class="dropdown-item" href="luggageList.do?ctg_middle=기내용">기내용</a></li>
-	            <li><a class="dropdown-item" href="luggageList.do?ctg_middle=중형수화물">중형수화물</a></li>
-	            <li><a class="dropdown-item" href="luggageList.do?ctg_middle=대형수화물">대형수화물</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=small">기내용</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=middle">중형수화물</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=large">대형수화물</a></li>
 	          </ul>
 	        </li>
 	      </ul>
@@ -253,14 +255,18 @@
 	          	백팩
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=비즈니스">비즈니스</a></li>
-	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=캐주얼">캐주얼</a></li>
-	            <li><a class="dropdown-item" href="#">Something else here</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=business">비즈니스</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=casual">캐주얼</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=other">기타</a></li>
 	          </ul>
 	        </li>
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
+<<<<<<< HEAD
+=======
+	        								<%-- function전체리스트 --%>
+>>>>>>> c9283c13149760eed255d755ffcefae76e27ae12
 	          <a class="nav-link" onclick="navbtnlinkfunction()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	주요기능
 	          </a>
@@ -367,7 +373,14 @@
 	    </div>
 	  </div>
 	</nav>
-	${comment }
+    <div>
+    	
+   		<form class="d-flex" action="search.do">
+        <input class="form-control me-sm-2" type="text" placeholder="Search" name="search" size="10">
+        <buttons class="btn btn-secondary" type="submit">Search</button>
+      </form>
+    </div>
+	
 	<!-------------------------- END HEADER ---------------------------->
 	<!-------------------------- END HEADER ---------------------------->
 	<!-------------------------- END HEADER ---------------------------->
@@ -473,17 +486,17 @@
 
 					<div class="row my-qa-card">
 						<div class="col-3 col-md-2 image-card">
-							<a href="https://www.samsonite.co.kr/accountinquiry"> 
+							<a href="questionList.do"> 
 								<i class="wishlist-icon fa-solid fa-circle-question"></i>
 							</a>
 						</div>
 						<div class="text-card col-7 col-md-8">
-							<a href="https://www.samsonite.co.kr/accountinquiry">
+							<a href="questionList.do">
 								<h4>1:1문의</h4>
 							</a>
 						</div>
 						<div class="arrowed col-2 col-md-2" style="padding-top:15px">
-							<a href="/orders">
+							<a href="questionList.do">
 								<div class="arrow-1"></div>
 							</a>
 						</div>

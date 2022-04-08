@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 
 public class UserDto {
 	
-	
 
 	private String u_id;
 	private String u_pwd;
@@ -18,9 +17,6 @@ public class UserDto {
 	private String u_resignationdate;
 	private String u_registerdate;
 
-	
-	
-	
 	public UserDto() {
 		// TODO Auto-generated constructor stub
 	}
@@ -32,7 +28,6 @@ public class UserDto {
 		this.u_pwd = u_pwd;
 		this.u_name = u_name;
 		this.u_tel = u_tel;
-
 		this.u_email = u_email;
 		this.u_grade = u_grade;
 		this.u_gender = u_gender;
@@ -46,7 +41,6 @@ public class UserDto {
 
 
 	public String getU_id() {
-
 		return u_id;
 	}
 
@@ -57,49 +51,34 @@ public class UserDto {
 		this.u_id = u_id;
 	}
 
-
-
-
 	public String getU_pwd() {
 		return u_pwd;
 	}
-
-
 
 	public void setU_pwd(String u_pwd) {
 		this.u_pwd = u_pwd;
 	}
 
-
-
-
 	public String getU_name() {
 		return u_name;
 	}
 
-
-
 	public void setU_name(String u_name) {
 		this.u_name = u_name;
 	}
-
-
 
 	public String getU_tel() {
 		return u_tel;
 	}
 
 
-
 	public void setU_tel(String u_tel) {
 		this.u_tel = u_tel;
 	}
 
-
 	public String getU_email() {
 		return u_email;
 	}
-
 
 	public void setU_email(String u_email) {
 		this.u_email = u_email;
@@ -109,7 +88,6 @@ public class UserDto {
 	public String getU_grade() {
 		return u_grade;
 	}
-
 
 	public void setU_grade(String u_grade) {
 		this.u_grade = u_grade;
@@ -150,8 +128,6 @@ public class UserDto {
 	}
 
 
-
-
 	public void setU_point(int u_point) {
 		this.u_point = u_point;
 	}
@@ -183,7 +159,6 @@ public class UserDto {
 	public void setU_registerdate(String u_registerdate) {
 		this.u_registerdate = u_registerdate;
 	}
-
 	
 	
 }

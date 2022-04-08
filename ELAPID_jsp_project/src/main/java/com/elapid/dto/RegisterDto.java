@@ -8,9 +8,7 @@ public class RegisterDto {
 	private int reg_defaultaddress;
 	private String reg_name;
 	private String reg_tel;
-	
 
-	
 	public RegisterDto() {
 		// TODO Auto-generated constructor stub
 	}
@@ -32,6 +30,19 @@ public class RegisterDto {
 		return add_id;
 	}
 
+	public void setAdd_id(int add_id) {
+		this.add_id = add_id;
+	}
+
+
+	public String getU_id() {
+		return u_id;
+	}
+
+
+	public void setU_id(String u_id) {
+		this.u_id = u_id;
+	}
 
 	public String getReg_specificaddress() {
 		return reg_specificaddress;
@@ -73,5 +84,4 @@ public class RegisterDto {
 	}
 
 
-	
 }

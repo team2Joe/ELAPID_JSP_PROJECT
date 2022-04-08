@@ -20,6 +20,7 @@
 				</div>
 
 			<div class="row row-cols-1 row-cols-md-3 g-4">
+			<img src="elapid_img/luggage/clite_06.jpg">
  <%
  	ArrayList<ProductListDto> list = (ArrayList<ProductListDto>) request.getAttribute("list");
  
