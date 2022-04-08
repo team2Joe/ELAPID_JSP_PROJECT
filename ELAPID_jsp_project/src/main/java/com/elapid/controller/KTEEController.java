@@ -22,8 +22,6 @@ import com.elapid.command.EProfileModifyCommand;
 import com.elapid.command.ERegisterAddCommand;
 import com.elapid.command.ERegisterCheckCommand;
 import com.elapid.command.ERegisterDeleteCommand;
-import com.elapid.command.ERegisterModifyCommand;
-import com.elapid.command.ERegisterModifyFormCommand;
 import com.elapid.command.ERegisterSetDefault;
 import com.elapid.command.EUserOrderFormCommand;
 import com.mysql.cj.protocol.a.MergingColumnDefinitionFactory;
@@ -83,7 +81,6 @@ public class KTEEController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "loginForm.do";
 			break;
-			
 		
 		case("/registerForm.do"):
 			viewPage = "registerForm.jsp";
