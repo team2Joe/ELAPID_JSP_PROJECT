@@ -16,9 +16,7 @@ public class ProductDto {
 	private Timestamp p_date;
 	private String p_desc;
 	private String p_clickcount;
-	private String p_imgpath;
-	private String p_ctgmain;
-	private String p_ctgmiddle;
+
 	
 	
 	// 상품 메인 사진 컬럼필드 추가!!
@@ -32,6 +30,7 @@ public class ProductDto {
 	public ProductDto(int p_id, String p_name, String p_stock, int p_price, int p_discountprice, int p_size,
 			String p_mainf, String p_colorimg, String p_colorname, Timestamp p_date, String p_desc, String p_clickcount,
 			String p_imgpath, String p_ctgmain, String p_ctgmiddle) {
+
 		super();
 		this.p_id = p_id;
 		this.p_name = p_name;
@@ -45,11 +44,8 @@ public class ProductDto {
 		this.p_date = p_date;
 		this.p_desc = p_desc;
 		this.p_clickcount = p_clickcount;
-		this.p_imgpath = p_imgpath;
-		this.p_ctgmain = p_ctgmain;
-		this.p_ctgmiddle = p_ctgmiddle;
-	}
 
+	}
 
 
 	public int getP_id() {
@@ -148,38 +144,5 @@ public class ProductDto {
 		this.p_clickcount = p_clickcount;
 	}
 
-	public String getP_imgpath() {
-		return p_imgpath;
-	}
-
-	public void setP_imgpath(String p_imgpath) {
-		this.p_imgpath = p_imgpath;
-	}
-
-
-
-	public String getP_ctgmain() {
-		return p_ctgmain;
-	}
-
-
-
-	public void setP_ctgmain(String p_ctgmain) {
-		this.p_ctgmain = p_ctgmain;
-	}
-
-
-
-	public String getP_ctgmiddle() {
-		return p_ctgmiddle;
-	}
-
-
-
-	public void setP_ctgmiddle(String p_ctgmiddle) {
-		this.p_ctgmiddle = p_ctgmiddle;
-	}
-	
-	
 	
 }

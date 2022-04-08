@@ -5,18 +5,19 @@ import java.sql.Timestamp;
 public class UserDto {
 	
 	
-	
-	private int u_id;
+
+	private String u_id;
 	private String u_pwd;
 	private String u_name;
 	private String u_tel;
-	private String u_address;
-	private String u_nickname;
 	private String u_email;
 	private String u_grade;
+	private String u_gender;
+	private String u_birthdate;
 	private int u_point;
-	private Timestamp u_resignationdate;
-	
+	private String u_resignationdate;
+	private String u_registerdate;
+
 	
 	
 	
@@ -24,31 +25,39 @@ public class UserDto {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public UserDto(int u_id, String u_pwd, String u_name, String u_tel, String u_address, String u_nickname,
-			String u_email, String u_grade, int u_point, Timestamp u_resignationdate) {
+	public UserDto(String u_id, String u_pwd, String u_name, String u_tel, String u_email, String u_grade, String u_gender,
+			String u_birthdate, int u_point, String u_resignationdate, String u_registerdate) {
 		super();
 		this.u_id = u_id;
 		this.u_pwd = u_pwd;
 		this.u_name = u_name;
 		this.u_tel = u_tel;
-		this.u_address = u_address;
-		this.u_nickname = u_nickname;
+
 		this.u_email = u_email;
 		this.u_grade = u_grade;
+		this.u_gender = u_gender;
+		this.u_birthdate = u_birthdate;
 		this.u_point = u_point;
 		this.u_resignationdate = u_resignationdate;
+		this.u_registerdate = u_registerdate;
 	}
 
 
-	public int getU_id() {
+
+
+	public String getU_id() {
+
 		return u_id;
 	}
 
 
-	public void setU_id(int u_id) {
+
+	public void setU_id(String u_id) {
+
 		this.u_id = u_id;
 	}
+
+
 
 
 	public String getU_pwd() {
@@ -56,9 +65,12 @@ public class UserDto {
 	}
 
 
+
 	public void setU_pwd(String u_pwd) {
 		this.u_pwd = u_pwd;
 	}
+
+
 
 
 	public String getU_name() {
@@ -66,9 +78,11 @@ public class UserDto {
 	}
 
 
+
 	public void setU_name(String u_name) {
 		this.u_name = u_name;
 	}
+
 
 
 	public String getU_tel() {
@@ -76,28 +90,9 @@ public class UserDto {
 	}
 
 
+
 	public void setU_tel(String u_tel) {
 		this.u_tel = u_tel;
-	}
-
-
-	public String getU_address() {
-		return u_address;
-	}
-
-
-	public void setU_address(String u_address) {
-		this.u_address = u_address;
-	}
-
-
-	public String getU_nickname() {
-		return u_nickname;
-	}
-
-
-	public void setU_nickname(String u_nickname) {
-		this.u_nickname = u_nickname;
 	}
 
 
@@ -121,9 +116,40 @@ public class UserDto {
 	}
 
 
+
+	public String getU_gender() {
+		return u_gender;
+	}
+
+
+
+
+	public void setU_gender(String u_gender) {
+		this.u_gender = u_gender;
+	}
+
+
+
+
+	public String getU_birthdate() {
+		return u_birthdate;
+	}
+
+
+
+
+	public void setU_birthdate(String u_birthdate) {
+		this.u_birthdate = u_birthdate;
+	}
+
+
+
+
 	public int getU_point() {
 		return u_point;
 	}
+
+
 
 
 	public void setU_point(int u_point) {
@@ -131,15 +157,33 @@ public class UserDto {
 	}
 
 
-	public Timestamp getU_resignationdate() {
+
+	public String getU_resignationdate() {
+
 		return u_resignationdate;
 	}
 
 
-	public void setU_resignationdate(Timestamp u_resignationdate) {
+
+
+	public void setU_resignationdate(String u_resignationdate) {
 		this.u_resignationdate = u_resignationdate;
 	}
-	
+
+
+
+
+	public String getU_registerdate() {
+		return u_registerdate;
+	}
+
+
+
+
+	public void setU_registerdate(String u_registerdate) {
+		this.u_registerdate = u_registerdate;
+	}
+
 	
 	
 }
