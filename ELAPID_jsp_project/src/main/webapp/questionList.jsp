@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ include file="layout/header.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +49,7 @@
     <td></td>
     <td></td>
     <td>
-     <button type="button" class="btn btn-dark" id="question" onclick="qnawrite()">문의하기</button>
+     <button type="button" class="btn btn-dark" onclick="qnawrite()" id="question" >문의하기</button>
   
 
 </td>
@@ -59,3 +61,5 @@
 <script src="js/basic.js"></script>
 </body>
 </html>
+
+<%@ include file="layout/footer.jsp" %>
