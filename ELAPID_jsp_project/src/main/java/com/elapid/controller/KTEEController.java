@@ -19,6 +19,8 @@ import com.elapid.command.EMainCommand;
 import com.elapid.command.EMyPageCommand;
 import com.elapid.command.EProfileDeleteCommand;
 import com.elapid.command.EProfileModifyCommand;
+import com.elapid.command.EQuestionContentViewCommand;
+import com.elapid.command.EQuestionListCommand;
 import com.elapid.command.ERegisterAddCommand;
 import com.elapid.command.ERegisterCheckCommand;
 import com.elapid.command.ERegisterDeleteCommand;
@@ -154,6 +156,17 @@ public class KTEEController extends HttpServlet {
 		case("/backpackList.do"):
 			viewPage = "backpackList.jsp";
 			break;
+			
+		case("/questionList.do"):
+			command = new EQuestionListCommand();
+			command.execute(request, response);
+			viewPage = "questionList.jsp";
+			break;
+		case("/questionContentView.do"):
+			command = new EQuestionContentViewCommand();
+		command.execute(request, response);
+		viewPage = "questionContentView.jsp";
+		break;
 		
 		default:
 			break;
