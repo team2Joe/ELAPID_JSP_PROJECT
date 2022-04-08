@@ -16,3 +16,13 @@ function navbtnlinkbackpack() {
 
 	location.href = "backpackList.do";
 }
+
+function qnaregister() {
+
+	location.href = "questionList.do";
+}
+
+function qnawrite() {
+
+	location.href = "questionContentView.do";
+}
