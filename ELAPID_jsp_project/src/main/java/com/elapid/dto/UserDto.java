@@ -37,9 +37,6 @@ public class UserDto {
 		this.u_registerdate = u_registerdate;
 	}
 
-
-
-
 	public String getU_id() {
 		return u_id;
 	}
@@ -139,14 +136,9 @@ public class UserDto {
 		return u_resignationdate;
 	}
 
-
-
-
 	public void setU_resignationdate(String u_resignationdate) {
 		this.u_resignationdate = u_resignationdate;
 	}
-
-
 
 
 	public String getU_registerdate() {

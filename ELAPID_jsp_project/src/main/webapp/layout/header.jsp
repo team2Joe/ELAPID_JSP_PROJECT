@@ -18,22 +18,12 @@ request.setCharacterEncoding("utf-8");
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="css/basic.css" rel="stylesheet" type="text/css" />
 <body>
-<<<<<<< HEAD
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	
-
-=======
->>>>>>> c9283c13149760eed255d755ffcefae76e27ae12
 	          <%
 	          	String uid =""; 
 		          	uid = (String)session.getAttribute("uid");
 		      %>
 		      
-<<<<<<< HEAD
-
-=======
-		      
->>>>>>> c9283c13149760eed255d755ffcefae76e27ae12
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <div class="container-fluid">
 	    <a class="navbar-brand" href="main.do">ELAPID</a>
@@ -119,13 +109,11 @@ request.setCharacterEncoding("utf-8");
 	        </li>
 	      </ul>
 	    </div>
-<<<<<<< HEAD
 
 
 	    <div>
 	      <ul class="navbar-nav">
-=======
->>>>>>> c9283c13149760eed255d755ffcefae76e27ae12
+
 	    <div class = "col-md-3" style = "text-align:right;">
 	      <ul class="navbar-nav" style = "width:500px;">
 	        <li class="nav-item dropdown">
@@ -183,11 +171,7 @@ request.setCharacterEncoding("utf-8");
 	    </div>
 	  </div>
 	</nav>
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> c9283c13149760eed255d755ffcefae76e27ae12
     <div>
     	
    		<form class="d-flex" action="search.do">
@@ -195,9 +179,6 @@ request.setCharacterEncoding("utf-8");
         <buttons class="btn btn-secondary" type="submit">Search</button>
       </form>
     </div>
-<<<<<<< HEAD
 
 	${sessionScope.comment }
 
-=======
->>>>>>> c9283c13149760eed255d755ffcefae76e27ae12

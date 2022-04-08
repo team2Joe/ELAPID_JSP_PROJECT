@@ -17,7 +17,8 @@ public class ELuggageFilterListCommand implements ECommand {
 			String[] ps_color = request.getParameterValues("ps_color");
 			String[] p_mainf = request.getParameterValues("p_mainf");
 		
-		
+			
+			
 			ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 			
 			ProductDao dao = new ProductDao();
@@ -26,6 +27,7 @@ public class ELuggageFilterListCommand implements ECommand {
 	
 			request.setAttribute("list", dtos);
 
+			
 	}
 
 }

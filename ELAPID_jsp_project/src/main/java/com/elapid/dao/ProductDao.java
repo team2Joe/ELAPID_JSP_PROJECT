@@ -979,83 +979,85 @@ public class ProductDao {
 		
 		try {
 			conn = dataSource.getConnection();
-			
-			String[] queryValuesMainf = new String[sp_mainf.length];
-			String[] queryValuesColor = new String[sps_color.length];
-			String[] queryValuesMiddle = new String[sctg_middle.length];
-			
 		
+			if(sp_mainf != null) {
+				
+				String[] queryValuesMainf = new String[sp_mainf.length];
+			
 				// 주요기능 필터 쿼리문 조건
-			for(int i = 0; i < sp_mainf.length; i++) {
-
-				// 필터 선택 조건이 한번일때
-				if(sp_mainf.length == 1) {
-					queryValuesMainf[i] = " and p_mainf = '" + sp_mainf[i] + "'";
-					query += queryValuesMainf[i];
-					
-				} else {
-					
-					if(i == 0) {
-						queryValuesMainf[i] = " and (p_mainf = '" + sp_mainf[i] + "'";
-
-					// 하나의 카테고리 조건이 끝날 때 마지막에 괄호로 닫아주는 조건
-					}else if(i == sp_mainf.length-1){
-						queryValuesMainf[i] = " or p_mainf = '" + sp_mainf[i] + "')";
-					}else{
-						queryValuesMainf[i] = " or p_mainf = '" + sp_mainf[i] + "'";
-					}
-					query += queryValuesMainf[i];
-					
-				}
-			}
-			
-					
-			
-
-			// 중분류 필터 쿼리문 조건
-			for(int i = 0; i < sctg_middle.length; i++) {
-				
-				if(sctg_middle.length == 1) {
-					queryValuesMiddle[i] = " and c.ctg_middle = '" + sctg_middle[i] + "'";
-					query += queryValuesMiddle[i];
-					
-				}else {
-					
-					if(i == 0) {
-						queryValuesMiddle[i] = " and (c.ctg_middle = '" + sctg_middle[i] + "'";
-					}else if(i == sctg_middle.length-1){
-						queryValuesMiddle[i] = " or c.ctg_middle = '" + sctg_middle[i] + "')";
-					}else {
-						queryValuesMiddle[i] = " or c.ctg_middle = '" + sctg_middle[i] + "'";
-					}
-					query += queryValuesMiddle[i];	
-				}
-				
-			}
+				for(int i = 0; i < sp_mainf.length; i++) {
 	
+					// 필터 선택 조건이 한번일때
+					if(sp_mainf.length == 1) {
+						queryValuesMainf[i] = " and p_mainf = '" + sp_mainf[i] + "'";
+						query += queryValuesMainf[i];
+						
+					}else {
+						
+						if(i == 0) {
+							queryValuesMainf[i] = " and (p_mainf = '" + sp_mainf[i] + "'";
+	
+						// 하나의 카테고리 조건이 끝날 때 마지막에 괄호로 닫아주는 조건
+						}else if(i == sp_mainf.length-1){
+							queryValuesMainf[i] = " or p_mainf = '" + sp_mainf[i] + "')";
+						}else{
+							queryValuesMainf[i] = " or p_mainf = '" + sp_mainf[i] + "'";
+						}
+						query += queryValuesMainf[i];
+						
+					}
+				}
+			}
+			
+			if(sctg_middle != null) {
+				String[] queryValuesMiddle = new String[sctg_middle.length];
+					// 중분류 필터 쿼리문 조건
+				for(int i = 0; i < sctg_middle.length; i++) {
+					
+					if(sctg_middle.length == 1) {
+						queryValuesMiddle[i] = " and c.ctg_middle = '" + sctg_middle[i] + "'";
+						query += queryValuesMiddle[i];
+						
+					}else {
+						
+						if(i == 0) {
+							queryValuesMiddle[i] = " and (c.ctg_middle = '" + sctg_middle[i] + "'";
+						}else if(i == sctg_middle.length-1){
+							queryValuesMiddle[i] = " or c.ctg_middle = '" + sctg_middle[i] + "')";
+						}else {
+							queryValuesMiddle[i] = " or c.ctg_middle = '" + sctg_middle[i] + "'";
+						}
+						query += queryValuesMiddle[i];	
+					}
+					
+				}
+			}
+			
+	
+			if(sps_color != null) {
+				String[] queryValuesColor = new String[sps_color.length];
+				
+				// 색상 필터 쿼리문 조건
+				for(int i = 0; i < sps_color.length; i++) {
 		
-			// 색상 필터 쿼리문 조건
-			for(int i = 0; i < sps_color.length; i++) {
-	
-				
-				if(sps_color.length == 1) {
-					queryValuesColor[i] = " and s.ps_color = '" + sps_color[i] + "'";
-					query += queryValuesColor[i];
-					
-				}else {
-					if(i == 0) {
-						queryValuesColor[i] = " and (s.ps_color = '" + sps_color[i] + "'";
-	
-					}else if(i == sps_color.length-1){
-						queryValuesColor[i] = " or s.ps_color = '" + sps_color[i] + "')";
+					if(sps_color.length == 1) {
+						queryValuesColor[i] = " and s.ps_color = '" + sps_color[i] + "'";
+						query += queryValuesColor[i];
+						
 					}else {
-						queryValuesColor[i] = " or s.ps_color = '" + sps_color[i] + "'";
+						if(i == 0) {
+							queryValuesColor[i] = " and (s.ps_color = '" + sps_color[i] + "'";
+		
+						}else if(i == sps_color.length-1){
+							queryValuesColor[i] = " or s.ps_color = '" + sps_color[i] + "')";
+						}else {
+							queryValuesColor[i] = " or s.ps_color = '" + sps_color[i] + "'";
+						}
+					
+						query += queryValuesColor[i];
 					}
-				
-					query += queryValuesColor[i];
-				}
-			}		
-	
+				}		
+			}
 			
 			
 			System.out.println(query);
