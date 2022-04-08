@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+=======
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+>>>>>>> 81601e412d6b3175f02abe3a7c70db70c4af6750
 <!DOCTYPE html>
 <%
 //%@ include file="/layout/header.jsp"%
@@ -10,16 +14,30 @@ request.setCharacterEncoding("utf-8");
 <head>
 <meta charset="UTF-8">
 <title>ELAPID</title>
+
+<script>
+    function nullCheck(){
+    	if()
+    	
+    }
+</script>
+
 </head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="css/basic.css" rel="stylesheet" type="text/css" />
 <body>
+<<<<<<< HEAD
 	          <%
 	          	String uid =""; 
 		          	uid = (String)session.getAttribute("uid");
 		      %>
 		      
 		      
+=======
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	
+
+>>>>>>> 81601e412d6b3175f02abe3a7c70db70c4af6750
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <div class="container-fluid">
 	    <a class="navbar-brand" href="main.do">ELAPID</a>
@@ -35,35 +53,36 @@ request.setCharacterEncoding("utf-8");
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
 	            <li><h5>&nbsp&nbsp크기</h5></li>
 	            <li></li>
-	            <li><a class="dropdown-item" href="luggageList.do?ctg_middle=기내용">기내용</a></li>
-	            <li><a class="dropdown-item" href="luggageList.do?ctg_middle=중형수화물">중형수화물</a></li>
-	            <li><a class="dropdown-item" href="luggageList.do?ctg_middle=대형수화물">대형수화물</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=small">기내용</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=middle">중형수화물</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=large">대형수화물</a></li>
 	          </ul>
 	        </li>
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" onclick="navbtnlinkbackpack()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="nnavbtnlinkbackpack()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	백팩
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=비즈니스">비즈니스</a></li>
-	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=캐주얼">캐주얼</a></li>
-	            <li><a class="dropdown-item" href="#">Something else here</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=business">비즈니스</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=casual">캐주얼</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=other">기타</a></li>
 	          </ul>
 	        </li>
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	        								<%-- function전체리스트 --%>
+	          <a class="nav-link" onclick="navbtnlinkfunction()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	주요기능
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
 	          	<li><h5>&nbsp&nbsp크기</h5></li>
-	            <li><a class="dropdown-item" href="#">서스펜션 휠</a></li>
-	            <li><a class="dropdown-item" href="#">자동제어장치</a></li>
-	            <li><a class="dropdown-item" href="#">지문인식 장치</a></li>
-	            <li><a class="dropdown-item" href="#">RFID</a></li>
+	            <li><a class="dropdown-item" href="functionList.do?p_mainf=서스펜션휠">서스펜션 휠</a></li>
+	            <li><a class="dropdown-item" href="functionList.do?p_mainf=자동제어장치">자동제어장치</a></li>
+	            <li><a class="dropdown-item" href="functionList.do?p_mainf=지문인식">지문인식 장치</a></li>
+	            <li><a class="dropdown-item" href="functionList.do?p_mainf=rfid">RFID</a></li>
 	          </ul>
 	        </li>
 	      </ul>
@@ -104,6 +123,7 @@ request.setCharacterEncoding("utf-8");
 	        </li>
 	      </ul>
 	    </div>
+<<<<<<< HEAD
 	    <div class = "col-md-3" style = "text-align:right;">
 	      <ul class="navbar-nav" style = "width:500px;">
 	        <li class="nav-item dropdown">
@@ -129,6 +149,11 @@ request.setCharacterEncoding("utf-8");
 	          	}
 	          			
 			%>
+=======
+
+	    <div>
+	      <ul class="navbar-nav">
+>>>>>>> 81601e412d6b3175f02abe3a7c70db70c4af6750
 	        <li class="nav-item dropdown">
 	          <a class="nav-link" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	            회원
@@ -161,4 +186,14 @@ request.setCharacterEncoding("utf-8");
 	    </div>
 	  </div>
 	</nav>
+<<<<<<< HEAD
 	${sessionScope.comment }
+=======
+    <div>
+    	
+   		<form class="d-flex" action="search.do">
+        <input class="form-control me-sm-2" type="text" placeholder="Search" name="search" size="10">
+        <buttons class="btn btn-secondary" type="submit">Search</button>
+      </form>
+    </div>
+>>>>>>> 81601e412d6b3175f02abe3a7c70db70c4af6750
