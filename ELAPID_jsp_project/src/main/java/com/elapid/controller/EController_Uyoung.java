@@ -26,6 +26,7 @@ import com.elapid.command.ELoginCheckCommand;
 import com.elapid.command.ELogoutCommand;
 import com.elapid.command.ELuggageFilterListCommand;
 import com.elapid.command.ELuggageListCommand;
+import com.elapid.command.ELuggageProductCountCommand;
 import com.elapid.command.EMiddleFunctionListCommand;
 import com.elapid.command.EMiddleViewCommand;
 
@@ -142,6 +143,15 @@ public class EController_Uyoung extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "luggageList.jsp";
 			break;
+			
+			// 캐리어 카운트 수 출력
+		case("/productCount.do"):
+			command = new ELuggageProductCountCommand();
+			command.execute(request, response);
+			viewPage = "luggageList.do";
+			break;
+			
+			
 			
 		case("/loginForm.do"):
 			viewPage = "loginForm.jsp";

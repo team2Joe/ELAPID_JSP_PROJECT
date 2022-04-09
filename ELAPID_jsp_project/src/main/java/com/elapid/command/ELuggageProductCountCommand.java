@@ -6,22 +6,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.elapid.dao.ProductDao;
-import com.elapid.dto.ProductDto;
 import com.elapid.dto.ProductListDto;
 
-public class ELuggageListCommand implements ECommand {
+public class ELuggageProductCountCommand implements ECommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
-		
 		ProductDao dao = new ProductDao();
 		
+		String p_mainf = null;
+		int luggageCount = dao.luggageCount(p_mainf);
 		
-		dtos = dao.luggageList();
-		
-		request.setAttribute("list", dtos);
 	}
 
 }

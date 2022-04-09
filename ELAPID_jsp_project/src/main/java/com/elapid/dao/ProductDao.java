@@ -41,8 +41,9 @@ public class ProductDao {
 		}
 	
 	}
-
-
+	
+	// 상품 갯수 숫자 출력해주는 메서드 추가
+	
 	
 	// 대분류 상품 전체 리스트 출력
 	public ArrayList<ProductListDto> luggageList(){
@@ -123,10 +124,73 @@ public class ProductDao {
 				e.printStackTrace();
 			}
 		}
-
 		
 		return dtos;
 	}
+	
+	// 캐리어 상품 카운트 반환 메서드
+	public int luggageCount(String category) {
+		
+		int count = 0;
+		
+		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			
+			// 
+			String query = "select count(*) "
+					+ "from product_image i "
+					+ "join image_detail id "
+					+ "on i.img_id = id.img_id "
+					+ "join product p "
+					+ "on p.p_id = id.p_id "
+					+ "join category_detail cd "
+					+ "on p.p_id = cd.p_id "
+					+ "join category c "
+					+ "on c.ctg_id = cd.ctg_id "
+					+ "join product_detail pd "
+					+ "on pd.p_id = p.p_id "
+					+ "join product_spec s "
+					+ "on s.ps_id = pd.ps_id "
+					+ "where c.ctg_main = 'luggage'";
+			
+			stmt = conn.prepareStatement(query);
+			
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				// 캐리어 상품 수 저장 
+				count = rs.getInt(1);
+				
+			}
+
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+				
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return count;
+	}
+
 	
 	// 백팩리스트 전체 출력
 	public ArrayList<ProductListDto> backpackList(){
@@ -822,6 +886,7 @@ public class ProductDao {
 		
 		return dtos;
 	}
+
 	
 }
 

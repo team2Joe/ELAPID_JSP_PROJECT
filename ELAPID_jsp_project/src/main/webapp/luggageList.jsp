@@ -77,7 +77,6 @@
  	if(check){
 
 %>
-				 
 				 <div class="col">
 				    <div class="card h-100" align="center">
 			    	  <a href="detailView.do?p_name=<%=list.get(i).getP_name() %>&ctg_middle=<%=list.get(i).getCtg_middle() %>">
@@ -111,11 +110,17 @@
 				  </div>
 			
 						
+						
+						
 	 <%
 						 }
 		 }
 	 %>
 				</div>
+				
+				<c:forEach items="${list }" var="dto">
+					[${dto.p_id }]
+				</c:forEach>
 			
 		<%@ include file="/layout/footer.jsp"%>	
 		

@@ -6,11 +6,12 @@
 	
 function navbtnlinkluggage() {
 
-	location.href = "luggageList.do";
+	location.href = "luggageList.do?p_mainf='luggage'";
 }
+
 function navbtnlinkluggage2() {
 
-	location.href = "luggageList.do";
+	location.href = "luggageList.do?p_mainf='backpack'";
 }
 
 function nnavbtnlinkbackpack() {
