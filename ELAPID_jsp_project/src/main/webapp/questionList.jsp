@@ -19,10 +19,11 @@
 <BR>
 </div>
 
+<form action="questionWrite.do" method="post">
 <table class="table w-auto" style="margin-left: auto; margin-right: auto;">
    <colgroup>
         <col width="150px"/>
-        <col width="200px"/>
+        <col width="150px"/>
         <col width="400px"/>
     </colgroup>
 
@@ -36,11 +37,11 @@
   </thead>
   <tbody>
   
-   <c:forEach items="${questionList }" var ="dtos">
+   <c:forEach items="${QuestionList }" var ="dtos">
     <tr>
-  	<td> ${dtos.pq_id}></td>
-		<td> ${dtos.qc_name }</td>
-		<td> ${dtos.pq_title }</td>
+  	   <th scope="col" class="text-center"><a href="questionContentView.do?pq_id=${dtos.pq_id}"> ${dtos.pq_id}</a></th>
+	   <th scope="col" class="text-center"> ${dtos.qc_name }</th>
+	   <th scope="col" class="text-center"> ${dtos.pq_title }</th>
 		<td></td>
     </tr>
    </c:forEach>
@@ -56,6 +57,7 @@
     </tr>
   </tbody>
 </table>
+</form>
 
 
 <script src="js/basic.js"></script>

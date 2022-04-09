@@ -27,8 +27,11 @@ import com.elapid.command.EMiddleViewCommand;
 import com.elapid.command.EMyPageCommand;
 import com.elapid.command.EProfileDeleteCommand;
 import com.elapid.command.EProfileModifyCommand;
-import com.elapid.command.EQuestionContentViewCommand;
+import com.elapid.command.EQuestionContentCommand;
+import com.elapid.command.EQuestionDeleteCommand;
 import com.elapid.command.EQuestionListCommand;
+import com.elapid.command.EQuestionModifyCommand;
+import com.elapid.command.EQuestionWriteCommand;
 import com.elapid.command.ERegisterAddCommand;
 import com.elapid.command.ERegisterCheckCommand;
 import com.elapid.command.ERegisterDeleteCommand;
@@ -238,9 +241,32 @@ public class KTEEController extends HttpServlet {
 			viewPage = "questionList.jsp";
 			break;
 		case("/questionContentView.do"):
-			command = new EQuestionContentViewCommand();
+			command = new EQuestionContentCommand();
 			command.execute(request, response);
-			viewPage = "questionContentView.jsp";
+			viewPage = "questionContent.jsp";
+		break;
+
+		case("/questionWriteForm.do"):
+			viewPage = "questionWrite.jsp";
+		break;
+		
+		case("/questionWrite.do"):
+			command = new EQuestionWriteCommand();
+			command.execute(request, response);
+			viewPage = "questionList.do";
+			
+		break;
+		
+		
+		case("/questionModify.do"):
+			command = new EQuestionModifyCommand();
+		command.execute(request, response);
+		viewPage = "questionList.do";
+		break;
+		case("/questionDelete.do"):
+			command = new EQuestionDeleteCommand();
+		command.execute(request, response);
+		viewPage = "questionList.do";
 		break;
 		
 		default:
