@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.elapid.dao.OrderDao;
 
 public class ESelectedReadInCartCommand implements ECommand {
 
@@ -12,12 +15,19 @@ public class ESelectedReadInCartCommand implements ECommand {
 		// TODO Auto-generated method stub
 		
 		String[] strp_ids = request.getParameterValues("cartchoice");
+		String  tmp = request.getParameter("cartchoice");
+		
 		ArrayList<Integer> p_ids = new ArrayList<Integer>();
+		System.out.println(p_ids.size()+"@@@@@@@@@@@@@@" + tmp);
 		
 		for (int i = 0 ; i < strp_ids.length ; i++) {
 			p_ids.add(Integer.parseInt(strp_ids[i]));
 		}
+		
 		request.setAttribute("p_ids",p_ids);
+		
+		
+		
 		
 	}
 }

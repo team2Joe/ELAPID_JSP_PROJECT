@@ -23,7 +23,6 @@ public class AddCartCommand implements ECommand {
 		
 		//dao.userAddcart(1,"uyoung1");
 		
-		System.out.println(u_id +"qqqqqq"+ p_id);
 		
 		
 		

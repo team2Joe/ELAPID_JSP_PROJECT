@@ -7,6 +7,6 @@
 	<div class="footer">
 		ELAPID's Work copyright。
 	</div>
-	<script src="js/basic.js"></script>
+	<script src="js/basic.js?ver=1"></script>
 </body>
 </html>

@@ -36,6 +36,7 @@ import com.elapid.command.ERegisterCheckCommand;
 import com.elapid.command.ERegisterDeleteCommand;
 import com.elapid.command.ERegisterSetDefault;
 import com.elapid.command.ESearchCommand;
+import com.elapid.command.ESelectedReadInCartCommand;
 import com.elapid.command.ESizeFilterListCommand;
 import com.elapid.command.EUserCartViewCommand;
 import com.elapid.command.EUserOrderFormCommand;
@@ -187,9 +188,9 @@ public class KTEEController extends HttpServlet {
 			break;
 			//장바구니에서 선택상품 가져와서 형변환
 		case("/selectedReadInCart.do"):
-			command = new EReadInCartCommand();
+			command = new ESelectedReadInCartCommand();
 			command.execute(request, response);
-			viewPage = "readInCart.do";
+			viewPage = "userOrderForm.do";
 			break;	
 			
 					// 캐리어 전체 리스트 페이지

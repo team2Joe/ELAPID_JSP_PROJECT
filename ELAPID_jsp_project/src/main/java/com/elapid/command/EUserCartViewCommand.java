@@ -29,10 +29,7 @@ public class EUserCartViewCommand implements ECommand {
 		
 		dtos.get(3).getCart_totalamount();
 		
-		System.out.println("*************"+dtos.size());
 		request.setAttribute("User_Cart", dtos);
-		System.out.println(u_id);
-		
 
 	}
 

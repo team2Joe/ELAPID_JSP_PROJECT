@@ -22,7 +22,6 @@ public class EReadInCartCommand implements ECommand {
 		p_ids =	dao.readPidInCart(uid);
 		
 		
-		System.out.println("&&&&&&&&&&&"+ p_ids.size());
 		
 		request.setAttribute("p_ids", p_ids);
 

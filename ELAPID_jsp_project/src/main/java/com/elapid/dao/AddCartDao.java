@@ -53,7 +53,6 @@ public class AddCartDao {
 		preparedStatement.setString(2, u_id);
 		preparedStatement.executeUpdate();
 		
-		System.out.println(u_id + p_id);
 		
 	} catch (Exception e) {
 		e.printStackTrace();

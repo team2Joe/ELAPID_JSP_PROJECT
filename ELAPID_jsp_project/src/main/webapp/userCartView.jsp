@@ -24,13 +24,13 @@
 				</div>
 		
 			
-			<c:forEach items="${User_Cart }" var="dtos">
-				<form action="userOderForm.do">
+			<form action="userOderForm.do" id = "cart" >
+				<c:forEach items="${User_Cart }" var="dtos">
 				<div class="container">
 			  		<div class="row">
 			  				<div class="col-1" style="padding: 75px 0px 0px 0px;">
 			  			<div class="form-check" >
-						  <input class="form-check-input" type="checkbox" name="cartchoice" value="${dtos.p_id }" id="flexCheckDefault">
+						  <input class="form-check-input" type="checkbox" name="cartchoice" value="${dtos.p_id}" id="flexCheckDefault">
 						  <label class="form-check-label" for="flexCheckDefault">
 						  </label>
 						</div>
@@ -47,17 +47,14 @@
 						   	</div>
 						   	 <!-- 삭제,주문하기,가격 -->
 						    <div class="col -2" align="right">
-						  	<form>
 						      	<p class="fs-4" >X</p>
-						    </form>
-						      	<button type="submit" class="btn btn-dark">주문하기</button><br><br>
 						      	<p>${dtos.p_price } 원</p>
 				   		 	</div>
 			  		</div>
 				</div>
 					<hr width="1050">
-				</form>	
-			</c:forEach>
+				</c:forEach>
+			</form>	
 
 		
 		
@@ -73,7 +70,6 @@
 		  </div>
 		</div>
 	<hr width="1050"> -->
-		<p class="fs-6" align="right">배송비 :??원 </p>
 	<hr width="1050">
 		<div align="right">	
 			<h5>총 계</h5>
@@ -87,12 +83,8 @@
 	</div><!-- 중앙! -->
 	<!-- 2분할! -->
 	<div class="d-grid gap-2 col-10">
-		<form action="selectedReadInCart.do">
-	  		<div><button type="submit" class="btn btn-dark" style="float: right;" >선택상품 주문하기</button></div>
-		 </form>
-		 <form action="readInCart.do">
-		 	<div><button type="submit" class="btn btn-dark" style="float: right;">전체 결제하기</button></div>
-		</form>
+	  		<div><button onclick="selectedCartOrder()" class="btn btn-dark" style="float: right;" >선택상품 주문하기</button></div>
+		 	<div><button type="submit" onclick="location.href='readInCart.do'" class="btn btn-dark" style="float: right;">전체 결제하기</button></div>
 	</div>
 	<br>
 	  

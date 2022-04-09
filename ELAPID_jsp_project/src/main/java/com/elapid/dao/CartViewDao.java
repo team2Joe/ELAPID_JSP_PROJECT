@@ -78,7 +78,6 @@ public class CartViewDao {
 						dtos.add(dto);
 						
 						//check
-						System.out.println(u_id + p_id + cart_id + p_name + p_colorname +"&&&&&&&&&&&"+ p_price +"***"+ cart_totalamount+"qqqq"+cd_id);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();

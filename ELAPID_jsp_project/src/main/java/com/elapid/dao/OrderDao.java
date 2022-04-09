@@ -67,7 +67,6 @@ public class OrderDao {
 						+ "on s.ps_id = pd.ps_id\n"
 						+ "\n"
 						+ "where p.p_id = ? ";
-				System.out.println(" **************" + p_ids.get(1));
 				stmt = conn.prepareStatement(query);
 				stmt.setInt(1, p_ids.get(i));
 				rs = stmt.executeQuery();
