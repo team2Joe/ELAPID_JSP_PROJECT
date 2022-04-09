@@ -33,6 +33,7 @@ public class EUserOrderFormCommand implements ECommand {
 		ArrayList<Integer> p_ids = new ArrayList<Integer>();
 		
 		int p_id = -1; 
+		
 		try {
 			p_id = Integer.parseInt(request.getParameter("p_id"));
 		}catch(Exception e) {
@@ -50,6 +51,8 @@ public class EUserOrderFormCommand implements ECommand {
 			p_ids.add(p_id);
 			
 		}
+		
+		System.out.println("__________________________"+p_ids);
 				
 //		p_ids.add(1);
 //		p_ids.add(2);

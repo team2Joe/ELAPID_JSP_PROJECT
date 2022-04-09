@@ -183,7 +183,11 @@ public class KTEEController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "userOrderForm.do";
 			break;
-			
+		case("/selectedReadInCart.do"):
+			command = new EReadInCartCommand();
+			command.execute(request, response);
+			viewPage = "readInCart.do";
+			break;	
 					// 캐리어 전체 리스트 페이지
 		case("/luggageList.do"):
 			command = new ELuggageListCommand();
@@ -266,12 +270,19 @@ public class KTEEController extends HttpServlet {
 			viewPage = "questionContentView.jsp";
 		break;
 		
+		case("/test.do"):
+			System.out.println("sibal");
+			
+		
 		default:
 			break;
 		}
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
-		dispatcher.forward(request, response);
+		try {
+			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+			dispatcher.forward(request, response);
+		}catch(Exception e){
+			
+		}
 	}
 	
 	

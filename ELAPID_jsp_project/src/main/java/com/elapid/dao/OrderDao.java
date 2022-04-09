@@ -32,7 +32,6 @@ public class OrderDao {
 		}
 	}
 	
-	@SuppressWarnings("resource")
 	public ArrayList<ProductListDto> productsInfo(ArrayList<Integer> p_ids) {
 		
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();

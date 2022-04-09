@@ -130,7 +130,6 @@ request.setCharacterEncoding("utf-8");
 			<%
 	          		}
 	          	}catch(Exception e){
-	          			e.printStackTrace();
 	          	}
 	          			
 			%>
@@ -152,7 +151,6 @@ request.setCharacterEncoding("utf-8");
 			  <%
 	          	}catch(Exception e){
 	          		
-	          		e.printStackTrace();
 			  %>
 	            <li><a class="dropdown-item" href="">주문내용확인</a></li>
 	            <li><a class="dropdown-item" href="loginForm.do">로그인하기</a></li>
