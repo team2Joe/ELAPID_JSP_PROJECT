@@ -23,42 +23,46 @@
 					<h3> 주문하기 </h3>
 				</div>
 		
-		
-			<c:forEach items="${add }" var="adddto">
+			
+			<c:forEach items="${User_Cart }" var="dtos">
+				<form action="userOderForm.do">
 				<div class="container">
 			  		<div class="row">
 			  				<div class="col-1" style="padding: 75px 0px 0px 0px;">
 			  			<div class="form-check" >
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+						  <input class="form-check-input" type="checkbox" name="cartchoice" value="${dtos.p_id }" id="flexCheckDefault">
 						  <label class="form-check-label" for="flexCheckDefault">
 						  </label>
 						</div>
 							</div>
 							
 							<!-- 상품 이미지 -->			  			
-				   			<div class="col-2" align="left">
-						     <img alt="캐리어1" src="elapid_img/luggage/sefton_main.jpg" width="100">
+				   			<div class="col-2" align="left" >
+						     <img src="${dtos.img_thum }"  width="100" height="150">
 						    </div>
 						    <!-- 상품 정보 -->
 					    	<div class="col-4" align="left">
-					     		<p class="fs-4">${adddto.p_name }</p>
-					     		<p class="fs-6">${adddto.p_colorname }</p>
+					     		<p class="fs-4">${dtos.p_name }</p>
+					     		<p class="fs-6">${dtos.p_colorname }</p>
 						   	</div>
 						   	 <!-- 삭제,주문하기,가격 -->
 						    <div class="col -2" align="right">
+						  	<form>
 						      	<p class="fs-4" >X</p>
-						      	<button type="button" class="btn btn-dark">주문하기</button><br><br>
-						      	<p>${adddto.p_price } 원</p>
+						    </form>
+						      	<button type="submit" class="btn btn-dark">주문하기</button><br><br>
+						      	<p>${dtos.p_price } 원</p>
 				   		 	</div>
 			  		</div>
 				</div>
-							<hr width="1050">
+					<hr width="1050">
+				</form>	
 			</c:forEach>
+
 		
 		
-		
-		<!-- 쿠폰 -->
-		<div class="container" >
+		 <!-- 쿠폰 -->
+		<!--<div class="container" >
 		  <div class="row">
 		    <div class="col" align="left">
 		     	
@@ -68,12 +72,13 @@
 		    </div>
 		  </div>
 		</div>
-	<hr width="1050">
+	<hr width="1050"> -->
 		<p class="fs-6" align="right">배송비 :??원 </p>
 	<hr width="1050">
 		<div align="right">	
 			<h5>총 계</h5>
-			<h4>원</h4>
+			
+			<h4>${User_Cart.get(User_Cart.size()-1).cart_totalamount}원</h4>
 		</div>
 	
 	
@@ -82,9 +87,12 @@
 	</div><!-- 중앙! -->
 	<!-- 2분할! -->
 	<div class="d-grid gap-2 col-10">
-	
-	  <div><button type="button" class="btn btn-dark" style="float: right;" >선택상품 주문하기</button></div>
-	 <div><button type="button" class="btn btn-dark" style="float: right;" >결제하기</button></div>
+		<form action="selectedReadInCart.do">
+	  		<div><button type="submit" class="btn btn-dark" style="float: right;" >선택상품 주문하기</button></div>
+		 </form>
+		 <form action="readInCart.do">
+		 	<div><button type="submit" class="btn btn-dark" style="float: right;">전체 결제하기</button></div>
+		</form>
 	</div>
 	<br>
 	  

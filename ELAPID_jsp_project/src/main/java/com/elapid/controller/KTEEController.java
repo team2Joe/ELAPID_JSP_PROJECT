@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.elapid.command.AddCartCommand;
 import com.elapid.command.EAddressBookViewCommand;
 import com.elapid.command.EBackpackListCommand;
 import com.elapid.command.EColorFilterListCommand;
@@ -36,6 +37,7 @@ import com.elapid.command.ERegisterDeleteCommand;
 import com.elapid.command.ERegisterSetDefault;
 import com.elapid.command.ESearchCommand;
 import com.elapid.command.ESizeFilterListCommand;
+import com.elapid.command.EUserCartViewCommand;
 import com.elapid.command.EUserOrderFormCommand;
 import com.mysql.cj.protocol.a.MergingColumnDefinitionFactory;
 
@@ -183,11 +185,13 @@ public class KTEEController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "userOrderForm.do";
 			break;
+			//장바구니에서 선택상품 가져와서 형변환
 		case("/selectedReadInCart.do"):
 			command = new EReadInCartCommand();
 			command.execute(request, response);
 			viewPage = "readInCart.do";
 			break;	
+			
 					// 캐리어 전체 리스트 페이지
 		case("/luggageList.do"):
 			command = new ELuggageListCommand();
@@ -268,7 +272,20 @@ public class KTEEController extends HttpServlet {
 			command = new EQuestionContentViewCommand();
 			command.execute(request, response);
 			viewPage = "questionContentView.jsp";
-		break;
+			break;
+			//장바구니 담기 
+		case("/addCart.do"):
+			command = new AddCartCommand();
+			command.execute(request, response);
+			viewPage = "userCartView.do";
+			break;
+		
+			//장바구니 보기
+		case("/userCartView.do"):
+			command = new EUserCartViewCommand();
+			command.execute(request, response);
+			viewPage = "userCartView.jsp";
+			break;
 		
 		case("/test.do"):
 			System.out.println("sibal");

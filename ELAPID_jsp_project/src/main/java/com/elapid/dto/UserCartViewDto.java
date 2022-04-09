@@ -7,12 +7,15 @@ public class UserCartViewDto {
 	int p_id;
 	int cart_id;
 	int c_id;
+	int cd_id;
 	String p_name;
 	String p_colorname; 
 	int p_price; 
 	String c_name; 
 	int c_atleastprice;
 	int c_value;
+	//image
+	String img_thum;
 	//할인량.
 	int cart_totaldiscountedamount;
 	//총합.
@@ -22,6 +25,40 @@ public class UserCartViewDto {
 		// TODO Auto-generated constructor stub
 		
 	}
+	
+	
+	
+	
+	public UserCartViewDto(String u_id, int p_id, int cd_id,int cart_id, String p_name, String p_colorname, int p_price,
+			int cart_totalamount, String img_thum) {
+		super();
+		this.u_id = u_id;
+		this.p_id = p_id;
+		this.cart_id = cart_id;
+		this.p_name = p_name;
+		this.p_colorname = p_colorname;
+		this.p_price = p_price;
+		this.cart_totalamount = cart_totalamount;
+		this.img_thum = img_thum;
+		this.cd_id = cd_id;
+	}
+
+
+
+
+	public String getImg_thum() {
+		return img_thum;
+	}
+
+
+
+
+	public void setImg_thum(String img_thum) {
+		this.img_thum = img_thum;
+	}
+
+
+
 
 	public UserCartViewDto(String u_id, int p_id, int cart_id, int c_id, String p_name, String p_colorname, int p_price,
 			String c_name, int c_atleastprice, int c_value, int cart_totaldiscountedamount, int cart_totalamount) {
