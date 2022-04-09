@@ -29,7 +29,7 @@ public class CartDao2 {
 	
 	
 	
-	public void CartaddAdd(String uid) {
+	public void CartAdd(String uid) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		

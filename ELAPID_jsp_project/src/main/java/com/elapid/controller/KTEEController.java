@@ -29,6 +29,7 @@ import com.elapid.command.EProfileDeleteCommand;
 import com.elapid.command.EProfileModifyCommand;
 import com.elapid.command.EQuestionContentViewCommand;
 import com.elapid.command.EQuestionListCommand;
+import com.elapid.command.EReadInCartCommand;
 import com.elapid.command.ERegisterAddCommand;
 import com.elapid.command.ERegisterCheckCommand;
 import com.elapid.command.ERegisterDeleteCommand;
@@ -175,6 +176,12 @@ public class KTEEController extends HttpServlet {
 			command = new EUserOrderFormCommand();
 			command.execute(request, response);
 			viewPage = "userOrderPage.jsp";
+			break;
+			//장바구니 상품번호 가져오기
+		case("/readInCart.do"):
+			command = new EReadInCartCommand();
+			command.execute(request, response);
+			viewPage = "userOrderForm.do";
 			break;
 			
 					// 캐리어 전체 리스트 페이지

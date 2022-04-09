@@ -1,3 +1,5 @@
+<%@page import="com.elapid.dto.RegisterDto"%>
+<%@page import="com.elapid.dto.UserDto"%>
 <%@page import="com.elapid.dto.RegisterJoinDto"%>
 <%@page import="com.elapid.dto.ProductListDto"%>
 <%@page import="java.util.ArrayList"%>
@@ -14,13 +16,31 @@
 
 
 
+<%
 
+	// uo_paymentmethod
+	// up_add_id
+	
+	
+	UserDto userDto = (UserDto) request.getAttribute("userDto");
+	ArrayList<RegisterDto> registerDtos = (ArrayList<RegisterDto>) request.getAttribute("registerDtos");
+	ArrayList<ProductListDto> pListDtos = (ArrayList<ProductListDto>) request.getAttribute("pListDtos");
+	
+	
+	request.setAttribute("uo_name", userDto.getU_name());
+	request.setAttribute("uo_tel", userDto.getU_tel());
+	
+
+
+%>
 
 <body>
 	<div style="padding: 30px 200px 20px 200px;">
 		<div style="float: left;">
 			<form action="" method="post">
-				<h3>주문결제</h3>
+				<div style="padding-top:20px; padding-bottom:20px">
+					<h3>주문결제</h3>
+				</div>
 				<h4>1.주문고객 정보</h4>
 				이름 : 
 				<input type="text" style="border:none" id="uo_name" readonly="readonly" value="${userDto.u_name}"><br>
@@ -85,18 +105,35 @@
 						</div>
 					</div>
 				</c:forEach>
-
-				<h4>3.결제 정보 선택</h4>
-				<input type="radio" name = "uo_paymentmethod" checked="checked"> 신용카드
-				<input type="radio" name = "uo_paymentmethod"> 휴대폰결제
-					
+				<div style="padding-top:20px; padding-bottom:20px;'">
 				
+					<h4>3.결제 정보 선택</h4>
+				</div>
+				<div class="row" style="text-align:center;">
+					<div class="col-5">
+						<input type="radio" name = "uo_paymentmethod" checked="checked"> 신용카드 
+					</div>
+					<div class="col-5">
 
-
+						<input type="radio" name = "uo_paymentmethod"> 휴대폰결제
+					</div>
+				</div>
+				
+				<br>
+				<br>
+				<br>
+				<div style="text-align:center;">
+				<button class="btn btn-dark" > 주문하기</button>
+				</div>
+				
+				        
+				<input type="hidden" style="border:none" id="uo_name" readonly="readonly" value="${userDto.u_name}"><br>
 			</form>
+				
+			
 
 
-
+			
 		</div>
 		<div style="float: right;">
 			<div class="container">
@@ -162,7 +199,7 @@
 					int total = shippingfee + discountamount; 
 					
 					
-					// 가격 3 개 콤마 찍기
+					// 가격에 콤마 찍기
 					String stramount = Integer.toString(discountamount);
 					String strshippingfee = Integer.toString(shippingfee);
 					String strtotal = Integer.toString(total);
@@ -184,7 +221,12 @@
 					for (int i = 0 ; i < len/3 ; i++  ){
 						strtotal = strtotal.substring(0,strtotal.length() - ((i+1)*3+i) ) +"," + strtotal.substring(strtotal.length() - ((i+1)*3+i) , strtotal.length() );
 					}
-				
+					//
+					
+					request.setAttribute("uo_amount",amount);
+					request.setAttribute("uo_discountedamount",discountamount);
+					request.setAttribute("uo_shippingfee",shippingfee);
+					
 				%>
 				
 				<div class="row">
@@ -208,13 +250,13 @@
 			</div>
 			<hr width="550">
 
-
+			
 		</div>
 	</div>
 
 
 
-
-
+	<script src="js/order.js"></script>
 </body>
+
 <%@ include file="/layout/footer.jsp"%>

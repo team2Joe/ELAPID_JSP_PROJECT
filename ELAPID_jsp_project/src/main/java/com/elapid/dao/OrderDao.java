@@ -125,6 +125,44 @@ public class OrderDao {
 		
 	}
 	
+	public ArrayList<Integer> readPidInCart(String uid){
+		ArrayList<Integer> p_ids = new  ArrayList<Integer>();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+				
+			
+			String query = "SELECT p_id FROM cart_detail cd "
+					+ "join cart c on cd.cart_id = c.cart_id "
+					+ "and c.u_id = ?";
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, uid);
+			rs = stmt.executeQuery();
+
+			while(rs.next()) {
+				// product 정보 가져오기 
+				int sp_id = rs.getInt("p_id");
+				p_ids.add(sp_id);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return p_ids;
+	}
+	
 	
 	
 }

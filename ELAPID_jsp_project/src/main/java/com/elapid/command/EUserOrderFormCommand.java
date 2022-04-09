@@ -33,9 +33,17 @@ public class EUserOrderFormCommand implements ECommand {
 		ArrayList<Integer> p_ids = new ArrayList<Integer>();
 		
 		int p_id = -1; 
-		p_id = Integer.parseInt(request.getParameter("p_id"));
+		try {
+			p_id = Integer.parseInt(request.getParameter("p_id"));
+		}catch(Exception e) {
+			//e.printStackTrace();
+			
+		}
+		
 		
 		if(p_id == -1) {
+			
+			p_ids = (ArrayList<Integer>) request.getAttribute("p_ids");
 			
 		}else {
 			

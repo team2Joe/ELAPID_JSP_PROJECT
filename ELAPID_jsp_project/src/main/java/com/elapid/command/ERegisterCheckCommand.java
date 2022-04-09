@@ -29,7 +29,7 @@ public class ERegisterCheckCommand implements ECommand {
 		
 		CartDao2 cdao2 =new CartDao2();
 		
-		cdao2.CartaddAdd(uid);
+		cdao2.CartAdd(uid);
 		
 		
 		String addaddress = request.getParameter("jibunAddr");
