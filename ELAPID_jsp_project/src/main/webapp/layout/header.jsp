@@ -47,13 +47,13 @@ request.setCharacterEncoding("utf-8");
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" onclick="navbtnlinkbackpack()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="nnavbtnlinkbackpack()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	백팩
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=비즈니스">비즈니스</a></li>
-	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=캐주얼">캐주얼</a></li>
-	            <li><a class="dropdown-item" href="#">Something else here</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=business">비즈니스</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=casual">캐주얼</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=other">그외</a></li>
 	          </ul>
 	        </li>
 	      </ul>
@@ -175,8 +175,6 @@ request.setCharacterEncoding("utf-8");
     <div>
 	  <form class="d-flex" action="search.do">
 	  	<select name="category">
-	  	
-	  		<option value="all">전체</option>
 	  		<option value="p.p_name">상품명</option>
 	  		<option value="p.p_size">사이즈</option>
 	  		<option value="p.p_mainf">주요기능</option>

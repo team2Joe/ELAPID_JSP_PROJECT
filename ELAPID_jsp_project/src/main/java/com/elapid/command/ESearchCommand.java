@@ -20,6 +20,19 @@ public class ESearchCommand implements ECommand {
 		
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
+		ProductDao countDao = new ProductDao();
+		
+		int count = countDao.productCount("");
+		
+		// search는 초기화면이 검색창에서 시작하므로 null
+		String tempStart = null;
+		
+		int startPage = 0;
+		int onePageCount = 3;
+		
+		count = (int)Math.ceil((double)count/(double)onePageCount);
+		
+		
 		dtos = dao.search(search, category);
 		
 		request.setAttribute("list", dtos);

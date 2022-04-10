@@ -46,7 +46,8 @@ public class ProductDao {
 	
 	
 	// 대분류 상품 전체 리스트 출력
-	public ArrayList<ProductListDto> luggageList(){
+	public ArrayList<ProductListDto> luggageList(int startPage, int onePageCount){
+		
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
 		Connection conn = null;
@@ -71,7 +72,8 @@ public class ProductDao {
 					+ "on pd.p_id = p.p_id "
 					+ "join product_spec s "
 					+ "on s.ps_id = pd.ps_id "
-					+ "where c.ctg_main = 'luggage'";
+					+ "where c.ctg_main = 'luggage'"
+					+ "limit "+ startPage + ", " + onePageCount;
 			
 			stmt = conn.prepareStatement(query);
 			
@@ -128,8 +130,8 @@ public class ProductDao {
 		return dtos;
 	}
 	
-	// 캐리어 상품 카운트 반환 메서드
-	public int luggageCount(String category) {
+	// 상품 카운트 반환 메서드
+	public int productCount(String category) {
 		
 		int count = 0;
 		
@@ -157,19 +159,19 @@ public class ProductDao {
 					+ "on pd.p_id = p.p_id "
 					+ "join product_spec s "
 					+ "on s.ps_id = pd.ps_id "
-					+ "where c.ctg_main = 'luggage'";
+					+ category;
 			
 			stmt = conn.prepareStatement(query);
 			
 			rs = stmt.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				
 				// 캐리어 상품 수 저장 
 				count = rs.getInt(1);
 				
 			}
-
+			System.out.println("카운트 수 : " + count);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -193,7 +195,7 @@ public class ProductDao {
 
 	
 	// 백팩리스트 전체 출력
-	public ArrayList<ProductListDto> backpackList(){
+	public ArrayList<ProductListDto> backpackList(int startPage, int onePageCount){
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
 		Connection conn = null;
@@ -223,7 +225,8 @@ public class ProductDao {
 					+ "join product_spec s\n"
 					+ "on s.ps_id = pd.ps_id\n"
 					+ "\n"
-					+ "where c.ctg_main = 'backpack'";
+					+ "where c.ctg_main = 'backpack'"
+					+ "limit " + startPage + ", " + onePageCount;
 			
 			stmt = conn.prepareStatement(query);
 			
@@ -372,7 +375,7 @@ public class ProductDao {
 		
 		return dtos;
 	}
-	
+
 
 	// 상품 검색 페이지 출력
 
@@ -387,9 +390,10 @@ public class ProductDao {
 		String categoryQuery = " where " + category +" like '%" + search + "%'";
 		
 		// 카테고리에서 전체항목 버튼 클릭시 출력할 조건 쿼리문
-		String allQuery = " where p.p_name like '%" + search + "%' or p.p_size like '%" + search + 
-				"%' or p.p_mainf like '%" + search + "%' or p.p_desc = '%" + search + "%' or c.ctg_main like '%" + search
-				+ "%' or c.ctg_middle like '%" + search + "%'";
+//		String allQuery = " where p.p_name like '%" + search + "%' or p.p_size like '%" + search + 
+//				"%' or p.p_mainf like '%" + search + "%' or p.p_desc = '%" + search + "%' or c.ctg_main like '%" + search
+//				+ "%' or c.ctg_middle like '%" + search + "%'";
+		
 		
 		try {
 			conn = dataSource.getConnection();
@@ -409,13 +413,15 @@ public class ProductDao {
 					+ "on s.ps_id = pd.ps_id";
 			
 					// 검색 카테고리가 전체 가 아닌경우
-					if(category == "all") {
-						query += allQuery;
-												
-						// 이외에는 전체 카테고리로 검색하는 쿼리문 출력
-					}else {
+//					if(category == "all") {
+//						query += allQuery;
+//												
+//						// 이외에는 전체 카테고리로 검색하는 쿼리문 출력
+//					}else {
+			
 						query += categoryQuery;
-					}
+						
+//					}
 					
 					
 
@@ -471,7 +477,7 @@ public class ProductDao {
 	}
 
 	// 상품 중분류 페이지 출력
-	public ArrayList<ProductListDto> middleList(String sctg_middle){
+	public ArrayList<ProductListDto> middleList(String sctg_middle, int startPage, int onePageCount){
 
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
@@ -494,7 +500,8 @@ public class ProductDao {
 					+ "join product_detail pd\n"
 					+ "on pd.p_id = p.p_id\n"
 					+ "join product_spec s\n"
-					+ "on s.ps_id = pd.ps_id where ctg_middle = ?";
+					+ "on s.ps_id = pd.ps_id where ctg_middle = ?"
+					+ "limit " + startPage + ", " + onePageCount;
 			
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, sctg_middle);
@@ -549,13 +556,13 @@ public class ProductDao {
 	}
 	
 	//기능별 상품 페이지 리스트
-	public ArrayList<ProductListDto> functionList(String sp_mainf){
+	public ArrayList<ProductListDto> functionList(String sp_mainf, int startPage, int onePageCount){
 		
 		 ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
 		 Connection conn = null;
-			PreparedStatement stmt = null;
-			ResultSet rs = null;
+		 PreparedStatement stmt = null;
+		 ResultSet rs = null;
 		
 			try {
 				conn = dataSource.getConnection();
@@ -580,7 +587,8 @@ public class ProductDao {
 						+ "join product_spec s\n"
 						+ "on s.ps_id = pd.ps_id\n"
 						+ "\n"
-						+ "where p.p_mainf = ?";
+						+ "where p.p_mainf = ?"
+						+ "limit " + startPage + ", " + onePageCount;
 				
 				stmt = conn.prepareStatement(query);
 				stmt.setString(1, sp_mainf);
@@ -636,7 +644,7 @@ public class ProductDao {
 	}
 	
 	// 기능 전체 페이지 리스트
-	public ArrayList<ProductListDto> middleFunctionList(){
+	public ArrayList<ProductListDto> middleFunctionList(int startPage, int onePageCount){
 		
 		 ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
@@ -667,7 +675,8 @@ public class ProductDao {
 						+ "join product_spec s\n"
 						+ "on s.ps_id = pd.ps_id\n"
 						+ "\n"
-						+ "where p.p_mainf != ''";
+						+ "where p.p_mainf != ''"
+						+ "limit " + startPage + ", " + onePageCount;
 				
 				stmt = conn.prepareStatement(query);
 				
@@ -723,7 +732,8 @@ public class ProductDao {
 	}
 	
 	// 캐리어 필터 리스트 메소드
-	public ArrayList<ProductListDto> luggageFilterList(String[] sctg_middle, String[] sps_color, String[] sp_mainf) {
+	public ArrayList<ProductListDto> luggageFilterList(String[] sctg_middle, String[] sps_color,
+ String[] sp_mainf, int startPage, int onePageCount) {
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 
 		Connection conn = null;
@@ -750,6 +760,10 @@ public class ProductDao {
 				+ "\n"
 				+ "join product_spec s\n"
 				+ "on s.ps_id = pd.ps_id where c.ctg_main = 'luggage'";
+		
+		// 페이지 나눠 줄 limit 쿼리문장
+		String limitQuery = " limit " + startPage + ", " + onePageCount;
+				
 		
 		try {
 			conn = dataSource.getConnection();
@@ -834,8 +848,8 @@ public class ProductDao {
 			}
 			
 			
-			System.out.println(query);
-			stmt = conn.prepareStatement(query);
+			System.out.println(query+limitQuery);
+			stmt = conn.prepareStatement(query+limitQuery);
 
 			rs = stmt.executeQuery();
 			while(rs.next()) {

@@ -9,8 +9,7 @@
 			<div class="row row-cols-1 row-cols-md-3 g-4">
 				 
 <%
-
-				// middleView.do 페이지수
+				// middleFunctionView.do 페이지수
 				int count = (int)request.getAttribute("count");	
 
 				ArrayList<ProductListDto> list = (ArrayList<ProductListDto>) request.getAttribute("list");
@@ -76,7 +75,7 @@
 	<%
 			for(int i=1; i<=count; i++){
 	%>			
-				<a href="middleView.do?page=<%=i %>">[<%=i %>]</a>
+				<a href="middleFunctionList.do?ctg_middle=<%=list.get(0).getCtg_middle() %>&page=<%=i %>">[<%=i %>]</a>
 	<%
 			}
 	%>

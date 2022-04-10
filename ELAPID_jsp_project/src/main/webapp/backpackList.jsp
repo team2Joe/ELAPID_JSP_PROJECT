@@ -1,4 +1,5 @@
 
+<%@page import="com.elapid.dao.ProductDao"%>
 <%@page import="com.elapid.dto.ProductListDto"%>
 <%@page import="com.elapid.dto.ProductDto"%>
 <%@page import="java.util.ArrayList"%>
@@ -20,8 +21,11 @@
 				</div>
 
 			<div class="row row-cols-1 row-cols-md-3 g-4">
-			<img src="elapid_img/luggage/clite_06.jpg">
  <%
+	ProductDao dao = new ProductDao();						
+	
+	int count = (int)request.getAttribute("count");
+ 
  	ArrayList<ProductListDto> list = (ArrayList<ProductListDto>) request.getAttribute("list");
  
  for(int i = 0; i < list.size(); i++){
@@ -78,6 +82,21 @@
 		 }
 	 %>
 				</div>
+				
+	<div class="div2">
+		<tr>
+			<td>
+		
+<%
+		for(int i=1; i<=count; i++){
+%>			
+			<a href="backpackList.do?page=<%=i %>">[<%=i %>]</a>
+<%
+		}
+%>
+			<td>
+		</tr>
+	</div>	
 			
 		<%@ include file="/layout/footer.jsp"%>	
 		

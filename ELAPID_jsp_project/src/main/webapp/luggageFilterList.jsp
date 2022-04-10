@@ -6,7 +6,14 @@
 <%@ include file="/layout/header.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+	
+	
+	<%
+ 	ProductDao dao = new ProductDao();						
+										
+	// 페이지 수 저장
+	int count = (int)request.getAttribute("count");
+	%>
 
 			<div class="row row-cols-1 row-cols-md-3 g-4">
  			<c:forEach items="${list }" var="dto">
@@ -46,6 +53,22 @@
 						
 			</c:forEach>
 				</div>
+			
+				<div class="div2">
+			<tr>
+				<td>
+			
+	<%
+			for(int i=1; i<=count; i++){
+	%>			
+				<a href="luggageFilterList.do?page=<%=i %>">[<%=i %>]</a>
+	<%
+			}
+	%>
+				<td>
+			</tr>
+	</div>		
+			
 			
 		<%@ include file="/layout/footer.jsp"%>	
 		

@@ -9,6 +9,9 @@
    .div1 {
    padding : 0 0 0 100px;
    }
+   .div2 {
+   padding : 0 0 200px 200px;
+   }
    </style> 
 			<div class="div1">
 			<div class="category-banner0">
@@ -59,8 +62,12 @@
 					
 
 				
- <%
+<%					
+	// 캐리어 리스트 행 갯수
+	int count = (int)request.getAttribute("count");
+ 
  	ArrayList<ProductListDto> list = (ArrayList<ProductListDto>) request.getAttribute("list");
+
  
  for(int i = 0; i < list.size(); i++){
 	 boolean check = true;
@@ -109,19 +116,28 @@
 				    </div>
 				  </div>
 			
-						
-						
+				 
 						
 	 <%
+						
 						 }
 		 }
-	 %>
-				</div>
-				
-				<c:forEach items="${list }" var="dto">
-					[${dto.p_id }]
-				</c:forEach>
+%>
+	<div class="div2">
+			<tr>
+				<td>
 			
+	<%
+			for(int i=1; i<=count; i++){
+	%>			
+				<a href="luggageList.do?page=<%=i %>">[<%=i %>]</a>
+	<%
+			}
+	%>
+	
+				<td>
+			</tr>
+	</div>		
 		<%@ include file="/layout/footer.jsp"%>	
 		
 		

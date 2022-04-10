@@ -22,7 +22,10 @@
 			<div class="row row-cols-1 row-cols-md-3 g-4">
 				
   <%
- 	ArrayList<ProductListDto> list = (ArrayList<ProductListDto>) request.getAttribute("list");
+  // functionList 페이지 수
+  int count = (int)request.getAttribute("count");
+  
+ ArrayList<ProductListDto> list = (ArrayList<ProductListDto>) request.getAttribute("list");
  
  for(int i = 0; i < list.size(); i++){
 	 boolean check = true;
@@ -78,5 +81,21 @@
 		 }
 	 %>
 				</div>
+			
+				<div class="div2">
+			<tr>
+				<td>
+			
+	<%
+			for(int i=1; i<=count; i++){
+	%>			
+				<a href="functionList.do?page=<%=i %>">[<%=i %>]</a>
+	<%
+			}
+	%>
+	
+				<td>
+			</tr>
+	</div>	
 			
 		<%@ include file="/layout/footer.jsp"%>	

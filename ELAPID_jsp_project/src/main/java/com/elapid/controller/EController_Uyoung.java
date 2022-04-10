@@ -26,7 +26,6 @@ import com.elapid.command.ELoginCheckCommand;
 import com.elapid.command.ELogoutCommand;
 import com.elapid.command.ELuggageFilterListCommand;
 import com.elapid.command.ELuggageListCommand;
-import com.elapid.command.ELuggageProductCountCommand;
 import com.elapid.command.EMiddleFunctionListCommand;
 import com.elapid.command.EMiddleViewCommand;
 
@@ -94,6 +93,13 @@ public class EController_Uyoung extends HttpServlet {
 			viewPage = "luggageList.jsp";
 			break;
 			
+			// 캐리어 전용 필터
+		case("/luggageFilterList.do"):
+			command = new ELuggageFilterListCommand();
+			command.execute(request, response);
+			viewPage = "luggageFilterList.jsp";
+			break;	
+			
 			//백팩 전체리스트 페이지
 		case("/backpackList.do"):
 			command = new EBackpackListCommand();
@@ -108,7 +114,6 @@ public class EController_Uyoung extends HttpServlet {
 			viewPage = "detailView.jsp";
 			break;
 
-			
 			//제품 중분류별 리스트 페이지
 		case("/middleView.do"):
 			command = new EMiddleViewCommand();
@@ -120,7 +125,7 @@ public class EController_Uyoung extends HttpServlet {
 		case("/middleFunctionList.do"):
 			command = new EMiddleFunctionListCommand();
 			command.execute(request, response);
-			viewPage = "mainList.jsp";
+			viewPage = "middleFunctionList.jsp";
 			break;
 			
 			// 제품 기능별 리스트 페이지
@@ -137,19 +142,7 @@ public class EController_Uyoung extends HttpServlet {
 			viewPage = "searchList.jsp";
 			break;
 			
-			// 캐리어 전용 필터
-		case("/luggageFilterList.do"):
-			command = new ELuggageFilterListCommand();
-			command.execute(request, response);
-			viewPage = "luggageList.jsp";
-			break;
-			
-			// 캐리어 카운트 수 출력
-		case("/productCount.do"):
-			command = new ELuggageProductCountCommand();
-			command.execute(request, response);
-			viewPage = "luggageList.do";
-			break;
+
 			
 			
 			
@@ -264,9 +257,7 @@ public class EController_Uyoung extends HttpServlet {
 		
 			
 		}
-		
-		
-			
+
 //			
 //		//nonUser가 Cart(장바구니)로 이동
 //		//장바구니에 아이템들이 잘들어가 있어야 하는데 이건 아직 확인 못함...
@@ -284,13 +275,7 @@ public class EController_Uyoung extends HttpServlet {
 //			command.execute(request, response);
 //			viewPage = "userCartView.jsp";
 //			break;
-			
-		
-		
-		
-		
-		
-		
+
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
