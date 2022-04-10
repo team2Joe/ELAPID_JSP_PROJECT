@@ -76,7 +76,7 @@
 	<%
 			for(int i=1; i<=count; i++){
 	%>			
-				<a href="middleView.do?page=<%=i %>">[<%=i %>]</a>
+				<a href="middleView.do?ctg_middle=<%=list.get(0).getCtg_middle() %>&page=<%=i %>">[<%=i %>]</a>
 	<%
 			}
 	%>

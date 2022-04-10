@@ -75,7 +75,7 @@
 	<%
 			for(int i=1; i<=count; i++){
 	%>			
-				<a href="middleFunctionList.do?ctg_middle=<%=list.get(0).getCtg_middle() %>&page=<%=i %>">[<%=i %>]</a>
+				<a href="middleFunctionList.do?page=<%=i %>">[<%=i %>]</a>
 	<%
 			}
 	%>

@@ -89,7 +89,7 @@
 	<%
 			for(int i=1; i<=count; i++){
 	%>			
-				<a href="functionList.do?page=<%=i %>">[<%=i %>]</a>
+				<a href="functionList.do?p_mainf=<%=list.get(0).getP_mainf() %>&page=<%=i %>">[<%=i %>]</a>
 	<%
 			}
 	%>
