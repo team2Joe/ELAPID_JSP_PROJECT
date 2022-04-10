@@ -39,6 +39,7 @@ import com.elapid.command.ESearchCommand;
 import com.elapid.command.ESelectedReadInCartCommand;
 import com.elapid.command.ESizeFilterListCommand;
 import com.elapid.command.EUserCartViewCommand;
+import com.elapid.command.EUserOrderCommand;
 import com.elapid.command.EUserOrderFormCommand;
 import com.mysql.cj.protocol.a.MergingColumnDefinitionFactory;
 
@@ -192,6 +193,12 @@ public class KTEEController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "userOrderForm.do";
 			break;	
+			//회원 주문하기 
+		case("/userOrder.do"):
+			command = new EUserOrderCommand();
+			command.execute(request, response);
+			viewPage = "userOrderCompletePage.jsp";
+			break;
 			
 					// 캐리어 전체 리스트 페이지
 		case("/luggageList.do"):
@@ -288,9 +295,8 @@ public class KTEEController extends HttpServlet {
 			viewPage = "userCartView.jsp";
 			break;
 		
-		case("/test.do"):
-			System.out.println("sibal");
-			
+//		case("/test.do"):
+//			break;
 		
 		default:
 			break;
@@ -299,7 +305,11 @@ public class KTEEController extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
 		}catch(Exception e){
-			
+			// 로그인 안한 상태서 로그인을 요하는 페이지로 갈 경우 로그인 폼으로 가기
+			if( session.getAttribute("uid") == null ) {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("loginForm.do");
+				dispatcher.forward(request, response);
+			}
 		}
 	}
 	

@@ -3,6 +3,8 @@ package com.elapid.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -56,6 +58,43 @@ public class CartDao2 {
 		
 	}
 	
+	public ArrayList<Integer> searchBycdids(ArrayList<Integer> cd_ids) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<Integer> p_ids = new ArrayList<Integer>();
+		
+		try {
+			conn = dataSource.getConnection();
+			
+			for(int i = 0 ; i < cd_ids.size() ; i++) {
+				
+			String query = "select p_id from cart_detail where cd_id = ?";
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, cd_ids.get(i));
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				p_ids.add(rs.getInt("p_id"));
+			}
+			
+			
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return p_ids;
+	}
 	
 	
 	

@@ -22,7 +22,7 @@ public class EUserOrderFormCommand implements ECommand {
 		UserDao dao = new UserDao();
 		String uid = (String) session.getAttribute("uid");
 		UserDto userDto = dao.profileView(uid);
-	
+		
 		
 		ArrayList<RegisterJoinDto> shipDtos = new ArrayList<RegisterJoinDto>();
 		
@@ -32,7 +32,7 @@ public class EUserOrderFormCommand implements ECommand {
 		
 		ArrayList<Integer> p_ids = new ArrayList<Integer>();
 		
-		int p_id = -1; 
+		int p_id = -1;
 		
 		try {
 			p_id = Integer.parseInt(request.getParameter("p_id"));
@@ -40,6 +40,7 @@ public class EUserOrderFormCommand implements ECommand {
 			//e.printStackTrace();
 			
 		}
+		
 		
 		
 		if(p_id == -1) {
@@ -52,7 +53,6 @@ public class EUserOrderFormCommand implements ECommand {
 			
 		}
 		
-		System.out.println("__________________________"+p_ids);
 				
 //		p_ids.add(1);
 //		p_ids.add(2);

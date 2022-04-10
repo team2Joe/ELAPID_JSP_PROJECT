@@ -1,3 +1,4 @@
+<%@page import="org.apache.catalina.ant.jmx.JMXAccessorQueryTask"%>
 <%@page import="com.elapid.dto.RegisterDto"%>
 <%@page import="com.elapid.dto.UserDto"%>
 <%@page import="com.elapid.dto.RegisterJoinDto"%>
@@ -20,20 +21,17 @@
 // uo_paymentmethod
 // up_add_id
 
-UserDto userDto = (UserDto) request.getAttribute("userDto");
 ArrayList<RegisterDto> registerDtos = (ArrayList<RegisterDto>) request.getAttribute("registerDtos");
 ArrayList<ProductListDto> pListDtos = (ArrayList<ProductListDto>) request.getAttribute("pListDtos");
 
-request.setAttribute("uo_name", userDto.getU_name());
-request.setAttribute("uo_tel", userDto.getU_tel());
 %>
 
 <body>
 	<div style="padding: 30px 200px 20px 200px;">
+					<form action="userOrder.do" method="post" id = "userOrderForm">
 		<div class="row">
 			<div class="col-5 col-md-6">
 				<div style="float: left;">
-					<form action="" method="post">
 						<div style="padding-top: 20px; padding-bottom: 20px">
 							<h3>주문결제</h3>
 						</div>
@@ -88,24 +86,23 @@ request.setAttribute("uo_tel", userDto.getU_tel());
 						</div>
 						<div class="row" style="text-align: center;">
 							<div class="col-5">
-								<input type="radio" name="uo_paymentmethod" checked="checked">
+								<input type="radio" value="신용카드" name="uo_paymentmethod" checked="checked">
 								신용카드
 							</div>
 							<div class="col-5">
 
-								<input type="radio" name="uo_paymentmethod"> 휴대폰결제
+								<input type="radio" value="휴대폰결제" name="uo_paymentmethod"> 휴대폰결제
 							</div>
 						</div>
 
 						<br> <br> <br>
 						<div style="text-align: center;">
-							<button class="btn btn-dark">주문하기</button>
+							<button class="btn btn-dark" onclick="userorder()">주문하기</button>
 						</div>
 
 
 						<input type="hidden" style="border: none" id="uo_name"
 							readonly="readonly" value="${userDto.u_name}"><br>
-					</form>
 
 
 
@@ -149,8 +146,11 @@ request.setAttribute("uo_tel", userDto.getU_tel());
 								</table>
 							</div>
 						</div>
+						<input type="hidden" name= "p_ids" value="${pdto.p_id }">
 					</c:forEach>
-
+					<c:forEach var="cd_id" items="${cd_ids}">
+						<input type="hidden" name= "cd_ids" value="${cd_id }">
+					</c:forEach>
 					<%
 					ArrayList<ProductListDto> pdtos = new ArrayList<ProductListDto>();
 					pdtos = (ArrayList<ProductListDto>) request.getAttribute("pListDtos");
@@ -190,10 +190,6 @@ request.setAttribute("uo_tel", userDto.getU_tel());
 						+ strtotal.substring(strtotal.length() - ((i + 1) * 3 + i), strtotal.length());
 					}
 					//
-
-					request.setAttribute("uo_amount", amount);
-					request.setAttribute("uo_discountedamount", discountamount);
-					request.setAttribute("uo_shippingfee", shippingfee);
 					%>
 
 					<div class="row">
@@ -225,8 +221,12 @@ request.setAttribute("uo_tel", userDto.getU_tel());
 				<hr width="550">
 
 
+				</div>
 			</div>
-		</div>
+			<input type="hidden" name = "uo_amount" value="<%=amount%>">
+			<input type="hidden" name = "uo_discountedamount" value="<%=discountamount%>">
+			<input type="hidden" name = "uo_shippingfee" value="<%=shippingfee%>">
+		</form>
 	</div>
 
 

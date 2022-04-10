@@ -25,12 +25,12 @@
 		
 			
 			<form action="userOderForm.do" id = "cart" >
-				<c:forEach items="${User_Cart }" var="dtos">
+				<c:forEach items="${User_Cart}" var="dtos">
 				<div class="container">
 			  		<div class="row">
 			  				<div class="col-1" style="padding: 75px 0px 0px 0px;">
 			  			<div class="form-check" >
-						  <input class="form-check-input" type="checkbox" name="cartchoice" value="${dtos.p_id}" id="flexCheckDefault">
+						  <input class="form-check-input" type="checkbox" name="cartchoice" value="${dtos.cd_id}" id="flexCheckDefault">
 						  <label class="form-check-label" for="flexCheckDefault">
 						  </label>
 						</div>
@@ -75,6 +75,9 @@
 			<h5>총 계</h5>
 			
 			<h4>${User_Cart.get(User_Cart.size()-1).cart_totalamount}원</h4>
+
+			
+			
 		</div>
 	
 	
@@ -83,6 +86,14 @@
 	</div><!-- 중앙! -->
 	<!-- 2분할! -->
 	<div class="d-grid gap-2 col-10">
+
+			<%
+				String str = "";
+				if(request.getParameter("noselect") != null){
+					str = Integer.parseInt( request.getParameter("noselect"))==1 ? "상품을 선택해주세요":"";
+				}
+			%>
+			<div ><h4 style="text-align:center;"> <%=str %></h4></div>
 	  		<div><button onclick="selectedCartOrder()" class="btn btn-dark" style="float: right;" >선택상품 주문하기</button></div>
 		 	<div><button type="submit" onclick="location.href='readInCart.do'" class="btn btn-dark" style="float: right;">전체 결제하기</button></div>
 	</div>

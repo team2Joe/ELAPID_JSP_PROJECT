@@ -161,6 +161,143 @@ public class OrderDao {
 		return p_ids;
 	}
 	
+	public void uesrOrderWrite(String u_id, String uo_name, String uo_tel, int uo_discountedamount,int uo_amount,String uo_address,String uo_specificaddress, int uo_shippingfee,String  uo_paymentmethod){
+		
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			
+			
+			String query = "insert into user_order (u_id,uo_name,uo_tel, uo_discountedamount, uo_amount, uo_address, uo_specificaddress,  uo_shippingfee,  uo_paymentmethod , uo_date) values (?,?,?,?,?,?,?,?,?,now())";
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, u_id);
+			stmt.setString(2, uo_name);
+			stmt.setString(3, uo_tel);
+			stmt.setInt(4, uo_discountedamount);
+			stmt.setInt(5, uo_amount);
+			stmt.setString(6, uo_address);
+			stmt.setString(7, uo_specificaddress);
+			stmt.setInt(8, uo_shippingfee);
+			stmt.setString(9, uo_paymentmethod);
+			
+			stmt.executeUpdate();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	
+	public int searchLatestOrderForUser(String u_id) {
+		int uo_id = 0;
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			
+			
+			String query = "select uo_id from user_order where u_id = ? order by uo_date desc limit 1";
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, u_id);
+			
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				uo_id = rs.getInt("uo_id");
+			}
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return uo_id;		
+	}
+	
+	
+	public void userOrderDetailWrite(ArrayList<Integer> p_ids, int uo_id){
+		
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			
+			for(int i = 0 ; i <p_ids.size()  ; i++) {
+				
+			String query = "insert into user_order_detail (uo_id, p_id ) values (?,?)";
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, uo_id);
+			stmt.setInt(2, p_ids.get(i));
+			
+			stmt.executeUpdate();
+			
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void deleteOrderedCart(ArrayList<Integer> cd_ids){
+		
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			
+			for(int i = 0 ; i <cd_ids.size()  ; i++) {
+				
+				System.out.println(cd_ids.get(i) + "************");
+				String query = "delete from cart_detail where cd_id = ?";
+				stmt = conn.prepareStatement(query);
+				stmt.setInt(1, cd_ids.get(i));
+				
+				stmt.executeUpdate();
+				
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
