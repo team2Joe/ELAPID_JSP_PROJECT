@@ -57,7 +57,7 @@ public class ProductDao {
 		try {
 			conn = dataSource.getConnection();
 			
-			// 
+
 			String query = "select * "
 					+ "from product_image i "
 					+ "join image_detail id "
@@ -282,7 +282,7 @@ public class ProductDao {
 	}
 	
 	// 상품 상세 페이지 출력
-	public ArrayList<ProductDetailDto> detailView(String sp_name) {
+	public ArrayList<ProductDetailDto> detailView(String sp_id) {
 		ArrayList<ProductDetailDto> dtos = new ArrayList<ProductDetailDto>();
 
 		Connection conn = null;
@@ -312,10 +312,10 @@ public class ProductDao {
 					+ "join product_spec s\n"
 					+ "on s.ps_id = pd.ps_id\n"
 					+ "\n"
-					+ "where p.p_name = ?";
+					+ "where p.p_id = ?";
 			
 			stmt = conn.prepareStatement(query);
-			stmt.setString(1, sp_name);
+			stmt.setString(1, sp_id);
 			
 			rs = stmt.executeQuery();
 			
@@ -846,8 +846,7 @@ public class ProductDao {
 					}
 				}		
 			}
-			
-			
+
 			System.out.println(query+limitQuery);
 			stmt = conn.prepareStatement(query+limitQuery);
 

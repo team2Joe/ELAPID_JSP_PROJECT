@@ -181,7 +181,7 @@ request.setCharacterEncoding("utf-8");
 	  		<option value="s.ps_color">색상</option>
 	  	</select>
         <input class="form-control me-sm-2" type="text" placeholder="Search" name="search" size="10">
-        <buttons class="btn btn-secondary" type="submit">Search</button>
+        <button class="btn btn-secondary" type="submit">Search</button>
       </form>
     </div>
 

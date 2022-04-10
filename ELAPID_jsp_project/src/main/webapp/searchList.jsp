@@ -13,7 +13,7 @@
 				 
 				 <div class="col">
 				    <div class="card h-100" align="center">
-			    	  <a href="detailView.do?p_id=${dto.p_id }&ctg_middle=${dto.ctg_middle } %>">
+			    	  <a href="detailView.do?p_id=${dto.p_id }&ctg_middle=${dto.ctg_middle }">
 				      <img src="${dto.img_thum }" alt="..." align="center">
 				      <div class="card-body">
 				        <h5 class="card-title">${dto.p_name }</h5>

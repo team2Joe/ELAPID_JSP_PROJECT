@@ -30,9 +30,12 @@ public class ELuggageListCommand implements ECommand {
 		int onePageCount = 3; // 페이지 하나당 보여줄 상품 갯수
 		
 		// 페이지 수 저장
+		// Math.ceil() : 입력받은 파라미터 값보다 크거나 같은 가장 작은 정수값을 double형태로 반환해주는 메서드
+		// 더블형태로 반환받기 때문에 int로 다운캐스팅
 		count = (int)Math.ceil((double)count/(double)onePageCount);
 		
 		if(tempStart != null) { // 처음에는 실행하지 않음
+								// 2번째 페이지 부터 onePageCount단위로 startPage가 변경됨
 			startPage = (Integer.parseInt(tempStart)-1)*onePageCount;
 		}
 		

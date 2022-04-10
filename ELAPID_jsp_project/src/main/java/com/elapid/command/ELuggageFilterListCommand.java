@@ -16,9 +16,7 @@ public class ELuggageFilterListCommand implements ECommand {
 			String[] ctg_middle = request.getParameterValues("ctg_middle");
 			String[] ps_color = request.getParameterValues("ps_color");
 			String[] p_mainf = request.getParameterValues("p_mainf");
-		
-			
-			
+
 			ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 			
 			ProductDao dao = new ProductDao();
@@ -27,7 +25,7 @@ public class ELuggageFilterListCommand implements ECommand {
 			
 			// productDao메서드 파라미터에 전달할 where조건 기본 쿼리문
 			String query = " where ctg_main = 'luggage'";
-
+			
 			if(p_mainf != null) {
 				
 				String[] queryValuesMainf = new String[p_mainf.length];
@@ -104,21 +102,19 @@ public class ELuggageFilterListCommand implements ECommand {
 				}		
 			}
 			
-			// 캐리어 전체 행 갯수 반환 카운트 메서드
-			// 위와 같이 luggageFilterList의 쿼리 조건문을 가져와 조건별
-			// 쿼리를 추출하고 productCount에 파라미터로 전달
 			int count = countDao.productCount(query);
-			
-			// luggageList.jsp 페이지버튼에서 get으로 받은 page값
+
 			String tempStart = request.getParameter("page");
 			
 			int startPage = 0; // 첫페이지 받아오기
 			int onePageCount = 3; // 페이지 하나당 보여줄 상품 갯수
 			
 			// 페이지 수 저장
+			// ceil() : 입력한 파라미터 값보다 크거나 같은 가장 작은 정수값을 double 형태로 반환해줌
 			count = (int)Math.ceil((double)count/(double)onePageCount);
 			
 			if(tempStart != null) { // 처음에는 실행하지 않음
+									// 2번째 페이지 부터 onePageCount단위로 startPage가 변경됨
 				startPage = (Integer.parseInt(tempStart)-1)*onePageCount;
 			}
 			
@@ -128,6 +124,12 @@ public class ELuggageFilterListCommand implements ECommand {
 			
 			// 페이지 수 request로 보내기
 			request.setAttribute("count", count);
+			
+			// 초기 필터링시 받아온 배열값들 페이징 버튼에 전달해주기
+			request.setAttribute("ctg_middle", ctg_middle);
+			request.setAttribute("ps_color", ps_color);
+			request.setAttribute("p_mainf", p_mainf);
+			
 			request.setAttribute("list", dtos);
 
 			
