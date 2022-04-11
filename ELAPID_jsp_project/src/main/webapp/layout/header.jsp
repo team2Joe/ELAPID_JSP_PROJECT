@@ -24,11 +24,11 @@ request.setCharacterEncoding("utf-8");
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="css/basic.css" rel="stylesheet" type="text/css" />
 <body>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	          <%
 	          	String uid =""; 
 		          	uid = (String)session.getAttribute("uid");
 		      %>
+		      
 		      
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <div class="container-fluid">
@@ -53,13 +53,13 @@ request.setCharacterEncoding("utf-8");
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" onclick="nnavbtnlinkbackpack()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="navbtnlinkbackpack()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	백팩
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=business">비즈니스</a></li>
-	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=casual">캐주얼</a></li>
-	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=other">그외</a></li>
+	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=비즈니스">비즈니스</a></li>
+	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=캐주얼">캐주얼</a></li>
+	            <li><a class="dropdown-item" href="#">Something else here</a></li>
 	          </ul>
 	        </li>
 	      </ul>
@@ -104,22 +104,12 @@ request.setCharacterEncoding("utf-8");
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" href="questionList.do" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	상품문의
 	          </a>
-	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-	            <li><a class="dropdown-item" href="#">Action</a></li>
-	            <li><a class="dropdown-item" href="#">Another action</a></li>
-	            <li><a class="dropdown-item" href="#">Something else here</a></li>
-	          </ul>
 	        </li>
 	      </ul>
 	    </div>
-
-
-	    <div>
-	      <ul class="navbar-nav">
-
 	    <div class = "col-md-3" style = "text-align:right;">
 	      <ul class="navbar-nav" style = "width:500px;">
 	        <li class="nav-item dropdown">
@@ -179,6 +169,7 @@ request.setCharacterEncoding("utf-8");
 	      </ul>
 	    </div>
 	  </div>
+
 	  <div>
 	  <form class="d-flex" action="search.do" name="searchForm">
 	  	<select name="category">
@@ -188,9 +179,10 @@ request.setCharacterEncoding("utf-8");
 	  		<option value="s.ps_color">색상</option>
 	  	</select>
         <input class="form-control me-sm-2" type="text" placeholder="Search" name="search" size="10">
-        <button class="btn btn-secondary" type="submit">Search</button>
+        <buttons class="btn btn-secondary" type="submit">Search</button>
       </form>
     </div>
+
 	</nav>
 
 	${sessionScope.comment }

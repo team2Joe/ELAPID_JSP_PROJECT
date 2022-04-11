@@ -33,9 +33,12 @@ import com.elapid.command.EMiddleViewCommand;
 import com.elapid.command.EMyPageCommand;
 import com.elapid.command.EProfileDeleteCommand;
 import com.elapid.command.EProfileModifyCommand;
-import com.elapid.command.EQuestionContentViewCommand;
+import com.elapid.command.EQuestionContentCommand;
+import com.elapid.command.EQuestionDeleteCommand;
 import com.elapid.command.EQuestionListCommand;
 import com.elapid.command.EReadInCartCommand;
+import com.elapid.command.EQuestionModifyCommand;
+import com.elapid.command.EQuestionWriteCommand;
 import com.elapid.command.ERegisterAddCommand;
 import com.elapid.command.ERegisterCheckCommand;
 import com.elapid.command.ERegisterDeleteCommand;
@@ -148,9 +151,6 @@ public class EController_Uyoung extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "searchList.jsp";
 			break;
-			
-
-			
 			
 			
 		case("/loginForm.do"):
@@ -286,16 +286,33 @@ public class EController_Uyoung extends HttpServlet {
 			break;
 			
 		case("/questionContentView.do"):
-			command = new EQuestionContentViewCommand();
+			command = new EQuestionContentCommand();
 			command.execute(request, response);
-			viewPage = "questionContentView.jsp";
-			break;
-			//장바구니 담기 
-		case("/addCart.do"):
-			command = new AddCartCommand();
+			viewPage = "questionContent.jsp";
+		break;
+
+		case("/questionWriteForm.do"):
+			viewPage = "questionWrite.jsp";
+		break;
+		
+		case("/questionWrite.do"):
+			command = new EQuestionWriteCommand();
 			command.execute(request, response);
-			viewPage = "userCartView.do";
-			break;
+			viewPage = "questionList.do";
+			
+		break;
+		
+		
+		case("/questionModify.do"):
+			command = new EQuestionModifyCommand();
+		command.execute(request, response);
+		viewPage = "questionList.do";
+		break;
+		case("/questionDelete.do"):
+			command = new EQuestionDeleteCommand();
+		command.execute(request, response);
+		viewPage = "questionList.do";
+		break;
 		
 			//장바구니 보기
 		case("/userCartView.do"):
@@ -306,7 +323,8 @@ public class EController_Uyoung extends HttpServlet {
 		
 //		case("/test.do"):
 //			break;
-		
+		default:
+			break;
 			
 		}
 		try {

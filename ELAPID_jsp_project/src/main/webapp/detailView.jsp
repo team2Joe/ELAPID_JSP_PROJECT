@@ -62,12 +62,12 @@
 						<c:choose>
 				      		<c:when test="${sessionScope.u_id != '' } %>">
 				      			<form action="addCart.do?p_id=<%=detailView.getP_id() %>">
-									<button type="button" class="btn btn-light">장바구니 담기</button>
+									<button type="button" class="btn btn-secondary">장바구니 담기</button>
 								</form>
 				      		</c:when>
 			      		<c:otherwise>
 				      			<form action="nonUserCartView.do?p_id=<%=detailView.getP_id() %>">
-									<button type="button" class="btn btn-light">장바구니 담기</button>
+									<button type="button" class="btn btn-secondary">장바구니 담기</button>
 								</form>
 				      		</c:otherwise>
 				      	</c:choose>

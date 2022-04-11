@@ -1,6 +1,10 @@
+<%@page import="com.elapid.dto.ProductQuestionDto"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ include file="layout/header.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,10 +21,11 @@
 <BR>
 </div>
 
+<form action="questionWrite.do" method="post">
 <table class="table w-auto" style="margin-left: auto; margin-right: auto;">
    <colgroup>
         <col width="150px"/>
-        <col width="200px"/>
+        <col width="150px"/>
         <col width="400px"/>
     </colgroup>
 
@@ -34,28 +39,34 @@
   </thead>
   <tbody>
   
-    <c:forEach items="${questionList }" var ="ProductQuestionDto">
+   <c:forEach items="${QuestionList }" var ="dtos">
     <tr>
-  	<td> ${ProductQuestionDto.pq_id}></td>
-		<td> ${ProductQuestionDto.qc_name }</td>
-		<td> ${ProductQuestionDto.pq_title }</td>
+  	   <th scope="col" class="text-center"><a href="questionContentView.do?pq_id=${dtos.pq_id}"> ${dtos.pq_id}</a></th>
+	   <th scope="col" class="text-center"> ${dtos.qc_name }</th>
+	   <th scope="col" class="text-center"> ${dtos.pq_title }</th>
 		<td></td>
     </tr>
-    </c:forEach>
+   </c:forEach>
     <tr>
     <td></td>
     <td></td>
     <td></td>
     <td>
-     <button type="button" class="btn btn-dark" id="question" onclick="qnawrite()">문의하기</button>
+     <button type="button" class="btn btn-dark" onclick="qnawrite()" id="question" >문의하기</button>
   
 
 </td>
     </tr>
   </tbody>
 </table>
+</form>
+
 
 
 <script src="js/basic.js"></script>
 </body>
 </html>
+
+
+
+<%@ include file="layout/footer.jsp" %>
