@@ -25,6 +25,16 @@ public class EUserOrderHistoryCommand implements ECommand {
 		
 		request.setAttribute("orderHistory", dtos);
 		
+		System.out.println( request.getParameter("pageNum") + "***********");
+		
+		if (request.getParameter("pageNum") != null) {
+			
+			request.setAttribute("pageNumtwo",Integer.parseInt(request.getParameter("pageNum")));
+		}else {
+			request.setAttribute("pageNumtwo", 1);
+		}
+		
+		System.out.println();
 		
 	}
 

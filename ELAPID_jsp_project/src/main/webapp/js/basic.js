@@ -11,8 +11,6 @@ function selectedCartOrder(){
 	form.action= "selectedReadInCart.do";
 	form.submit();
 	
-	
-	
 }
 	
 function navbtnlinkluggage() {

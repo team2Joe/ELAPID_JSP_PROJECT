@@ -96,6 +96,7 @@
 			<div ><h4 style="text-align:center;"> <%=str %></h4></div>
 	  		<div><button onclick="selectedCartOrder()" class="btn btn-dark" style="float: right;" >선택상품 주문하기</button></div>
 		 	<div><button type="submit" onclick="location.href='readInCart.do'" class="btn btn-dark" style="float: right;">전체 결제하기</button></div>
+		 	
 	</div>
 	<br>
 	  

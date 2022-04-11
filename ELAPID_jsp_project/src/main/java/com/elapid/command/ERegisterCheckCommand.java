@@ -3,7 +3,7 @@ package com.elapid.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.elapid.dao.CartDao2;
+import com.elapid.dao.CartOrderDao;
 import com.elapid.dao.RegisterDao;
 import com.elapid.dao.UserDao;
 
@@ -27,7 +27,7 @@ public class ERegisterCheckCommand implements ECommand {
 		
 		dao.userAdd(uid, upwd, uname, uemail, utel, ugender, ubirthdate);
 		
-		CartDao2 cdao2 =new CartDao2();
+		CartOrderDao cdao2 =new CartOrderDao();
 		
 		cdao2.CartAdd(uid);
 		

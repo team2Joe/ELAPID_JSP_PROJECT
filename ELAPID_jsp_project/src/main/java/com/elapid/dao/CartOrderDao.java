@@ -11,11 +11,11 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 
-public class CartDao2 {
+public class CartOrderDao {
 	DataSource dataSource = null;
 
 
-	public CartDao2() {	
+	public CartOrderDao() {	
 		try {
 			
 			

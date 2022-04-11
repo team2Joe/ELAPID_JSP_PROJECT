@@ -34,15 +34,17 @@ public class EUserOrderFormCommand implements ECommand {
 		
 		int p_id = -1;
 		
+		// 상품 하나 바로 구매
 		try {
 			p_id = Integer.parseInt(request.getParameter("p_id"));
+			
 		}catch(Exception e) {
 			//e.printStackTrace();
 			
 		}
 		
 		
-		
+		// 장바구니 선택 주문, 전체 주문
 		if(p_id == -1) {
 			
 			p_ids = (ArrayList<Integer>) request.getAttribute("p_ids");

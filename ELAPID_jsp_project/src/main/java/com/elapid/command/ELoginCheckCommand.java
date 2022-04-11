@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.elapid.dao.UserDao;
+import com.elapid.dao.UserLogDao;
 
 public class ELoginCheckCommand implements ECommand {
 
@@ -14,6 +15,7 @@ public class ELoginCheckCommand implements ECommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
+		
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException e) {
@@ -22,6 +24,7 @@ public class ELoginCheckCommand implements ECommand {
 		}
 		
 		UserDao dao = new UserDao();
+		UserLogDao lDao = new UserLogDao();
 		String uid = "";
 		uid = request.getParameter("uid");
 		
@@ -31,13 +34,13 @@ public class ELoginCheckCommand implements ECommand {
 		if(result == 1 ) {
 			session.setAttribute("uid",uid);
 			request.setAttribute("loginviewparam", "main.do");
-		}else{
+			lDao.userLoginLogAdd(uid);
 			
+		}else{
 			request.setAttribute("loginviewparam", "loginForm.jsp");
 		}
 		
-		 
-
+		
 	}
 
 }

@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.elapid.dao.CartDao2;
+import com.elapid.dao.CartOrderDao;
 import com.elapid.dao.OrderDao;
 import com.elapid.dao.UserDao;
 import com.elapid.dto.RegisterJoinDto;
@@ -21,7 +21,7 @@ public class EUserOrderCommand implements ECommand {
 		HttpSession session = request.getSession();
 		
 		OrderDao oDao = new OrderDao();
-		CartDao2 cDao = new CartDao2();
+		CartOrderDao cDao = new CartOrderDao();
 		UserDao uDao = new UserDao();
 		
 		String uid = (String) session.getAttribute("uid");

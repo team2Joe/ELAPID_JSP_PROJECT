@@ -23,7 +23,6 @@
 
 ArrayList<RegisterDto> registerDtos = (ArrayList<RegisterDto>) request.getAttribute("registerDtos");
 ArrayList<ProductListDto> pListDtos = (ArrayList<ProductListDto>) request.getAttribute("pListDtos");
-
 %>
 
 <body>
@@ -171,21 +170,21 @@ ArrayList<ProductListDto> pListDtos = (ArrayList<ProductListDto>) request.getAtt
 
 					int len = stramount.length();
 
-					for (int i = 0; i < len / 3; i++) {
+					for (int i = 0; i < (len-1) / 3; i++) {
 						stramount = stramount.substring(0, stramount.length() - ((i + 1) * 3 + i)) + ","
 						+ stramount.substring(stramount.length() - ((i + 1) * 3 + i), stramount.length());
 					}
 
 					len = strshippingfee.length();
 
-					for (int i = 0; i < len / 3; i++) {
+					for (int i = 0; i < (len-1)  / 3; i++) {
 						strshippingfee = strshippingfee.substring(0, strshippingfee.length() - ((i + 1) * 3 + i)) + ","
 						+ strshippingfee.substring(strshippingfee.length() - ((i + 1) * 3 + i), strshippingfee.length());
 					}
 
 					len = strtotal.length();
 
-					for (int i = 0; i < len / 3; i++) {
+					for (int i = 0; i < (len-1)  / 3; i++) {
 						strtotal = strtotal.substring(0, strtotal.length() - ((i + 1) * 3 + i)) + ","
 						+ strtotal.substring(strtotal.length() - ((i + 1) * 3 + i), strtotal.length());
 					}
@@ -201,6 +200,9 @@ ArrayList<ProductListDto> pListDtos = (ArrayList<ProductListDto>) request.getAtt
 							<p class="fs-6">${User_Cart.p_name }</p>
 							<p class="fs-8">${User_Cart.p_colorname }</p>
 						</div>
+						
+						
+						
 						<!-- 삭제,주문하기,가격 -->
 						<div class="col -2" align="right">
 							<p><%=stramount%>원
