@@ -401,16 +401,16 @@
 			<div class="justify-content-center account-cards">
 				<div class="row order-card">
 					<div class="col-3 col-md-2 image-card">
-						<a href="/orders"><i class="wishlist-icon fa-solid fa-basket-shopping"></i>
+						<a href="userOrderHistory.do"><i class="wishlist-icon fa-solid fa-basket-shopping"></i>
 						</a>
 					</div>
 					<div class="text-card col-7 col-md-8">
-						<a href="/orders">
+						<a href="userOrderHistory.do">
 							<h4>나의 구매내역</h4>
 						</a>
 					</div>
 					<div class="arrowed col-2 col-md-2" style="padding-top:15px">
-						<a href="/orders">
+						<a href="userOrderHistory.do">
 							<div class="arrow-1"></div>
 						</a>
 					</div>

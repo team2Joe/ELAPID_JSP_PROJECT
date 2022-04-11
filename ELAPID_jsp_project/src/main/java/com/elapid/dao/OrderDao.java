@@ -10,6 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.elapid.dto.OrderHistoryDto;
 import com.elapid.dto.ProductListDto;
 
 public class OrderDao {
@@ -299,5 +300,85 @@ public class OrderDao {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public ArrayList<OrderHistoryDto> userOrderHistory(String uid) {
+		
+		ArrayList<OrderHistoryDto> dtos = new ArrayList<OrderHistoryDto>();
+		
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			
+			
+			String query = "select uo.u_id, uo.uo_id, uod.uod_id, p.p_id, pi.img_id, ctg.ctg_id, "
+					+ "uo.uo_name,uo.uo_tel,uo.uo_discountedamount,uo.uo_date,uo.uo_specificaddress,uo.uo_address,uo.uo_shippingfee,uo.uo_paymentmethod, "
+					+ "p.p_price, p.p_size, p.p_name , p.p_colorname, "
+					+ "pi.img_thum, "
+					+ "ctg.ctg_sub "
+					+ "from user_order as uo "
+					+ "join user_order_detail as uod on uo.uo_id = uod.uo_id "
+					+ "join product as p on p.p_id = uod.p_id "
+					+ "join image_detail as id on id.p_id = p.p_id "
+					+ "join product_image as pi on pi.img_id = id.img_id "
+					+ "join category_detail as cd on cd.p_id = p.p_id "
+					+ "join category as ctg on ctg.ctg_id = cd.ctg_id\n"
+					+ "where u_id = ?";
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, uid);
+			
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				OrderHistoryDto dto = new OrderHistoryDto();
+				
+				dto.setU_id(rs.getString("u_id")); 
+				dto.setUo_id(rs.getInt("uo_id")); 
+				dto.setUod_id(rs.getInt("uod_id")); 
+				dto.setP_id(rs.getInt("uod_id"));
+				dto.setImg_id(rs.getInt("img_id"));
+				dto.setCtg_id(rs.getInt("ctg_id"));
+	
+				dto.setUo_name(rs.getString("uo_name"));
+				dto.setUo_tel(rs.getString("uo_tel"));
+				dto.setUo_discountedamount(rs.getInt("uo_discountedamount"));
+				dto.setUo_date(rs.getTimestamp("uo_date"));
+				dto.setUo_address(rs.getString("uo_address"));
+				dto.setUo_specificaddress(rs.getString("uo_specificaddress"));
+				dto.setUo_shippingfee(rs.getInt("uo_shippingfee"));
+				dto.setUo_paymentmethod(rs.getString("uo_paymentmethod"));
+
+				dto.setP_price(rs.getInt("p_price"));
+				dto.setP_name(rs.getString("p_name"));
+				dto.setP_size(rs.getInt("p_size"));
+				dto.setP_colorname(rs.getString("p_colorname"));
+				
+				
+				
+				dto.setImg_thum(rs.getString("img_thum"));
+				
+				dto.setCtg_sub(rs.getString("ctg_sub"));
+				
+				dtos.add(dto);
+				
+			}
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return dtos;
+		
 	}
 }

@@ -41,6 +41,7 @@ import com.elapid.command.ESizeFilterListCommand;
 import com.elapid.command.EUserCartViewCommand;
 import com.elapid.command.EUserOrderCommand;
 import com.elapid.command.EUserOrderFormCommand;
+import com.elapid.command.EUserOrderHistoryCommand;
 import com.mysql.cj.protocol.a.MergingColumnDefinitionFactory;
 
 /**
@@ -77,7 +78,9 @@ public class KTEEController extends HttpServlet {
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 		
+		System.out.println(uri);
 		System.out.println(com);
+		System.out.println(conPath);
 		
 		switch(com) {
 			//메인 화면 
@@ -199,6 +202,11 @@ public class KTEEController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "userOrderCompletePage.jsp";
 			break;
+		case("/userOrderHistory.do"):
+			command = new EUserOrderHistoryCommand();
+			command.execute(request, response);
+			viewPage = "userOrderHistory.jsp?pageNum=1";
+			break;
 			
 					// 캐리어 전체 리스트 페이지
 		case("/luggageList.do"):
@@ -301,16 +309,17 @@ public class KTEEController extends HttpServlet {
 		default:
 			break;
 		}
-		try {
+		//try {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
-		}catch(Exception e){
-			// 로그인 안한 상태서 로그인을 요하는 페이지로 갈 경우 로그인 폼으로 가기
-			if( session.getAttribute("uid") == null ) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("loginForm.do");
-				dispatcher.forward(request, response);
-			}
-		}
+//		}catch(Exception e){
+//			// 로그인 안한 상태서 로그인을 요하는 페이지로 갈 경우 로그인 폼으로 가기
+//			if( session.getAttribute("uid") == null ) {
+//				RequestDispatcher dispatcher = request.getRequestDispatcher("loginForm.do");
+//				dispatcher.forward(request, response);
+//			}
+//			e.printStackTrace();
+//		}
 	}
 	
 	
