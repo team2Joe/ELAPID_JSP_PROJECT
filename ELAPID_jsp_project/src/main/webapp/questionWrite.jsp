@@ -21,12 +21,11 @@
 <script type ="text/javascript">
 
 function go() {
-	
     var a = document.insertForm.qc_name.value;
     if (a == "선택") {
         alert("문의 유형을 선택해주세요.");
         document.insertForm.qc_name.focus();
-        return;
+      return;
     } 
 	
     var f = document.insertForm.pq_title.value;
@@ -44,6 +43,8 @@ function go() {
     }
     
 }
+
+document.onkeydown = noEvent;
 
 
 </script>
@@ -79,7 +80,7 @@ function go() {
     <td align=right>
      <button type="button" class="btn btn-secondary" onclick="location.href='questionList.do'" >취소하기</button></td>
      <td> 
-     <button type="submit" class="btn btn-dark" onclick="go()">등록하기</button></td>    <!--qnaregister()  -->
+     <button type="submit" class="btn btn-dark" onclick="go();return false">등록하기</button></td>    <!--qnaregister()  -->
      </tr></table>
 </Form>
     

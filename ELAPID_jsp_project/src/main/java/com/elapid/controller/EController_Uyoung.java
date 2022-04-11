@@ -145,9 +145,6 @@ public class EController_Uyoung extends HttpServlet {
 			viewPage = "searchList.jsp";
 			break;
 			
-
-			
-			
 			
 		case("/loginForm.do"):
 			viewPage = "loginForm.jsp";

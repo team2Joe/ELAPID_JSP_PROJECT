@@ -24,10 +24,10 @@ function navbtnlinkfunction() {
 
 function qnaregister() {
 	
-	var form = document.getElementById("qnaWriteForm");
-	form.submit();
-	
+	location.href = "questionList.do";
 }
+	
+
 
 
 function qnawrite() {
