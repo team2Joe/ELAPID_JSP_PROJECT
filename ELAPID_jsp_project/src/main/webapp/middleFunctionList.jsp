@@ -67,20 +67,20 @@
 		 }
 	 %>
 				</div>
-				
-		<div class="div2">
+		
+		<br>		
+		<div align="center">
 			<tr>
 				<td>
 			
 	<%
 			for(int i=1; i<=count; i++){
 	%>			
-				<a href="middleFunctionList.do?page=<%=i %>">[<%=i %>]</a>
+				<button onclick="location.href='middleFunctionList.do?page=<%=i %>'"><%=i %></button>
 	<%
 			}
 	%>
 				<td>
 			</tr>
 		</div>	
-			
 		<%@ include file="/layout/footer.jsp"%>	

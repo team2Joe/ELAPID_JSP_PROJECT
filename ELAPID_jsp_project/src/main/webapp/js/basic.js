@@ -4,12 +4,12 @@
  
 
 	
-function navbtnlinkluggage() {
+function nnavbtnlinkluggage() {
 
 	location.href = "luggageList.do";
 }
 
-function navbtnlinkbackpack() {
+function nnavbtnlinkbackpack() {
 	
 	location.href = "backpackList.do";
 }

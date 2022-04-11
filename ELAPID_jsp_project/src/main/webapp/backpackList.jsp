@@ -14,7 +14,7 @@
 					<img src="elapid_img/backpack_header.png">
 					</picture>
 				</div>
-				<div class="header-field">
+				<div class="header-field" align="center">
 					<h2>백팩</h2>
 				</div>
 			</div>
@@ -60,9 +60,9 @@
 	</c:forEach>
 		</div>
 					
-		<div class="div2">
-			<tr>
-				<td>
+		<br>			
+		<div align="center">
+			
 			
 	<%
 			// middleView.do 페이지수
@@ -72,12 +72,11 @@
 	
 			for(int i=1; i<=count; i++){
 	%>			
-				<a href="backpackList.do?page=<%=i %>">[<%=i %>]</a>
+				<button onclick="location.href='backpackList.do?page=<%=i %>'"><%=i %></button>
 	<%
 			}
 	%>
-				<td>
-			</tr>
+
 		</div>	
 			
 		<%@ include file="/layout/footer.jsp"%>	
