@@ -11,8 +11,14 @@ request.setCharacterEncoding("utf-8");
 <meta charset="UTF-8">
 <title>ELAPID</title>
 
-<script>
-</script>
+<style type="text/css">
+ /* link - 아직 클릭하지 않은 경우 red 색상 설정 */
+ a:link { color: black; text-decoration: none;}	
+ /* visited - 한번 클릭하거나 전에 클릭한적 있을 경우 #c71d44 설정 */
+ a:visited { color: black; text-decoration: none;}	
+ /* hover - 마우스를 해당 링크에 위치했을 경우 #006DD7 설정 */
+ a:hover { color: #006DD7; text-decoration: none;}
+</style>
 
 </head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">

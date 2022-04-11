@@ -23,7 +23,6 @@
 					<h3> 주문하기 </h3>
 				</div>
 		
-		
 			<c:forEach items="${add }" var="adddto">
 				<div class="container">
 			  		<div class="row">
