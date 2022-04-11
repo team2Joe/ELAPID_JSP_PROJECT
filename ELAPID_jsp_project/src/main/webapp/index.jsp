@@ -190,7 +190,7 @@ request.setCharacterEncoding("utf-8");
 </body>
 </html> --%>
 
-
+<%-- 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -242,21 +242,21 @@ request.setCharacterEncoding("utf-8");
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
 	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=비즈니스">비즈니스</a></li>
 	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=캐주얼">캐주얼</a></li>
-	            <li><a class="dropdown-item" href="#">Something else here</a></li>
+	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=other">Something else here</a></li>
 	          </ul>
 	        </li>
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="navbtnlinkfunction()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	주요기능
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
 	          	<li><h5>&nbsp&nbsp크기</h5></li>
-	            <li><a class="dropdown-item" href="#">서스펜션 휠</a></li>
-	            <li><a class="dropdown-item" href="#">자동제어장치</a></li>
-	            <li><a class="dropdown-item" href="#">지문인식 장치</a></li>
-	            <li><a class="dropdown-item" href="#">RFID</a></li>
+	            <li><a class="dropdown-item" href="functionList.do?p_mainf=서스펜션휠">서스펜션 휠</a></li>
+	            <li><a class="dropdown-item" href="functionList.do?p_mainf=자동제어장치">자동제어장치</a></li>
+	            <li><a class="dropdown-item" href="functionList.do?p_mainf=지문인식">지문인식 장치</a></li>
+	            <li><a class="dropdown-item" href="functionList.do?p_mainf=rfid">RFID</a></li>
 	          </ul>
 	        </li>
 	      </ul>
@@ -373,5 +373,9 @@ request.setCharacterEncoding("utf-8");
 	<script src="js/basic.js"></script>
 </body>
 </html>
+--%>
+<%@ include file="/layout/header.jsp"%>
 
+<a href="luggageList.do"><img src="elapid_img/indexMain.jpeg" width="100%"></a>
 
+<%@ include file="/layout/footer.jsp"%>	

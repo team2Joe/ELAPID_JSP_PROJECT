@@ -72,9 +72,7 @@
 				      		</c:otherwise>
 				      	</c:choose>
 				      	<br>
-						<form action="userOrderForm.do?p_id=<%=detailView.getP_id() %>">
-							<button type="button" class="btn btn-dark">바로구매</button>
-						</form>
+							<button onclick="location.href='userOrderForm.do?p_id=<%=detailView.getP_id() %>'" class="btn btn-dark">바로구매</button>
 					</td>
 					
 				</tr>
