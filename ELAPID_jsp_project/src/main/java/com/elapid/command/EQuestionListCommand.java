@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.elapid.dao.ProductDao;
 import com.elapid.dao.QnaDao;
 import com.elapid.dto.ProductQuestionDto;
 
@@ -23,8 +24,10 @@ public class EQuestionListCommand implements ECommand {
 		QnaDao dao = new QnaDao();
 		
 		dtos = dao.questionList(uid);
-		
 		request.setAttribute("QuestionList", dtos);
+		
+
+		
 	}
 
 }

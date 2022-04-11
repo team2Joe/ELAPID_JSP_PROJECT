@@ -20,6 +20,32 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script type ="text/javascript">
 
+function go() {
+	
+    var a = document.insertForm.qc_name.value;
+    if (a == "선택") {
+        alert("문의 유형을 선택해주세요.");
+        document.insertForm.qc_name.focus();
+        return;
+    } 
+	
+    var f = document.insertForm.pq_title.value;
+    if (f == "") {
+        alert("제목을 입력해주세요.");
+        document.insertForm.pq_title.focus();
+        return;
+    }
+    
+    var q = document.insertForm.pq_content.value;
+    if (q == "") {
+        alert("내용을 입력해주세요.");
+        document.insertForm.pq_content.focus();
+        return;
+    }
+    
+}
+
+
 </script>
 
 <body>
@@ -27,7 +53,7 @@
   <div class="col-sm-5 my-1" id="wrapper">
     <label for="exampleFormControlSelect1"><h6>문의 유형 분류</h6> </label>
     <select class="form-control" id="exampleFormControlSelect1" name="qc_name">
-      <option selected>선택해주세요.</option>
+      <option value="선택" selected> 선택해주세요. </option>
       <option value="회원정보">회원정보</option>
       <option value="주문/결제">주문/결제</option> 
       <option value="취소/교환/반품">취소/교환/반품</option>
@@ -48,14 +74,16 @@
   
 <br>
 
-</Form>
    <table border="0" width="600" height="10" id="wrapper">
     <tr>
     <td align=right>
      <button type="button" class="btn btn-secondary" onclick="location.href='questionList.do'" >취소하기</button></td>
-     <td>
-     <button type="button" class="btn btn-dark" onclick="qnaregister()">등록하기</button></td>
+     <td> 
+     <button type="submit" class="btn btn-dark" onclick="go()">등록하기</button></td>    <!--qnaregister()  -->
      </tr></table>
+</Form>
+    
+     
 
 <script src="js/basic.js"></script>
 </body>

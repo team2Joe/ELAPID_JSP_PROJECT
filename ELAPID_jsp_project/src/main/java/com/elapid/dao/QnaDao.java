@@ -9,6 +9,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.elapid.dto.ProductListDto;
 import com.elapid.dto.ProductQuestionDto;
 
 
@@ -77,6 +78,8 @@ public class QnaDao {
 		}
 		return dtos;
 	}
+	
+	
 		
 		
 		public ProductQuestionDto contentView(int spq_id ) {
@@ -211,6 +214,8 @@ public class QnaDao {
 			
 				
 			}//modify
+			
+			
 			
 
 	
