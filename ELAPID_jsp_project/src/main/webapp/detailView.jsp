@@ -59,22 +59,9 @@
 						<br>
 						<br>
 						남은 수량 : <%=detailView.getP_stock() %>
-						<c:choose>
-				      		<c:when test="${sessionScope.u_id != '' } %>">
-				      			<form action="addCart.do?p_id=<%=detailView.getP_id() %>">
-									<button type="button" class="btn btn-secondary">장바구니 담기</button>
-								</form>
-				      		</c:when>
-			      		<c:otherwise>
-				      			<form action="nonUserCartView.do?p_id=<%=detailView.getP_id() %>">
-									<button type="button" class="btn btn-secondary">장바구니 담기</button>
-								</form>
-				      		</c:otherwise>
-				      	</c:choose>
+						<button class="btn btn-dark" onclick = "location.href='addCart.do?p_id=${dto.p_id}'" >장바구니 담기</button>
 				      	<br>
-						<form action="userOrderForm.do?p_id=<%=detailView.getP_id() %>">
-							<button type="button" class="btn btn-dark">바로구매</button>
-						</form>
+						<button onclick="location.href='userOrderForm.do?p_id=<%=detailView.getP_id() %>'" class="btn btn-dark">바로구매</button>
 					</td>
 					
 				</tr>

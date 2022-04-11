@@ -7,7 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<%
+		String url = request.getHeader("referer");
+		response.sendRedirect(url);
+	%>
 	<button onclick="test()">테스트 버튼</button>
 	
 		<script src="js/basic.js"></script>

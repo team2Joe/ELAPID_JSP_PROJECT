@@ -58,18 +58,7 @@
 			      </div>
 			      <div class="card-footer">
 			 	<%-- 아이디값 null시 비회원 장바구니로 들어가기 --%>
-			      	<c:choose>
-			      		<c:when test="${sessionScope.u_id != '' }">
-			      			<form action="nonUserCartView.do">
-								<button type="button" class="btn btn-dark">장바구니 담기</button>
-							</form>
-			      		</c:when>
-			      		<c:otherwise>
-			      			<form action="nonUserCartView.do">
-								<button type="button" class="btn btn-dark">장바구니 담기</button>
-							</form>
-			      		</c:otherwise>
-			      	</c:choose>
+			      	<button class="btn btn-dark" onclick = "location.href='addCart.do?p_id=${dto.p_id}'" >장바구니 담기</button>
 			      </div>
 			    </div>
 			  </div>		

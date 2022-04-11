@@ -136,7 +136,7 @@ public class CartDao {
 					cart_total = ((cart_amount)-(cart_discountedamount));
 					cart_totaldiscountedamount = (int)Math.floor(cart_discountedamount);
 					cart_totalamount = (int)Math.floor(cart_total);
-					dto = new UserCartViewDto(u_id, p_id, cart_id, c_id, p_name, p_colorname, p_price, c_name, c_atleastprice, c_value, cart_totaldiscountedamount, cart_totalamount);
+					dto = new UserCartViewDto(u_id, p_id, c_id, cart_id, p_name, p_colorname, p_price, cart_totalamount, c_name, c_value);
 							
 							
 
@@ -199,7 +199,7 @@ public class CartDao {
 				int cart_amount = resultSet.getInt("p_cartamount");
 				
 			
-				AddCartDto dto = new AddCartDto(p_id, u_id, cd_id, p_name, p_price, p_colorname, p_size, p_discountprice, cart_amount);
+				AddCartDto dto = new AddCartDto(p_id, u_id, cd_id, cart_amount, p_name, p_price, p_colorname, p_size, p_discountprice, cart_amount);
 				dtos.add(dto);
 			}
 			

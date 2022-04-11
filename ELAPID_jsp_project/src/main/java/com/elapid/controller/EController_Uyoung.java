@@ -19,6 +19,7 @@ import com.elapid.command.EUserCartViewCommand;
 import com.elapid.command.AddCartCommand;
 
 import com.elapid.command.EBackpackListCommand;
+import com.elapid.command.ECartDeleteProductCommand;
 import com.elapid.command.ECommand;
 import com.elapid.command.EDetailViewCommand;
 import com.elapid.command.EFunctionListCommand;
@@ -314,15 +315,30 @@ public class EController_Uyoung extends HttpServlet {
 		viewPage = "questionList.do";
 		break;
 		
+//		case("/test.do"):
+//			break;
+			//장바구니 담기 
+		case("/addCart.do"):
+			command = new AddCartCommand();
+			command.execute(request, response);
+			viewPage = "test.jsp";
+//			viewPage = (String) request.getAttribute("cartReturnPage");
+			break;
+		
 			//장바구니 보기
 		case("/userCartView.do"):
 			command = new EUserCartViewCommand();
 			command.execute(request, response);
 			viewPage = "userCartView.jsp";
 			break;
-		
-//		case("/test.do"):
-//			break;
+			
+			//장바구니 물건 삭제
+		case("/cartDeleteProduct.do"):
+			command = new ECartDeleteProductCommand();
+			command.execute(request, response);
+			viewPage = "userCartView.do";
+			break;	
+			
 		default:
 			break;
 			

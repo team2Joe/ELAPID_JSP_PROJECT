@@ -3,6 +3,7 @@ package com.elapid.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -32,7 +33,6 @@ public class CartViewDao {
 		//-----------------------------------------------------------------------------------------------------------------------------------------
 		//UserCartView Page	
 		public ArrayList<UserCartViewDto> UserCartViewList(String u_id2) {
-				
 				ArrayList<UserCartViewDto> dtos = new ArrayList<UserCartViewDto>();
 				Connection connection = null;
 				PreparedStatement preparedStatement = null;
@@ -71,13 +71,16 @@ public class CartViewDao {
 						int p_price = resultSet.getInt("p_price");
 						String img_thum = resultSet.getString("img_thum");
 						int cd_id = resultSet.getInt("cd_id");
-
+						int p_size = resultSet.getInt("p_size");
+						
+						
 						//총합 부분 계산
 						cart_totalamount += p_price;
-						UserCartViewDto dto = new UserCartViewDto(u_id, p_id, cd_id, cart_id, p_name, p_colorname, p_price, cart_totalamount, img_thum);
+						UserCartViewDto dto = new UserCartViewDto(u_id, p_id, cd_id, cart_id, p_name, p_colorname, p_price, cart_totalamount, img_thum,p_size);
 						dtos.add(dto);
 						
 						//check
+						System.out.println(cd_id);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
