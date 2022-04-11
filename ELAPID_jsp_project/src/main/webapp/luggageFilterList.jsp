@@ -15,34 +15,34 @@
    }
 </style> 	
 	<div class=".div2">
-			<h4>필터</h4>
-			<h5>크기</h5>
-			<form action="luggageFilterList.do">
-				기내용/소형 <input type="checkbox" name="ctg_middle" value="small">
-				중형수하물 <input type="checkbox" name="ctg_middle" value="middle">
-				대형수하물 <input type="checkbox" name="ctg_middle" value="large">
-			
-			<h5>색상</h5>
-				검정 <input type="checkbox" name="ps_color" value="black">
-				회색 <input type="checkbox" name="ps_color" value="grey">
-				빨강 <input type="checkbox" name="ps_color" value="red">
-				흰색 <input type="checkbox" name="ps_color" value="white">
-			
-			<h5>주요기능</h5>
-				서스펜션 휠 <input type="checkbox" name="p_mainf" value="서스펜션휠">
-				자동제어장치 <input type="checkbox" name="p_mainf" value="자동제어장치">
-				지문인식 <input type="checkbox" name="p_mainf" value="지문인식">
-				RFID <input type="checkbox" name="p_mainf" value="rfid">
-				<input type="submit" value="확인">
-			</form>
-			
-			<form action="">
-				<label for="customRange3" class="form-label">가격</label>
-				<input type="range" class="form-range" min="68000" max="890000" step="1000" id="customRange3">
-			</form>
-			
-		</div>
+		<h4>필터</h4>
+		<h5>크기</h5>
+		<form action="luggageFilterList.do">
+			기내용/소형 <input type="checkbox" name="ctg_middle" value="small">
+			중형수하물 <input type="checkbox" name="ctg_middle" value="middle">
+			대형수하물 <input type="checkbox" name="ctg_middle" value="large">
+		
+		<h5>색상</h5>
+			검정 <input type="checkbox" name="ps_color" value="black">
+			회색 <input type="checkbox" name="ps_color" value="grey">
+			빨강 <input type="checkbox" name="ps_color" value="red">
+			흰색 <input type="checkbox" name="ps_color" value="white">
+		
+		<h5>주요기능</h5>
+			서스펜션 휠 <input type="checkbox" name="p_mainf" value="서스펜션휠">
+			자동제어장치 <input type="checkbox" name="p_mainf" value="자동제어장치">
+			지문인식 <input type="checkbox" name="p_mainf" value="지문인식">
+			RFID <input type="checkbox" name="p_mainf" value="rfid">
+			<input type="submit" value="확인">
+		</form>
+		
+		<form action="">
+			<label for="customRange3" class="form-label">가격</label>
+			<input type="range" class="form-range" min="68000" max="890000" step="1000" id="customRange3">
+		</form>	
+	</div>
 						
+	<div class="row row-cols-1 row-cols-md-3 g-4">				
 		<c:forEach items="${list }" var="dto">
 			 <div class="col">
 			    <div class="card h-100" align="center">

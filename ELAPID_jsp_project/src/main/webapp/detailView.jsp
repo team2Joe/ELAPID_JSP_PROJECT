@@ -12,22 +12,10 @@
 	
 	// 해당 조건은 정해진 단일 상품만을 보여주는 단점이 존재함
 	// 해당 사이즈 혹은 색상에 맞는 상품이 상세페이지에도 이에 맞게 출력되야한다...
-	ArrayList<ProductDetailDto> detailView = (ArrayList<ProductDetailDto>)request.getAttribute("detailView");
-	
-	
-	for (int i = 0; i < detailView.size(); i++ ){
-		boolean check = true;
-		for(int j = 0; j < i; j++ ){
-	 		if((detailView.get(i).getP_name().equals(detailView.get(j).getP_name()) && detailView.get(i).getP_size() != detailView.get(j).getP_size())
-	 	 			|| (detailView.get(i).getP_name().equals(detailView.get(j).getP_name()) &&  detailView.get(i).getPs_color() != detailView.get(j).getPs_color())	){
-	 			check = false;
-	 			break;
-	 		}
-	 	}
-		
-	 	if(check){
+	ProductDetailDto detailView = (ProductDetailDto) request.getAttribute("detailView");
+
 %>		
-			<h2 align="center"><%=detailView.get(i).getP_id() %></h2> <br>
+			<h2 align="center"><%=detailView.getP_id() %></h2> <br>
 			
 			<div align="center">
 			<c:choose>
@@ -39,16 +27,16 @@
 				<tr align="center">
 					<%--상품 필터 col --%>
 					<td align="center">
-						<img src="<%=detailView.get(i).getImg_01() %>" width="500" height="700">
+						<img src="<%=detailView.getImg_01() %>" width="400" height="600">
 						
 					</td>
 					<%-- 상품 상세내용 col --%>
 					<td align="center">
-						<h2> <%=detailView.get(i).getP_name() %></h2>
-						<h4>가격 : <%=detailView.get(i).getP_price() %></h4><br>
+						<h2> <%=detailView.getP_name() %></h2>
+						<h4>가격 : <%=detailView.getP_price() %></h4><br>
 						
 				<%
-						if(detailView.get(i).getCtg_main().equals("luggage")){
+						if(detailView.getCtg_main().equals("luggage")){
 
 				%>		
 								size  
@@ -70,21 +58,21 @@
 								
 						<br>
 						<br>
-						남은 수량 : <%=detailView.get(i).getP_stock() %>
+						남은 수량 : <%=detailView.getP_stock() %>
 						<c:choose>
 				      		<c:when test="${sessionScope.u_id != '' } %>">
-				      			<form action="addCart.do?p_id=<%=detailView.get(i).getP_id() %>">
+				      			<form action="addCart.do?p_id=<%=detailView.getP_id() %>">
 									<button type="button" class="btn btn-light">장바구니 담기</button>
 								</form>
 				      		</c:when>
 			      		<c:otherwise>
-				      			<form action="nonUserCartView.do?p_id=<%=detailView.get(i).getP_id() %>">
+				      			<form action="nonUserCartView.do?p_id=<%=detailView.getP_id() %>">
 									<button type="button" class="btn btn-light">장바구니 담기</button>
 								</form>
 				      		</c:otherwise>
 				      	</c:choose>
 				      	<br>
-						<form action="userOrderForm.do?p_id=<%=detailView.get(i).getP_id() %>">
+						<form action="userOrderForm.do?p_id=<%=detailView.getP_id() %>">
 							<button type="button" class="btn btn-dark">바로구매</button>
 						</form>
 					</td>
@@ -92,24 +80,20 @@
 				</tr>
 				<tr>
 					<td align="center">
-						<img src="<%=detailView.get(i).getImg_02()%>" width="500" height="700">
-						<img src="<%=detailView.get(i).getImg_03()%>" width="500" height="700">
-						<img src="<%=detailView.get(i).getImg_04()%>" width="500" height="700">
-						<img src="<%=detailView.get(i).getImg_05()%>" width="500" height="700">
-						<img src="<%=detailView.get(i).getImg_06()%>" width="500" height="700">
+						<img src="<%=detailView.getImg_02()%>" width="400" height="600">
+						<img src="<%=detailView.getImg_03()%>" width="400" height="600">
+						<img src="<%=detailView.getImg_04()%>" width="400" height="600">
+						<img src="<%=detailView.getImg_05()%>" width="400" height="600">
+						<img src="<%=detailView.getImg_06()%>" width="400" height="600">
 					</td>
 					<td>
-						<textarea rows="50" cols="50" readonly="readonly"><%=detailView.get(i).getP_desc() %></textarea> 
+						<textarea rows="50" cols="50" readonly="readonly"><%=detailView.getP_desc() %></textarea> 
 					</td>
 				</tr>
 			</table>
 			<br>
 			댓글-답글
-			<br>
-<%
-	 	}
-	}
-%>			
+			<br>		
 		
 			</div>
 			<h3>1:1문의</h3>

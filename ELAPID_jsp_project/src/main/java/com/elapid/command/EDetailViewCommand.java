@@ -17,7 +17,7 @@ public class EDetailViewCommand implements ECommand {
 		
 		String p_id = request.getParameter("p_id");
 		
-		ArrayList<ProductDetailDto> dtos = new ArrayList<ProductDetailDto>();
+		ProductDetailDto dtos = new ProductDetailDto();
 		
 		ProductDao dao = new ProductDao();
 		

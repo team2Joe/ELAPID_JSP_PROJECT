@@ -282,8 +282,8 @@ public class ProductDao {
 	}
 	
 	// 상품 상세 페이지 출력
-	public ArrayList<ProductDetailDto> detailView(String sp_id) {
-		ArrayList<ProductDetailDto> dtos = new ArrayList<ProductDetailDto>();
+	public ProductDetailDto detailView(String sp_id) {
+		ProductDetailDto dto = new ProductDetailDto();
 
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -319,7 +319,7 @@ public class ProductDao {
 			
 			rs = stmt.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				// product 정보 가져오기 
 				int p_id = rs.getInt("p_id");
 				String p_name = rs.getString("p_name");
@@ -348,13 +348,12 @@ public class ProductDao {
 				String img_06 = rs.getString("img_06");
 				
 				
-				ProductDetailDto dto = new ProductDetailDto(p_id, p_name, p_stock,
+				 dto = new ProductDetailDto(p_id, p_name, p_stock,
 						price, discountPrice, p_size, p_mainf, p_colorimg,
 						p_colorname, p_desc, p_clickcount, ctg_id, ctg_main,
 						ctg_middle, ctg_sub, img_thum, ps_color, img_01, img_02,
 						img_03, img_04, img_05, img_06);
 
-				dtos.add(dto);
 			}
 
 		}catch(Exception e) {
@@ -373,7 +372,7 @@ public class ProductDao {
 			}
 		}
 		
-		return dtos;
+		return dto;
 	}
 
 
