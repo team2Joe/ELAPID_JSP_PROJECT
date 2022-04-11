@@ -34,8 +34,12 @@ public class ELoginCheckCommand implements ECommand {
 		if(result == 1 ) {
 			session.setAttribute("uid",uid);
 			request.setAttribute("loginviewparam", "main.do");
-			lDao.userLoginLogAdd(uid);
+				
+			String comment = dao.nameReturn(uid);
+			session.setAttribute("comment", comment + "님 환영합니다.");
+
 			
+			lDao.userLoginLogAdd(uid);
 		}else{
 			request.setAttribute("loginviewparam", "loginForm.jsp");
 		}

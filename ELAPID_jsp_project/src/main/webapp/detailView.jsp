@@ -59,22 +59,11 @@
 						<br>
 						<br>
 						남은 수량 : <%=detailView.getP_stock() %>
-						<c:choose>
-				      		<c:when test="${sessionScope.u_id != '' } %>">
-				      			<form action="addCart.do?p_id=<%=detailView.getP_id() %>">
-									<button type="button" class="btn btn-secondary">장바구니 담기</button>
-								</form>
-				      		</c:when>
-			      		<c:otherwise>
-				      			<form action="nonUserCartView.do?p_id=<%=detailView.getP_id() %>">
-									<button type="button" class="btn btn-secondary">장바구니 담기</button>
-								</form>
-				      		</c:otherwise>
-				      	</c:choose>
+		
+									<button onclick="location.href='nonUserCartView.do?p_id=<%=detailView.getP_id() %>'" class="btn btn-secondary">장바구니 담기</button>
+
 				      	<br>
-						<form action="userOrderForm.do?p_id=<%=detailView.getP_id() %>">
-							<button type="button" class="btn btn-dark">바로구매</button>
-						</form>
+							<button onclick="location.href='userOrderForm.do?p_id=<%=detailView.getP_id() %>'"  class="btn btn-dark">바로구매</button>
 					</td>
 					
 				</tr>
@@ -107,7 +96,5 @@
 			</div>
 
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	<script src="js/basic.js"></script>
 <%@ include file="/layout/footer.jsp"%>	
 	
