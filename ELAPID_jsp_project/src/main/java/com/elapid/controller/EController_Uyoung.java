@@ -11,19 +11,24 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.elapid.command.EAddressBookViewCommand;
+
+import com.elapid.command.ENonUserCartViewCommand;
+import com.elapid.command.ESearchCommand;
+import com.elapid.command.EUserCartViewCommand;
+import com.elapid.command.AddCartCommand;
+
 import com.elapid.command.EBackpackListCommand;
-import com.elapid.command.EColorFilterListCommand;
 import com.elapid.command.ECommand;
 import com.elapid.command.EDetailViewCommand;
-import com.elapid.command.EFunctionFilterListCommand;
 import com.elapid.command.EFunctionListCommand;
 import com.elapid.command.EIdCheckCommand;
 import com.elapid.command.ELoginCheckCommand;
 import com.elapid.command.ELogoutCommand;
+import com.elapid.command.ELuggageFilterListCommand;
 import com.elapid.command.ELuggageListCommand;
-import com.elapid.command.EMainCommand;
 import com.elapid.command.EMiddleFunctionListCommand;
 import com.elapid.command.EMiddleViewCommand;
+
 import com.elapid.command.EMyPageCommand;
 import com.elapid.command.EProfileDeleteCommand;
 import com.elapid.command.EProfileModifyCommand;
@@ -37,20 +42,22 @@ import com.elapid.command.ERegisterCheckCommand;
 import com.elapid.command.ERegisterDeleteCommand;
 import com.elapid.command.ERegisterSetDefault;
 import com.elapid.command.ESearchCommand;
-import com.elapid.command.ESizeFilterListCommand;
 import com.elapid.command.EUserOrderFormCommand;
-import com.mysql.cj.protocol.a.MergingColumnDefinitionFactory;
+
+
+import com.elapid.command.UserCartDetailAddCommand;
+
 
 /**
  * Servlet implementation class EController
  */
 @WebServlet("*.do")
-public class KTEEController extends HttpServlet {
+public class EController_Uyoung extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
      
 	
-    public KTEEController() {
+    public EController_Uyoung() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -79,96 +86,22 @@ public class KTEEController extends HttpServlet {
 		
 		switch(com) {
 		case("/main.do"):
-			command = new EMainCommand();
-			command.execute(request, response);
 			viewPage = "index.jsp";
 			break;
-		case("/loginForm.do"):
-			viewPage = "loginForm.jsp";
-			break;
-		case("/loginCheck.do"):
-			command = new ELoginCheckCommand();
-			command.execute(request, response);
-			viewPage = (String)request.getAttribute("loginviewparam");
-			break;
-		case("/logout.do"):
-			command = new ELogoutCommand();
-			command.execute(request, response);
-			viewPage = "loginForm.do";
-			break;
-		
-		case("/registerForm.do"):
-			viewPage = "registerForm.jsp";
-			break;
-		case("/idCheck.do"):
-			command = new EIdCheckCommand();
-			command.execute(request, response);
-			viewPage = "registerForm.jsp";
-			break;
-		case("/registerCheck.do"):
-			command = new ERegisterCheckCommand();
-			command.execute(request, response);			
-			viewPage ="loginForm.do";
-			break;
 			
-		case("/myPage.do"):
-			command = new EMyPageCommand();
-			command.execute(request, response);
-			viewPage = "myPage.jsp";
-			break;
-		case("/profileView.do"):
-			command = new EMyPageCommand();
-			command.execute(request, response);
-			viewPage = "profileView.jsp";
-			break;
-		case("/profileModify.do"):
-			command = new EProfileModifyCommand();
-			command.execute(request, response);
-			viewPage = "profileView.do";
-			break;
-		case("/profileDelete.do"):
-			command = new EProfileDeleteCommand();
-			command.execute(request, response);
-			viewPage = "main.do";
-			break;
-		
-		case("/addressBookView.do"):
-			command = new EAddressBookViewCommand();
-			command.execute(request, response);
-			viewPage = "addressBookView.jsp";
-			break;
-		case("/registerAddForm.do"):
-			viewPage = "registerAddForm.jsp";
-			break;
-		case("/registerAdd.do"):
-			command = new ERegisterAddCommand();
-			command.execute(request, response);
-			viewPage = "addressBookView.do";
-			break;
-
-		case("/registerDelete.do"):
-			command = new ERegisterDeleteCommand(); 
-			command.execute(request, response);
-			viewPage = "addressBookView.do";
-			break;
-		case("/registerSetDefault.do"):
-			command = new ERegisterSetDefault(); 
-			command.execute(request, response);
-			viewPage = "addressBookView.do";
-			break;
-			
-		case("/userOrderForm.do"):
-			command = new EUserOrderFormCommand();
-			command.execute(request, response);
-			viewPage = "userOrderPage.jsp";
-			break;
-			
-					// 캐리어 전체 리스트 페이지
+			// 캐리어 전체 리스트 페이지
 		case("/luggageList.do"):
 			command = new ELuggageListCommand();
 			command.execute(request, response);
 			viewPage = "luggageList.jsp";
 			break;
+			
+			// 캐리어 전용 필터
+		case("/luggageFilterList.do"):
+			command = new ELuggageFilterListCommand();
+			command.execute(request, response);
+			viewPage = "luggageFilterList.jsp";
+			break;	
 			
 			//백팩 전체리스트 페이지
 		case("/backpackList.do"):
@@ -184,7 +117,6 @@ public class KTEEController extends HttpServlet {
 			viewPage = "detailView.jsp";
 			break;
 
-			
 			//제품 중분류별 리스트 페이지
 		case("/middleView.do"):
 			command = new EMiddleViewCommand();
@@ -196,7 +128,7 @@ public class KTEEController extends HttpServlet {
 		case("/middleFunctionList.do"):
 			command = new EMiddleFunctionListCommand();
 			command.execute(request, response);
-			viewPage = "mainList.jsp";
+			viewPage = "middleFunctionList.jsp";
 			break;
 			
 			// 제품 기능별 리스트 페이지
@@ -213,33 +145,113 @@ public class KTEEController extends HttpServlet {
 			viewPage = "searchList.jsp";
 			break;
 			
-			// 색깔 필터
-		case("/colorFilterList.do"):
-			command = new EColorFilterListCommand();
-			command.execute(request, response);
-			viewPage = "luggageList.jsp";
+
+			
+			
+			
+		case("/loginForm.do"):
+			viewPage = "loginForm.jsp";
 			break;
 			
-			// 캐리어사이즈별 필터
-		case("/sizeFilterList.do"):
-			command = new ESizeFilterListCommand();
+		case("/loginCheck.do"):
+			command = new ELoginCheckCommand();
 			command.execute(request, response);
-			viewPage = "luggageList.jsp";
+			viewPage = (String)request.getAttribute("loginviewparam");
 			break;
 			
-			// 제품 기능별 필터 
-		case("/functionFilterList.do"):
-			command = new EFunctionFilterListCommand();
+		case("/logout.do"):
+			command = new ELogoutCommand();
 			command.execute(request, response);
-			viewPage = "luggageList.jsp";
-			
+			viewPage = "loginForm.do";
 			break;
 			
+		
+		case("/registerForm.do"):
+			viewPage = "registerForm.jsp";
+			break;
+			
+		case("/idCheck.do"):
+			command = new EIdCheckCommand();
+			command.execute(request, response);
+			viewPage = "registerForm.jsp";
+			break;
+			
+		case("/registerCheck.do"):
+			command = new ERegisterCheckCommand();
+			command.execute(request, response);			
+			viewPage ="loginForm.do";
+			break;
+			
+		case("/myPage.do"):
+			command = new EMyPageCommand();
+			command.execute(request, response);
+			viewPage = "myPage.jsp";
+			break;
+			
+		case("/profileView.do"):
+			command = new EMyPageCommand();
+			command.execute(request, response);
+			viewPage = "profileView.jsp";
+			break;
+			
+		case("/profileModify.do"):
+			command = new EProfileModifyCommand();
+			command.execute(request, response);
+			viewPage = "profileView.do";
+			break;
+			
+		case("/profileDelete.do"):
+			command = new EProfileDeleteCommand();
+			command.execute(request, response);
+			viewPage = "main.do";
+			break;
+		
+		case("/addressBookView.do"):
+			command = new EAddressBookViewCommand();
+			command.execute(request, response);
+			viewPage = "addressBookView.jsp";
+			break;
+			
+		case("/registerAddForm.do"):
+			viewPage = "registerAddForm.jsp";
+			break;
+			
+		case("/registerAdd.do"):
+			command = new ERegisterAddCommand();
+			command.execute(request, response);
+			viewPage = "addressBookView.do";
+			break;
+
+		case("/registerDelete.do"):
+			command = new ERegisterDeleteCommand(); 
+			command.execute(request, response);
+			viewPage = "addressBookView.do";
+			break;
+			
+		case("/registerSetDefault.do"):
+			command = new ERegisterSetDefault(); 
+			command.execute(request, response);
+			viewPage = "addressBookView.do";
+			break;
+			
+		case("/userOrderForm.do"):
+			command = new EUserOrderFormCommand();
+			command.execute(request, response);
+			viewPage = "userOrderPage.jsp";
+			break;
+			
+		case("/addCart.do"):
+			command = new AddCartCommand();
+			command.execute(request, response);
+			viewPage = "userCartView.jsp";
+		break;
+		
 		case("/questionList.do"):
 			command = new EQuestionListCommand();
 			command.execute(request, response);
 			viewPage = "questionList.jsp";
 			break;
+			
 		case("/questionContentView.do"):
 			command = new EQuestionContentCommand();
 			command.execute(request, response);
@@ -269,14 +281,35 @@ public class KTEEController extends HttpServlet {
 		viewPage = "questionList.do";
 		break;
 		
-		default:
-			break;
+			
 		}
+
+//			
+//		//nonUser가 Cart(장바구니)로 이동
+//		//장바구니에 아이템들이 잘들어가 있어야 하는데 이건 아직 확인 못함...
+//		case("/nonUserCartView.do"):
+//			command = new ENonUserCartViewCommand();
+//			command.execute(request, response);
+//			viewPage = "nonUserCartView.jsp";
+//			break;
+//		
+//		//User가 u_id값을 들고다니면서 p_id가 달린 장바구니담기 값을 누르면 보여주는 장바구니 페이지.?
+//		//p_id 값이 장바구니에 잘 보관되어야 하는데 이게 장바구니가 잘 가지고 있어줄지 걱정..
+			
+//		case("/userCartView.do"):
+//			command = new EUserCartViewCommand();
+//			command.execute(request, response);
+//			viewPage = "userCartView.jsp";
+//			break;
+
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
+
+		}
+		
 	}
 	
 	
 
-}
+

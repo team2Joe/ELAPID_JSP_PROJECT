@@ -18,8 +18,25 @@ public class EMiddleFunctionListCommand implements ECommand {
 		
 		ProductDao dao = new ProductDao();
 		
-		dtos = dao.middleFunctionList();
-
+		ProductDao countDao = new ProductDao();
+		
+		int count = countDao.productCount(" where p.p_mainf != ''");
+		
+		String tempStart = request.getParameter("page");
+		
+		int startPage = 0;
+		int onePageCount = 3;
+		
+		count = (int)Math.ceil((double)count/(double)onePageCount);
+		
+		if(tempStart != null) {
+			startPage = (Integer.parseInt(tempStart)-1)*onePageCount;
+		}
+		
+		dtos = dao.middleFunctionList(startPage, onePageCount);
+		
+		
+		request.setAttribute("count", count);
 		request.setAttribute("list", dtos);
 
 	}

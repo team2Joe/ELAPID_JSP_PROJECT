@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="kr">
@@ -263,7 +263,10 @@
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
+<<<<<<< HEAD
+=======
 	        								<%-- function전체리스트 --%>
+>>>>>>> c9283c13149760eed255d755ffcefae76e27ae12
 	          <a class="nav-link" onclick="navbtnlinkfunction()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	주요기능
 	          </a>

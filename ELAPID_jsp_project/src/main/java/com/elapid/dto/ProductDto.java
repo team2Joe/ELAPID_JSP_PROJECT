@@ -17,13 +17,18 @@ public class ProductDto {
 	private String p_desc;
 	private String p_clickcount;
 	
+	// 상품 메인 사진 컬럼필드 추가!!
+
+	
 	public ProductDto() {
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public ProductDto(int p_id, String p_name, String p_stock, int p_price, int p_discountprice, int p_size,
-			String p_mainf, String p_colorimg, String p_colorname, Timestamp p_date, String p_desc,
-			String p_clickcount) {
+			String p_mainf, String p_colorimg, String p_colorname, Timestamp p_date, String p_desc, String p_clickcount
+			) {
+
 		super();
 		this.p_id = p_id;
 		this.p_name = p_name;
@@ -37,6 +42,8 @@ public class ProductDto {
 		this.p_date = p_date;
 		this.p_desc = p_desc;
 		this.p_clickcount = p_clickcount;
+
+
 	}
 
 	public int getP_id() {
@@ -134,7 +141,6 @@ public class ProductDto {
 	public void setP_clickcount(String p_clickcount) {
 		this.p_clickcount = p_clickcount;
 	}
-	
-	
+
 	
 }

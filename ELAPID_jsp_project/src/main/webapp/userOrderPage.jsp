@@ -5,14 +5,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<<<<<<< HEAD
+=======
 =======
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 >>>>>>> f22167109229e4bbf84986d42d4f0382db3c42f7
+>>>>>>> c9283c13149760eed255d755ffcefae76e27ae12
 <!DOCTYPE html>
 <html>
 <head>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ include file="/layout/header.jsp"%>
 <meta charset="UTF-8">
 <title>UserOrderPage</title>
@@ -229,6 +232,9 @@ and
 
 </body>
 <%@ include file="/layout/footer.jsp"%>
+<<<<<<< HEAD
+
+=======
 =======
 	
 </head>
@@ -285,4 +291,5 @@ and
 </body>
 <%@ include file="/layout/footer.jsp"%>	
 >>>>>>> f22167109229e4bbf84986d42d4f0382db3c42f7
+>>>>>>> c9283c13149760eed255d755ffcefae76e27ae12
 </html>

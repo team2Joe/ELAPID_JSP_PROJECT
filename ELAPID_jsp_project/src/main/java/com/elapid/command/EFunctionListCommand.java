@@ -20,8 +20,25 @@ public class EFunctionListCommand implements ECommand {
 		
 		ProductDao dao = new ProductDao();
 		
-		dtos = dao.functionList(p_mainf);
-
+		ProductDao countDao = new ProductDao();
+		
+		// 중분류 where 쿼리문
+		int count = countDao.productCount("where p.p_mainf = '" + p_mainf + "'");
+		
+		String tempStart = request.getParameter("page");
+		
+		int startPage = 0;
+		int onePageCount = 3;
+		
+		count = (int)Math.ceil((double)count/(double)onePageCount);
+		
+		if(tempStart != null) {
+			startPage = (Integer.parseInt(tempStart)-1)*onePageCount;
+		}
+	
+		dtos = dao.functionList(p_mainf, startPage, onePageCount);
+		System.out.println(count);
+		request.setAttribute("count", count);
 		request.setAttribute("list", dtos);
 
 	}

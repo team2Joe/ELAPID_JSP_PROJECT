@@ -1,4 +1,5 @@
 
+<%@page import="com.elapid.dao.ProductDao"%>
 <%@page import="com.elapid.dto.ProductListDto"%>
 <%@page import="com.elapid.dto.ProductDto"%>
 <%@page import="java.util.ArrayList"%>
@@ -6,12 +7,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+
 			<div class="row row-cols-1 row-cols-md-3 g-4">
  			<c:forEach items="${list }" var="dto">
 				 
 				 <div class="col">
 				    <div class="card h-100" align="center">
-			    	  <a href="detailView.do?p_id=${dto.p_id }&ctg_middle=${dto.ctg_middle } %>">
+			    	  <a href="detailView.do?p_id=${dto.p_id }&ctg_middle=${dto.ctg_middle }">
 				      <img src="${dto.img_thum }" alt="..." align="center">
 				      <div class="card-body">
 				        <h5 class="card-title">${dto.p_name }</h5>
