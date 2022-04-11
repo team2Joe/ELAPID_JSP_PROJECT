@@ -57,7 +57,7 @@
 			
 			for(int i=1; i<=count; i++){
 	%>			
-				<button onclick="location.href='middleView.do?ctg_middle=<%=list.get(0).getCtg_middle() %>&page=<%=i %>'">[<%=i %>]</button>
+				<button onclick="location.href='middleView.do?ctg_middle=<%=list.get(0).getCtg_middle() %>&page=<%=i %>'"><%=i %></button>
 	<%
 			}
 	%>

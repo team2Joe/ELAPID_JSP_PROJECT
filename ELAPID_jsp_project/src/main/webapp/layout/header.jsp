@@ -170,9 +170,7 @@ request.setCharacterEncoding("utf-8");
 	      </ul>
 	    </div>
 	  </div>
-	</nav>
-
-    <div>
+	  <div>
 	  <form class="d-flex" action="search.do">
 	  	<select name="category">
 	  		<option value="p.p_name">상품명</option>
@@ -184,6 +182,7 @@ request.setCharacterEncoding("utf-8");
         <button class="btn btn-secondary" type="submit">Search</button>
       </form>
     </div>
+	</nav>
 
 	${sessionScope.comment }
 
