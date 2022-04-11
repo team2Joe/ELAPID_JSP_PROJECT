@@ -177,7 +177,7 @@ request.setCharacterEncoding("utf-8");
 	    </div>
 	  </div>
 	  <div>
-	  <form class="d-flex" action="search.do">
+	  <form class="d-flex" action="search.do" name="searchForm">
 	  	<select name="category">
 	  		<option value="p.p_name">상품명</option>
 	  		<option value="p.p_size">사이즈</option>

@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+   
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="kr">
@@ -199,7 +200,6 @@
 		cq_params.siteId = cqParamData.siteId;
 		cq_params.instanceType = cqParamData.instanceType;
 		cq_params.locale = CQuotient.locale;
-
 		if (CQuotient.sendActivity) {
 			CQuotient
 					.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
@@ -213,7 +213,6 @@
 	/* ]]> */
 // -->
 	
-
 </script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="css/basic.css" rel="stylesheet" type="text/css" />
@@ -237,7 +236,7 @@
 	    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" onclick="navbtnlinkluggage()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="nnavbtnlinkluggage()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	            캐리어
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -263,11 +262,8 @@
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-<<<<<<< HEAD
-=======
 	        								<%-- function전체리스트 --%>
->>>>>>> c9283c13149760eed255d755ffcefae76e27ae12
-	          <a class="nav-link" onclick="navbtnlinkfunction()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="nnavbtnlinkfunction()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	주요기능
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -404,16 +400,16 @@
 			<div class="justify-content-center account-cards">
 				<div class="row order-card">
 					<div class="col-3 col-md-2 image-card">
-						<a href="/orders"><i class="wishlist-icon fa-solid fa-basket-shopping"></i>
+						<a href="userOrderHistory.do"><i class="wishlist-icon fa-solid fa-basket-shopping"></i>
 						</a>
 					</div>
 					<div class="text-card col-7 col-md-8">
-						<a href="/orders">
+						<a href="userOrderHistory.do">
 							<h4>나의 구매내역</h4>
 						</a>
 					</div>
 					<div class="arrowed col-2 col-md-2" style="padding-top:15px">
-						<a href="/orders">
+						<a href="userOrderHistory.do">
 							<div class="arrow-1"></div>
 						</a>
 					</div>
@@ -540,7 +536,20 @@
 		async="async"></script>
 	<script src="https://cdn.cquotient.com/js/v2/gretel.min.js"
 		type="text/javascript" async="async"></script>
-		
+	<script src="js/basic.js"></script>
 	
 </body>
 </html>
+© 2022 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Loading complete

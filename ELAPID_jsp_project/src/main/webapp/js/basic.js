@@ -29,3 +29,4 @@ function qnawrite() {
 
 	location.href = "questionContentView.do";
 }
+
