@@ -39,7 +39,7 @@ request.setCharacterEncoding("utf-8");
 	    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" onclick="nnavbtnlinkluggage()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="navbtnlinkluggage()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	            캐리어
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -59,14 +59,14 @@ request.setCharacterEncoding("utf-8");
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
 	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=비즈니스">비즈니스</a></li>
 	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=캐주얼">캐주얼</a></li>
-	            <li><a class="dropdown-item" href="#">Something else here</a></li>
+	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=other">other</a></li>
 	          </ul>
 	        </li>
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
 	        								<%-- function전체리스트 --%>
-	          <a class="nav-link" onclick="nnavbtnlinkfunction()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="navbtnlinkfunction()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	주요기능
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
