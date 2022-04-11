@@ -171,6 +171,6 @@ request.setCharacterEncoding("utf-8");
     	
    		<form class="d-flex" action="search.do">
         <input class="form-control me-sm-2" type="text" placeholder="Search" name="search" size="10">
-        <buttons class="btn btn-secondary" type="submit">Search</button>
+        <button class="btn btn-secondary" type="submit">Search</button>
       </form>
     </div>
