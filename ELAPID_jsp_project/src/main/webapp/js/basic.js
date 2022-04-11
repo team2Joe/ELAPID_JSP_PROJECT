@@ -6,9 +6,8 @@
 	
 function navbtnlinkluggage() {
 
-	location.href = "luggageList.do?";
+	location.href = "luggageList.do";
 }
-
 
 function navbtnlinkbackpack() {
 	

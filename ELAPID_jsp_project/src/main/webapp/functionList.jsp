@@ -59,7 +59,8 @@
 			</c:forEach>
 				</div>
 			
-		<div class="div2">
+		<br>	
+		<div align="center">
 			<tr>
 				<td>
 			
@@ -71,7 +72,7 @@
 	
 			for(int i=1; i<=count; i++){
 	%>			
-				<a href="functionList.do?p_mainf=<%=list.get(0).getP_mainf() %>&page=<%=i %>">[<%=i %>]</a>
+				<button onclick="location.href='functionList.do?p_mainf=<%=list.get(0).getP_mainf() %>&page=<%=i %>'"><%=i %></button>
 	<%
 			}
 	%>

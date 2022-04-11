@@ -36,8 +36,6 @@
 								</form>
 				      		</c:otherwise>
 				      	</c:choose>
-							
-						
 				      </div>
 				    </div>
 				  </div>
@@ -47,11 +45,10 @@
 				</div>
 				
 				
-				
-		<div class="div2">
+		<br>		
+		<div align="center">
 			<tr>
 				<td>
-			
 	<%
 			// middleView.do 페이지수
 			int count = (int)request.getAttribute("count");	
@@ -60,7 +57,7 @@
 			
 			for(int i=1; i<=count; i++){
 	%>			
-				<a href="middleView.do?ctg_middle=<%=list.get(0).getCtg_middle() %>&page=<%=i %>">[<%=i %>]</a>
+				<button onclick="location.href='middleView.do?ctg_middle=<%=list.get(0).getCtg_middle() %>&page=<%=i %>'"><%=i %></button>
 	<%
 			}
 	%>

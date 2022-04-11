@@ -32,7 +32,6 @@ public class ELuggageFilterListCommand implements ECommand {
 			
 				// 주요기능 필터 쿼리문 조건
 				for(int i = 0; i < p_mainf.length; i++) {
-	
 					// 필터 선택 조건이 한번일때
 					if(p_mainf.length == 1) {
 						queryValuesMainf[i] = " and p_mainf = '" + p_mainf[i] + "'";
