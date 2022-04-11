@@ -109,7 +109,9 @@
 		
 				for(int i=1; i<=count; i++){
 		%>			
+			
 					<a href="luggageList.do?page=<%=i %>">[<%=i %>]</a>
+					
 		<%
 				}
 		%>

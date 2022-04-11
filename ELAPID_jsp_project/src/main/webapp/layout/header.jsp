@@ -101,11 +101,6 @@ request.setCharacterEncoding("utf-8");
 	          <a class="nav-link" onclick="qnaregister()" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	상품문의
 	          </a>
-	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-	            <li><a class="dropdown-item" href="#">Action</a></li>
-	            <li><a class="dropdown-item" href="#">Another action</a></li>
-	            <li><a class="dropdown-item" href="#">Something else here</a></li>
-	          </ul>
 	        </li>
 	      </ul>
 	    </div>
