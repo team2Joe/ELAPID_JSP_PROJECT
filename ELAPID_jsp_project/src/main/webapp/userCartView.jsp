@@ -22,7 +22,6 @@
 				<div class="">
 					<h3> 주문하기 </h3>
 				</div>
-		
 			
 			<form action="userOderForm.do" id = "cart" >
 				<c:forEach items="${User_Cart}" var="dtos">

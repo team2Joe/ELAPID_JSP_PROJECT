@@ -1,3 +1,4 @@
+   
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -199,7 +200,6 @@
 		cq_params.siteId = cqParamData.siteId;
 		cq_params.instanceType = cqParamData.instanceType;
 		cq_params.locale = CQuotient.locale;
-
 		if (CQuotient.sendActivity) {
 			CQuotient
 					.sendActivity(CQuotient.clientId, 'viewProduct', cq_params);
@@ -213,7 +213,6 @@
 	/* ]]> */
 // -->
 	
-
 </script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="css/basic.css" rel="stylesheet" type="text/css" />
@@ -237,7 +236,7 @@
 	    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" onclick="navbtnlinkluggage()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="nnavbtnlinkluggage()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	            캐리어
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -264,7 +263,7 @@
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
 	        								<%-- function전체리스트 --%>
-	          <a class="nav-link" onclick="navbtnlinkfunction()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="nnavbtnlinkfunction()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	주요기능
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -541,3 +540,16 @@
 	
 </body>
 </html>
+© 2022 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Loading complete

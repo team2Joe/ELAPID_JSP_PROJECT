@@ -15,13 +15,13 @@ public class EDetailViewCommand implements ECommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		String p_name = request.getParameter("p_name");
+		String p_id = request.getParameter("p_id");
 		
-		ArrayList<ProductDetailDto> dtos = new ArrayList<ProductDetailDto>();
+		ProductDetailDto dtos = new ProductDetailDto();
 		
 		ProductDao dao = new ProductDao();
 		
-		dtos = dao.detailView(p_name);
+		dtos = dao.detailView(p_id);
 		
 		request.setAttribute("detailView", dtos);
 

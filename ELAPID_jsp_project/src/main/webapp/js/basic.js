@@ -13,11 +13,7 @@ function selectedCartOrder(){
 	
 }
 	
-function navbtnlinkluggage() {
-
-	location.href = "luggageList.do";
-}
-function navbtnlinkluggage2() {
+function nnavbtnlinkluggage() {
 
 	location.href = "luggageList.do";
 }
@@ -27,10 +23,11 @@ function navbtnlinkbackpack() {
 	location.href = "backpackList.do";
 }
 
-function navbtnlinkfunction() {
+function nnavbtnlinkfunction() {
 	
 	location.href = "middleFunctionList.do";
 }
+
 
 function qnaregister() {
 
@@ -41,3 +38,4 @@ function qnawrite() {
 
 	location.href = "questionContentView.do";
 }
+

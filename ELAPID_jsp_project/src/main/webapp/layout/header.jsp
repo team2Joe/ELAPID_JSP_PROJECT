@@ -11,18 +11,24 @@ request.setCharacterEncoding("utf-8");
 <meta charset="UTF-8">
 <title>ELAPID</title>
 
-<script>
-</script>
+<style type="text/css">
+ /* link - 아직 클릭하지 않은 경우 red 색상 설정 */
+ a:link { color: black; text-decoration: none;}	
+ /* visited - 한번 클릭하거나 전에 클릭한적 있을 경우 #c71d44 설정 */
+ a:visited { color: black; text-decoration: none;}	
+ /* hover - 마우스를 해당 링크에 위치했을 경우 #006DD7 설정 */
+ a:hover { color: #006DD7; text-decoration: none;}
+</style>
 
 </head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="css/basic.css" rel="stylesheet" type="text/css" />
 <body>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	          <%
 	          	String uid =""; 
 		          	uid = (String)session.getAttribute("uid");
 		      %>
-		      
 		      
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <div class="container-fluid">
@@ -33,7 +39,7 @@ request.setCharacterEncoding("utf-8");
 	    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" onclick="navbtnlinkluggage()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="nnavbtnlinkluggage()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	            캐리어
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -47,20 +53,20 @@ request.setCharacterEncoding("utf-8");
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" onclick="navbtnlinkbackpack()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="nnavbtnlinkbackpack()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	백팩
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=비즈니스">비즈니스</a></li>
-	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=캐주얼">캐주얼</a></li>
-	            <li><a class="dropdown-item" href="#">Something else here</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=business">비즈니스</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=casual">캐주얼</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=other">그외</a></li>
 	          </ul>
 	        </li>
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
 	        								<%-- function전체리스트 --%>
-	          <a class="nav-link" onclick="navbtnlinkfunction()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="nnavbtnlinkfunction()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	주요기능
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -109,6 +115,11 @@ request.setCharacterEncoding("utf-8");
 	        </li>
 	      </ul>
 	    </div>
+
+
+	    <div>
+	      <ul class="navbar-nav">
+
 	    <div class = "col-md-3" style = "text-align:right;">
 	      <ul class="navbar-nav" style = "width:500px;">
 	        <li class="nav-item dropdown">
@@ -168,12 +179,19 @@ request.setCharacterEncoding("utf-8");
 	      </ul>
 	    </div>
 	  </div>
-	</nav>
-	
-    <div>
-    	
-   		<form class="d-flex" action="search.do">
+	  <div>
+	  <form class="d-flex" action="search.do" name="searchForm">
+	  	<select name="category">
+	  		<option value="p.p_name">상품명</option>
+	  		<option value="p.p_size">사이즈</option>
+	  		<option value="p.p_mainf">주요기능</option>
+	  		<option value="s.ps_color">색상</option>
+	  	</select>
         <input class="form-control me-sm-2" type="text" placeholder="Search" name="search" size="10">
-        <buttons class="btn btn-secondary" type="submit">Search</button>
+        <button class="btn btn-secondary" type="submit">Search</button>
       </form>
     </div>
+	</nav>
+
+	${sessionScope.comment }
+

@@ -18,8 +18,24 @@ public class EBackpackListCommand implements ECommand {
 		
 		ProductDao dao = new ProductDao();
 		
-		dtos = dao.backpackList();
+		ProductDao countDao = new ProductDao();
 		
+		int count = countDao.productCount(" where c.ctg_main = 'backpack'");
+		
+		String tempStart = request.getParameter("page");
+		
+		int startPage = 0;
+		int onePageCount = 3;
+		
+		count = (int)Math.ceil((double)count/(double)onePageCount);
+		
+		if(tempStart != null) {
+			startPage = (Integer.parseInt(tempStart)-1)*onePageCount;
+		}
+		
+		dtos = dao.backpackList(startPage, onePageCount);
+		
+		request.setAttribute("count", count);
 		request.setAttribute("list", dtos);
 
 	}
