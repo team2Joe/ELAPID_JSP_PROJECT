@@ -35,6 +35,12 @@
 			<h3>주문하기</h3>
 		</div>
 
+	<%
+	ArrayList<UserCartViewDto> dtos = (ArrayList<UserCartViewDto>)request.getAttribute("User_Cart");
+		if ( dtos.size() != 0 ){
+			
+		
+	%>
 
 		<form action="userOderForm.do" id="cart">
 			<c:forEach items="${User_Cart }" var="dtos">
@@ -98,6 +104,10 @@
 
 
 	</div>
+	
+	<%
+		}
+	%>
 	<!-- 중앙! -->
 	<!-- 2분할! -->
 	<div class="d-grid gap-2 col-10" align="right">
