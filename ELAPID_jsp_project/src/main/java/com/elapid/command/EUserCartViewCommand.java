@@ -20,13 +20,13 @@ public class EUserCartViewCommand implements ECommand {
 		HttpSession session = request.getSession();
 		
 		CartViewDao dao = new CartViewDao();
-
 		String u_id = (String) session.getAttribute("uid");
-		
 		ArrayList<UserCartViewDto> dtos = dao.UserCartViewList(u_id);
 		
 		
 		request.setAttribute("User_Cart", dtos);
+//		System.out.println("*************"+dtos.size());
+//		System.out.println(u_id);
 		
 
 	}
