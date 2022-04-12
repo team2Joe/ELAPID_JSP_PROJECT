@@ -1,40 +1,6 @@
 /**
 
  
- var GoogleAuth; // Google Auth object.
-function initClient() {
-  gapi.client.init({
-      'apiKey': 'AIzaSyCIBppIVpF54yqf14obcIwSXFNpzO91pSE',
-      'clientId': '246093648725-rl5r5kcmpm4vh48r4k1l2rferndnjohm.apps.googleusercontent.com',
-      'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
-      'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']
-  }).then(function () {
-      GoogleAuth = gapi.auth2.getAuthInstance();
-
-      // Listen for sign-in state changes.
-      GoogleAuth.isSignedIn.listen(updateSigninStatus);
-  });
-}
-function init() {
-	  gapi.load('auth2', function() {
-		
-	  });
-	}
-
-
-function onSignIn() {
-
-		initClient();
-		
-	var profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
-		id = profile.getId();
-		username = profile.getName()
-		img = profile.getImageUrl()
-		email = profile.getEmail()
-		alert('로그인 완료');
-		
-		post_to_url( "http://localhost:8080/ELAPID_jsp_project/main.do", {'username': username, 'email': email, 'img': img})
-}
 */
 
 function init() {
@@ -99,6 +65,30 @@ function post_to_url(path, params, method='post'){
 }
 
 
+function go() {
+    var a = document.insertForm.qc_name.value;
+    var f = document.insertForm.pq_title.value;
+    var q = document.insertForm.pq_content.value;
+    
+    var form = document.getElementById("qnaWriteForm");
+    
+    if (a == "선택") {
+        alert("문의 유형을 선택해주세요.");
+        document.insertForm.qc_name.focus();
+      	return false;
+    }else if (f == "") {
+        alert("제목을 입력해주세요.");
+        document.insertForm.pq_title.focus();
+        return;
+    }else if (q == "") {
+        alert("내용을 입력해주세요.");
+        document.insertForm.pq_content.focus();
+        return;
+    }else{
+    	form.submit();
+    }
+    
+} 
 
 function test(){
 	
