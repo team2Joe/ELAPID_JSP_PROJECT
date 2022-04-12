@@ -19,6 +19,7 @@ public class UserCartViewDto {
 	int p_size;
 	//총합.
 	int cart_totalamount;
+	String ctg_middle;
 	
 	public UserCartViewDto() {
 		// TODO Auto-generated constructor stub
@@ -29,7 +30,7 @@ public class UserCartViewDto {
 	
 	
 	public UserCartViewDto(String u_id, int p_id, int cd_id, int cart_id, String p_name, String p_colorname, int p_price,
-			int cart_totalamount, String img_thum, int p_size) {
+			int cart_totalamount, String img_thum, int p_size, String ctg_middle) {
 		super();
 		this.u_id = u_id;
 		this.p_id = p_id;
@@ -42,6 +43,21 @@ public class UserCartViewDto {
 		this.img_thum = img_thum;
 		this.cd_id = cd_id;
 		this.p_size = p_size;
+		this.ctg_middle = ctg_middle;
+	}
+
+
+
+
+	public String getCtg_middle() {
+		return ctg_middle;
+	}
+
+
+
+
+	public void setCtg_middle(String ctg_middle) {
+		this.ctg_middle = ctg_middle;
 	}
 
 

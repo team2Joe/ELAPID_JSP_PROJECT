@@ -89,9 +89,9 @@ public class EController_Uyoung extends HttpServlet {
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 		
-		System.out.println(uri);
-		System.out.println(com);
-		System.out.println(conPath);
+//		System.out.println(uri);
+//		System.out.println(com);
+//		System.out.println(conPath);
 		
 		switch(com) {
 			//메인 화면 
@@ -339,7 +339,7 @@ public class EController_Uyoung extends HttpServlet {
 		case("/addCart.do"):
 			command = new AddCartCommand();
 			command.execute(request, response);
-			viewPage = "test.jsp";
+			viewPage = "cartLink.jsp";
 //			viewPage = (String) request.getAttribute("cartReturnPage");
 			break;
 		

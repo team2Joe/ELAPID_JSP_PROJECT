@@ -48,10 +48,8 @@
 								
 						<br>
 						<br>
-						남은 수량 : <%=detailView.getP_stock() %>
-
-						<br>
-						<button class="btn btn-dark" onclick ="location.href='addCart.do?p_id=${dto.p_id}'" >장바구니 담기</button>
+						남은 수량 : <%=detailView.getP_stock() %><br>
+						<button class="btn btn-dark" name="p_id" id="pid" onclick = "inputCart()" value="<%=detailView.getP_id() %>">장바구니 담기</button>
 				      	<br>
 						<button onclick="location.href='userOrderForm.do?p_id=<%=detailView.getP_id() %>'" class="btn btn-dark">바로구매</button>
 					</td>
