@@ -19,17 +19,25 @@ request.setCharacterEncoding("utf-8");
  /* hover - 마우스를 해당 링크에 위치했을 경우 #006DD7 설정 */
  a:hover { color: #006DD7; text-decoration: none;}
 </style>
+<%
+	String uid = (String)session.getAttribute("uid");
+%>
+<script type="text/javascript">
+	var form = document.getElementById("search")
+	
+	function searchNullCheck(){
+		if(form.value == null){
+			alert('검색어를 입력해주세요')
+		}
+		return false;
+	}
+</script>
 
 </head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="css/basic.css" rel="stylesheet" type="text/css" />
 <body>
-	          <%
-	          	String uid =""; 
-		          	uid = (String)session.getAttribute("uid");
-		      %>
-		      
-		      
+      
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <div class="container-fluid">
 	    <a class="navbar-brand" href="main.do">ELAPID</a>
@@ -170,18 +178,18 @@ request.setCharacterEncoding("utf-8");
 	    </div>
 	  </div>
 
-	  <div>
-	  <form class="d-flex" action="search.do" name="searchForm">
-	  	<select name="category">
-	  		<option value="p.p_name">상품명</option>
-	  		<option value="p.p_size">사이즈</option>
-	  		<option value="p.p_mainf">주요기능</option>
-	  		<option value="s.ps_color">색상</option>
-	  	</select>
-        <input class="form-control me-sm-2" type="text" placeholder="Search" name="search" size="10">
-        <buttons class="btn btn-secondary" type="submit">Search</button>
-      </form>
-    </div>
+		  <div>
+		  <form class="d-flex" action="search.do">
+		  	<select name="category">
+		  		<option value="p.p_name">상품명</option>
+		  		<option value="p.p_size">사이즈</option>
+		  		<option value="p.p_mainf">주요기능</option>
+		  		<option value="s.ps_color">색상</option>
+		  	</select>
+	        <input class="form-control me-sm-2" type="text" placeholder="Search" id="search" size="10">
+	        <button class="btn btn-secondary" onclick="searchNullCheck()" type="submit">Search</button>
+	      </form>
+	    </div>
 
 	</nav>
 

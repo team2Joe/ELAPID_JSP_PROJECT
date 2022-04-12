@@ -12,23 +12,29 @@ function selectedCartOrder(){
 	form.submit();
 	
 }
-	
+
+// 캐리어 전체 리스트	
 function navbtnlinkluggage() {
 
 	location.href = "luggageList.do";
 }
 
+// 백팩 전체 리스트	
 function navbtnlinkbackpack() {
 	
 	location.href = "backpackList.do";
 }
 
+// 주오기능 전체 리스트	
 function navbtnlinkfunction() {
 	
 	location.href = "middleFunctionList.do";
 }
 
 
+function nullcheck() {
+	
+}
 
 function qnaregister() {
 	

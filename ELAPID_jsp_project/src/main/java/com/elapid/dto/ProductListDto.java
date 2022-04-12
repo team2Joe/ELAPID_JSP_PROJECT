@@ -22,13 +22,16 @@ public class ProductListDto {
 	private String ctg_sub;
 	private String img_thum;
 	private String ps_color;
-	
+	private String p_rank;
 	
 	public ProductListDto() {
 		// TODO Auto-generated constructor stub
 	}
 
 
+	
+
+	// p_rank 제외한 생성자
 	public ProductListDto(int p_id, String p_name, int p_stock, int p_price, int p_discountprice, int p_size,
 			String p_mainf, String p_colorimg, String p_colorname, Timestamp p_date, String p_desc, String p_clickcount,
 			String ctg_id, String ctg_main, String ctg_middle, String ctg_sub, String img_thum, String ps_color) {
@@ -52,6 +55,39 @@ public class ProductListDto {
 		this.img_thum = img_thum;
 		this.ps_color = ps_color;
 	}
+
+
+
+
+
+	public ProductListDto(int p_id, String p_name, int p_stock, int p_price, int p_discountprice, int p_size,
+			String p_mainf, String p_colorimg, String p_colorname, Timestamp p_date, String p_desc, String p_clickcount,
+			String ctg_id, String ctg_main, String ctg_middle, String ctg_sub, String img_thum, String ps_color,
+			String p_rank) {
+		super();
+		this.p_id = p_id;
+		this.p_name = p_name;
+		this.p_stock = p_stock;
+		this.p_price = p_price;
+		this.p_discountprice = p_discountprice;
+		this.p_size = p_size;
+		this.p_mainf = p_mainf;
+		this.p_colorimg = p_colorimg;
+		this.p_colorname = p_colorname;
+		this.p_date = p_date;
+		this.p_desc = p_desc;
+		this.p_clickcount = p_clickcount;
+		this.ctg_id = ctg_id;
+		this.ctg_main = ctg_main;
+		this.ctg_middle = ctg_middle;
+		this.ctg_sub = ctg_sub;
+		this.img_thum = img_thum;
+		this.ps_color = ps_color;
+		this.p_rank = p_rank;
+	}
+
+
+
 
 
 	public int getP_id() {
@@ -231,6 +267,14 @@ public class ProductListDto {
 
 	public void setPs_color(String ps_color) {
 		this.ps_color = ps_color;
+	}
+
+	public String getP_rank() {
+		return p_rank;
+	}
+
+	public void setP_rank(String p_rank) {
+		this.p_rank = p_rank;
 	}
 
 

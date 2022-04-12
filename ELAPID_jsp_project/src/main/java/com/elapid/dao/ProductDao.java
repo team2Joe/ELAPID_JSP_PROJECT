@@ -319,9 +319,13 @@ public class ProductDao {
 			
 			rs = stmt.executeQuery();
 			
+			// 상품 조회수 기록해줄 변수 선언
+			int p_clickcount = 0;
+			int p_id = 0;
+			
 			if(rs.next()) {
 				// product 정보 가져오기 
-				int p_id = rs.getInt("p_id");
+				p_id = rs.getInt("p_id");
 				String p_name = rs.getString("p_name");
 				int p_stock = rs.getInt("p_stock");
 				int price = rs.getInt("p_price");
@@ -332,7 +336,7 @@ public class ProductDao {
 				String p_colorname = rs.getString("p_colorname");
 				Timestamp p_date = rs.getTimestamp("p_date");
 				String p_desc = rs.getString("p_desc");
-				String p_clickcount = rs.getString("p_clickcount");
+				p_clickcount = rs.getInt("p_clickcount");
 				String ctg_id = rs.getString("ctg_id");
 				String ctg_main = rs.getString("ctg_main");
 				String ctg_middle = rs.getString("ctg_middle");
@@ -347,6 +351,7 @@ public class ProductDao {
 				String img_05 = rs.getString("img_05");
 				String img_06 = rs.getString("img_06");
 				
+				p_clickcount++; //상품 조회수 1씩 증가
 				
 				 dto = new ProductDetailDto(p_id, p_name, p_stock,
 						price, discountPrice, p_size, p_mainf, p_colorimg,
@@ -355,7 +360,15 @@ public class ProductDao {
 						img_03, img_04, img_05, img_06);
 
 			}
-
+			
+			// 조회수 1씩 증가해주는 쿼리문
+			String countQuery = "update product set p_clickcount = ? where p_id = ?";
+			
+			stmt = conn.prepareStatement(countQuery);
+			stmt.setInt(1, p_clickcount);
+			stmt.setInt(2, p_id);
+			stmt.executeUpdate();
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 			
@@ -375,9 +388,7 @@ public class ProductDao {
 		return dto;
 	}
 
-
 	// 상품 검색 페이지 출력
-
 	public ArrayList<ProductListDto> search(String search, String category) {
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 		
@@ -449,9 +460,10 @@ public class ProductDao {
 				String img_thum = rs.getString("img_thum");
 				String ps_color = rs.getString("ps_color");
 				
-				ProductListDto dto = new ProductListDto(p_id, p_name, p_stock, price, discountPrice,
-						p_size, p_mainf, p_colorimg, p_colorname, p_date, p_desc, p_clickcount,
-						ctg_id, ctg_main, ctg_middle, ctg_sub, img_thum, ps_color);
+				ProductListDto dto = new ProductListDto(p_id, p_name, p_stock, price,
+						discountPrice, p_size, p_mainf, p_colorimg, p_colorname,
+						p_date, p_desc, p_clickcount, ctg_id, ctg_main, ctg_middle,
+						ctg_sub, img_thum, ps_color, ps_color);
 				
 				dtos.add(dto);
 			}
@@ -615,9 +627,10 @@ public class ProductDao {
 					String img_thum = rs.getString("img_thum");
 					String ps_color = rs.getString("ps_color");
 					
-					ProductListDto dto = new ProductListDto(p_id, p_name, p_stock, price, discountPrice,
-							p_size, p_mainf, p_colorimg, p_colorname, p_date, p_desc, p_clickcount,
-							ctg_id, ctg_main, ctg_middle, ctg_sub, img_thum, ps_color);
+					ProductListDto dto = new ProductListDto(p_id, p_name, p_stock,
+							price, discountPrice, p_size, p_mainf, p_colorimg,
+							p_colorname, p_date, p_desc, p_clickcount, ctg_id,
+							ctg_main, ctg_middle, ctg_sub, img_thum, ps_color, ps_color);
 					
 					dtos.add(dto);
 				}
@@ -894,6 +907,92 @@ public class ProductDao {
 			}
 		}
 		
+		
+		
+		return dtos;
+	}
+
+	
+	// 조회수 많은 상품 순 리스트
+	public ArrayList<ProductListDto> interestedProductList() {
+
+		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+
+			String query = "select *, "
+					+ "dense_rank() over(order by p_clickcount desc) p_rank "
+					+ "from product_image i "
+					+ "join image_detail id "
+					+ "on i.img_id = id.img_id "
+					+ "join product p "
+					+ "on p.p_id = id.p_id "
+					+ "join category_detail cd "
+					+ "on p.p_id = cd.p_id "
+					+ "join category c "
+					+ "on c.ctg_id = cd.ctg_id "
+					+ "join product_detail pd "
+					+ "on pd.p_id = p.p_id "
+					+ "join product_spec s "
+					+ "on s.ps_id = pd.ps_id "
+					+ "where p_clickcount != '' order by p_clickcount desc limit 0, 3";
+
+			stmt = conn.prepareStatement(query);
+			
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				// product 정보 가져오기 
+				int p_id = rs.getInt("p_id");
+				String p_name = rs.getString("p_name");
+				int p_stock = rs.getInt("p_stock");
+				int price = rs.getInt("p_price");
+				int discountPrice = rs.getInt("p_discountPrice");
+				int p_size = rs.getInt("p_size");
+				String p_mainf = rs.getString("p_mainf");
+				String p_colorimg = rs.getString("p_colorimg");
+				String p_colorname = rs.getString("p_colorname");
+				Timestamp p_date = rs.getTimestamp("p_date");
+				String p_desc = rs.getString("p_desc");
+				String p_clickcount = rs.getString("p_clickcount");
+				String ctg_id = rs.getString("ctg_id");
+				String ctg_main = rs.getString("ctg_main");
+				String ctg_middle = rs.getString("ctg_middle");
+				String ctg_sub = rs.getString("ctg_sub");
+				String img_thum = rs.getString("img_thum");
+				String ps_color = rs.getString("ps_color");
+				String p_rank = rs.getString("p_rank");
+			
+				ProductListDto dto = new ProductListDto(p_id, p_name, p_stock, price,
+						discountPrice, p_size, p_mainf, p_colorimg, p_colorname,
+						p_date, p_desc, p_clickcount, ctg_id, ctg_main, ctg_middle,
+						ctg_sub, img_thum, ps_color, p_rank);
+				
+				dtos.add(dto);
+			}
+			
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+				
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
 		return dtos;
