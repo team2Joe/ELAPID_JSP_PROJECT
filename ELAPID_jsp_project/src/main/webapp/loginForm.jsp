@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<%
+<%-- <%
 //%@ include file="/layout/header.jsp"%
 request.setCharacterEncoding("utf-8");
 %>
@@ -93,7 +93,7 @@ a:hover {
 				</ul>
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown">
-						<%-- function전체리스트 --%> <a class="nav-link"
+						function전체리스트 <a class="nav-link"
 						onclick="navbtnlinkfunction()" id="navbarDarkDropdownMenuLink"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							주요기능 </a>
@@ -205,8 +205,8 @@ a:hover {
 			</form>
 		</div>
 
-	</nav>
-
+	</nav> --%>
+<%@ include file="/layout/header.jsp"%>
 
 	<!-- content에 자신의 OAuth2.0 클라이언트ID를 넣습니다. -->
 

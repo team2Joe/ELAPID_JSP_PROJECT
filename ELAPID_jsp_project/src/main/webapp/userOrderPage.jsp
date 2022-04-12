@@ -4,6 +4,8 @@
 <%@page import="com.elapid.dto.RegisterJoinDto"%>
 <%@page import="com.elapid.dto.ProductListDto"%>
 <%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <head>
@@ -29,16 +31,16 @@ ArrayList<ProductListDto> pListDtos = (ArrayList<ProductListDto>) request.getAtt
 			<div class="col-5 col-md-6">
 				<div style="float: left;">
 						<div style="padding-top: 20px; padding-bottom: 20px">
-							<h3>주문결제</h3>
+							<h3>구매내역 </h3>
 						</div>
-						<h4>1.주문고객 정보</h4>
+						<h4>1.주문자 정보 </h4>
 						이름 : <input type="text" style="border: none" id="uo_name"
 							readonly="readonly" value="${userDto.u_name}"><br>
-						이메일 주소 : <input type="text" style="border: none" id="uo_email"
+						이메일 : <input type="text" style="border: none" id="uo_email"
 							readonly="readonly" value="${userDto.u_email }"><br>
-						전화번호 : <input type="text" style="border: none" id="uo_tel"
+						휴대폰 : <input type="text" style="border: none" id="uo_tel"
 							readonly="readonly" value="${userDto.u_tel }"><br> <br>
-						<h4>2.배송 정보</h4>
+						<h4>2.배송지 선택 </h4>
 
 
 
@@ -55,7 +57,7 @@ ArrayList<ProductListDto> pListDtos = (ArrayList<ProductListDto>) request.getAtt
 									<table class="table table-borderless">
 										<tr>
 
-											<td class="col-md-2">받는이 :</td>
+											<td class="col-md-2">이름 :</td>
 											<td class="col-md-6">${rdto.reg_name}</td>
 										</tr>
 										<tr>
@@ -78,7 +80,7 @@ ArrayList<ProductListDto> pListDtos = (ArrayList<ProductListDto>) request.getAtt
 						</c:forEach>
 						<div style="padding-top: 20px; padding-bottom: 20px;'">
 
-							<h4>3.결제 정보 선택</h4>
+							<h4>3. 결제수단 선택 </h4>
 						</div>
 						<div class="row" style="text-align: center;">
 							<div class="col-5">
@@ -87,7 +89,7 @@ ArrayList<ProductListDto> pListDtos = (ArrayList<ProductListDto>) request.getAtt
 							</div>
 							<div class="col-5">
 
-								<input type="radio" value="휴대폰결제" name="uo_paymentmethod"> 휴대폰결제
+								<input type="radio" value="휴대폰결제" name="uo_paymentmethod"> 휴대폰결제 
 							</div>
 						</div>
 
@@ -112,7 +114,7 @@ ArrayList<ProductListDto> pListDtos = (ArrayList<ProductListDto>) request.getAtt
 							<div class="text-card col-12 col-md-12">
 								<table class="table table-borderless">
 									<tr>
-										<td class="col-md-2">이미지 :</td>
+										<td class="col-md-2">상품 이미지 </td>
 										<td class="col-md-6">
 											<img src="${pdto.img_thum}">
 										
@@ -120,16 +122,16 @@ ArrayList<ProductListDto> pListDtos = (ArrayList<ProductListDto>) request.getAtt
 
 									</tr>
 									<tr>
-										<td>이름 :</td>
+										<td>상품 이름 :</td>
 										<td>${pdto.p_name }</td>
 										<td class="col-md-1"></td>
 									</tr>
 									<tr>
-										<td>소분류 :</td>
+										<td>상품 분류 :</td>
 										<td>${pdto.ctg_sub}</td>
 									</tr>
 									<tr>
-										<td>가격 :</td>
+										<td>상품 가격 :</td>
 										<c:if test="${pdto.p_price  eq pdto.p_discountprice}">
 								  		<td>${pdto.p_price } </td>
 										</c:if>
@@ -160,7 +162,7 @@ ArrayList<ProductListDto> pListDtos = (ArrayList<ProductListDto>) request.getAtt
 					int shippingfee = (discountamount >= 3000000) ? 0 : 10000;
 					int total = shippingfee + discountamount;
 
-					// 가격에 콤마 찍기
+					// ê°ê²©ì ì½¤ë§ ì°ê¸°
 					String stramount = Integer.toString(discountamount);
 					String strshippingfee = Integer.toString(shippingfee);
 					String strtotal = Integer.toString(total);
@@ -189,10 +191,10 @@ ArrayList<ProductListDto> pListDtos = (ArrayList<ProductListDto>) request.getAtt
 					%>
 
 					<div class="row">
-						<!-- 상품 이미지 -->
+						<!-- ìí ì´ë¯¸ì§ -->
 						<div class="col-2" align="left">
 						</div>
-						<!-- 상품 정보 -->
+						<!-- ìí ì ë³´ -->
 						<div class="col-4" align="left">
 							<p class="fs-6">${User_Cart.p_name }</p>
 							<p class="fs-8">${User_Cart.p_colorname }</p>
@@ -200,17 +202,17 @@ ArrayList<ProductListDto> pListDtos = (ArrayList<ProductListDto>) request.getAtt
 						
 						
 						
-						<!-- 삭제,주문하기,가격 -->
+						<!-- ì­ì ,ì£¼ë¬¸íê¸°,ê°ê²© -->
 						<div class="col -2" align="right">
 							<p><%=stramount%>원
 							</p>
 							<br>
 							<p>
-								배달료 :
+								배송비 :
 								<%=strshippingfee%>원
 							</p>
 							<p>
-								총 계 :
+								총액 :
 								<%=strtotal%>원
 							</p>
 
