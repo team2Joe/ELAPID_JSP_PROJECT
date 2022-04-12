@@ -19,7 +19,25 @@ request.setCharacterEncoding("utf-8");
  /* hover - 마우스를 해당 링크에 위치했을 경우 #006DD7 설정 */
  a:hover { color: #006DD7; text-decoration: none;}
 </style>
+<script type="text/javascript">
 
+var p_id = document.getElementById("pid").value
+var u_id = '<%=(String)session.getAttribute("uid")%>'
+
+function inputCart(){
+	
+	if(u_id == null){
+		alert("로그인후 사용가능합니다.")
+		location.href="loginForm.do"
+	}else{
+		location.href="addCart.do?p_id="+p_id ;
+		alert("장바구니에 담겼습니다.")
+	}
+}
+
+
+
+</script>
 </head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="css/basic.css" rel="stylesheet" type="text/css" />
