@@ -21,21 +21,19 @@ request.setCharacterEncoding("utf-8");
 </style>
 <script type="text/javascript">
 
-var p_id = document.getElementById("pid").value
-var u_id = '<%=(String)session.getAttribute("uid")%>'
-
 function inputCart(){
 	
-	if(u_id == null){
+	var p_id = document.getElementById("pid").value
+	var u_id = "<%=(String)session.getAttribute("uid")%>"
+
+	if(u_id=="null"){
 		alert("로그인후 사용가능합니다.")
-		location.href="loginForm.do"
+		location.href="loginForm.jsp"
 	}else{
 		location.href="addCart.do?p_id="+p_id ;
 		alert("장바구니에 담겼습니다.")
 	}
 }
-
-
 
 </script>
 </head>
