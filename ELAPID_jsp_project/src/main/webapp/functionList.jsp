@@ -1,5 +1,4 @@
-
-		<%@page import="com.elapid.dto.ProductListDto"%>
+<%@page import="com.elapid.dto.ProductListDto"%>
 <%@page import="com.elapid.dto.ProductDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@ include file="/layout/header.jsp"%>
