@@ -14,7 +14,7 @@ public class ProductDetailDto {
 	private String p_colorimg;
 	private String p_colorname;
 	private String p_desc;
-	private String p_clickcount;
+	private int p_clickcount;
 	private String ctg_id;
 	private String ctg_main;
 	private String ctg_middle;
@@ -33,7 +33,7 @@ public class ProductDetailDto {
 	}
 
 	public ProductDetailDto(int p_id, String p_name, int p_stock, int p_price, int p_discountprice, int p_size,
-			String p_mainf, String p_colorimg, String p_colorname, String p_desc, String p_clickcount, String ctg_id,
+			String p_mainf, String p_colorimg, String p_colorname, String p_desc, int p_clickcount, String ctg_id,
 			String ctg_main, String ctg_middle, String ctg_sub, String img_thum, String ps_color, String img_01,
 			String img_02, String img_03, String img_04, String img_05, String img_06) {
 		super();
@@ -142,11 +142,11 @@ public class ProductDetailDto {
 		this.p_desc = p_desc;
 	}
 
-	public String getP_clickcount() {
+	public int getP_clickcount() {
 		return p_clickcount;
 	}
 
-	public void setP_clickcount(String p_clickcount) {
+	public void setP_clickcount(int p_clickcount) {
 		this.p_clickcount = p_clickcount;
 	}
 

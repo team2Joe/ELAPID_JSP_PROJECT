@@ -5,24 +5,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-		
+
 		
 <%
-	// 상품명이 같을 경우 하나만 출력해주는 조건
-	
-	// 해당 조건은 정해진 단일 상품만을 보여주는 단점이 존재함
-	// 해당 사이즈 혹은 색상에 맞는 상품이 상세페이지에도 이에 맞게 출력되야한다...
 	ProductDetailDto detailView = (ProductDetailDto) request.getAttribute("detailView");
 
 %>		
 			<h2 align="center"><%=detailView.getP_id() %></h2> <br>
 			
 			<div align="center">
-			<c:choose>
-				<c:when test="">
-					
-				</c:when>
-			</c:choose>
 			<table>
 				<tr align="center">
 					<%--상품 필터 col --%>
@@ -34,7 +25,6 @@
 					<td align="center">
 						<h2> <%=detailView.getP_name() %></h2>
 						<h4>가격 : <%=detailView.getP_price() %></h4><br>
-						
 				<%
 						if(detailView.getCtg_main().equals("luggage")){
 
@@ -59,11 +49,11 @@
 						<br>
 						<br>
 						남은 수량 : <%=detailView.getP_stock() %>
-		
-									<button onclick="location.href='nonUserCartView.do?p_id=<%=detailView.getP_id() %>'" class="btn btn-secondary">장바구니 담기</button>
 
+						<br>
+						<button class="btn btn-dark" onclick ="location.href='addCart.do?p_id=${dto.p_id}'" >장바구니 담기</button>
 				      	<br>
-							<button onclick="location.href='userOrderForm.do?p_id=<%=detailView.getP_id() %>'"  class="btn btn-dark">바로구매</button>
+						<button onclick="location.href='userOrderForm.do?p_id=<%=detailView.getP_id() %>'" class="btn btn-dark">바로구매</button>
 					</td>
 					
 				</tr>
@@ -91,8 +81,7 @@
 			  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
 			  
 			  <label for="floatingTextarea">Comments</label>
-			
-			
+
 			</div>
 
 

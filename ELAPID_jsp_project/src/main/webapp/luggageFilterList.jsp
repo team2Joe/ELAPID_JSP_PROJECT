@@ -17,28 +17,26 @@
 	<br> 	
 	<div class="div1">
 		<h4>필터</h4>
+		
 		<form action="luggageFilterList.do">
-		<table>
+			<h5>크기</h5>
+				기내용/소형 <input type="checkbox" name="ctg_middle" value="small">
+				중형수하물 <input type="checkbox" name="ctg_middle" value="middle">
+				대형수하물 <input type="checkbox" name="ctg_middle" value="large">
 			
-		</table>
-		<h5>크기</h5>
-			기내용/소형 <input type="checkbox" name="ctg_middle" value="small">
-			중형수하물 <input type="checkbox" name="ctg_middle" value="middle">
-			대형수하물 <input type="checkbox" name="ctg_middle" value="large">
-		
-		<h5>색상</h5>
-			검정 <input type="checkbox" name="ps_color" value="black">
-			회색 <input type="checkbox" name="ps_color" value="grey">
-			빨강 <input type="checkbox" name="ps_color" value="red">
-			흰색 <input type="checkbox" name="ps_color" value="white">
-		
-		<h5>주요기능</h5>
-			서스펜션 휠 <input type="checkbox" name="p_mainf" value="서스펜션휠">
-			자동제어장치 <input type="checkbox" name="p_mainf" value="자동제어장치">
-			지문인식 <input type="checkbox" name="p_mainf" value="지문인식">
-			RFID <input type="checkbox" name="p_mainf" value="rfid">
-			<br>
-			<input type="submit" value="확인">
+			<h5>색상</h5>
+				검정 <input type="checkbox" name="ps_color" value="black">
+				회색 <input type="checkbox" name="ps_color" value="grey">
+				빨강 <input type="checkbox" name="ps_color" value="red">
+				흰색 <input type="checkbox" name="ps_color" value="white">
+			
+			<h5>주요기능</h5>
+				서스펜션 휠 <input type="checkbox" name="p_mainf" value="서스펜션휠">
+				자동제어장치 <input type="checkbox" name="p_mainf" value="자동제어장치">
+				지문인식 <input type="checkbox" name="p_mainf" value="지문인식">
+				RFID <input type="checkbox" name="p_mainf" value="rfid">
+				<br>
+				<input type="submit" value="확인">
 		</form>
 	</div>
 						
@@ -58,18 +56,7 @@
 			      </div>
 			      <div class="card-footer">
 			 	<%-- 아이디값 null시 비회원 장바구니로 들어가기 --%>
-			      	<c:choose>
-			      		<c:when test="${sessionScope.u_id != '' }">
-			      			<form action="nonUserCartView.do">
-								<button type="button" class="btn btn-dark">장바구니 담기</button>
-							</form>
-			      		</c:when>
-			      		<c:otherwise>
-			      			<form action="nonUserCartView.do">
-								<button type="button" class="btn btn-dark">장바구니 담기</button>
-							</form>
-			      		</c:otherwise>
-			      	</c:choose>
+			      	<button class="btn btn-dark" onclick = "location.href='addCart.do?p_id=${dto.p_id}'" >장바구니 담기</button>
 			      </div>
 			    </div>
 			  </div>		

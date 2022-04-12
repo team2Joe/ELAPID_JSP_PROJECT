@@ -25,6 +25,7 @@ import com.elapid.command.EDetailViewCommand;
 import com.elapid.command.EFunctionListCommand;
 import com.elapid.command.EGoogleLoginCommand;
 import com.elapid.command.EIdCheckCommand;
+import com.elapid.command.EInterestedProductListCommand;
 import com.elapid.command.ELoginCheckCommand;
 import com.elapid.command.ELogoutCommand;
 import com.elapid.command.ELuggageFilterListCommand;
@@ -154,6 +155,12 @@ public class EController_Uyoung extends HttpServlet {
 			viewPage = "searchList.jsp";
 			break;
 			
+			// 조회수 많은 상품순 리스트 출력
+		case("/interestedProductList.do"):
+			command = new EInterestedProductListCommand();
+			command.execute(request, response);
+			viewPage = "index.jsp";
+			break;
 			
 		case("/loginForm.do"):
 			viewPage = "loginForm.jsp";
