@@ -2,7 +2,13 @@
  * 
  */
  
- 
+ //cart alert
+ var p_id = document.getElementById("pid").value
+ function inputCart(){
+	location.href="addCart.do?p_id="+p_id ;
+	alert("장바구니에 담겼습니다.")
+	
+}
  
  
 function test(){
@@ -26,7 +32,7 @@ function navbtnlinkbackpack() {
 	location.href = "backpackList.do";
 }
 
-function navbtnlinkfunction() {
+function nnavbtnlinkfunction() {
 	
 	location.href = "middleFunctionList.do";
 }

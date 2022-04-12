@@ -55,7 +55,7 @@ public class CartViewDao {
 							+ "on imgd.p_id = p.p_id "
 							+ "inner join product_image as pimg "
 							+ "on imgd.img_id = pimg.img_id "
-							+ "join category_detail as ctgd "
+							+ "inner join category_detail as ctgd "
 							+ "on p.p_id = ctgd.p_id "
 							+ "inner join category as ctg "
 							+ "on ctg.ctg_id = ctgd.ctg_id "
