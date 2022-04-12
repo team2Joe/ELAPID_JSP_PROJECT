@@ -31,7 +31,7 @@ function inputCart(){
 		location.href="loginForm.jsp"
 	}else{
 		location.href="addCart.do?p_id="+p_id ;
-		alert("장바구니에 담겼습니다.")
+		alert("장바구니에 상품이 정상적으로 담겼습니다.")
 	}
 }
 
