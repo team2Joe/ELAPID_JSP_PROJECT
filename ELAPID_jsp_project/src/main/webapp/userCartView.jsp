@@ -34,18 +34,16 @@
 		<div class="">
 			<h3>주문하기</h3>
 		</div>
-
+	<%
+	ArrayList<UserCartViewDto> dtos = (ArrayList<UserCartViewDto>)request.getAttribute("User_Cart");
+		if ( dtos.size() != 0 ){
+			
+		
+	%>
+	
 
 		<form action="userOderForm.do" id="cart">
 			<c:forEach items="${User_Cart }" var="dtos">
-
-				<%-- <c:choose>
-					<c:when test="${dto.get(User_Cart.size()-1).cart_totalamount = 0}">
-					
-							장바구니가 비어있습니다.
-							
-					</c:when>
-					<c:otherwise> --%>
 					<div class="container">
 						<div class="row">
 							<div class="col-1" style="padding: 75px 0px 0px 0px;">
@@ -80,9 +78,6 @@
 						</div>
 					</div>
 					<hr width="1050">
-<%-- 
-					</c:otherwise>
-				</c:choose> --%>
 			</c:forEach>
 		</form>
 
@@ -94,13 +89,9 @@
 				<fmt:formatNumber
 					value="${User_Cart.get(User_Cart.size()-1).cart_totalamount}" pattern="#,###,###" />원
 			</h4>
-		</div>
-
-
-
-	</div>
-	<!-- 중앙! -->
-	<!-- 2분할! -->
+		</div><!-- 중앙! -->
+	</div><!-- 2분할! -->
+	
 	<div class="d-grid gap-2 col-10" align="right">
 		<div>
 			<button onclick="selectedCartOrder()" class="btn btn-dark"
@@ -115,7 +106,25 @@
 
 
 	<div align="center"></div>
-
+	
+	<%
+		}else{
+	%>
+		<div style="padding: 30px 200px 20px 200px;">
+		<!-- 중앙! -->
+		<form action="main.do">
+					<div  style="padding: 100px 0px 0px 0px;">
+						<div align="center"><br><br><h2>장바구니가 비어있어요 T^T</h2><br><br>
+						<input type="submit" class="btn btn-dark" value="메인으로 이동">
+				<hr width="800"></div>
+			</div>
+		</form>
+	</div><!-- 중앙! -->
+	
+		
+	<%
+		}
+	%>
 
 </body>
 <%@ include file="/layout/footer.jsp"%>	
