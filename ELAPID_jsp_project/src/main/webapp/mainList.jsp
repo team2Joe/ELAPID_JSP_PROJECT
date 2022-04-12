@@ -24,7 +24,11 @@
 				      </div>
 				      <div class="card-footer">
 				 	<%-- 아이디값 null시 비회원 장바구니로 들어가기 --%>
+<<<<<<< HEAD
 				      	<button class="btn btn-dark" onclick = "location.href='addCart.do?p_id=${dto.p_id}'">장바구니 담기</button>
+=======
+				      	<button class="btn btn-dark" onclick = "location.href='addCart.do?p_id=${dto.p_id}'" >장바구니 담기</button>
+>>>>>>> f3a47536965622144495d604bb447e5d139c1593
 				      </div>
 				    </div>
 				  </div>

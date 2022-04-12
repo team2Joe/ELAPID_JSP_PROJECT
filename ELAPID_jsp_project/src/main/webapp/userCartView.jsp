@@ -58,7 +58,8 @@
 
 							<!-- 상품 이미지 -->
 							<div class="col-2" align="left">
-								<a href="detailView.do?p_id=${dtos.p_id }&ctg_middle=${dtos.ctg_middle}"> <img
+							<a href="detailView.do?p_id=${dtos.p_id }&ctg_middle=${dtos.ctg_middle}"> <img
+
 									src="${dtos.img_thum }" width="100" height="150"></a>
 							</div>
 							<!-- 상품 정보 -->
