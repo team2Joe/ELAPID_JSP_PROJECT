@@ -13,12 +13,14 @@ public class EGoogleLoginCommand implements ECommand {
 		
 		String id = request.getParameter("gemail");
 		String img = request.getParameter("gimg");
-		String username = request.getParameter("gname");
+		String name = request.getParameter("gname");
 		String email = request.getParameter("gemail");
 		
-		System.out.println(id+"&&&&&&&&&&&");
 		
 		session.setAttribute("uid", id);
+		session.setAttribute("comment", name+"님 환영합니다.");
+		session.setAttribute("gresult", "1");
+		
 		
 
 	}

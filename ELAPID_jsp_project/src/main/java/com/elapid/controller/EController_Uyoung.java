@@ -175,6 +175,12 @@ public class EController_Uyoung extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "loginForm.do";
 			break;
+		case("/googleLogout.do"):
+			command = new ELogoutCommand();
+			command.execute(request, response);
+			viewPage = "loginForm.do";
+			break;
+			
 			
 
 			//아이디 중복 체크		

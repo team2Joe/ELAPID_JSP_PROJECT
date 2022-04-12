@@ -9,7 +9,6 @@ request.setCharacterEncoding("utf-8");
 <html>
 <head>
 <meta name ="google-signin-client_id" content="246093648725-rl5r5kcmpm4vh48r4k1l2rferndnjohm.apps.googleusercontent.com">
-<script type="text/javascript">
 
 <meta charset="UTF-8">
 
@@ -30,6 +29,8 @@ request.setCharacterEncoding("utf-8");
 	          <%
 	          	String uid =""; 
 		          	uid = (String)session.getAttribute("uid");
+		        String gresult = "";
+		        	gresult = (String)session.getAttribute("gresult");
 		      %>
 		      
 		      
@@ -122,16 +123,27 @@ request.setCharacterEncoding("utf-8");
 	        </li>
 	        <%
 	          	try{
-	         	 	if(!uid.equals("")){
+	         	 	if(!uid.equals("") && gresult.equals("1")){
 	          		
 	        %>
 	        <li class="nav-item dropdown">
-	          <a href="logout.do" class="nav-link">
+	          <a onclick = "signOut();" class="nav-link">
 	          
 	            <U>log out</U>
 	          </a>
 	        </li>
 			<%
+	          		}else if(!uid.equals("") && gresult.equals("")){
+	          			
+	         %>
+	        <li class="nav-item dropdown">
+	          <a href="logout.do" class="nav-link">
+	            <U>log out</U>
+	          </a>
+	        </li> 			
+	          			
+	          			
+	          			<%
 	          		}
 	          	}catch(Exception e){
 	          	}
@@ -164,9 +176,7 @@ request.setCharacterEncoding("utf-8");
 	          	
 	          </ul>
 	        </li>
-	        <li>
-	         <a href="#" onclick="signOut();">Sign out</a>
-	        </li>
+
 	        <li class="nav-item dropdown">
 	          <a href="userCartView.do" class="nav-link" style="text-decoration:none">
 	            <U>장바구니</U>
