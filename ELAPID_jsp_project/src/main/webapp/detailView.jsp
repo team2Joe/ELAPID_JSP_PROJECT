@@ -9,7 +9,6 @@
 		
 <%
 	ProductDetailDto detailView = (ProductDetailDto) request.getAttribute("detailView");
-
 %>		
 			<h2 align="center"><%=detailView.getP_id() %></h2> <br>
 			
