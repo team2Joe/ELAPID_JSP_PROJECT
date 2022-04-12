@@ -77,15 +77,17 @@
    <table border="0" width="600" height="10" id="wrapper">
     <tr>
     <td align=right>
-     <button type="button" class="btn btn-secondary" onclick="location.href='questionList.do'" >취소하기</button></td>
+     <button  class="btn btn-secondary" onclick="location.href='questionList.do'" >취소하기</button></td>
      <td> 
-     <button type="submit" class="btn btn-dark" onclick="go(); location.href='questionWriteForm.do'">등록하기</button></td>    <!--qnaregister()  -->
+     <button type="button" class="btn btn-dark" onclick="go()">등록하기</button></td>    <!--qnaregister()  -->
      </tr></table>
 </Form>
     
+    
+    <br><br><br><br><br><br>
      
 
-<script src="js/basic.js"></script>
+<script src="js/basic.js?ver=4"></script>
 </body>
 </html>
 <%@ include file="layout/footer.jsp" %>
