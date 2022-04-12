@@ -23,6 +23,7 @@ import com.elapid.command.ECartDeleteProductCommand;
 import com.elapid.command.ECommand;
 import com.elapid.command.EDetailViewCommand;
 import com.elapid.command.EFunctionListCommand;
+import com.elapid.command.EGoogleLoginCommand;
 import com.elapid.command.EIdCheckCommand;
 import com.elapid.command.ELoginCheckCommand;
 import com.elapid.command.ELogoutCommand;
@@ -163,7 +164,11 @@ public class EController_Uyoung extends HttpServlet {
 			command.execute(request, response);
 			viewPage = (String)request.getAttribute("loginviewparam");
 			break;
-
+		case("/googleLogin.do"):
+			command = new EGoogleLoginCommand();
+			command.execute(request, response);
+			viewPage = "main.do";
+			break;
 			//로그아웃
 		case("/logout.do"):
 			command = new ELogoutCommand();
