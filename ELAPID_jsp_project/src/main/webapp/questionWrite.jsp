@@ -20,31 +20,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script type ="text/javascript">
 
-function go() {
-    var a = document.insertForm.qc_name.value;
-    if (a == "선택") {
-        alert("문의 유형을 선택해주세요.");
-        document.insertForm.qc_name.focus();
-      return;
-    } 
-	
-    var f = document.insertForm.pq_title.value;
-    if (f == "") {
-        alert("제목을 입력해주세요.");
-        document.insertForm.pq_title.focus();
-        return;
-    }
-    
-    var q = document.insertForm.pq_content.value;
-    if (q == "") {
-        alert("내용을 입력해주세요.");
-        document.insertForm.pq_content.focus();
-        return;
-    }
-    
-}
 
-document.onkeydown = noEvent;
+
 
 
 </script>
@@ -78,15 +55,15 @@ document.onkeydown = noEvent;
    <table border="0" width="600" height="10" id="wrapper">
     <tr>
     <td align=right>
-     <button type="button" class="btn btn-secondary" onclick="location.href='questionList.do'" >취소하기</button></td>
+     <button  class="btn btn-secondary" onclick="location.href='questionList.do'" >취소하기</button></td>
      <td> 
-     <button type="submit" class="btn btn-dark" onclick="go();return false">등록하기</button></td>    <!--qnaregister()  -->
+     <button type="button" class="btn btn-dark" onclick="go()">등록하기</button></td>    <!--qnaregister()  -->
      </tr></table>
 </Form>
     
      
 
-<script src="js/basic.js"></script>
+<script src="js/basic.js?ver=4"></script>
 </body>
 </html>
 <%@ include file="layout/footer.jsp" %>
