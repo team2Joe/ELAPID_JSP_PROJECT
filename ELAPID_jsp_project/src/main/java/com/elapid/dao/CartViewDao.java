@@ -42,7 +42,8 @@ public class CartViewDao {
 				
 				try {
 					connection = dataSource.getConnection();
-					String query = "select u.u_id, p.p_id, p.p_name, p.p_price, p.p_colorname, p.p_size, p.p_discountprice ,cd.cd_id, c.cart_id, img_thum "
+					String query = "select u.u_id, p.p_id, p.p_name, p.p_price, p.p_colorname, p.p_size, "
+							+ "p.p_discountprice ,cd.cd_id, c.cart_id, img_thum, ctg_middle "
 							+ "from product as p "
 							+ "inner join cart_detail as cd "
 							+ "on p.p_id = cd.p_id "
@@ -54,6 +55,10 @@ public class CartViewDao {
 							+ "on imgd.p_id = p.p_id "
 							+ "inner join product_image as pimg "
 							+ "on imgd.img_id = pimg.img_id "
+							+ "join category_detail as ctgd "
+							+ "on p.p_id = ctgd.p_id "
+							+ "inner join category as ctg "
+							+ "on ctg.ctg_id = ctgd.ctg_id "
 							+ "where c.cart_id = (Select cart_id from cart where u_id = ?) ";
 					
 					preparedStatement  = connection.prepareStatement(query);
@@ -72,15 +77,17 @@ public class CartViewDao {
 						String img_thum = resultSet.getString("img_thum");
 						int cd_id = resultSet.getInt("cd_id");
 						int p_size = resultSet.getInt("p_size");
+						String ctg_middle = resultSet.getString("ctg_middle");
 						
 						
 						//총합 부분 계산
 						cart_totalamount += p_price;
-						UserCartViewDto dto = new UserCartViewDto(u_id, p_id, cd_id, cart_id, p_name, p_colorname, p_price, cart_totalamount, img_thum,p_size);
+						UserCartViewDto dto = new UserCartViewDto(u_id, p_id, cd_id, cart_id, p_name, p_colorname, 
+															p_price, cart_totalamount, img_thum,p_size , ctg_middle);
 						dtos.add(dto);
 						
 						//check
-						System.out.println(cd_id);
+						System.out.println(ctg_middle);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
