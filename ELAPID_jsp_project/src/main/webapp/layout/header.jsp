@@ -20,16 +20,22 @@ request.setCharacterEncoding("utf-8");
  a:hover { color: #006DD7; text-decoration: none;}
 </style>
 <%
+
 	String uid = (String)session.getAttribute("uid");
 %>
 <script type="text/javascript">
-	var form = document.getElementById("search")
 	
 	function searchNullCheck(){
-		if(form.value == null){
+		
+		var search = document.getElementById("searchForm").value;
+		
+		if(search == ''){
 			alert('검색어를 입력해주세요')
+			
+			return false;
+		}else{
+			search.submit()
 		}
-		return false;
 	}
 </script>
 
@@ -178,18 +184,18 @@ request.setCharacterEncoding("utf-8");
 	    </div>
 	  </div>
 
-		  <div>
-		  <form class="d-flex" action="search.do">
-		  	<select name="category">
-		  		<option value="p.p_name">상품명</option>
-		  		<option value="p.p_size">사이즈</option>
-		  		<option value="p.p_mainf">주요기능</option>
-		  		<option value="s.ps_color">색상</option>
-		  	</select>
-	        <input class="form-control me-sm-2" type="text" placeholder="Search" id="search" size="10">
-	        <button class="btn btn-secondary" onclick="searchNullCheck()" type="submit">Search</button>
-	      </form>
-	    </div>
+	  <div>
+	  <form class="d-flex" action="search.do" >
+	  	<select name="category">
+	  		<option value="p.p_name">상품명</option>
+	  		<option value="p.p_size">사이즈</option>
+	  		<option value="p.p_mainf">주요기능</option>
+	  		<option value="s.ps_color">색상</option>
+	  	</select>
+        <input class="form-control me-sm-2" type="text" placeholder="Search" name="search" id="searchForm" size="10">
+        <button class="btn btn-secondary" onclick="return searchNullCheck()">Search</button>
+      </form>
+    </div>
 
 	</nav>
 

@@ -18,7 +18,7 @@
 	<div class="div1">
 		<h4>필터</h4>
 		
-		<form action="luggageFilterList.do">>
+		<form action="luggageFilterList.do">
 			<h5>크기</h5>
 				기내용/소형 <input type="checkbox" name="ctg_middle" value="small">
 				중형수하물 <input type="checkbox" name="ctg_middle" value="middle">
