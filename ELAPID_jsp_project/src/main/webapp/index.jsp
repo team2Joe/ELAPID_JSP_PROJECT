@@ -395,11 +395,11 @@ request.setCharacterEncoding("utf-8");
 				    <div class="card h-100" align="center">
 				    <%--순위 반영 --%>
 				    <c:choose>
-				    	<c:when test="${dto.p_rank == 1 }">
-				    		<p class="text-warning bg-dark"><h2>Top${dto.p_rank }</h2></p>
+				    	<c:when test="${dto.p_rank eq 1 }">
+				    		<p class="text-warning bg-grey">Top${dto.p_rank }</p>
 				    	</c:when>
 				    	<c:otherwise>
-				    		<p class="text-info bg-dark"><h2>Top${dto.p_rank }</h2></p>		    		
+				    		<p class="text-info bg-grey">Top${dto.p_rank }</p>		    		
 				    	</c:otherwise>
 				    </c:choose>
 			    	  <a href="detailView.do?p_id=${dto.p_id }&ctg_middle=${dto.ctg_middle }">
