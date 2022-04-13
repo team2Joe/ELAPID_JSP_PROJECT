@@ -3,6 +3,19 @@
  
 */
 
+function checkFile(){
+	var form = document.getElementById("uploadform");
+	var upload1 = form.fileName1;
+	var ext = upload1.value;
+
+	if(ext.length >= 1 && !(ext.substring(ext.length-3) == 'jpg' || ext.substring(ext.length-3) == 'jpeg' || ext.substring(ext.length-3) == 'png' )){
+		alert("jpg, jpeg, png 파일만 업로드 가능")
+		return false
+	}
+	form.submit();
+}
+
+
 function init() {
 	gapi.load('auth2', function() {
 		gapi.auth2.init();
@@ -71,7 +84,13 @@ function go() {
     var q = document.insertForm.pq_content.value;
     
     var form = document.getElementById("qnaWriteForm");
+    //
+	var upload1 = form.fileName1;
+	var ext = upload1.value;
+
+
     
+    //
     if (a == "선택") {
         alert("문의 유형을 선택해주세요.");
         document.insertForm.qc_name.focus();
@@ -85,6 +104,10 @@ function go() {
         document.insertForm.pq_content.focus();
         return;
     }else{
+		if(ext.length >= 1 && !(ext.substring(ext.length-3) == 'jpg' || ext.substring(ext.length-3) == 'jpeg' || ext.substring(ext.length-3) == 'png' )){
+		alert("jpg, jpeg, png 파일만 업로드 가능")
+		return false
+		}
     	form.submit();
     }
     
