@@ -38,8 +38,7 @@
 				      </div>
 				      <div class="card-footer">
 				 	<%-- 아이디값 null시 비회원 장바구니로 들어가기 --%>
-				
-							<button class="btn btn-dark" name="p_id" id="pid" onclick = "inputCart()" value="${dto.p_id }">장바구니 담기</button>
+							<button class="btn btn-dark" onclick = "location.href='addCart.do?p_id=${dto.p_id}'">장바구니 담기</button>
 				      </div>
 				    </div>
 				  </div>	

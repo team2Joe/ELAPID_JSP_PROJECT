@@ -47,7 +47,7 @@
 						<div class="row">
 							<div class="col-1" style="padding: 75px 0px 0px 0px;">
 								<div class="form-check">
-									<input class="form-check-input" type="checkbox" name="cartchoice" value="${dtos.p_id }" id="flexCheckDefault">
+									<input class="form-check-input" type="checkbox" name="cartchoice" value="${dtos.cd_id }" id="flexCheckDefault">
 									<label class="form-check-label" for="flexCheckDefault">
 									</label>
 								</div>

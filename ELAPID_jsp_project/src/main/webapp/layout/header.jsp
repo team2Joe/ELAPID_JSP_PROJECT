@@ -36,6 +36,7 @@ request.setCharacterEncoding("utf-8");
 			search.submit()
 		}
 	}
+
 function inputCart(){
 	var u_id = "<%=(String)session.getAttribute("uid")%>"
 	
@@ -52,6 +53,7 @@ function inputCart(){
 		}
 //	}
 }
+
 
 </script>
 </head>
