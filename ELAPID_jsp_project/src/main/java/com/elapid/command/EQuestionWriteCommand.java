@@ -1,5 +1,6 @@
 package com.elapid.command;
 
+import java.io.IOException;
 import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,17 +19,27 @@ public class EQuestionWriteCommand implements ECommand {
 		// TODO Auto-generated method stub
 		
 		HttpSession session = request.getSession();
-
 		
-		String qc_name =request.getParameter("qc_name");
+		String uploadPath=request.getRealPath("upload");;
+		MultipartRequest mr =null; 
+				
+		try {
+			mr = new MultipartRequest(request, uploadPath,1024*1024*10,"UTF-8", new DefaultFileRenamePolicy());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+				
+		
+		String qc_name = mr.getParameter("qc_name");
 		
 		System.out.println(qc_name + "****************");
-		String pq_title = request.getParameter("pq_title");
-		String pq_content= request.getParameter("pq_content");
+		String pq_title = mr.getParameter("pq_title");
+		String pq_content= mr.getParameter("pq_content");
 		String uid = (String) session.getAttribute("uid");
 		//이미지파일 업로드 
 		
-		String uploadPath=request.getRealPath("upload");;
+		
 		   
 		   int size = 10*1024*1024;
 		   String filename1="";
