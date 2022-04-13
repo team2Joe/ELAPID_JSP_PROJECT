@@ -38,7 +38,7 @@ request.setCharacterEncoding("utf-8");
 	}
 function inputCart(){
 	
-	var p_id = document.getElementById("pid").value
+	var p_id = document.getElementById("ppid").value
 	var u_id = "<%=(String)session.getAttribute("uid")%>"
 
 	if(u_id=="null"){
