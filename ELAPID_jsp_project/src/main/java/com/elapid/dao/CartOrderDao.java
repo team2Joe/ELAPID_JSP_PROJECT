@@ -27,8 +27,6 @@ public class CartOrderDao {
 			e.printStackTrace();
 		}
 	}
-
-	
 	
 	
 	public void CartAdd(String uid) {
