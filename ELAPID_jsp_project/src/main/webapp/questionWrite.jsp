@@ -25,7 +25,7 @@
 </script>
 
 <body>
-<Form name="insertForm" action="questionWrite.do" method="post" id="qnaWriteForm" >
+<Form name="insertForm" action="questionWrite.do" method="post" id="qnaWriteForm" enctype="multipart/form-data" >
   <div class="col-sm-5 my-1" id="wrapper">
     <label for="exampleFormControlSelect1"><h6>문의 유형 분류</h6> </label>
     <select class="form-control" id="exampleFormControlSelect1" name="qc_name">
@@ -43,6 +43,10 @@
     <input type="text" name="pq_title" class="form-control" id="exampleFormControlInput1" >
   </div>
    <br>
+   <div class="col-sm-5 my-1" id="wrapper">
+   	이미지 : <input type="file" name="fileName1" ><br>
+   	(*.jpg , *.png, *.jpeg 파일만 업로드 가능)
+   </div>
     <div class="col-sm-5 my-1" id="wrapper">
     <label for="exampleFormControlTextarea1"><h6>문의 내용</h6></label>
     <textarea class="form-control" name="pq_content" id="exampleFormControlTextarea1" rows="10"></textarea>
