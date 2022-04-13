@@ -61,6 +61,9 @@ function inputCart(){
 		          	uid = (String)session.getAttribute("uid");
 		        String gresult = "";
 		        	gresult = (String)session.getAttribute("gresult");
+		        if(session.getAttribute("gresult") == null){
+		        	gresult = "";
+		        }
 		      %>
 		      
 		      
@@ -154,7 +157,7 @@ function inputCart(){
 	        </li>
 	        <%
 	          	try{
-	         	 	if(!uid.equals("") && gresult.equals("1")){
+	          		if(!uid.equals("") && gresult.equals("1")){
 	          		
 	        %>
 	        <li class="nav-item dropdown">
