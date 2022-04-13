@@ -36,13 +36,6 @@ request.setCharacterEncoding("utf-8");
 			search.submit()
 		}
 	}
-<<<<<<< HEAD
-function inputCart(){
-	
-	var p_id = document.getElementById("ppid").value
-	var u_id = "<%=(String)session.getAttribute("uid")%>"
-=======
->>>>>>> 4a6e747f41715a784cb71526a8e6d1f71d4d71ca
 
 
 </script>
@@ -213,7 +206,7 @@ function inputCart(){
 	        </li>
 	      </ul>
 	    </div>
-	  </div>
+	  
 
 	  <div>
 	  <form class="d-flex" action="search.do" >
@@ -226,6 +219,7 @@ function inputCart(){
         <input class="form-control me-sm-2" type="text" placeholder="Search" name="search" id="searchForm" size="10">
         <button class="btn btn-secondary" onclick="return searchNullCheck()">Search</button>
       </form>
+      </div>
     </div>
 
 	</nav>

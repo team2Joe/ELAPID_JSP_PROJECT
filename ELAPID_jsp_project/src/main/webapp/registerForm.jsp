@@ -113,7 +113,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 		      <input type="text" class="form-control" name="uemail" id="inputEmail" onkeyup="emailformcheck()" value="${sessionScope.uemail}">
 			</div>
 
-  		    <div class = "col-sm-3 " id="emailcondition">
+  		    <div class = "col-sm-6 " id="emailcondition">
   		    	이메일 형식으로 작성해주세요. 
 	        </div>
 	      </div>

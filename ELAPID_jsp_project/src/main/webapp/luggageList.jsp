@@ -66,14 +66,7 @@ padding : 0 0 200px 200px;
 						</div>
 				      </div>
 				      <div class="card-footer">
-<<<<<<< HEAD
-				 	<%-- 아이디값 null시 비회원 장바구니로 들어가기 --%>
-							<%-- <button class="btn btn-dark" onclick = "location.href='addCart.do?p_id=${dto.p_id}'">장바구니 담기</button> --%>
-		
-							<button class="btn btn-dark" name="p_id" id="pid" onclick = "inputCart()" value="${dto.p_id }">장바구니 담기</button>
-=======
 							<button class="btn btn-dark" onclick = "location.href='addCart.do?p_id=${dto.p_id}'">장바구니 담기</button>
->>>>>>> 4a6e747f41715a784cb71526a8e6d1f71d4d71ca
 				      </div>
 				    </div>
 				  </div>	
