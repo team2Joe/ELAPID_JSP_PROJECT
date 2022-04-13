@@ -81,8 +81,6 @@ padding : 0 0 200px 200px;
 		<%
 				// middleView.do 페이지수
 				int count = (int)request.getAttribute("count");	
-				
-				ArrayList<ProductListDto> list = (ArrayList<ProductListDto>)request.getAttribute("list");
 		
 				for(int i=1; i<=count; i++){
 		%>			

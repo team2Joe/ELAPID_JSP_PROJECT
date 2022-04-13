@@ -223,20 +223,20 @@ function inputCart(){
 	        </li>
 	      </ul>
 	    </div>
+			<div>
+			  <form class="d-flex" action="search.do" >
+			  	<select name="category">
+			  		<option value="p.p_name">상품명</option>
+			  		<option value="p.p_size">사이즈</option>
+			  		<option value="p.p_mainf">주요기능</option>
+			  		<option value="s.ps_color">색상</option>
+			  	</select>
+		        <input class="form-control me-sm-2" type="text" placeholder="Search" name="search" id="searchForm" size="10">
+		        <button class="btn btn-secondary" onclick="return searchNullCheck()">Search</button>
+		      </form>
+		    </div>
 	  </div>
 
-	  <div>
-	  <form class="d-flex" action="search.do" >
-	  	<select name="category">
-	  		<option value="p.p_name">상품명</option>
-	  		<option value="p.p_size">사이즈</option>
-	  		<option value="p.p_mainf">주요기능</option>
-	  		<option value="s.ps_color">색상</option>
-	  	</select>
-        <input class="form-control me-sm-2" type="text" placeholder="Search" name="search" id="searchForm" size="10">
-        <button class="btn btn-secondary" onclick="return searchNullCheck()">Search</button>
-      </form>
-    </div>
 
 	</nav>
 
