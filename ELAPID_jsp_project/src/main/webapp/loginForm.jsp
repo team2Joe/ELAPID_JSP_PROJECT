@@ -259,8 +259,8 @@ a:hover {
 
 				</div>
 				<div class="col-sm-6"
-					style="width: 100%; height: 40px; text-align: center; padding-top: 50px">
-						<div class="g-signin2" style="width:120%" data-onsuccess="onSignIn"></div>
+					style="width: 200%; height: 40px; text-align: center; padding: 100px 0px 0px 280px">
+					<div class="g-signin2" style="width:250px" data-onsuccess="onSignIn"></div></div>
 				</div>
 
 
