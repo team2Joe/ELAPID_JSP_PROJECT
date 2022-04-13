@@ -37,17 +37,20 @@ request.setCharacterEncoding("utf-8");
 		}
 	}
 function inputCart(){
-	
-	var p_id = document.getElementById("pid").value
 	var u_id = "<%=(String)session.getAttribute("uid")%>"
+	
+//	for(var i=0; i < p_id.length; i++){
+		
+	var p_id[i] = document.getElementById("pid").value
 
-	if(u_id=="null"){
-		alert("로그인후 사용가능합니다.")
-		location.href="loginForm.jsp"
-	}else{
-		location.href="addCart.do?p_id="+p_id ;
-		alert("장바구니에 상품이 정상적으로 담겼습니다.")
-	}
+		if(u_id=="null"){
+			alert("로그인후 사용가능합니다.")
+			location.href="loginForm.jsp"
+		}else{
+			location.href="addCart.do?p_id="+p_id[i] ;
+			alert("장바구니에 상품이 정상적으로 담겼습니다.")
+		}
+//	}
 }
 
 </script>
@@ -95,9 +98,9 @@ function inputCart(){
 	          	백팩
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=비즈니스">비즈니스</a></li>
-	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=캐주얼">캐주얼</a></li>
-	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=other">other</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=business">비즈니스</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=casual">캐주얼</a></li>
+	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=other">other</a></li>
 	          </ul>
 	        </li>
 	      </ul>
