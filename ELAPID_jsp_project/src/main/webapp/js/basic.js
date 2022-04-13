@@ -119,6 +119,10 @@ function navbtnlinkfunction() {
 	location.href = "middleFunctionList.do";
 }
 
+function navbtnlinkproductinsert() {
+	location.href ="productInsertForm.do";
+}
+
 
 function nullcheck() {
 	

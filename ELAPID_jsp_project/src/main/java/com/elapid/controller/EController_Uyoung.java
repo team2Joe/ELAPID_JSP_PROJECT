@@ -14,6 +14,7 @@ import com.elapid.command.AddCartCommand;
 import com.elapid.command.EAddressBookViewCommand;
 
 import com.elapid.command.ENonUserCartViewCommand;
+import com.elapid.command.EProductInsertCommand;
 import com.elapid.command.ESearchCommand;
 import com.elapid.command.EUserCartViewCommand;
 import com.elapid.command.AddCartCommand;
@@ -160,6 +161,17 @@ public class EController_Uyoung extends HttpServlet {
 			command = new EInterestedProductListCommand();
 			command.execute(request, response);
 			viewPage = "index.jsp";
+			break;
+			
+			// 상품 등록 페이지 접속
+		case("/productInsertForm.do"):
+			viewPage ="productInsertForm.jsp";
+			break;
+			
+			// 상품 등록 하기
+		case("/productInsert.do"):
+			command = new EProductInsertCommand();
+			command.execute(request, response);
 			break;
 			
 		case("/loginForm.do"):

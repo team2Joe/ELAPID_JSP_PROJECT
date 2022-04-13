@@ -127,8 +127,8 @@ function inputCart(){
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-	          	프레스
+	          <a class="nav-link" onclick="navbtnlinkproductinsert()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          	상품 등록
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
 	            <li><a class="dropdown-item" href="#">Action</a></li>

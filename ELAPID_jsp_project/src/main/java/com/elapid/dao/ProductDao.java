@@ -193,7 +193,6 @@ public class ProductDao {
 		return count;
 	}
 
-	
 	// 백팩리스트 전체 출력
 	public ArrayList<ProductListDto> backpackList(int startPage, int onePageCount){
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
@@ -746,6 +745,7 @@ public class ProductDao {
 	// 캐리어 필터 리스트 메소드
 	public ArrayList<ProductListDto> luggageFilterList(String[] sctg_middle, String[] sps_color,
  String[] sp_mainf, int startPage, int onePageCount) {
+		
 		ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
 
 		Connection conn = null;
@@ -996,6 +996,32 @@ public class ProductDao {
 		
 		
 		return dtos;
+	}
+
+	public void productInsert() {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "insert into "; //insert 조인 연산..?
+			preparedStatement = connection.prepareStatement(query);
+
+		
+			
+			preparedStatement.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	
