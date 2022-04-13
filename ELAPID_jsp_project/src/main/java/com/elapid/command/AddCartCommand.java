@@ -20,7 +20,7 @@ public class AddCartCommand implements ECommand {
 		System.out.println("p_id : " + p_id);
 		AddCartDao dao = new AddCartDao();
 		dao.userAddcart(p_id,u_id);
-		
+		System.out.println("**************"+p_id);
 		
 //		String uri = (String) request.getParameter("uri");
 //		String conPath = request.getContextPath();
