@@ -218,15 +218,19 @@
 	<link href="css/basic.css" rel="stylesheet" type="text/css" />
 	
 </head>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<link href="css/basic.css" rel="stylesheet" type="text/css" />
 <body>
 	          <%
 	          	String uid =""; 
 		          	uid = (String)session.getAttribute("uid");
+		        String gresult = "";
+		        	gresult = (String)session.getAttribute("gresult");
+		        if(session.getAttribute("gresult") == null){
+		        	gresult = "";
+		        }
 		      %>
 		      
 		      
+
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <div class="container-fluid">
 	    <a class="navbar-brand" href="main.do">ELAPID</a>
@@ -236,7 +240,7 @@
 	    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" onclick="nnavbtnlinkluggage()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="navbtnlinkluggage()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	            캐리어
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -254,16 +258,16 @@
 	          	백팩
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=business">비즈니스</a></li>
-	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=casual">캐주얼</a></li>
-	            <li><a class="dropdown-item" href="middleView.do?ctg_middle=other">기타</a></li>
+	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=비즈니스">비즈니스</a></li>
+	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=캐주얼">캐주얼</a></li>
+	            <li><a class="dropdown-item" href="backpackList.do?ctg_middle=other">other</a></li>
 	          </ul>
 	        </li>
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
 	        								<%-- function전체리스트 --%>
-	          <a class="nav-link" onclick="nnavbtnlinkfunction()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="navbtnlinkfunction()" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	주요기능
 	          </a>
 	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -301,14 +305,9 @@
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link" onclick="location.href='questionList.do'" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	          	상품문의
 	          </a>
-	          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-	            <li><a class="dropdown-item" href="#">Action</a></li>
-	            <li><a class="dropdown-item" href="#">Another action</a></li>
-	            <li><a class="dropdown-item" href="#">Something else here</a></li>
-	          </ul>
 	        </li>
 	      </ul>
 	    </div>
@@ -316,24 +315,34 @@
 	      <ul class="navbar-nav" style = "width:500px;">
 	        <li class="nav-item dropdown">
 	          <a class="nav-link" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-	            ${comment }
+	            ${sessionScope.comment }
 	          </a>
 	        </li>
 	        <%
 	          	try{
-	         	 	if(!uid.equals("")){
+	          		if(!uid.equals("") && gresult.equals("1")){
 	          		
 	        %>
 	        <li class="nav-item dropdown">
-	          <a href="logout.do" class="nav-link">
+	          <a onclick = "signOut();" class="nav-link">
 	          
 	            <U>log out</U>
 	          </a>
 	        </li>
 			<%
+	          		}else if(!uid.equals("") && gresult.equals("")){
+	          			
+	         %>
+	        <li class="nav-item dropdown">
+	          <a href="logout.do" class="nav-link">
+	            <U>log out</U>
+	          </a>
+	        </li> 			
+	          			
+	          			
+	          			<%
 	          		}
 	          	}catch(Exception e){
-	          			e.printStackTrace();
 	          	}
 	          			
 			%>
@@ -355,7 +364,6 @@
 			  <%
 	          	}catch(Exception e){
 	          		
-	          		e.printStackTrace();
 			  %>
 	            <li><a class="dropdown-item" href="">주문내용확인</a></li>
 	            <li><a class="dropdown-item" href="loginForm.do">로그인하기</a></li>
@@ -365,9 +373,29 @@
 	          	
 	          </ul>
 	        </li>
+
+	        <li class="nav-item dropdown">
+	          <a href="userCartView.do" class="nav-link" style="text-decoration:none">
+	            <U>장바구니</U>
+	          </a>
+	        </li>
 	      </ul>
 	    </div>
 	  </div>
+
+	  <div>
+	  <form class="d-flex" action="search.do" >
+	  	<select name="category">
+	  		<option value="p.p_name">상품명</option>
+	  		<option value="p.p_size">사이즈</option>
+	  		<option value="p.p_mainf">주요기능</option>
+	  		<option value="s.ps_color">색상</option>
+	  	</select>
+        <input class="form-control me-sm-2" type="text" placeholder="Search" name="search" id="searchForm" size="10">
+        <button class="btn btn-secondary" onclick="return searchNullCheck()">Search</button>
+      </form>
+    </div>
+
 	</nav>
     <div>
     	
