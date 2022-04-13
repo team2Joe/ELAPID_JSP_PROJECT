@@ -70,7 +70,7 @@
 								<p class="fs-5">
 									<a href="cartDeleteProduct.do?cd_id=${dtos.cd_id }">X</a>
 								</p>
-								<button type="submit" class="btn btn-dark">주문하기</button>
+								<br>
 								<br> <br>
 								<fmt:formatNumber value="${dtos.p_price }" pattern="#,###,###" />원
 							</div>
