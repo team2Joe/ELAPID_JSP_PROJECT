@@ -14,7 +14,6 @@ public class ERegisterAddCommand implements ECommand {
 		HttpSession session = request.getSession();
 		
 		UserDao dao = new UserDao();
-		
 		String uid = (String) session.getAttribute("uid");
 		String uname = request.getParameter("uname");
 		String utel = request.getParameter("utel");

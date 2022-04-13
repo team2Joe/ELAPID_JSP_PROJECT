@@ -64,7 +64,7 @@
 		<div class="col col-lg-1">1/3</div>
 		<div class="col-md-auto" style="text-align: center;">
 			<div style="padding-top: 100px; padding-bottom: 100px; width: 1000px">
-				<h1>회원정보 입력</h1>
+				<h1>주소록 정보 입력</h1>
 			</div>
 			<div style="padding-left : 100px">
 			<form class="register" id="registerAddForm" action="registerAdd.do" method="post">
