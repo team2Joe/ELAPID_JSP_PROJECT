@@ -381,8 +381,11 @@ public class EController_Uyoung extends HttpServlet {
 			if( session.getAttribute("uid") == null ) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("loginForm.do");
 				dispatcher.forward(request, response);
+			}else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("errorpage.jsp");
+				dispatcher.forward(request, response);				
+				e.printStackTrace();
 			}
-			e.printStackTrace();
 		}
 	}
 	
