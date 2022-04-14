@@ -301,7 +301,39 @@ public class OrderDao {
 			}
 		}
 	}
+	public void deleteAllInCart(int cart_id){
+		
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			
+				
+				String query = "delete from cart_detail where cart_id = ?";
+				stmt = conn.prepareStatement(query);
+				stmt = setInt(1,cart_id);
+				stmt.executeUpdate();
+				
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
+	private PreparedStatement setInt(int i, int cart_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public ArrayList<OrderHistoryDto> userOrderHistory(String uid) {
 		
 		ArrayList<OrderHistoryDto> dtos = new ArrayList<OrderHistoryDto>();
