@@ -50,6 +50,9 @@ public class EUserOrderCommand implements ECommand {
 			for(int i = 0 ; i< strp_ids.length ; i++ ) {
 				p_ids.add(Integer.parseInt(strp_ids[i]));
 			}
+			
+			
+			
 		}
 		
 		

@@ -93,6 +93,42 @@ public class CartOrderDao {
 		
 		return p_ids;
 	}
+	public int searchBycdids(String uid) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		int cart_id = 0;
+		
+		ArrayList<Integer> p_ids = new ArrayList<Integer>();
+		
+		try {
+			conn = dataSource.getConnection();
+			
+			
+			String query = "select cart_id from cart where u_id = ?";
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, uid);
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				cart_id = rs.getInt("cart_id");
+			}
+				
+				
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return cart_id;
+	}
 	
 	
 	
