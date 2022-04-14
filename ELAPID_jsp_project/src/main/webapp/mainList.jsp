@@ -7,7 +7,6 @@
     pageEncoding="UTF-8"%>
 
 			<div class="row row-cols-1 row-cols-md-3 g-4">
-
 	 			<c:forEach items="${list }" var="dto">
 				 
 				 <div class="col">
